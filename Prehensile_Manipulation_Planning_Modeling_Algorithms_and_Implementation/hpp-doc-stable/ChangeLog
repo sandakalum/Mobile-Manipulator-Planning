@@ -1,0 +1,353 @@
+2010-03-02  Thomas Moulard  <thomas.moulard@gmail.com>
+
+	Fix buildchain.
+	* doc/Makefile.am: Make sure all files are distributed and cleaned.
+
+2010-03-02  Thomas Moulard  <thomas.moulard@gmail.com>
+
+	Update NEWS file.
+	* NEWS: Update for release 2.0.
+
+2010-03-02  Thomas Moulard  <thomas.moulard@gmail.com>
+
+	Fix boostrap.
+	* bootstrap: Fix git-laas help.
+
+2010-03-01  Thomas Moulard  <thomas.moulard@gmail.com>
+
+	Remove spurious EXTRA_FILES.
+	* doc/Makefile.am: Remove cmaxp.html from EXTRA_DIST
+	as this generated file should not be distributed.
+
+2010-01-11  Thomas Moulard  <thomas.moulard@gmail.com>
+
+	Factorize asciidoc rules.
+
+	Search for asciidoc, source-highlight.
+	Asciidoc syntax does not seem to be retrocompatible, so
+	for now check that version is at least 8.2.5 (Fedora 11).
+
+	* bootstrap: Check submodule sanity.
+	* build-aux: Synchronize.
+	* configure.ac: Search for asciidoc manually.
+	* doc/Makefile.am: Use factorized asciidoc rules.
+
+2010-01-11  Thomas Moulard  <thomas.moulard@gmail.com>
+
+	Distribute and install missing files.
+	* doc/Makefile.am: Distribute ``doc/images/kineo.jpg''
+	and install ``docc/graph-dependency.html''.
+
+2010-01-09  Thomas Moulard  <thomas.moulard@gmail.com>
+
+	Convert full HTML pages to Asciidoc.
+	* configure.ac: Do not generate HTML pages anymore.
+	* doc/develop.html.in: Remove.
+	* doc/develop.txt: New.
+	* doc/install.html.in: Remove.
+	* doc/install.txt: New.
+
+2010-01-09  Thomas Moulard  <thomas.moulard@gmail.com>
+
+	Add Asciidoc support.
+
+	Asciidoc is a very simple markup language that supports source
+	highlighting and can embed mathematical formula.
+	It also generates much more beautiful documents than
+	manually-written HTML pages.
+	On Fedora, install it using: yum install -y asciidoc source-highlight
+
+	* configure.ac: Do not generate autotools.html anymore.
+	* doc/Makefile.am: Add Asciidoc compilation rule, fix filename lists.
+	* doc/algorithm.html.in: Use images instead of pictures.
+	* doc/autotools.html.in: Remove.
+	* doc/autotools.txt: New.
+	* doc/corba.html.in: Use images instead of pictures.
+	* doc/develop.html.in: Use images instead of pictures.
+	* doc/graph-dependency.html.in: Use images instead of pictures.
+	* doc/images/archi.png: Rename from doc/pictures/archi.png.
+	* doc/images/doxygen.png: Rename from doc/pictures/doxygen.png.
+	* doc/images/film.png: Rename from doc/pictures/film.png.
+	* doc/images/footer.jpg: Rename from doc/pictures/footer.jpg.
+	* doc/images/ftv2blank.png: Rename from doc/pictures/ftv2blank.png.
+	* doc/images/ftv2doc.png: Rename from doc/pictures/ftv2doc.png.
+	* doc/images/ftv2folderclosed.png:
+	Rename from doc/pictures/ftv2folderclosed.png.
+	* doc/images/ftv2folderopen.png:
+	Rename from doc/pictures/ftv2folderopen.png.
+	* doc/images/ftv2lastnode.png:
+	Rename from doc/pictures/ftv2lastnode.png.
+	* doc/images/ftv2link.png: Rename from doc/pictures/ftv2link.png.
+	* doc/images/ftv2mlastnode.png:
+	Rename from doc/pictures/ftv2mlastnode.png.
+	* doc/images/ftv2mnode.png: Rename from doc/pictures/ftv2mnode.png.
+	* doc/images/ftv2node.png: Rename from doc/pictures/ftv2node.png.
+	* doc/images/ftv2plastnode.png:
+	Rename from doc/pictures/ftv2plastnode.png.
+	* doc/images/ftv2pnode.png: Rename from doc/pictures/ftv2pnode.png.
+	* doc/images/ftv2vertline.png:
+	Rename from doc/pictures/ftv2vertline.png.
+	* doc/images/graph_legend.png:
+	Rename from doc/pictures/graph_legend.png.
+	* doc/images/icons/README: New.
+	* doc/images/icons/callouts/1.png: New.
+	* doc/images/icons/callouts/10.png: New.
+	* doc/images/icons/callouts/11.png: New.
+	* doc/images/icons/callouts/12.png: New.
+	* doc/images/icons/callouts/13.png: New.
+	* doc/images/icons/callouts/14.png: New.
+	* doc/images/icons/callouts/15.png: New.
+	* doc/images/icons/callouts/2.png: New.
+	* doc/images/icons/callouts/3.png: New.
+	* doc/images/icons/callouts/4.png: New.
+	* doc/images/icons/callouts/5.png: New.
+	* doc/images/icons/callouts/6.png: New.
+	* doc/images/icons/callouts/7.png: New.
+	* doc/images/icons/callouts/8.png: New.
+	* doc/images/icons/callouts/9.png: New.
+	* doc/images/icons/caution.png: New.
+	* doc/images/icons/example.png: New.
+	* doc/images/icons/home.png: New.
+	* doc/images/icons/important.png: New.
+	* doc/images/icons/next.png: New.
+	* doc/images/icons/note.png: New.
+	* doc/images/icons/prev.png: New.
+	* doc/images/icons/tip.png: New.
+	* doc/images/icons/up.png: New.
+	* doc/images/icons/warning.png: New.
+	* doc/images/kineo.jpg: Rename from doc/pictures/kineo.jpg.
+	* doc/images/kppInterfaceWalk.png:
+	Rename from doc/pictures/kppInterfaceWalk.png.
+	* doc/images/passing-under.jpg:
+	Rename from doc/pictures/passing-under.jpg.
+	* doc/images/tab_b.gif: Rename from doc/pictures/tab_b.gif.
+	* doc/images/tab_l.gif: Rename from doc/pictures/tab_l.gif.
+	* doc/images/tab_r.gif: Rename from doc/pictures/tab_r.gif.
+	* doc/images/walk.png: Rename from doc/pictures/walk.png.
+	* doc/images/whole-body.png: Rename from doc/pictures/whole-body.png.
+	* doc/install.html.in: Use images instead of pictures.
+	* doc/kpp-interface.html.in: Use images instead of pictures.
+	* doc/main.html.in: Use images instead of pictures.
+	* doc/missing.html.in: Use images instead of pictures.
+	* doc/robotic-component.html.in: Use images instead of pictures.
+	* doc/tree.html.in: Use images instead of pictures.
+
+2010-01-09  Thomas Moulard  <thomas.moulard@gmail.com>
+
+	Use flash video player.
+
+	Note: Videos are currently hosted on
+	http://homepages.laas.fr/tmoulard/
+	They should be moved to a ``safer'' location.
+
+	* doc/main.html.in: Use JW Player to play videos remotely.
+
+2010-01-09  Thomas Moulard  <thomas.moulard@gmail.com>
+
+	Make package dependencies image click-able.
+	* doc/Makefile.am: Generate and install click-able image
+	for package dependencies.
+	* doc/graph-dependency.html.in: Rename from doc/graph-dependency.html.
+	* scripts: Update to new version of packageDep.
+
+2010-01-06  Thomas Moulard  <thomas.moulard@gmail.com>
+
+	Clean project.
+
+	doc/packages.sh now generate pages for modules which
+	are missing.
+	Html menu has been repaired.
+	Html pages has been cleaned and partially fixed.
+	New stylesheet is used.
+
+	* .gitignore: Ignore more files.
+	* .gitmodules: Use build-aux submodule.
+	* Makefile.am: Use factorized rules.
+	* build-aux/bootstrap: Remove.
+	* build-aux/pkg.m4: Remove.
+	* build-aux: New.
+	* configure.ac: Simplify.
+	* doc/Makefile.am: Rewrite.
+	* doc/abstractGikTask/html/main.html: Remove.
+	* doc/abstractRobotDynamics/html/main.html: Remove.
+	* doc/algorithm.html.in: New.
+	* doc/autotools.html.in: Rename from doc/html/hppdoc_autotools.html.
+	* doc/corba.html.in: New.
+	* doc/custom.css: New.
+	* doc/develop.html.in: Rename from doc/html/hppdoc_development.html.in.
+	* doc/doxygen.css: New.
+	* doc/dynamicsJRLJapan/html/main.html: Remove.
+	* doc/footer.html: Remove.
+	* doc/graph-dependency.html: New.
+	* doc/header.html: Remove.
+	* doc/hppCmpPlanner/html/main.html: Remove.
+	* doc/hppCorbaServer/html/main.html: Remove.
+	* doc/hppCore/html/main.html: Remove.
+	* doc/hppDynamicObstacle/main.html: Remove.
+	* doc/hppGik/html/main.html: Remove.
+	* doc/hppHRPPlanner/main.html: Remove.
+	* doc/hppHybridRobot/main.html: Remove.
+	* doc/hppLoa/main.html: Remove.
+	* doc/hppLoaPlanner/main.html: Remove.
+	* doc/hppModel/html/main.html: Remove.
+	* doc/hppOpenHRP/html/main.html: Remove.
+	* doc/hppPython/main.html: Remove.
+	* doc/hppTimingPlanner/main.html: Remove.
+	* doc/hppTutorialPlanner/main.html: Remove.
+	* doc/hppVisualizeMovePlanner/main.html: Remove.
+	* doc/hppWalkFootPlanner/html/main.html: Remove.
+	* doc/hppWalkPlanner/html/main.html: Remove.
+	* doc/hppWalkPlannerCompSpec/main.html: Remove.
+	* doc/hpphik/html/main.html: Remove.
+	* doc/hpplocalstepper/html/main.html: Remove.
+	* doc/hrp2Dynamics/html/main.html: Remove.
+	* doc/html/algorithm.html.in: Remove.
+	* doc/html/corba.html.in: Remove.
+	* doc/html/graph-dependency.html: Remove.
+	* doc/html/index.html.in: Remove.
+	* doc/html/kppInterface.html.in: Remove.
+	* doc/html/roboticComponent.html.in: Remove.
+	* doc/html/tree.html.in: Remove.
+	* doc/index.html.in: New.
+	* doc/install.html.in: Rename from doc/html/hppdoc_howtoinstall.html.in.
+	* doc/kpp-interface.html.in: New.
+	* doc/kppInterface/html/main.html: Remove.
+	* doc/kppInterfaceCmp/main.html: Remove.
+	* doc/kppInterfaceHRP/main.html: Remove.
+	* doc/kppInterfaceTutorial/main.html: Remove.
+	* doc/kppInterfaceWalk/html/main.html: Remove.
+	* doc/kwsPlus/main.html: Remove.
+	* doc/main.html.in: Rename from doc/html/main.html.in.
+	* doc/missing.html.in: New.
+	* doc/package.css: Remove.
+	* doc/packages.sh: New.
+	* doc/pictures/kineo.jpg: New.
+	* doc/roboptim-core/doxygen-html/main.html: Remove.
+	* doc/roboptim-posture/doxygen-html/main.html: Remove.
+	* doc/roboptim-trajectory/doxygen-html/main.html: Remove.
+	* doc/robotic-component.html.in: New.
+	* doc/slam3DPlanner/main.html: Remove.
+	* doc/stackoftasks/html/main.html: Remove.
+	* doc/tabs.css: New.
+	* doc/tree.html.in: New.
+	* doc/walk-genom/main.html: Remove.
+	* doc/walkGenJrl/html/main.html: Remove.
+	* doc/walkPlannerOrtm/main.html: Remove.
+	* doc/walkPlannerOrtmClient/main.html: Remove.
+	* doc/worldModelGrid3D/main.html: Remove.
+
+2009-10-13  Thomas Moulard  <thomas.moulard@gmail.com>
+
+	Clean properly generated dot file.
+	* doc/Makefile.am: Add graphDep.dot to CLEANFILES so
+	that ``make distcheck'' does not fail.
+
+2009-10-13  Thomas Moulard  <thomas.moulard@gmail.com>
+
+	Ignore more generated files.
+	* .gitignore: Here.
+
+2009-10-13  Thomas Moulard  <thomas.moulard@gmail.com>
+
+	Package pkg.m4 macro file to enhance package robustness.
+	* Makefile.am: Search for macro in build-aux, fix copyright year.
+	* build-aux/pkg.m4: New.
+	* configure.ac: Clean and register build-aux as an auxiliary directory.
+	Homogenize style with package-create.
+
+2009-07-28  Thomas Moulard  <thomas.moulard@gmail.com>
+
+	Initialize git submodules at boostrap.
+	* bootstrap: Call git submodule init/update if a git
+	directory is set.
+
+2009-05-28  Florent Lamiraux  <florent@laas.fr>
+
+	Install missing file.
+	* doc/Makefile.am: install stackoftasks/html/main.html. This file is
+	pointed out by the algorithm page when stackoftasks is not installed.
+	* doc/html/algorithm.html.in: remove useless line in table.
+
+2009-05-27  Florent Lamiraux  <florent@laas.fr>
+
+	Add instruction for installing through robotpkg.
+	* doc/roboptim-core/html/main.html: here
+* doc/roboptim-trajectory/html/main.html: and here.
+
+2009-05-27  Florent Lamiraux  <florent@laas.fr>
+
+	Add link to StackOfTasks.
+	* configure.ac: get docdir through pkg-config
+	* doc/html/algorithm.html.in: add html link
+	* doc/stackoftasks/html/main.html: New. Instruction for intalling
+
+2009-04-30  Florent Lamiraux  <florent@laas.fr>
+
+	Replace autogen.sh by bootstrap.
+	* autogen.sh: Remove.
+	* bootstrap: New.
+	* build-aux/bootstrap: New.
+
+2009/04/30 Florent Lamiraux <florent@laas.fr>	
+
+	* Fix link to kwsPlus
+	
+2009/04/23 hppDoc-1.3 release
+
+	27. Add link to roboptim libraries.
+	26. Add graph of dependencies between packages
+	25. Added scripts directory as submodule
+	24. Added link to liboptimization
+	23. Update link to hppCmpPlanner
+	22. Update doc to recent changes
+	
+2009/03/16 hppDoc-1.2 release
+
+	21. Update links to directories where html doc is now installed.
+	20. Added link to cmake.
+
+2009/02/03 hppDoc-1.1 release
+	
+2008/06/19
+	18. Added local information pages for packages not installed.
+	17. Added picture illustrating walk planning on front page.
+2008/06/04
+	16. Added some examples on front page.
+	15. Added documentation on EXTRA_DIST in autotools page
+2008/06/03
+	14. Added "Robotic component" page with links to GenoM and OpenRTM components.
+2008/05/28
+	13. Renamed directory doc/abstractRobotsDynamics to doc/abstractRobotDynamics.
+	12. Added link to hrp2Dynamics
+2008/03/06
+	11. Added link to hppTimingPlanner.
+	10. Changed message when package is not installed.
+	
+2008/02/22
+	9. When package referenced in the documentation is not installed, the link 
+	to this package is redirected to a page explaining how to install the package.
+	
+2008/02/17
+	8. Added a page briefly explaining autotools.
+
+2008/02/07
+	7. Some packages have been added.
+	6. Documentation is not anymore produced by doxygen
+	
+2007/10/31
+	5. Reorganization of the main page and addition of a link to hppModel.
+
+2007/10/02
+	4. Correction of link to dynamicsJRLJapan.
+	
+2007/10/01
+	3. Added documentation page on development rules.
+	2. Comment all dependences in configure.ac in order to be able to install the doc before the other packages.
+	
+2007/04/25
+	1. add the packages hppTutorialPlanner and kppTutorialPlanner
+
+2007/04/23
+	First version of General documentation for Humanoid Path
+	Planner. This documentation references the different packages
+	composing HPP.

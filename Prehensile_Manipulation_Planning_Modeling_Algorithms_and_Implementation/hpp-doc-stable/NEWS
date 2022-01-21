@@ -1,0 +1,10 @@
+                                                                -*- outline -*-
+New in 2.0.4
+* Update to package name change: hppPython -> hpp-python
+New in 2.0.3
+* Fix detection of hpp-corbaserver
+New in 2.0.2
+* Fix detection of stackOfTasks
+New in 2.0, 2010-03-02:
+* Make graph clickable.
+* Use Asciidoc to format documentation.

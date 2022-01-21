@@ -1,0 +1,167 @@
+variables:
+    GIT_SUBMODULE_STRATEGY: "recursive"
+    DEVEL_HPP_DIR: "/workspace"
+    BUILD_TYPE: "Release"
+
+.build_template: &build_definition
+    stage: build
+    script:
+      - mkdir -p $DEVEL_HPP_DIR/src
+      - export INSTALL_DOCUMENTATION=OFF
+      - $CI_PROJECT_DIR/scripts/auto-install-hpp.sh --branch ${CI_COMMIT_REF_NAME} --gitrepo ${CI_PROJECT_URL}/raw --target test-ci
+    after_script:
+      - mv $DEVEL_HPP_DIR $CI_PROJECT_DIR
+    artifacts:
+      expire_in: 1 day
+      when: always
+      paths:
+        - workspace
+
+.test_template: &test_definition
+    stage: test
+    script:
+      - rm -rf /workspace
+      - mv workspace /
+      - status=0
+      - echo -e "#!/bin/bash\nsource $DEVEL_HPP_DIR/config.sh\ncd $DEVEL_HPP_DIR/src/\$1/build-rel && make CTEST_OUTPUT_ON_FAILURE=1 test" > $DEVEL_HPP_DIR/test.sh || status=1
+      - cat $DEVEL_HPP_DIR/test.sh
+      - set +e
+      - chmod u+x $DEVEL_HPP_DIR/test.sh
+      - $DEVEL_HPP_DIR/test.sh hpp-util                    || status=1
+      - $DEVEL_HPP_DIR/test.sh hpp-fcl                     || status=1
+      - $DEVEL_HPP_DIR/test.sh hpp-pinocchio               || status=1
+      - $DEVEL_HPP_DIR/test.sh hpp-statistics              || status=1
+      - $DEVEL_HPP_DIR/test.sh hpp-constraints             || status=1
+      - $DEVEL_HPP_DIR/test.sh hpp-core                    || status=1
+      - $DEVEL_HPP_DIR/test.sh hpp-corbaserver             || status=1
+      - $DEVEL_HPP_DIR/test.sh hpp-manipulation            || status=1
+      - $DEVEL_HPP_DIR/test.sh hpp-manipulation-urdf       || status=1
+      - $DEVEL_HPP_DIR/test.sh hpp-manipulation-corba      || status=1
+      - $DEVEL_HPP_DIR/test.sh hpp-rbprm                   || status=1
+      - $DEVEL_HPP_DIR/test.sh hpp-rbprm-corba             || status=1
+      - set -e
+      - exit $status
+    allow_failure: true
+    after_script:
+      - mv $DEVEL_HPP_DIR $CI_PROJECT_DIR
+    artifacts:
+      expire_in: 1 day
+      when: always
+      paths:
+        - workspace
+
+.doc_template: &doc_definition
+    stage: deploy
+    script:
+      - rm -rf /workspace
+      - mv workspace /
+      - echo -e "#!/bin/bash\nsource $DEVEL_HPP_DIR/config.sh\nmake -C $DEVEL_HPP_DIR/src -s all" > $DEVEL_HPP_DIR/doc.sh
+      - cat $DEVEL_HPP_DIR/doc.sh
+      - chmod u+x $DEVEL_HPP_DIR/doc.sh
+      - export INSTALL_DOCUMENTATION=ON
+        #- make -C $DEVEL_HPP_DIR/src -s all
+      - $DEVEL_HPP_DIR/doc.sh
+      - tar czf ${DEVEL_HPP_DIR}/hpp.${CI_COMMIT_REF_NAME}.`date +"%Y%m%d"`.tar.gz $DEVEL_HPP_DIR/install/share/doc
+    after_script:
+      - mv $DEVEL_HPP_DIR $CI_PROJECT_DIR
+    allow_failure: true
+    artifacts:
+      expire_in: 1 day
+      when: always
+      paths:
+        - workspace
+
+stable-18.04-build:
+    image: gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc:18.04
+    only:
+      - stable
+    <<: *build_definition
+
+stable-20.04-build:
+    image: gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc:20.04
+    allow_failure: true
+    only:
+      - stable
+    <<: *build_definition
+
+devel-18.04-build:
+    image: gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc:18.04
+    only:
+      -  devel
+    <<: *build_definition
+
+devel-20.04-build:
+    image: gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc:20.04
+    allow_failure: true
+    only:
+      -  devel
+    <<: *build_definition
+
+stable-18.04-test:
+    image: gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc:18.04
+    dependencies:
+      - stable-18.04-build
+    only:
+      - stable
+    <<: *test_definition
+
+stable-20.04-test:
+    allow_failure: true
+    image: gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc:20.04
+    dependencies:
+      - stable-20.04-build
+    only:
+      - stable
+    <<: *test_definition
+
+
+devel-18.04-test:
+    image: gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc:18.04
+    dependencies:
+      - devel-18.04-build
+    only:
+      -  devel
+    <<: *test_definition
+
+devel-20.04-test:
+    image: gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc:20.04
+    allow_failure: true
+    dependencies:
+      - devel-20.04-build
+    only:
+      -  devel
+    <<: *test_definition
+
+stable-18.04-doc:
+    image: gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc:18.04
+    dependencies:
+      - stable-18.04-build
+    only:
+      - stable
+    <<: *doc_definition
+
+stable-20.04-doc:
+    image: gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc:20.04
+    allow_failure: true
+    dependencies:
+      - stable-20.04-build
+    only:
+      - stable
+    <<: *doc_definition
+
+devel-18.04-doc:
+    image: gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc:18.04
+    dependencies:
+      - devel-18.04-build
+    only:
+      -  devel
+    <<: *doc_definition
+
+devel-20.04-doc:
+    image: gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc:20.04
+    allow_failure: true
+    dependencies:
+      - devel-20.04-build
+    only:
+      -  devel
+    <<: *doc_definition

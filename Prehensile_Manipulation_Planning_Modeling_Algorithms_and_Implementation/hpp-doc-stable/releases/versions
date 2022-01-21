@@ -1,0 +1,17 @@
+hpp-fcl_version= 0.6.0
+hpp-util_version= 3.3
+hpp-pinocchio_version= 4.1
+hpp-statistics_version= 1.1.1
+hpp-constraints_version= 4.1
+hpp-core_version= 4.1
+hpp-hrp2_version= 0.1
+hpp-manipulation_version= 4.1
+hpp-manipulation-urdf_version= 4.1
+hpp-corbaserver_version= 4.1
+hpp-manipulation-corba_version= 4.1
+hpp_tutorial_version= 1.1
+gepetto-viewer_version= 2.1.3
+gepetto-viewer-corba_version= 2.3
+hpp-gepetto-viewer_version= 4.1
+hpp-baxter_version= 0.1
+hpp_romeo_version= 0.1

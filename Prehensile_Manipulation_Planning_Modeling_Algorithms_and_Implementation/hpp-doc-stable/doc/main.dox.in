@@ -1,0 +1,115 @@
+/**
+
+\mainpage Humanoid Path Planner Documentation
+
+\par Introduction
+
+HPP (Humanoid Path Planner) is a collection of software packages
+implementing path planning functionalities for a humanoid robot.
+The core functionalities are well suited to solve classical path planning problems.
+It can be extended to path planning for other types of robots like digital actors for instance.
+
+\par Installation
+
+Installation instructions can be found on
+<a target="_blank" href="https://humanoid-path-planner.github.io/hpp-doc/download.html">github</a>.
+
+\par Overview of the architecture
+
+The code relative to HPP is distributed into several software
+packages. See \ref hpp_doc_dependency_graph "dependency graph" for a quick
+view of the package hierarchy.
+
+The packages are distributed into the following categories:
+\li \ref hpp_doc_algorithms "Algorithms" implementing path planning functionalities
+\li \ref hpp_doc_corba_interface "Corba" communication facilities to control algorithms
+\li \ref hpp_doc_graphical_interface "Graphical user interface" to display configurations and paths.
+
+<table>
+  <tr><td width="50%">
+      <img src="../figures/archi.svg" alt="Overview of the architecture" style="max-height: 50vh"/>
+  </td><td width="5%">
+  </td><td width="30%">
+    The algorithmic part, built on @hpp-core_LINK@ is
+    embedded in corba servers implemented by
+    @hpp-corbaserver_LINK@ or extensions like
+    @hpp-manipulation-corba_LINK@.
+    The corba servers are linked to executable \c hppcorbaserver.
+    <p></p>
+    From a python terminal, clients to the corba servers can be created in order
+    to control the executable. The control of the application is performed via
+    idl interfaces and python classes available in \ref hpp_doc_corba_interface.
+    <p></p>
+    Results of path planning requests as well as individual configurations can
+    be displayed in \c gepetto-gui via package
+    @hpp-gepetto-viewer_LINK@.
+  </td></tr>
+</table>
+
+\par Getting started
+
+Package @hpp_tutorial_LINK@ provides some examples of
+how to use this project.
+
+**/
+
+/**
+
+\page hpp_doc_algorithms Algorithms
+
+\section hpp_doc_algorithms_technical_tools Technical tools
+
+- @hpp-util_LINK@: technical tools for the HPP project (logging, benchmark, quality assurance tools),
+
+\section hpp_doc_algorithms_motion_planning Motion planning for humanoid systems
+
+\par Kinematic chain with geometry
+- @hpp-fcl_LINK@: Modified version of Flexible collision library, for collision detection and distance computation,
+- @pinocchio_LINK@: implementation of kinematic chain with dynamic computations,
+- @hpp-pinocchio_LINK@: Interface between pinocchio and hpp-core,
+
+\par Non linear constraints
+- @hpp-constraints_LINK@: definition of some nonlinear constraints,
+
+\par Path planning
+- @hpp-core_LINK@: definition of basic classes, path planning problems and solvers,
+
+\par Manipulation Planning
+- @hpp-manipulation_LINK@: Manipulation planning
+- @hpp-manipulationurdf_LINK@: Manipulation planning
+
+**/
+
+/**
+
+\page hpp_doc_corba_interface Corba interfaces
+
+\par Packages implementing CORBA interfaces
+
+The following packages implement Corba communication functionalities
+\li @hpp-corbaserver_LINK@ : Corba server embedding a hpp::core::ProblemSolver instance.
+\li @hpp-manipulation-corba_LINK@ : Corba server for @hpp-manipulation_LINK@.
+
+ **/
+
+/**
+
+\page hpp_doc_graphical_interface Graphical user interface
+
+\par Packages implementing graphical user interface
+
+The following packages implement a corba connection with a graphical display
+\li @gepetto-viewer_LINK@ : Graphical window based on OpenSceneGraph.
+\li @gepetto-viewer-corba_LINK@ : Corba interface to gepetto-gui.
+\li @hpp-gepetto-viewer_LINK@ : Link between hpp and gepetto-viewer-corba.
+
+ **/
+
+/**
+
+\page hpp_doc_dependency_graph Dependencies
+
+Graph of dependencies between packages
+\dotfile graphDep.dot "Dependency graph"
+
+ **/

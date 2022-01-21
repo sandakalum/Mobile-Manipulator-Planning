@@ -1,0 +1,126 @@
+#!/usr/bin/python
+
+from __future__ import print_function, with_statement
+
+from optparse import OptionParser
+import re
+import sys, os
+
+try:  # python2
+    from commands import getstatusoutput
+except:  # python3
+    from subprocess import getstatusoutput
+
+pkgConfigPath = os.environ.get("PKG_CONFIG_PATH")
+pathList = re.split(':', pkgConfigPath)
+
+usage = "usage: %prog [options] package-1 ... package-n"
+parser = OptionParser(version="packageDep 0.1", usage=usage)
+
+parser.add_option("-o", "--output", dest="filename",
+                  help="write graph to FILE", metavar="FILE")
+parser.add_option("-q", "--quiet", action="store_true", dest="quiet", default=False,
+                  help="Do not print messages to stdout")
+
+(options, args) = parser.parse_args()
+
+if options.filename is None:
+    parser.print_help()
+
+if options.quiet:
+    sys.stdout = open(os.devnull, 'w')
+
+packageList = args
+filename = options.filename
+
+requireExpr = re.compile('(\s*Requires:\s+)(.+)')
+pkgStdName = re.compile('\w+[\w\d\._-]*');
+
+packageSet = set()
+dependencySet = set()
+
+def extractDep(inPkg):
+
+    packageSet.add(inPkg)
+    depSet = set()
+
+    """Loop over directories in PKG_CONFIG_PATH """
+
+    for path in pathList:
+        found = False
+        filePc = path+"/"+inPkg+".pc"
+
+        try:
+            with open(filePc) as f:
+                for line in f:
+                    matchLine = requireExpr.match(line)
+                    if matchLine:
+                        requireList = re.split(':', matchLine.group(0))
+                        depLine = requireList[1]
+                        depFullList = re.split(',', depLine)
+                        for depFull in depFullList:
+                            dep = pkgStdName.search(depFull)
+                            if dep:
+                                depName = dep.group(0)
+                                depSet.add(depName)
+                                depString = "\"" + depName + "\" -> \"" + inPkg + "\""
+                                dependencySet.add(depString)
+
+        except IOError:
+            None
+
+    for dep in depSet:
+        print("extracting ", dep)
+        extractDep(dep)
+
+
+def getDocLink(package):
+    cmd = "pkg-config --variable=doxygendocdir " + package
+    status,output = getstatusoutput(cmd)
+
+    if status != 0:
+        return ''
+
+    if output != '':
+        return output
+
+    cmd = "pkg-config --variable=docdir " + package
+    status,output = getstatusoutput(cmd)
+
+    if status != 0:
+        return ''
+
+    if output != '':
+        return output + '/html'
+    return output
+
+
+for pkg in packageList:
+    extractDep(pkg)
+
+#
+# Extract data from package and dependency sets
+#
+
+try:
+    f = open(filename, 'w')
+except IOError:
+    print("cannot open ", filename)
+
+f.write("digraph CD  {\n")
+f.write("\tsize = \"12,15\"\n")
+f.write("\trankdir = BT\n")
+f.write("\tcompound=true\n")
+f.write("\n")
+
+for package in packageSet:
+    docLink = getDocLink(package)
+    if docLink != '':
+        docLink = docLink + '/index.html'
+    f.write("\t\"" + package + "\" [shape = box, href = \"" + docLink + "\"]\n")
+
+
+for dependency in dependencySet:
+    f.write("\t" + dependency + "\n");
+
+f.write("}\n")

@@ -1,0 +1,16 @@
+/**
+
+\page @DOC_PKG_NAME@ @PACKAGE_NAME@
+
+The package not installed.
+
+If @PACKAGE_NAME@ has been installed more recently than this documentation,
+you need to configure and install again this documentation.
+
+Otherwise, if @PACKAGE_NAME@ is not installed, you can install using
+one of the following steps:
+@STEPS@
+
+Note that you will need to configure and install again this
+documentation to activate the link to @PACKAGE_NAME@.
+*/

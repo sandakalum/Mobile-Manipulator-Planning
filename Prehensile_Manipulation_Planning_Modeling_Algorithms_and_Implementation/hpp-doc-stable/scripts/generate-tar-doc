@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# generate-tar-doc $DEVEL_HPP_DIR/install/share/doc http://gepettoweb.laas.fr/hpp
+# then copy /tmp/hpp.tar.gz on server and inflate archive.
+
+usage="usage: `basename $0` <directory> <server>"
+
+if [ $# -eq 2 ]; then
+   rm -rf /tmp/hpp
+   cp -r $1 /tmp/hpp
+   find /tmp/hpp -type f -exec sed -i "s|$1|$2|g" {} \;
+   cd /tmp; tar czf hpp.tar.gz hpp
+   rm -rf hpp
+   exit 0
+else
+	echo $usage;
+	exit 1;
+fi

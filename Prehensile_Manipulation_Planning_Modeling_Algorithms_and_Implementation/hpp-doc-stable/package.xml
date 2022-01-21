@@ -1,0 +1,16 @@
+<?xml version='1.0'?>
+ <package format='2'>
+ <name>hpp-doc</name>
+ <version>4.10.0</version>
+ <description>Documentation of Humanoid Path Planner software </description>
+
+ <maintainer email='hpp@laas.fr'>Florent Lamiraux</maintainer>
+ <license>LGPL</license>
+
+ <!-- <url type='website'>https://github.com/humanoid-path-planner/hpp-core </url> -->
+
+ <author>Joseph Mirabel</author>
+ <author>Florent Lamiraux et al.</author>
+
+ <buildtool_depend>catkin</buildtool_depend>
+ </package>

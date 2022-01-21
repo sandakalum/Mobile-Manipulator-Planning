@@ -1,0 +1,85 @@
+#!/bin/bash
+
+VERSION="v4.6.0"
+HOST=gepettoweb.laas.fr
+BASEURL="https://$HOST"
+HOSTDIR=/var/www/gepetto
+
+VERSIONPATH="hpp-doc-release/$VERSION"
+MAINPATH="hpp"
+VERSIONURL="$BASEURL/$VERSIONPATH/hpp"
+MAINURL="$BASEURL/$MAINPATH"
+
+function _confirm () {
+  local say=''
+  if [ $# -eq 0 ]; then
+    say="Are you sure ?"
+  else
+    say=$1
+  fi
+  say="$say [y/n] "
+  local cont=1
+  REPLY='a'
+  while [ $cont -eq 1 ]; do
+    case $REPLY in
+      y|Y)
+        CONFIRM_REPLY=1
+        cont=0
+        ;;
+      n|N)
+        CONFIRM_REPLY=0
+        cont=0
+        ;;
+      *)
+        read -p "$say" -n 1 -r
+        echo
+        ;;
+    esac
+  done
+}
+
+# Generate a tar ball and send it to the remote server.
+if [ ! -f /tmp/hpp.tar.gz ]; then
+  echo "Generating tarball... (This may take a while)"
+  generate-tar-doc $DEVEL_HPP_DIR/install/share/doc $VERSIONURL
+else
+  echo "Tarball already generated."
+  _confirm "Should I use existing /tmp/hpp.tar.gz ?"
+  if [ $CONFIRM_REPLY -eq 0 ]; then
+    echo "Bye bye"
+    exit 1
+  fi
+fi
+
+echo "Transfering the tarball to host $HOST"
+scp /tmp/hpp.tar.gz $HOST:/tmp
+
+if (ssh $HOST '[ -d $HOSTDIR/$VERSIONPATH ]') then
+  echo "Directory $HOSTDIR/$VERSIONPATH already exsists on remote $HOST"
+  _confirm "Do you want to overwrite it ?"
+  if [ $CONFIRM_REPLY -eq 0 ]; then
+    echo "You must inflate the tar by hand or update VERSION in the script $0"
+    exit 1
+  fi
+  echo "Overwriting $HOSTDIR/$VERSIONPATH..."
+fi
+
+# Inflate tar ball in a version directory
+ssh $HOST mkdir --parents $HOSTDIR/$VERSIONPATH
+ssh $HOST tar xvf /tmp/hpp.tar.gz --directory $HOSTDIR/$VERSIONPATH
+
+# Update the version that will be available at the main address:
+# http://projects.laas.fr/gepetto/hpp/hpp-doc/index.html
+# To switch to another version, change the symbolic link.
+echo "Update symbolic link..."
+if (ssh $HOST "[ -e $HOSTDIR/$MAINPATH ]") then
+  if (ssh $HOST "[ -h $HOSTDIR/$MAINPATH ]") then
+    ssh $HOST rm $HOSTDIR/$MAINPATH
+  else
+    echo "Failed to update $HOSTDIR/$MAINPATH"
+    exit 1
+  fi
+fi
+
+ssh $HOST ln -s -T $HOSTDIR/$VERSIONPATH/hpp $HOSTDIR/$MAINPATH
+echo "$BASEURL/$MAINPATH => $BASEURL/$VERSIONPATH/hpp"
