@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: kuka_kmr_iiwa_description
+    relative_path: urdf/kuka_kmr_iiwa.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/kuka_kmr_iiwa.srdf
+  CONFIG:
+    author_name: hector cruz
+    author_email: hlc945@student.bham.ac.uk
+    generated_timestamp: 1589472892

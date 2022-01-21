@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+   <master auto="start"/>
+   <arg name="amcl" default="false"/>
+   <arg name="l_planner" default="eband"/>
+
+
+
+  <!-- Run the map server --> 
+   <node name="map_server" pkg="map_server" type="map_server" args="$(find kuka_kmr_nav)/maps/ws2_map.yaml"/>
+   <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(find kuka_kmr_nav)/maps/test_map.yaml"/> -->
+ 
+  <group if="$(arg amcl)">
+    <!--- Run AMCL for omnidirectional version --> 
+    <include file="$(find amcl)/examples/amcl_omni.launch" />
+  </group>
+  <group unless="$(arg amcl)">
+    <!-- <node pkg="kuka_kmr_iiwa_tasks" type="tf2_map2odom_br" name="tf2_map2odom_br"/> -->
+    <node pkg="fake_localization" type="fake_localization" name="fake_localization">
+      <param name="base_frame_id" value="base_footprint"/>
+      <param name="global_frame_id" value="map"/>
+      <remap from="base_pose_ground_truth" to="odom"/>
+    </node>
+
+  </group>
+
+   <!-- Run navigation stack with pre-defined parameters -->
+   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+     <rosparam file="$(find kuka_kmr_nav)/config/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
+     <rosparam file="$(find kuka_kmr_nav)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+     <rosparam file="$(find kuka_kmr_nav)/config/local_costmap_params.yaml" command="load" />
+     <rosparam file="$(find kuka_kmr_nav)/config/global_costmap_params.yaml" command="load" /> 
+     <rosparam file="$(find kuka_kmr_nav)/config/$(arg l_planner)_local_planner_params.yaml" command="load" />
+     <!-- <rosparam file="$(find kuka_kmr_nav)/config/dwa_local_planner_params.yaml" command="load" /> -->
+     <!-- <rosparam file="$(find kuka_kmr_nav)/config/eband_local_planner_params.yaml" command="load" /> -->
+     <!-- <rosparam file="$(find kuka_kmr_nav)/config/base_local_planner_params.yaml" command="load" /> -->
+   </node>
+ 
+ </launch> 

@@ -1,0 +1,9 @@
+<launch>
+    <arg name="record" default="0" />
+
+    <rosparam command="load" file="$(find kuka_kmr_iiwa_tasks)/config/workstation_poses.yaml"/>
+    
+    <node name ="best_mobile_base_pose" pkg ="kuka_kmr_iiwa_tasks" type="best_mobile_base_pose" args="$(arg record)" output="screen" >
+    </node>
+  
+</launch>

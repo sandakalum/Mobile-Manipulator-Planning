@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.5">  
+  <model name="cast_mold2">
+    <static>false</static>
+    <link name="link0">
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://cast_mold2/meshes/cast_mold2.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://cast_mold2/meshes/cast_mold2.dae</uri>
+          </mesh>
+        </geometry>
+        <material> 
+		    <script>
+		        <uri>file://media/materials/scripts/gazebo.material</uri>
+		        <name>Gazebo/Blue</name>
+		    </script>
+        </material>
+      </visual>
+	  <inertial>
+			<pose>0.0 0.0 0.016</pose>
+		    <mass>0.1</mass>
+		    <inertia>
+		      <ixx>0.000539835</ixx>
+		      <iyy>0.00075853</iyy>
+		      <izz>0.0012813</izz>
+		      <ixy>0.0</ixy>
+		      <ixz>0.0</ixz>
+		      <iyz>0.0</iyz>
+		    </inertia>
+	  </inertial>
+	</link>
+  </model>
+</sdf>

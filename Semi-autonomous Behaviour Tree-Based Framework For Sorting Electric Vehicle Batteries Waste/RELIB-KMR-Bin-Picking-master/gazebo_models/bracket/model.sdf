@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+
+<sdf version="1.5">
+  <model name="bracket">
+    <static>false</static>
+
+    <link name="link0">
+      <collision name="collision">
+        <pose>0.000 0 0.000 0 0 0</pose>
+        <geometry>
+          <!-- <box>
+            <size> 0.21 0.08 0.01</size>
+          </box> -->
+          <box>
+            <size> 0.18 0.07 0.01</size>
+          </box>
+          <!-- <box>
+            <size> 0.08 0.08 0.01</size>
+          </box> -->
+          <!-- <cylinder>
+            <radius>0.04</radius>
+            <length>0.01 </length>
+          </cylinder> -->
+          <!-- OR -->
+          <!-- <mesh>
+            <uri>model://bracket/meshes/bracket.stl</uri>
+          </mesh> -->
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.99</mu>
+              <mu2>0.99</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+      <visual name="visual">
+        <!-- <pose>0.000  0.0 0.005 0 0</pose> -->
+        <geometry>
+          <mesh>
+            <uri>model://bracket/meshes/bracket_modified.dae</uri>
+          </mesh>
+        </geometry>
+        <!-- OPTIONAL -->
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Orange</name>
+          </script>
+        </material>
+      </visual>
+
+      <inertial>
+        <pose>0.0 0.0 0.0 0 0</pose>
+
+        <!-- <mass>0.20</mass>
+        <inertia>
+          <ixx>0.0000833</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.0005817</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.0005817</izz>
+        </inertia> -->
+        <!-- <mass>0.20</mass>
+        <inertia>
+                <ixx>0.0000833</ixx>
+                <ixy>0.0</ixy>
+                <ixz>0.0</ixz>
+                <iyy>0.0005417</iyy>
+                <iyz>0.0</iyz>
+                <izz>0.0006217</izz>
+        </inertia> -->
+        <!-- <mass>0.15</mass>
+        <inertia>
+            <ixx>0.0000625</ixx>
+            <ixy>0.0</ixy>
+            <ixz>0.0</ixz>
+            <iyy>0.0004063</iyy>
+            <iyz>0.0</iyz>
+            <izz>0.0004663</izz>
+        </inertia> -->
+        <mass>0.10</mass>
+        <inertia>
+            <ixx>0.0000417</ixx>
+            <ixy>0.0</ixy>
+            <ixz>0.0</ixz>
+            <iyy>0.0002708</iyy>
+            <iyz>0.0</iyz>
+            <izz>0.0003108</izz>
+        </inertia>
+      </inertial>
+
+    </link>
+
+  </model>
+</sdf>

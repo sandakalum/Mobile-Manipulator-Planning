@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<robot name="kmr_base" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="kmr_base" params="base_mass:=50">
+
+    <xacro:include filename="$(find kuka_kmr_description)/urdf/base/kmr_base.gazebo.xacro" />
+
+    <!-- Robot mechanical and motor parameters. Extracted from
+      https://www.kuka.com/-/media/kuka-downloads/imported/9cb8e311bfd744b4b0eab25ca883f6d3/kuka_kmriiwa_en.pdf?rev=c6fb2cb7aa704b00a89124bf271dc17d
+    -->
+    <xacro:property name="l_pre" value="0.63" />
+    <xacro:property name="w_pre" value="1.08" />
+    <xacro:property name="h_pre" value="0.7" />
+
+
+
+    <xacro:property name="l" value="${l_pre*0.82}" />
+    <xacro:property name="w" value="${w_pre*0.82}" />
+    <xacro:property name="h" value="${h_pre*0.975}" />
+
+    <xacro:property name="mass" value="${base_mass}"/>
+      <!-- 0.82 -->
+    <xacro:property name="scale" value="1" />
+    <!-- Sensor Properties -->
+    <xacro:property name = "l_mass" value="0.01"/>
+    <xacro:property name = "s_r" value="0.0025"/>
+    <xacro:property name = "s_l" value="0.005"/>
+
+
+    <xacro:property name = "base_name" value="base_link"/>
+    <xacro:property name="PI" value="3.1415926535897931" />
+
+
+    <!-- BASE FOOTPRINT -->
+    <link name="base_footprint">
+        <!-- <visual>
+            <origin xyz="0.0 0 0" rpy="0 0 0" />
+            <geometry>
+              <box size="0.001 0.001 0.001" />
+            </geometry>
+        </visual> -->
+    </link>
+
+    <joint name="${base_name}_footprint_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="base_footprint"/>
+      <child link="${base_name}" />
+    </joint>
+
+
+    <!-- KMR BASE_LINK -->
+
+
+    <link name="${base_name}">
+      <inertial>
+        <mass value="${scale*mass}" />
+        <!-- <origin xyz="0 0 0.35" rpy="0 0 0"/> -->
+        <origin xyz="0 0 ${(h/2)}" rppy="0 0 0 " />   <!--Add x= -0.5-->
+        <!-- <inertia  ixx="7.39083" ixy="0.000"  ixz="0.0"  iyy="13.803"  iyz="0.0"  izz="13.0275" /> -->
+        <inertia  ixx="${scale*mass*(h*h+l*l)/12}" ixy="0.0"  ixz="0.0"  iyy="${scale*mass*(w*w+h*h)/12}"  iyz="0.0"  izz="${scale*mass*(l*l+w*w)/12}" />
+      </inertial>
+
+      <visual>
+        <origin xyz="-0.5 0 0" rpy="0 0 0" />   
+        <!-- <origin xyz="0 0 ${(h/2)}" rppy="0 0 0 " />  -->
+        <geometry>
+            <mesh filename="package://kuka_kmr_description/meshes/base/kmr_iiwa_mobile_base.dae"/>
+            <!-- <box size="${w*scale} ${l*scale} ${h}" /> -->
+        </geometry>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 ${(h/2)}" rppy="0 0 0 " />   <!--Add x= -0.5-->
+        <geometry>
+          <!-- <mesh filename="package://kuka_kmr_description/meshes/base/kmr_iiwa_mobile_base.dae"/> -->
+          <box size="${w*scale} ${l*scale} ${h}" />
+        </geometry>
+      </collision>
+    </link>
+
+    <gazebo reference="${base_name}">
+      <mu1>0.3</mu1>
+      <mu2>0.3</mu2>
+      <!-- <fdir1 value="1 1 0"/> -->
+    </gazebo>
+
+
+    <!-- LASER SCAN LINK FRONT -->
+    <link name="base_laser_front">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="${l_mass}" />
+        <inertia  ixx="${l_mass*(3*s_r*s_r + s_l*s_l)/12}" ixy = "0" ixz = "0"
+        iyy="${l_mass*(3*s_r*s_r + s_l*s_l)/12}" iyz = "0"
+        izz="${l_mass*(s_r*s_r)/2}" />
+        </inertial>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <cylinder radius="${s_r}" length="${s_l}"/>
+        </geometry>
+        <material name="blue" />
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="${s_r}" length="${s_l}"/>
+        </geometry>
+      </collision>
+    </link>
+    <!-- JOINT FRONT_LASER_BASE and BASE LINK -->
+    <joint name="joint_sensor_laser_front" type="fixed">
+      <origin xyz="0.47 -0.265 0.135" rpy="0 0 ${-PI/4}"/>
+      <parent link="${base_name}"/>
+      <child link="base_laser_front"/>
+    </joint>
+
+    <!-- LASER SCAN LINK REAR -->
+    <link name="base_laser_rear">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="${l_mass}" />
+        <inertia  ixx="${l_mass*(3*s_r*s_r + s_l*s_l)/12}" ixy = "0" ixz = "0"
+        iyy="${l_mass*(3*s_r*s_r + s_l*s_l)/12}" iyz = "0"
+        izz="${l_mass*(s_r*s_r)/2}" />
+      </inertial>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <cylinder radius="${s_r}" length="${s_l}"/>
+        </geometry>
+        <material name="blue" />
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="${s_r}" length="${s_l}"/>
+        </geometry>
+      </collision>
+    </link>
+    <!-- JOINT REAR_LASER_BASE and BASE LINK -->
+    <joint name="joint_sensor_laser_rear" type="fixed">
+      <origin xyz="-0.47 0.28 0.135" rpy="0 0 ${3*PI/4}"/>
+      <parent link="${base_name}"/>
+      <child link="base_laser_rear"/>
+    </joint>
+
+  </xacro:macro>
+
+</robot>

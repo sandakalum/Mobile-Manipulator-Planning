@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+  <xacro:macro name="vaccum_instance" params="vaccum_name parent_link *origin">
+    <link name="${vaccum_name}">
+      <!-- <gravity>0</gravity> -->
+      <collision>
+        <geometry>
+          <box size="0.0001 0.0001 0.0001" />
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.9</mu>
+              <mu2>0.9</mu2>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <geometry>
+          <box size="0.001 0.001 0.001" />
+        </geometry>
+        <material name="transparent">
+          <color rgba="0 0 0 0" />
+        </material>
+      </visual>
+      <inertial>
+        <origin rpy="0 0 0" xyz="0.000000 0.000000 0.000000" />
+        <mass value="0.0001" />
+        <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08" />
+      </inertial>
+    </link>
+
+    <joint name="${vaccum_name}_${parent_link}" type="revolute">
+      <parent link="${parent_link}" />
+      <child link="${vaccum_name}" />
+      <!-- <origin rpy="0 ${rot} 0" xyz="${x} ${y} ${z}" /> -->
+      <xacro:insert_block name="origin" />
+      <limit effort="50" velocity="1.0" lower="0" upper="0" />
+      <dynamics damping="0.0" friction="10" />
+    </joint>
+    <gazebo>
+      <plugin name="gazebo_ros_${vaccum_name}" filename="libgazebo_ros_vacuum_gripper.so">
+        <robotNamespace>${vaccum_name}</robotNamespace>
+        <bodyName>${vaccum_name}</bodyName>
+        <topicName>${vaccum_name}</topicName>
+        <maxForce>50</maxForce>
+        <maxDistance>0.05</maxDistance>
+        <minDistance>0.01</minDistance>
+      </plugin>
+    </gazebo>
+    <gazebo reference="${vaccum_name}">
+      <mu1>0.99</mu1>
+      <mu2>0.99</mu2>
+    </gazebo>
+
+  </xacro:macro>
+
+
+  <xacro:macro name="vaccum_plugin" params="parent_link x y z">
+    <xacro:property name="PI" value="3.14159" />
+    <xacro:property name="lf" value="0.036375" />
+    <xacro:property name="l" value="${0.036375*1.8}" />
+    <xacro:property name="s" value="1.4" />
+    <!-- <xacro:property name="l" value="${0.036375*1.6}" /> -->
+    <xacro:property name="rot" value="${PI/2}" />
+
+    <xacro:vaccum_instance vaccum_name="vaccum_0" parent_link="${parent_link}">
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y} ${z}" />
+    </xacro:vaccum_instance>
+
+    <xacro:vaccum_instance vaccum_name="vaccum_1" parent_link="${parent_link}">
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y+(l/8)} ${z+(l/8)}" />
+    </xacro:vaccum_instance>
+    <xacro:vaccum_instance vaccum_name="vaccum_2" parent_link="${parent_link}">
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y-(l/8)} ${z+(l/8)}" />
+    </xacro:vaccum_instance>
+    <xacro:vaccum_instance vaccum_name="vaccum_3" parent_link="${parent_link}">
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y-(l/8)} ${z-(l/8)}" />
+    </xacro:vaccum_instance>
+    <xacro:vaccum_instance vaccum_name="vaccum_4" parent_link="${parent_link}">
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y+(l/8)} ${z-(l/8)}" />
+    </xacro:vaccum_instance>
+
+    <xacro:vaccum_instance vaccum_name="vaccum_5" parent_link="${parent_link}">
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y+(l/8)*s} ${z}" />
+    </xacro:vaccum_instance>
+    <xacro:vaccum_instance vaccum_name="vaccum_6" parent_link="${parent_link}">
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y} ${z+(l/8)*s}" />
+    </xacro:vaccum_instance>
+    <xacro:vaccum_instance vaccum_name="vaccum_7" parent_link="${parent_link}">
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y-(l/8)*s} ${z}" />
+    </xacro:vaccum_instance>
+    <xacro:vaccum_instance vaccum_name="vaccum_8" parent_link="${parent_link}">
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y} ${z-(l/8)*s}" />
+    </xacro:vaccum_instance>
+
+    <!-- <xacro:vaccum_instance vaccum_name="vaccum_5" parent_link="${parent_link}">
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y+(l/4)} ${z+(l/4)}" />
+    </xacro:vaccum_instance>
+    <xacro:vaccum_instance vaccum_name="vaccum_6" parent_link="${parent_link}">
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y-(l/4)} ${z+(l/4)}" />
+    </xacro:vaccum_instance>
+    <xacro:vaccum_instance vaccum_name="vaccum_7" parent_link="${parent_link}">
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y-(l/4)} ${z-(l/4)}" />
+    </xacro:vaccum_instance>
+    <xacro:vaccum_instance vaccum_name="vaccum_8" parent_link="${parent_link}">
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y+(l/4)} ${z-(l/4)}" />
+    </xacro:vaccum_instance> -->
+
+
+    <!-- OLD -->
+    <!-- <xacro:vaccum_instance vaccum_name = "vaccum_1" parent_link = "${parent_link}" >
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y+(l/2)} ${z+(l/2)}" />
+    </xacro:vaccum_instance>
+    <xacro:vaccum_instance vaccum_name = "vaccum_2" parent_link = "${parent_link}" >
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y-(l/2)} ${z+(l/2)}" />
+    </xacro:vaccum_instance>
+    <xacro:vaccum_instance vaccum_name = "vaccum_3" parent_link = "${parent_link}" >
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y-(l/2)} ${z-(l/2)}" />
+    </xacro:vaccum_instance>
+    <xacro:vaccum_instance vaccum_name = "vaccum_4" parent_link = "${parent_link}" >
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y+(l/2)} ${z-(l/2)}" />
+    </xacro:vaccum_instance>
+
+    <xacro:vaccum_instance vaccum_name = "vaccum_5" parent_link = "${parent_link}" >
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y+(l/4)} ${z+(l/4)}" />
+    </xacro:vaccum_instance> -->
+    <!-- <xacro:vaccum_instance vaccum_name = "vaccum_6" parent_link = "${parent_link}" >
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y-(l/4)} ${z+(l/4)}" />
+    </xacro:vaccum_instance>
+    <xacro:vaccum_instance vaccum_name = "vaccum_7" parent_link = "${parent_link}" >
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y-(l/4)} ${z-(l/4)}" />
+    </xacro:vaccum_instance>
+    <xacro:vaccum_instance vaccum_name = "vaccum_8" parent_link = "${parent_link}" >
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y+(l/4)} ${z-(l/4)}" />
+    </xacro:vaccum_instance>
+
+    <xacro:vaccum_instance vaccum_name = "vaccum_9" parent_link = "${parent_link}" >
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y+(l/8)} ${z+(l/8)}" />
+    </xacro:vaccum_instance>
+    <xacro:vaccum_instance vaccum_name = "vaccum_10" parent_link = "${parent_link}" >
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y-(l/8)} ${z+(l/8)}" />
+    </xacro:vaccum_instance>
+    <xacro:vaccum_instance vaccum_name = "vaccum_11" parent_link = "${parent_link}" >
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y-(l/8)} ${z-(l/8)}" />
+    </xacro:vaccum_instance>
+    <xacro:vaccum_instance vaccum_name = "vaccum_12" parent_link = "${parent_link}" >
+      <origin rpy="0 ${rot} 0" xyz="${x} ${y+(l/8)} ${z-(l/8)}" />
+    </xacro:vaccum_instance> -->
+
+
+  </xacro:macro>
+
+</robot>

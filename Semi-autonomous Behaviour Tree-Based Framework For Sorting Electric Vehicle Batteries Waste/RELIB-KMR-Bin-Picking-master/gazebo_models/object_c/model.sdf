@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.5">  
+  <model name="object_c">
+    <static>false</static>
+    <link name="leaf_cell_link">
+      <collision name="collision">
+        <geometry>
+      	  <box>
+            <size> 0.08 0.11 0.0353</size>
+          </box>
+        </geometry>
+		<surface>
+			<friction>
+				<ode>
+					<mu>0.5</mu>
+					<!-- <mu2>0.98</mu2> -->
+				</ode>
+			</friction>
+			<contact>
+				<ode>
+					<min_depth>0.001</min_depth>
+				</ode>
+			</contact>
+		</surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://object_c/meshes/object_c.dae</uri>
+          </mesh>
+        </geometry>
+        <material> 
+		    <script>
+		        <uri>file://media/materials/scripts/gazebo.material</uri>
+		        <name>Gazebo/Red</name>
+		    </script>
+        </material>
+      </visual>
+	  <inertial>
+			<pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+		    <!-- <mass>0.1</mass>
+		    <inertia>
+		      <ixx>0.000077133</ixx>
+		      <iyy>0.00011</iyy>
+		      <izz>0.0001665</izz>
+		      <ixy>0.0</ixy>
+		      <ixz>0.0</ixz>
+		      <iyz>0.0</iyz>
+        </inertia> -->
+        <mass>0.1</mass>
+		    <inertia>
+		      <!-- <ixx>0.000077133</ixx>
+		      <iyy>0.00011</iyy>
+          <izz>0.0001665</izz> -->
+    		  <ixx>0.000111217</ixx>
+		      <iyy>0.000063717</iyy>
+		      <izz>0.000154167</izz>
+		      <ixy>0.0</ixy>
+		      <ixz>0.0</ixz>
+		      <iyz>0.0</iyz>
+		    </inertia>
+	  </inertial>
+	</link>
+	<!-- <plugin name ="gt_pose" filename="libgazebo_ros_p3d.so">
+        <update_rate>50.0</update_rate>
+        <bodyName>leaf_cell_link</bodyName>
+        <topicName>cell_pose_1</topicName>
+        <frameName>world</frameName>
+        <xyzOffsets>0 0 0</xyzOffsets>
+        <rpyOffsets>0 0 0</rpyOffsets>
+        <gaussianNoise>0.0</gaussianNoise>
+      </plugin> -->
+  </model>
+</sdf>

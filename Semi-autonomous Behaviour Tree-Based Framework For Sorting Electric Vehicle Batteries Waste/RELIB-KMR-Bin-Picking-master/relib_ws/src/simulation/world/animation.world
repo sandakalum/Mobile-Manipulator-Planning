@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+
+<sdf version="1.6">
+	<world name="default">
+		<!-- A ground plane -->
+		<include>
+			<uri>model://ground_plane</uri>
+		</include>
+		<!-- A global light source -->
+		<include>
+			<uri>model://sun</uri>
+		</include>
+		<!-- An actor -->
+		<actor name="animated_box_1">
+			<pose>1.05 3.47 0.11 0 0 0</pose>
+			<link name="link">
+				<collision name="collision">
+					<geometry>
+						<box>
+							<size>0.3 0.5 0.2</size>
+						</box>
+					</geometry>
+					<surface>
+						<friction>
+							<ode>
+								<mu>0.05</mu>
+								<mu2>0.05</mu2>
+							</ode>
+						</friction>
+					</surface>
+				</collision>
+				<visual name="visual">
+					<geometry>
+						<box>
+							<size>0.3 0.5 0.2</size>
+						</box>
+					</geometry>
+					<material>
+						<script>
+							<uri>file://media/materials/scripts/gazebo.material</uri>
+							<name>Gazebo/Grey</name>
+						</script>
+					</material>
+				</visual>
+			</link>
+			<script>
+				<loop>true</loop>
+				<delay_start>0.000000</delay_start>
+				<auto_start>true</auto_start>
+				<trajectory id="0" type="square">
+					<waypoint>
+						<time>0.0</time>
+						<pose>1.05 3.47 0.11 0 0 0</pose>
+					</waypoint>
+					<waypoint>
+						<time>5.0</time>
+						<pose>1.05 6.42 0.11 0 0 0</pose>
+					</waypoint>
+					<waypoint>
+						<time>10.0</time>
+						<pose>1.05 3.47 0.11 0 0 0</pose>
+					</waypoint>
+				</trajectory>
+			</script>
+		</actor>
+
+		<!-- <actor name="animated_box_2">
+			<pose>1.05 -3.47 0.15 0 0 0</pose>
+			<link name="link">
+				<collision name="collision">
+					<geometry>
+						<box>
+							<size>0.3 0.5 0.2</size>
+						</box>
+					</geometry>
+					<surface>
+						<friction>
+							<ode>
+								<mu>0.01</mu>
+								<mu2>0.01</mu2>
+							</ode>
+						</friction>
+					</surface>
+				</collision>
+				<visual name="visual">
+					<geometry>
+						<box>
+							<size>0.3 0.5 0.2</size>
+						</box>
+					</geometry>
+					<material>
+						<script>
+							<uri>file://media/materials/scripts/gazebo.material</uri>
+							<name>Gazebo/Grey</name>
+						</script>
+					</material>
+				</visual>
+			</link>
+			<script>
+				<loop>true</loop>
+				<delay_start>0.000000</delay_start>
+				<auto_start>true</auto_start>
+				<trajectory id="1" type="square">
+					<waypoint>
+						<time>0.0</time>
+						<pose>1.05 -3.47 0.15 0 0 0</pose>
+					</waypoint>
+					<waypoint>
+						<time>2.0</time>
+						<pose>1.05 -6.42 0.1.5 0 0 0</pose>
+					</waypoint>
+					<waypoint>
+						<time>4.0</time>
+						<pose>1.05 -3.47 0.15 0 0 0</pose>
+					</waypoint>
+				</trajectory>
+			</script>
+		</actor> -->
+
+	</world>
+
+</sdf>

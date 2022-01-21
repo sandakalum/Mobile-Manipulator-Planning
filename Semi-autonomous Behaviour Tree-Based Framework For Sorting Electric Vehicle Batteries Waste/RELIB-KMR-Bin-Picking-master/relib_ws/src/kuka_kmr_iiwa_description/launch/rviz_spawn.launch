@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <!-- <arg name="x" default="-6"/>
+    <arg name="y" default="6"/>
+    <arg name="z" default="0.05"/> -->
+    <arg name="x" default="0"/>
+    <arg name="y" default="0"/>
+    <arg name="z" default="0.02"/>
+
+    <arg name="navigation" default= "false"/>
+    <arg name="run_rviz" default= "true"/>
+    <arg name="urdf_path" default="$(find kuka_kmr_iiwa_description)/urdf/kuka_kmr_iiwa.urdf.xacro"/>
+
+    <!-- LBR joint names as parameters  -->
+    <rosparam file="$(find kuka_lbr_arm_description)/config/joint_names_lbr_iiwa.yaml" command="load"/>
+    <!-- Load URDF  for Rviz and Gazebo  -->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(arg urdf_path)'" />
+    <!-- Publish the joint states for control  -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+      <param name="use_gui" value="false"/>
+      <rosparam param="source_list">[/lbr_controller/joint_states]</rosparam>
+    </node>
+    <!-- Combine joint values -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+    <!-- Wether or not run RVIZ -->
+    <group if="$(arg run_rviz)">
+        <node name="rviz" pkg="rviz" type="rviz" args="-d $(find kuka_kmr_iiwa_description)/rviz/iiwa.rviz"/> 
+    </group>
+
+
+    <!-- Run ros control for the LBR arm  -->
+    <!-- <include file="$(find kuka_lbr_arm_description)/launch/arm_controllers.launch" /> -->
+          
+</launch>

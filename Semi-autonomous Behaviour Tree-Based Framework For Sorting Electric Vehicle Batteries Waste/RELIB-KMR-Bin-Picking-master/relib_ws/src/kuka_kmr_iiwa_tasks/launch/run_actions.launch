@@ -1,0 +1,29 @@
+<launch>
+    <arg name="suction_n" default="1" />
+    <arg name="visualise" default="0" />
+    <arg name="inverted"  default="0" />
+    <arg name="threshold" default="0.04" />
+    <arg name="other" default="0.006" />
+    <arg name="initial_configuration" default="eye5" />
+    <arg name="record" default="0" />
+
+
+
+    <!-- <node name ="rsd_detection" pkg ="rsd" type="rsd_detection" 
+        args="$(arg visualise) $(arg inverted) $(arg threshold) $(arg other) $(arg other)">
+    </node> -->
+
+    <rosparam command="load" file="$(find kuka_kmr_iiwa_tasks)/config/workstation_poses.yaml"/>
+    
+    <group ns="camera/color">
+        <node name="image_proc"  pkg="image_proc" type="image_proc"/>
+    </group>
+    <node name ="best_mobile_base_pose" pkg ="kuka_kmr_iiwa_tasks" type="best_mobile_base_pose" args="$(arg record)" output="screen" />
+    <node name ="vacuum_server" pkg ="kuka_kmr_iiwa_tasks" type="vacuum_server" args="$(arg suction_n)" />
+    <node name ="arm_pose_server" pkg ="kuka_kmr_iiwa_tasks" type="arm_pose_server" output="screen" args="$(arg initial_configuration)" />
+    <node name ="grasp" pkg ="kuka_kmr_iiwa_tasks" type="grasp"  output="screen"/>
+    <!-- <node name ="go_to_srv" pkg ="kuka_kmr_iiwa_tasks" type="go_to_srv" /> -->
+
+
+
+</launch>

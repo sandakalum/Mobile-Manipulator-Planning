@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.4">
+  <world name="default">
+    <scene>
+      <shadows>0</shadows>
+    </scene>
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    
+    <include>
+      <static>true</static>
+      <uri>model://tesla_battery</uri>
+      <name>tesla_battery</name>
+      <pose>1.3 0.0 0.7 0 0 0</pose>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://tesla_battery_support</uri>
+      <name>tesla_battery_support</name>
+      <pose>1.3 0.1 0.25 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://prisma_rect</uri>
+      <name>object_1</name>
+      <pose>1.3 0.4 0.75 0 0 0</pose>
+      <material> 
+        <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/GreenTransparent</name>
+        </script>
+      </material>
+    </include> 
+
+    <include>
+      <static>false</static>
+      <uri>model://leaf_cell</uri>
+      <name>leaf_cell_1</name>
+      <pose>0.94 -0.2 0.73 0 0 0</pose>
+    </include> 
+      <!-- Attach the plugin to this model -->
+      <!-- <plugin name ="gt_pose" filename="libgazebo_ros_p3d.so">
+        <update_rate>50.0</update_rate>
+        <bodyName>leaf_cell_1</bodyName>
+        <topicName>cell_pose_1</topicName>
+        <frameName>world</frameName>
+        <xyzOffsets>0 0 0</xyzOffsets>
+        <rpyOffsets>0 0 0</rpyOffsets>
+        <gaussianNoise>0.0</gaussianNoise>
+      </plugin> --> 
+    <include>
+      <static>false</static>
+      <uri>model://leaf_cell</uri>
+      <name>leaf_cell_2</name>
+      <pose>0.8 0.4 0.73 0 0 0.04</pose>
+    </include>  
+
+    <!-- <include>
+      <static>false</static>
+      <uri>model://cast_mold</uri>
+      <name>cast_mold</name>
+      <pose>1.2 0.1 0.73 0 0 0</pose>
+    </include>  -->
+  </world>
+</sdf>

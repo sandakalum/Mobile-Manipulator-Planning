@@ -1,0 +1,5 @@
+geometry_msgs/PoseStamped place_pose
+int16 bin
+
+---
+bool status

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+    <!-- <include file="$(find gazebo_ros)/launch/willowgarage_world.launch" /> -->
+    <include file="$(find simulation)/launch/my_sim.launch"/>
+    <include file="$(find kuka_kmr_description)/launch/kuka_kmr_spawn.launch" >
+        <arg name="empty_world" value="false" />
+    </include>
+    <include file="$(find kuka_kmr_description)/launch/kuka_kmr_rviz.launch" />
+</launch>

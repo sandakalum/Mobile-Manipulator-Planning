@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.4">
+  <world name="default">
+    <scene>
+      <shadows>0</shadows>
+    </scene>
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- ONE TABLE -->
+
+    <!-- <include>
+      <uri>model://table</uri>
+      <name>table _1</name>
+      <pose>0.5 -0.8 -0.4 0 0 0</pose>
+    </include>
+
+
+    <include>
+      <uri>model://prisma_rect</uri>
+      <name>object_1</name>
+      <pose>0.2 -0.8 1.2 0 0 0</pose>
+    </include> -->
+    <!-- <include>
+      <uri>model://plate_battery</uri>
+      <name>plate</name>
+      <pose>0.5 -0.8 0.7 0 -3.14156 0</pose>
+    </include> -->
+
+    <!-- TWO TABLES: -->
+    <!-- <include>
+      <uri>model://table</uri>
+      <name>table _1</name>
+      <pose>1.1 0.4 -0.315 0 0 -1.5707</pose>
+    </include> -->
+
+    <!-- <include>
+      <uri>model://table</uri>
+      <name>table_2</name>
+      <pose>-0.20 -1.0 -0.315 0 0 0</pose>
+    </include> -->
+    <include>
+      <uri>model://kuka_kr210</uri>
+      <name>kr210_1</name>
+      <pose>1 -2.1.0 0.01 0 0 1.4707</pose>
+    </include>
+
+    <include>
+      <uri>model://kuka_kr210</uri>
+      <name>kr210_2</name>
+      <pose>1 2.1 0.01 0 0 -1.5707</pose>
+    </include>
+
+
+
+    <include>
+      <static>true</static>
+      <uri>model://tesla_battery</uri>
+      <name>tesla_battery</name>
+      <pose>1.3 0.0 0.7 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://prisma_rect</uri>
+      <name>object_1</name>
+      <pose>1.3 0.4 0.75 0 0 0</pose>
+      <material> 
+        <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/GreenTransparent</name>
+        </script>
+      </material>
+    </include> 
+
+    <!-- SCANNING  -->
+    <include>
+      <static>false</static>
+      <uri>model://leaf_cell</uri>
+      <name>leaf_cell_1</name>
+      <pose>0.94 -0.2 0.73 0 0 0</pose>
+    </include> 
+    
+    <include>
+      <static>false</static>
+      <uri>model://leaf_cell</uri>
+      <name>leaf_cell_2</name>
+      <pose>0.94 0.4 0.73 0 0 0.04</pose>
+      <material> 
+        <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/GreenTransparent</name>
+        </script>
+      </material>
+    </include>  
+
+    <!-- <include>
+      <static>false</static>
+      <uri>model://cast_mold</uri>
+      <name>cast_mold</name>
+      <pose>1.2 0.1 0.73 0 0 0</pose>
+    </include>  -->
+  </world>
+</sdf>

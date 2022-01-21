@@ -1,0 +1,9 @@
+string object_name
+float32 rotationAngle
+float32 filteringThreshold
+float32 matchingThreshold
+int16 numberPoints
+bool visualise
+---
+geometry_msgs/PoseStamped poseStamped
+string   state

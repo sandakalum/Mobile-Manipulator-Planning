@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.5">  
+  <model name="fuel_tank_tap">
+    <static>false</static>
+    <link name="bowl_link">
+      <collision name="collision">
+        <geometry>
+		  <cylinder>
+			  <radius>0.05897</radius>
+			  <length>0.012</length>
+		  </cylinder>
+        </geometry>
+		<surface>
+			<friction>
+				<ode>
+					<mu>0.98</mu>
+					<mu2>0.98</mu2>
+				</ode>
+			</friction>
+		</surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://fuel_tank_tap/meshes/fuel_tank_tap.dae</uri>
+          </mesh>
+        </geometry>
+        <material> 
+		    <script>
+		        <uri>file://media/materials/scripts/gazebo.material</uri>
+		        <name>Gazebo/CoM</name>
+		    </script>
+        </material>
+      </visual>
+	  <inertial>
+		<pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+        <mass>0.2</mass>
+		<inertia>
+			<ixx>0.00017630253125</ixx>
+			<iyy>0.00017630253125</iyy>
+			<izz>0.0003478050625</izz>
+			<ixy>0.0</ixy>
+			<ixz>0.0</ixz>
+			<iyz>0.0</iyz>
+		</inertia>
+	  </inertial>
+	</link>
+	
+	<!-- <plugin name ="gt_pose" filename="libgazebo_ros_p3d.so">
+        <update_rate>50.0</update_rate>
+        <bodyName>leaf_cell_link</bodyName>
+        <topicName>cell_pose_1</topicName>
+        <frameName>world</frameName>
+        <xyzOffsets>0 0 0</xyzOffsets>
+        <rpyOffsets>0 0 0</rpyOffsets>
+        <gaussianNoise>0.0</gaussianNoise>
+      </plugin> -->
+  </model>
+</sdf>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+
+  <!-- 2.85, 0.3439 -->
+  <!-- <arg name="x" default="2.85"/>
+    <arg name="y" default="0.3439"/>
+    <arg name="z" default="0.0"/>
+    <arg name="yaw" default="3.14159"/> -->
+  <arg name="x" default="0.0 " />
+  <arg name="y" default="0.0" />
+  <arg name="z" default="0.0" />
+  <arg name="yaw" default="0.0" />
+
+  <arg name="navigation" default="true" />
+  <arg name="rviz" default="false" />
+  <arg name="robot" default="false" />
+  <arg name="solo" default="false" />
+  <arg name="amcl" default="false" />
+  <arg name="l_planner" default="eband" />
+  <arg name="scanning" default="false" />
+  <arg name="world_name" default="def10"/>
+
+
+  <arg name="urdf_path" default="$(find kuka_kmr_iiwa_description)/urdf/kuka_kmr_iiwa.urdf.xacro" />
+
+  <!-- LBR joint names as parameters  -->
+  <rosparam file="$(find kuka_lbr_arm_description)/config/joint_names_lbr_iiwa.yaml" command="load" />
+  <!-- Load URDF  for Rviz and Gazebo  -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(arg urdf_path)'" />
+  <!-- Publish the joint states for control  -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="false" />
+    <rosparam param="source_list">[/lbr_controller/joint_states]</rosparam>
+  </node>
+  <!-- Combine joint values -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <!-- Wether or not run RVIZ -->
+  <group if="$(arg rviz)">
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find kuka_kmr_iiwa_description)/rviz/iiwa.rviz" />
+  </group>
+  <!-- Wether or not run empty_world on Gazebo -->
+  <!-- Coordinates on willogarage are different so, is necessary apply offset -->
+  <group unless="$(arg solo)">
+
+    <group if="$(arg navigation)">
+      <!-- <include file="$(find gazebo_ros)/launch/willowgarage_world.launch" />     -->
+      <!-- <include file ="$(find simulation)/launch/workstation_willow.launch" /> -->
+      <group if="$(arg scanning)">
+        <include file="$(find simulation)/launch/ws_willow_bins_models.launch" />
+      </group>
+      <group unless="$(arg scanning)">
+        <include file="$(find simulation)/launch/ws_willow_bins.launch">
+          <arg name="world" value="$(arg world_name)" />
+        </include>
+      </group>
+
+      <include file="$(find kuka_kmr_nav)/launch/kuka_kmr_nav.launch">
+        <arg name="amcl" value="$(arg amcl)" />
+        <arg name="l_planner" value="$(arg l_planner)" />
+      </include>
+    </group>
+    <group unless="$(arg navigation)">
+      <group if="$(arg robot)">
+        <include file="$(find simulation)/launch/workstation_with_robots.launch" />
+      </group>
+      <group unless="$(arg robot)">
+        <include file="$(find simulation)/launch/workstation.launch" />
+      </group>
+    </group>
+
+  </group>
+
+
+  <!-- Spawn robot in gazebo -->
+  <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model kuka_kmr_iiwa -x $(arg x) -y $(arg y) -z $(arg z)" />
+  <!-- Run ros control for the LBR arm  -->
+  <include file="$(find kuka_lbr_arm_description)/launch/arm_controllers.launch" />
+
+</launch>

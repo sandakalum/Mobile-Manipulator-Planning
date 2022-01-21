@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.5">  
+  <model name="fuel can">
+    <static>false</static>
+    <link name="bowl_link">
+      <collision name="collision">
+        <geometry>
+      	  <box>
+            <size> 0.12075 0.16404 0.0577</size>
+          </box>
+        </geometry>
+		<surface>
+			<friction>
+				<ode>
+					<mu>0.98</mu>
+					<mu2>0.98</mu2>
+				</ode>
+			</friction>
+		</surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://fuel_can/meshes/fuel_can.dae</uri>
+          </mesh>
+        </geometry>
+        <material> 
+		    <script>
+		        <uri>file://media/materials/scripts/gazebo.material</uri>
+		        <name>Gazebo/SkyBlue</name>
+		    </script>
+        </material>
+      </visual>
+	  <inertial>
+		<pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+        <mass>0.1</mass>
+		<inertia>
+			<ixx>0.000251986763333</ixx>
+			<iyy>0.000149248770833</iyy>
+			<izz>0.0003457473675</izz>
+			<ixy>0.0</ixy>
+			<ixz>0.0</ixz>
+			<iyz>0.0</iyz>
+		</inertia>
+	  </inertial>
+	</link>
+	
+  </model>
+</sdf>

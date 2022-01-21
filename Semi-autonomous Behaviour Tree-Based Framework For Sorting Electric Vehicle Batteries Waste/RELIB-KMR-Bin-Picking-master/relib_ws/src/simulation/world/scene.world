@@ -1,0 +1,84 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.4">
+  <world name="default">
+  
+    <scene>
+      <shadows>0</shadows>
+    </scene>
+
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- ONE TABLE -->
+
+    <!-- <include>
+      <uri>model://table</uri>
+      <name>table _1</name>
+      <pose>0.5 -0.8 -0.4 0 0 0</pose>
+    </include>
+
+
+    <include>
+      <uri>model://prisma_rect</uri>
+      <name>object_1</name>
+      <pose>0.2 -0.8 1.2 0 0 0</pose>
+    </include> -->
+    <!-- <include>
+      <uri>model://plate_battery</uri>
+      <name>plate</name>
+      <pose>0.5 -0.8 0.7 0 -3.14156 0</pose>
+    </include> -->
+
+    <!-- TWO TABLES: -->
+    <!-- <include>
+      <uri>model://table</uri>
+      <name>table _1</name>
+      <pose>1.1 0.4 -0.33 0 0 -1.5707</pose>
+    </include>
+
+    <include>
+      <uri>model://prisma_rect</uri>
+      <name>object_1</name>
+      <pose>0.8 0.4 0.745 0 0 0</pose>
+    </include>  -->
+
+    <!-- SCANNING  -->
+    <include>
+      <uri>model://table</uri>
+      <name>table _1</name>
+      <pose>1.1 0.4 -0.33 0 0 -1.5707</pose>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://leaf_cell</uri>
+      <name>leaf_cell</name>
+      <pose>0.8 0.4 0.8 0 0 0</pose>
+    </include>  
+
+    <include>
+      <static>true</static>
+      <uri>model://cast_mold</uri>
+      <name>cast_mold</name>
+      <pose>0.8 -0.4 0.8 0 0 0</pose>
+    </include> 
+    
+    <include>
+      <static>true</static>
+      <uri>model://cast_mold2</uri>
+      <name>cast_mold2</name>
+      <pose>0.6 -0.2 0.9 0 0 0</pose>
+    </include> 
+    
+    <include>
+      <static>true</static>
+      <uri>model://mb_part</uri>
+      <name>mb_part</name>
+      <pose>0.5 -0.3 1.0 0 0 0</pose>
+    </include>  
+  </world>
+</sdf>

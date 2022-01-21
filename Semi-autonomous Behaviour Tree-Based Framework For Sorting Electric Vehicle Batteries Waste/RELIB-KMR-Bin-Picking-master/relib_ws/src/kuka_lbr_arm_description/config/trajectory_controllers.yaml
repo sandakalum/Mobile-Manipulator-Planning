@@ -1,0 +1,134 @@
+lbr_controller:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  arm_controller:
+    # type: position_controllers/JointTrajectoryController
+    type: position_controllers/JointTrajectoryController
+    joints:
+      - joint_a1
+      - joint_a2 
+      - joint_a3
+      - joint_a4
+      - joint_a5
+      - joint_a6
+      - joint_a7
+    constraints:
+      goal_time: 0.5
+      stopped_velocity_tolerance: 0.05
+      joint_a1: {trajectory: 0.1, goal: 0.1}
+      joint_a2: {trajectory: 0.1, goal: 0.1}
+      joint_a3: {trajectory: 0.1, goal: 0.1}
+      joint_a4: {trajectory: 0.1, goal: 0.1}
+      joint_a5: {trajectory: 0.1, goal: 0.1}
+      joint_a6: {trajectory: 0.1, goal: 0.1}
+      joint_a7: {trajectory: 0.1, goal: 0.1}
+    stop_trajectory_duration: 0.5
+    state_publish_rate: 25
+    action_monitor_rate: 30
+  joint_group_position_controller:
+    type: position_controllers/JointGroupPositionController
+    joints:
+      - joint_a1
+      - joint_a2 
+      - joint_a3
+      - joint_a4
+      - joint_a5
+      - joint_a6
+      - joint_a7
+    # Gains were added to match the requierements for effor_controllers/JointTrajectoryController
+    # gains:
+    #   joint_a1: {p: 1000, d: 30, i: 0,i_clamp: 1}
+    #   joint_a2: {p: 68000, d: 420, i: 0,i_clamp: 1}
+    #   joint_a3: {p: 1000, d: 30, i: 0,i_clamp: 1}
+    #   joint_a4: {p: 1000, d: 30, i: 0,i_clamp: 1}
+    #   joint_a5: {p: 1000, d: 30, i: 0,i_clamp: 1}
+    #   joint_a6: {p: 1000, d: 30, i: 0,i_clamp: 1}
+    #   joint_a7: {p: 1000, d: 30, i: 0,i_clamp: 1}
+
+
+
+
+# lbr_controller:
+#   joint_state_controller:
+#     type: joint_state_controller/JointStateController
+#     publish_rate: 50
+
+#   arm_controller:
+#     type: position_controllers/JointTrajectoryController
+#     joints:
+#         - joint_a1
+#         - joint_a2
+#         - joint_a3
+#         - joint_a4
+#         - joint_a5
+#         - joint_a6
+#         - joint_a7
+
+#     constraints:
+#         goal_time: 0.5
+#         stopped_velocity_tolerance: 0.1
+#         joint_a1: {trajectory: 0.1, goal: 0.2}
+#         joint_a2: {trajectory: 0.1, goal: 0.2}
+#         joint_a3: {trajectory: 0.1, goal: 0.2}
+#         joint_a4: {trajectory: 0.1, goal: 0.2}
+#         joint_a5: {trajectory: 0.1, goal: 0.2}
+#         joint_a6: {trajectory: 0.1, goal: 0.2}
+#         joint_a7: {trajectory: 0.1, goal: 0.2}
+
+#     stop_trajectory_duration: 0.5
+#     state_publish_rate:  25
+#     action_monitor_rate: 30
+
+
+#   gazebo_ros_control:
+#     pid_gains:
+#       joint_a1: {p: 1000, i: 0, d: 30}
+#       joint_a2: {p: 1400, i: 0, d: 40}
+#       joint_a3: {p: 1000, i: 0, d: 30}
+#       joint_a4: {p: 1000, i: 0, d: 30}
+#       joint_a5: {p: 1000, i: 0, d: 30}
+#       joint_a6: {p: 1000, i: 0, d: 30}
+#       joint_a7: {p: 1000, i: 0, d: 30}
+
+# lbr_controller:
+#   joint_state_controller:
+#     type: joint_state_controller/JointStateController
+#     publish_rate: 50
+
+#   arm_controller:
+#     # type: position_controllers/JointTrajectoryController
+#     type: effort_controllers/JointTrajectoryController
+#     joints:
+#       - joint_a1
+#       - joint_a2 
+#       - joint_a3
+#       - joint_a4
+#       - joint_a5
+#       - joint_a6
+#       - joint_a7
+#     constraints:
+#       goal_time: 0.5
+#       stopped_velocity_tolerance: 0.05
+#       joint_a1: {trajectory: 0.1, goal: 0.1}
+#       joint_a2: {trajectory: 0.1, goal: 0.1}
+#       joint_a3: {trajectory: 0.1, goal: 0.1}
+#       joint_a4: {trajectory: 0.1, goal: 0.1}
+#       joint_a5: {trajectory: 0.1, goal: 0.1}
+#       joint_a6: {trajectory: 0.1, goal: 0.1}
+#       joint_a7: {trajectory: 0.1, goal: 0.1}
+#     # Gains were added to match the requierements for effor_controllers/JointTrajectoryController
+#     gains:
+#       joint_a1: {p: 1000, d: 30, i: 0,i_clamp: 1}
+#       joint_a2: {p: 68000, d: 420, i: 0,i_clamp: 1}
+#       joint_a3: {p: 1000, d: 30, i: 0,i_clamp: 1}
+#       joint_a4: {p: 1000, d: 30, i: 0,i_clamp: 1}
+#       joint_a5: {p: 1000, d: 30, i: 0,i_clamp: 1}
+#       joint_a6: {p: 1000, d: 30, i: 0,i_clamp: 1}
+#       joint_a7: {p: 1000, d: 30, i: 0,i_clamp: 1}
+
+      
+#     stop_trajectory_duration: 0.5
+#     state_publish_rate: 25
+#     action_monitor_rate: 30 

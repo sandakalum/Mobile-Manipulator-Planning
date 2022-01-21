@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.5">  
+  <model name="cast_mold">
+    <static>false</static>
+    <link name="link0">
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://cast_mold/meshes/cast_mold.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://cast_mold/meshes/cast_mold.dae</uri>
+          </mesh>
+        </geometry>
+        <material> 
+		    <script>
+		        <uri>file://media/materials/scripts/gazebo.material</uri>
+		        <name>Gazebo/Red</name>
+		    </script>
+        </material>
+      </visual>
+	  <inertial>
+			<pose>0.0 0.0 0.016</pose>
+		    <mass>0.001</mass>
+		    <inertia>
+		      <ixx>0.00000539835</ixx>
+		      <iyy>0.0000075853</iyy>
+		      <izz>0.000012813</izz>
+		      <ixy>0.0</ixy>
+		      <ixz>0.0</ixz>
+		      <iyz>0.0</iyz>
+		    </inertia>
+	  </inertial>
+	</link>
+  </model>
+</sdf>

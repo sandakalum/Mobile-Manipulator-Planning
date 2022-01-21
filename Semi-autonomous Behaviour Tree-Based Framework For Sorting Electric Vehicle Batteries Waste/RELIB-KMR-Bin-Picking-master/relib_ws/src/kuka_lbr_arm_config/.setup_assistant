@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: kuka_lbr_arm_description
+    relative_path: urdf/lbr_iiwa_14_vg10.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/kuka_lbr_iiwa_14_r820.srdf
+  CONFIG:
+    author_name: hector_cruz
+    author_email: hlc945@student.bham.ac.uk
+    generated_timestamp: 1588713751

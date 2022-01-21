@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <arg name="object" default="leaf_cell" />
+  <arg name="solo" default="false" />
+  <!-- Launch the tracking node -->
+  <node pkg="object_tracking" type="object_tracker" name="tracker_mbt" output="screen">
+    <param name="camera_prefix" value="/camera/color" />
+    <param name="tracker_type" value="mbt" />
+    <!-- <param name="tracker_type" value="mbt+klt" /> -->
+  </node>
+
+  <!-- Launch the client (GUI).
+
+       It is mandatory to provide an initial estimation of the object
+       position in order to start the tracking. To achieve this, this
+       graphical tool can be used. It is not required to call it
+       through this launch file, you can also directly call the
+       initialization service to provide the initial estimation.
+
+       The model_path variable can either be a standard Unix path or a
+       path using the resource_retriever syntax.
+       See http://ros.org/wiki/resource_retriever
+
+    -->
+  <group unless="$(arg solo)">
+    <!-- <node pkg="visp_tracker" type="visp_tracker_client" name="tracker_mbt_client">
+      <param name="model_path" value="package://object_tracking/models" />
+      <param name="model_name" value="$(arg object)" />
+      <param name="tracker_type" value="mbt+klt" />
+      <param name="frame_size" value="0.2" />
+
+      <rosparam file="$(find object_tracking)/models/model_a/tracker.yaml" />
+    </node> -->
+    <node pkg="object_tracking" type="object_tracker_client" name="tracker_mbt_client" output="screen">
+      <param name="model_path" value="package://object_tracking/models" />
+      <!-- <param name="model_name" value="$(arg object)" /> -->
+      <param name="tracker_type" value="mbt" />
+      <param name="frame_size" value="0.2" />
+
+      <rosparam file="$(find object_tracking)/models/$(arg object)/tracker.yaml" />
+    </node>
+
+    <!-- Launch the viewer (GUI)
+
+       This is totally optional. When the tracker is running on a
+       remote computer, it is highly recommended to rely on
+       image_transport to stream compressed images. You can use the
+       ~image_transport parameter to do so, see the image_transport
+       package documentation for more information.
+  -->
+    <!-- <node pkg="visp_tracker" type="visp_tracker_viewer" name="tracker_mbt_viewer">
+      <param name="frame_size" value="0.2" />
+      <param name="tracker_name" value="tracker_mbt" />
+    </node> -->
+
+  </group>
+
+</launch>

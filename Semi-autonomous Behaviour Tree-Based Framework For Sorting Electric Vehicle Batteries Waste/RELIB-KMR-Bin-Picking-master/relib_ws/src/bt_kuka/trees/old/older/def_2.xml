@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<root main_tree_to_execute="BehaviorTree">
+    <!-- ////////// -->
+    <BehaviorTree ID="BehaviorTree">
+        <Sequence name="leaf_cell picking_tree">
+            <SetBlackboard name="Init_obj_type" output_key="object_type" value="bracket"/>
+            <SetBlackboard output_key="number_of_objects" value="7"/>
+            <SetBlackboard output_key="bin" value="80"/>
+            <Repeat num_cycles="{number_of_objects}">
+                <Sequence name="bin_picking">
+                    <Sequence>
+                        <Action ID="BestPose" home="1" selected_pose="{best_pose_idx}" service_name="best_pose" target_pose="{object_pose}"/>
+                        <Action ID="NavigateTo" base_pose="{base_pose}" server_name="move_base" ws="{best_pose_idx}"/>
+                    </Sequence>
+                    <Action ID="LookAtTable" pose="eye5" service_name="arm_pose" status="{succes}"/>
+                    <RetryUntilSuccesful num_attempts="5">
+                        <Sequence>
+                            <Action ID="DetectObj" obj_name="{object_type}" pose="{object_pose}" service_name="object_tracking"/>
+                            <Fallback>
+                                <Condition ID="ObjectReachable" pose="{object_pose}" service_name="is_reachable"/>
+                                <Sequence>
+                                    <Action ID="BestPose" home="0" selected_pose="{best_pose_idx}" service_name="best_pose" target_pose="{object_pose}"/>
+                                    <Inverter>
+                                        <Action ID="NavigateTo" base_pose="{base_pose}" server_name="move_base" ws="{best_pose_idx}"/>
+                                    </Inverter>
+                                </Sequence>
+                            </Fallback>
+                        </Sequence>
+                    </RetryUntilSuccesful>
+                    <Action ID="Grasp" object_pose="{object_pose}" service_name="grasp"/>
+                    <Action ID="NavigateTo" base_pose="{base_pose}" server_name="move_base" ws="{bin}"/>
+                    <Action ID="Place" bin_number="1" service_name="place_2"/>
+                    <Action ID="LookAtTable" pose="eye5" service_name="arm_pose" status="{succes}"/>
+                </Sequence>
+            </Repeat>
+        </Sequence>
+    </BehaviorTree>
+    <!-- ////////// -->
+    <TreeNodesModel>
+        <Action ID="BestPose">
+            <input_port default="1" name="home"/>
+            <output_port default="{best_pose_idx}" name="selected_pose"/>
+            <input_port default="best_pose" name="service_name"/>
+            <input_port default="{object_pose}" name="target_pose"/>
+        </Action>
+        <Action ID="ChangeEyePose"/>
+        <Action ID="ComputeIk">
+            <output_port default="{base_pose}" name="base_pose"/>
+            <input_port default="{object_pose}" name="pose"/>
+        </Action>
+        <Action ID="DetectObj">
+            <input_port default="{object_type}" name="obj_name"/>
+            <output_port default="{object_pose}" name="pose"/>
+            <input_port default="gazebo/get_model_state" name="service_name"/>
+        </Action>
+        <Action ID="Grasp">
+            <input_port default="{object_pose}" name="object_pose"/>
+            <input_port default="grasp" name="service_name"/>
+        </Action>
+        <Action ID="LookAtTable">
+            <input_port default="eye" name="pose"/>
+            <input_port default="arm_pose" name="service_name"/>
+            <input_port default="{succes}" name="status"/>
+        </Action>
+        <Action ID="NavigateTo">
+            <input_port default="{base_pose}" name="base_pose"/>
+            <input_port default="move_base" name="server_name"/>
+            <input_port default="{workstation_n}" name="ws"/>
+        </Action>
+        <Condition ID="ObjectDetected">
+            <input_port name="object"/>
+        </Condition>
+        <Condition ID="ObjectInBin">
+            <input_port default="{object_type}" name="object"/>
+            <input_port default="{object_status}" name="status"/>
+        </Condition>
+        <Condition ID="ObjectInHand">
+            <input_port default="dummy" name="msg"/>
+        </Condition>
+        <Condition ID="ObjectReachable">
+            <input_port default="{object_pose}" name="pose"/>
+            <input_port default="is_reachable" name="service_name"/>
+        </Condition>
+        <Action ID="Place">
+            <input_port default="{bin}" name="bin_number"/>
+            <input_port default="place" name="service_name"/>
+        </Action>
+        <Condition ID="RobotInWs">
+            <input_port default="{workstation_n}" name="ws"/>
+        </Condition>
+        <Action ID="make_it_reachable"/>
+    </TreeNodesModel>
+    <!-- ////////// -->
+</root>
+

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<sdf version="1.5">
+	<model name="plate_a">
+
+		<static>false</static>
+
+		<link name="link0">
+			<collision name="collision">
+				<pose> 0.0 0.0 0.0 0.0 0.0 0.0</pose>
+				<geometry>
+					<!-- <box>
+						<size> 0.2228 0.3149 0.01</size>
+					</box> -->
+					<!-- OR -->
+					<mesh>
+						<uri>model://plate_a/meshes/plate_a_centroid.stl</uri>
+					</mesh>
+				</geometry>
+				<surface>
+					<friction>
+						<ode>
+							<mu>0.99</mu>
+							<mu2>0.99</mu2>
+						</ode>
+					</friction>
+				</surface>
+			</collision>
+
+			<visual name="visual">
+				<geometry>
+					<!-- <box>
+            <size> 0.1 0.1 0.1</size>
+          </box> -->
+					<!-- OR -->
+					<mesh>
+						<uri>model://plate_a/meshes/plate_a_centroid.dae</uri>
+					</mesh>
+				</geometry>
+				<!-- OPTIONAL -->
+				<material>
+					<script>
+						<uri>file://media/materials/scripts/gazebo.material</uri>
+						<name>PR2/Grey1</name>
+					</script>
+				</material>
+			</visual>
+
+			<inertial>
+				<!-- <pose>-0.022 0.0203 0.02917 0 0 0</pose> -->
+				<mass>0.1</mass>
+				<inertia>
+					<ixx>0.00082718</ixx>
+					<ixy>0.0</ixy>
+					<ixz>0.0</ixz>
+					<iyy>0.00043403</iyy>
+					<iyz>0.0</iyz>
+					<izz>0.00125955</izz>
+				</inertia>
+			</inertial>
+
+		</link>
+
+	</model>
+</sdf>

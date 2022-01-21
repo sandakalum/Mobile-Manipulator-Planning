@@ -1,0 +1,68 @@
+kr20_right_controller:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+    # Position Controllers ---------------------------------------
+  joint1_position_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_a1
+    pid: {p: 100.0, i: 0.0, d: 0.0}
+    # Position Controllers ---------------------------------------
+  joint2_position_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_a2
+    pid: {p: 100.0, i: 0.0, d: 0.0}
+      # Position Controllers ---------------------------------------
+  joint3_position_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_a3
+    pid: {p: 100.0, i: 0.0, d: 0.0}
+      # Position Controllers ---------------------------------------
+  joint4_position_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_a4
+    pid: {p: 100.0, i: 0.0, d: 0.0}
+      # Position Controllers ---------------------------------------
+  joint5_position_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_a5
+    pid: {p: 100.0, i: 0.0, d: 0.0}
+  
+  # joint6_position_controller:
+  #   type: position_controllers/JointPositionController
+  #   joint: joint_a6
+  #   pid: {p: 100.0, i: 0.0, d: 0.0}
+
+  # arm_controller:
+  #   # type: position_controllers/JointTrajectoryController
+  #   type: position_controllers/JointPositionController
+  #   joints:
+  #     - joint_a1
+  #     - joint_a2 
+  #     - joint_a3
+  #     - joint_a4
+  #     - joint_a5
+  #     - joint_a6
+  #   constraints:
+  #     goal_time: 0.5
+  #     stopped_velocity_tolerance: 0.05
+  #     joint_a1: {trajectory: 0.1, goal: 0.1}
+  #     joint_a2: {trajectory: 0.1, goal: 0.1}
+  #     joint_a3: {trajectory: 0.1, goal: 0.1}
+  #     joint_a4: {trajectory: 0.1, goal: 0.1}
+  #     joint_a5: {trajectory: 0.1, goal: 0.1}
+  #     joint_a6: {trajectory: 0.1, goal: 0.1}
+  #     joint_a7: {trajectory: 0.1, goal: 0.1}
+  #   stop_trajectory_duration: 0.5
+  #   state_publish_rate: 25
+  #   action_monitor_rate: 30
+  # joint_group_position_controller:
+  #   type: position_controllers/JointGroupPositionController
+  #   joints:
+  #     - joint_a1
+  #     - joint_a2 
+  #     - joint_a3
+  #     - joint_a4
+  #     - joint_a5
+  #     - joint_a6

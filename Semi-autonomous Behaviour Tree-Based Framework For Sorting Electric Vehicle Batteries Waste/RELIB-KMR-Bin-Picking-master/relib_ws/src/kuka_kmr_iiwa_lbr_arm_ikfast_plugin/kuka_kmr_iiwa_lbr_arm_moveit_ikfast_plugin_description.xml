@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<library path="lib/libkuka_kmr_iiwa_lbr_arm_moveit_ikfast_plugin">
+  <class base_class_type="kinematics::KinematicsBase" name="kuka_kmr_iiwa_lbr_arm/IKFastKinematicsPlugin" type="kuka_kmr_iiwa_lbr_arm::IKFastKinematicsPlugin">
+    <description>IKFast61 plugin for closed-form kinematics of kuka_kmr_iiwa lbr_arm</description>
+  </class>
+</library>

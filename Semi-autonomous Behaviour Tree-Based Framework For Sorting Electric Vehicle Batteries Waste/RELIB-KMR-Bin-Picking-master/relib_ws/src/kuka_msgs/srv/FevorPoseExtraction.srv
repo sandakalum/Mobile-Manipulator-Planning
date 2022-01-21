@@ -1,0 +1,15 @@
+string object_name
+string scene_name
+float32 rotationAngle
+float32 filteringThreshold
+float32 matchingThreshold
+float32 falseRemovalThreshold
+int16 numberPoints
+int16 minClusterPoints
+int16 maxClusterPoints
+float32 clusterAngle
+float32 normalRadius
+bool visualise
+---
+geometry_msgs/PoseStamped poseStamped
+string   state

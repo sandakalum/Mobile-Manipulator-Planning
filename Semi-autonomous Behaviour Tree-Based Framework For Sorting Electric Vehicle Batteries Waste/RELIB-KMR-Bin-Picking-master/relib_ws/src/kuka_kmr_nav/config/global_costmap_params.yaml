@@ -1,0 +1,10 @@
+global_costmap:
+  global_frame: map
+  robot_base_frame: base_footprint
+  transform_tolerance: 2
+  update_frequency: 5.0
+  static_map: true
+
+  inflation_layer:
+    cost_scaling_factor: 5.0
+    inflation_radius: 0.6

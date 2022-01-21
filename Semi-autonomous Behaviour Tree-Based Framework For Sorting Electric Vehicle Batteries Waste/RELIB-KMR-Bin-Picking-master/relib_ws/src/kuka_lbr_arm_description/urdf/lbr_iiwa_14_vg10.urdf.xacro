@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<robot name="kuka_lbr_iiwa_14_r820" xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:include filename="$(find kuka_lbr_arm_description)/urdf/macros/lbr_iiwa_14_r820_macro.urdf.xacro"/>
+  <xacro:include filename="$(find kuka_lbr_arm_description)/urdf/macros/vg10_gripper_macro.urdf.xacro"/>
+  <xacro:include filename="$(find kuka_lbr_arm_description)/urdf/macros/kinect_gazebo_macro.xacro"/>
+
+  <!-- TODO: Add camera link and Gazebo plug in  -->
+  <!-- Sometimes when the robot is planning to move small delta, it makes and agreessive execute -->
+  <link name="world"/>
+  <joint name="world-lbr_base" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0" />
+    <parent link="world" />
+    <child link="lbr_base" />
+  </joint>
+  <xacro:kuka_lbr_iiwa_14_r820  effort="80"/>
+  <xacro:vg10_gripper  tool_link="vg10" parent_link ="link_7"/> 
+  <xacro:kinect_macro  link_name="kinect" parent_link="vg10" />
+  
+  
+</robot>

@@ -1,0 +1,340 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="kuka_lbr_iiwa_14_r820" params="effort mass">
+
+    <xacro:property name="inertia" value="0.03" />
+    <xacro:property name="inertia_base" value="0.3" />
+    <!-- <link name="world"/> -->
+    <link name="lbr_base">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_lbr_arm_description/meshes/lbr_iiwa_14_r820/visual/base_link.dae" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_lbr_arm_description/meshes/lbr_iiwa_14_r820/collision/base_link.stl" />
+            </geometry>
+        </collision>
+        
+        <inertial>
+            <mass value="5" />
+            <inertia ixx="${inertia_base}" iyy="${inertia_base}" izz="${inertia_base}" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <link name="link_1">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_lbr_arm_description/meshes/lbr_iiwa_14_r820/visual/link_1.dae" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_lbr_arm_description/meshes/lbr_iiwa_14_r820/collision/link_1.stl" />
+            </geometry>
+        </collision>
+        
+        <inertial>
+            <mass value="${mass}" />
+            <inertia ixx="${inertia}" iyy="${inertia}" izz="${inertia}" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <link name="link_2">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_lbr_arm_description/meshes/lbr_iiwa_14_r820/visual/link_2.dae" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_lbr_arm_description/meshes/lbr_iiwa_14_r820/collision/link_2.stl" />
+            </geometry>
+        </collision>
+        
+        <inertial>
+            <mass value="${mass}" />
+            <inertia ixx="${inertia}" iyy="${inertia}" izz="${inertia}" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <link name="link_3">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_lbr_arm_description/meshes/lbr_iiwa_14_r820/visual/link_3.dae" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_lbr_arm_description/meshes/lbr_iiwa_14_r820/collision/link_3.stl" />
+            </geometry>
+        </collision>
+        
+        <inertial>
+            <mass value="${mass}" />
+            <inertia ixx="${inertia}" iyy="${inertia}" izz="${inertia}" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <link name="link_4">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_lbr_arm_description/meshes/lbr_iiwa_14_r820/visual/link_4.dae" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_lbr_arm_description/meshes/lbr_iiwa_14_r820/collision/link_4.stl" />
+            </geometry>
+        </collision>
+        
+        <inertial>
+            <mass value="${mass}" />
+            <inertia ixx="${inertia}" iyy="${inertia}" izz="${inertia}" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <link name="link_5">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_lbr_arm_description/meshes/lbr_iiwa_14_r820/visual/link_5.dae" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_lbr_arm_description/meshes/lbr_iiwa_14_r820/collision/link_5.stl" />
+            </geometry>
+        </collision>
+        
+        <inertial>
+            <mass value="${mass}" />
+
+            <inertia ixx="${inertia}" iyy="${inertia}" izz="${inertia}" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <link name="link_6">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_lbr_arm_description/meshes/lbr_iiwa_14_r820/visual/link_6.dae" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_lbr_arm_description/meshes/lbr_iiwa_14_r820/collision/link_6.stl" />
+            </geometry>
+        </collision>
+        
+        <inertial>
+            <mass value="${mass}" />
+            <inertia ixx="${inertia}" iyy="${inertia}" izz="${inertia}" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <link name="link_7">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_lbr_arm_description/meshes/lbr_iiwa_14_r820/visual/link_7.dae" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_lbr_arm_description/meshes/lbr_iiwa_14_r820/collision/link_7.stl" />
+            </geometry>
+        </collision>
+        
+        <inertial>
+            <mass value="${mass}" />
+            <inertia ixx="${inertia}" iyy="${inertia}" izz="${inertia}" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <!-- END OF LINK LIST -->
+
+    <gazebo reference="lbr_base">
+        <!-- <material>Gazebo/Orange</material> -->
+        <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+    <gazebo reference="link_1">
+      <!-- <material>Gazebo/Orange</material> -->
+      <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+    <gazebo reference="link_2">
+      <!-- <material>Gazebo/Orange</material> -->
+      <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+    <gazebo reference="link_3">
+      <!-- <material>Gazebo/Orange</material> -->
+      <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+    <gazebo reference="link_4">
+      <!-- <material>Gazebo/Orange</material> -->
+      <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+    <gazebo reference="link_5">
+      <!-- <material>Gazebo/Orange</material> -->
+      <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+    <gazebo reference="link_6">
+      <!-- <material>Gazebo/Black</material> -->
+      <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+    <gazebo reference="link_7">
+      <!-- <material>Gazebo/Black</material> -->
+      <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+
+    <!-- JOINT LIST -->
+    <joint name="joint_a1" type="revolute">
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="lbr_base" />
+        <child link="link_1" />
+        <axis xyz="0 0 1" />
+        <limit effort="${effort}" lower="-2.9668" upper="2.9668" velocity="1.4834" />
+    </joint>
+    <joint name="joint_a2" type="revolute">
+        <origin rpy="0 0 0" xyz="-0.00043624 0 0.36" />
+        <parent link="link_1" />
+        <child link="link_2" />
+        <axis xyz="0 1 0" />
+        <limit effort="${effort*2}" lower="-2.0942" upper="2.0942" velocity="1.4834" />
+        <dynamics damping="0.0" friction="0.0"/>
+    </joint>
+    <joint name="joint_a3" type="revolute">
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="link_2" />
+        <child link="link_3" />
+        <axis xyz="0 0 1" />
+        <limit effort="${effort}" lower="-2.9668" upper="2.9668" velocity="1.7452" />
+    </joint>
+    <joint name="joint_a4" type="revolute">
+        <origin rpy="0 0 0" xyz="0.00043624 0 0.42" />
+        <parent link="link_3" />
+        <child link="link_4" />
+        <axis xyz="0 -1 0" />
+        <limit effort="${effort}" lower="-2.0942" upper="2.0942" velocity="1.3089" />
+    </joint>
+    <joint name="joint_a5" type="revolute">
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="link_4" />
+        <child link="link_5" />
+        <axis xyz="0 0 1" />
+        <limit effort="${effort}" lower="-2.9668" upper="2.9668" velocity="2.2688" />
+    </joint>
+    <joint name="joint_a6" type="revolute">
+        <origin rpy="0 0 0" xyz="0 0 0.4" />
+        <parent link="link_5" />
+        <child link="link_6" />
+        <axis xyz="0 1 0" />
+        <limit effort="${effort}" lower="-2.0942" upper="2.0942" velocity="2.356" />
+    </joint>
+    <joint name="joint_a7" type="revolute">
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="link_6" />
+        <child link="link_7" />
+        <axis xyz="0 0 1" />
+        <limit effort="${effort}" lower="-3.0541" upper="3.0541" velocity="2.356" />
+    </joint>
+    <!-- END JOINT LIST -->
+
+    <!-- TRANSMISSION LIST  -->
+    <transmission name="trans_joint_a1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_a1">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_a1_motor">
+          <!--  <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface> -->
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_a2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_a2">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_a2_motor">
+          <!--  <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface> -->
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_a3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_a3">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_a3_motor">
+          <!--  <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface> -->
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_a4">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_a4">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_a4_motor">
+          <!--  <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface> -->
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_a5">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_a5">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_a5_motor">
+          <!--  <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface> -->
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_a6">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_a6">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_a6_motor">
+          <!--  <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface> -->
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_a7">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_a7">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_a7_motor">
+          <!--  <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface> -->
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <!-- END TRANSMISSION LIST -->
+
+    <!-- GAZEBO ROS_CONTROL PLUGIN-->
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/lbr_controller</robotNamespace>
+        </plugin>
+    </gazebo>
+
+  </xacro:macro>
+
+</robot>

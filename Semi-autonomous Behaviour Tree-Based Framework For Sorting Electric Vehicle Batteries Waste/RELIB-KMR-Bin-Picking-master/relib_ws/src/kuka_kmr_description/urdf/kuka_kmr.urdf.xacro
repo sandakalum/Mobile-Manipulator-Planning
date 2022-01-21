@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<robot name="kuka_kmr" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find kuka_kmr_description)/urdf/wheels/omni_wheel.urdf.xacro" />
+	<xacro:include filename="$(find kuka_kmr_description)/urdf/base/kmr_base.urdf.xacro" />
+	
+	<xacro:macro name="kuka_kmr" params="front_laser:=true rear_laser:=true">
+
+		<xacro:kmr_base/>
+		<xacro:omni_steering/>
+		<xacro:laser_scans laser_front_on="${front_laser}" laser_rear_on="${rear_laser}"/>
+
+   </xacro:macro>
+
+   <xacro:kuka_kmr/>
+
+</robot>

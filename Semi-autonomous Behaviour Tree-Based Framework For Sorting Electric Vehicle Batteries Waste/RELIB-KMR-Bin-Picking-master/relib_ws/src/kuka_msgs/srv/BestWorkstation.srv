@@ -1,0 +1,8 @@
+geometry_msgs/PoseStamped target_pose
+bool view_point
+
+---
+
+int32 workstation_id
+string workstation_name
+bool status

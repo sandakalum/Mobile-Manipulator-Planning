@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="vg10_gripper" params="tool_link parent_link">
+
+    <xacro:property name="inertia_base" value="1e-5" />
+    <xacro:property name="PI" value="3.14159" />
+    <xacro:property name="w" value="0.1455" />
+    <xacro:property name="h" value="0.11788" />
+    <xacro:property name="l" value="0.1455" />
+
+    <link name="${tool_link}">
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <geometry>
+            <mesh filename="package://kuka_lbr_arm_description/meshes/vg10_gripper/visual/vg10_gripper.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0 ${-PI/2} 0" xyz="${h/2} 0 0" />
+        <geometry>
+            <!-- <mesh filename="package://kuka_lbr_arm_description/meshes/vg10_gripper/collision/vg10_gripper.stl" /> -->
+            <box size="${w} ${l} ${h}" />
+        </geometry>
+      </collision>
+      
+      <inertial>
+          <mass value="1e-5" />
+          <inertia ixx="${inertia_base}" iyy="${inertia_base}" izz="${inertia_base}" ixy="0.0" ixz="0.0" iyz="0.0" />
+      </inertial>
+    </link>
+    <joint name="${parent_link}_${tool_link}" type="fixed">
+      <origin rpy="0 ${-PI/2} 0" xyz="0 0 0.126" />
+      <parent link="${parent_link}" />
+      <child link="${tool_link}" />
+      <axis xyz="0 0 0" />
+    </joint>
+    <gazebo reference="${tool_link}">
+      <mu1>0.99</mu1>
+      <mu2>0.99</mu2>
+    </gazebo>
+    
+  </xacro:macro>
+
+</robot>

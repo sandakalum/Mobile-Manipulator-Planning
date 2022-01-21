@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.5">  
+  <model name="prisma_rect">
+    <static>false</static>
+    <link name="link0">
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size> 0.12 0.15 0.09</size>
+          </box>
+        </geometry>
+        <surface>
+            <friction>
+                <ode>
+                    <mu>0.99</mu>
+                    <mu2>0.99</mu2>
+                </ode>
+            </friction>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size> 0.12 0.15 0.09</size>
+          </box>
+        </geometry>
+        <material> 
+            <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+            </script>
+        </material>
+      </visual>
+	  <inertial>
+		<!-- <pose>-0.022 0.0203 0.02917 0 0 0</pose> -->
+		<mass>0.05</mass>
+		<inertia>
+		  <ixx>0.0001275</ixx>
+		  <ixy>0.0</ixy>
+		  <ixz>0.0</ixz>
+		  <iyy>0.00009375</iyy>
+		  <iyz>0.0</iyz>
+		  <izz>0.00015375</izz>
+		</inertia>
+  	</inertial>
+    </link>
+  </model>
+</sdf>

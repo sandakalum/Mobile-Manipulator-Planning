@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find kuka_kmr_description)/urdf/kuka_kmr.urdf.xacro'" />
+    
+    <arg name="x" default="0.0"/>
+    <arg name="y" default="0.0"/>
+    <arg name="z" default="0.02"/>
+    <arg name="empty_world" default= "true"/>
+    <!-- Run gazebo and world -->
+    <group if="$(arg empty_world)">
+        <!-- stuff that will only be evaluated if foo is true -->
+        <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+    </group>
+    
+
+    <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+          args="-urdf -param robot_description -model kuka_kmr -x $(arg x) -y $(arg y) -z $(arg z)" />
+          
+</launch>

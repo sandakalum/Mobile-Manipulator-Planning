@@ -1,0 +1,370 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+  <model name='kuka_kr120'>
+    <static>false</static>
+    <joint name="toGround" type="revolute">
+      <parent>world</parent>
+      <child>base_link</child>
+      <axis>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+        </limit>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <link name='base_link'>
+      <gravity>0</gravity>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.027804 0.000391 0.14035 0 -0 0</pose>
+        <mass>1572.9</mass>
+        <inertia>
+          <ixx>89.282</ixx>
+          <ixy>-0.47721</ixy>
+          <ixz>0.85562</ixz>
+          <iyy>107.51</iyy>
+          <iyz>0.0067576</iyz>
+          <izz>172.02</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose frame=''>0 0 0 -1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kuka_kr210/meshes/kr210l150/collision/base_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose frame=''>0 0 0 -1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kuka_kr210/meshes/kr210l150/visual/base_link.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name='link_1'>
+      <gravity>0</gravity>
+      <pose frame=''>-0.00262 0.000976 0.33099 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.036811 -0.024697 0.56577 0 -0 0</pose>
+        <mass>1385.5</mass>
+        <inertia>
+          <ixx>90.873</ixx>
+          <ixy>33.809</ixy>
+          <ixz>17.159</ixz>
+          <iyy>147.03</iyy>
+          <iyz>0.063634</iyz>
+          <izz>168.19</izz>
+        </inertia>
+      </inertial>
+      <!-- <collision name='link_1_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kuka_kr210/meshes/kr210l150/collision/link_1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision> -->
+      <visual name='link_1_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kuka_kr210/meshes/kr210l150/visual/link_1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint_a1' type='revolute'>
+      <child>link_1</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <initial_position>1.0</initial_position>
+
+        <limit>
+          <lower>-3.22886</lower>
+          <upper>3.22886</upper>
+          <effort>0</effort>
+          <velocity>2.14676</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link_2'>
+      <gravity>0</gravity>
+      <pose frame=''>0.35015 -0.0365 0.75019 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0.016923 -0.19196 0.44751 0 -0 0</pose>
+        <mass>958.62</mass>
+        <inertia>
+          <ixx>180.42</ixx>
+          <ixy>-0.83462</ixy>
+          <ixz>0.32549</ixz>
+          <iyy>177.68</iyy>
+          <iyz>-20.82</iyz>
+          <izz>20.495</izz>
+        </inertia>
+      </inertial>
+      <!-- <collision name='link_2_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kuka_kr210/meshes/kr210l150/collision/link_2.stl</uri>
+          </mesh>
+        </geometry>
+      </collision> -->
+      <visual name='link_2_visual'>
+        <pose frame=''>0 0 0 -1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kuka_kr210/meshes/kr210l150/visual/link_2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint_a2' type='revolute'>
+      <child>link_2</child>
+      <parent>link_1</parent>
+      <axis>
+        <initial_position>-0.3</initial_position>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.785398</lower>
+          <upper>1.48353</upper>
+          <effort>0</effort>
+          <velocity>2.00713</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link_3'>
+      <gravity>0</gravity>
+      <pose frame=''>0.350052 -0.184 2.00009 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0.18842 0.18344 -0.042799 0 -0 0</pose>
+        <mass>710.03</mass>
+        <inertia>
+          <ixx>11.887</ixx>
+          <ixy>-0.12154</ixy>
+          <ixz>-1.3604</ixz>
+          <iyy>98.805</iyy>
+          <iyz>-0.056505</iyz>
+          <izz>96.251</izz>
+        </inertia>
+      </inertial>
+      <!-- <collision name='link_3_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kuka_kr210/meshes/kr210l150/collision/link_3.stl</uri>
+          </mesh>
+        </geometry>
+      </collision> -->
+      <visual name='link_3_visual'>
+        <pose frame=''>0 0 0 -1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kuka_kr210/meshes/kr210l150/visual/link_3.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint_a3' type='revolute'>
+      <child>link_3</child>
+      <parent>link_2</parent>
+      <axis>
+        <initial_position>2.0</initial_position>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3.66519</lower>
+          <upper>1.13446</upper>
+          <effort>0</effort>
+          <velocity>1.95477</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link_4'>
+      <gravity>0</gravity>
+
+      <pose frame=''>1.308 -0 1.94503 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0.27146 -0.007326 5.3e-05 0 -0 0</pose>
+        <mass>173.73</mass>
+        <inertia>
+          <ixx>1.8001</ixx>
+          <ixy>-0.18515</ixy>
+          <ixz>0.00051232</ixz>
+          <iyy>5.514</iyy>
+          <iyz>0.00070469</iyz>
+          <izz>6.3498</izz>
+        </inertia>
+      </inertial>
+      <!-- <collision name='link_4_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kuka_kr210/meshes/kr210l150/collision/link_4.stl</uri>
+          </mesh>
+        </geometry>
+      </collision> -->
+      <visual name='link_4_visual'>
+        <pose frame=''>0 0 0 -1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kuka_kr210/meshes/kr210l150/visual/link_4.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint_a4' type='revolute'>
+      <child>link_4</child>
+      <parent>link_3</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-6.10865</lower>
+          <upper>6.10865</upper>
+          <effort>0</effort>
+          <velocity>3.12414</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link_5'>
+      <gravity>0</gravity>
+      <pose frame=''>1.85 -0 1.94503 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0.04379 0.025984 0 0 -0 0</pose>
+        <mass>72.17</mass>
+        <inertia>
+          <ixx>0.3938</ixx>
+          <ixy>-0.085332</ixy>
+          <ixz>1.7223e-06</ixz>
+          <iyy>0.68945</iyy>
+          <iyz>-7.0292e-06</iyz>
+          <izz>0.67292</izz>
+        </inertia>
+      </inertial>
+      <!-- <collision name='link_5_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kuka_kr210/meshes/kr210l150/collision/link_5.stl</uri>
+          </mesh>
+        </geometry>
+      </collision> -->
+      <visual name='link_5_visual'>
+        <pose frame=''>0 0 0 -1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kuka_kr210/meshes/kr210l150/visual/link_5.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint_a5' type='revolute'>
+      <child>link_5</child>
+      <parent>link_4</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-2.18166</lower>
+          <upper>2.18166</upper>
+          <effort>0</effort>
+          <velocity>3.00197</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link_6'>
+      <gravity>0</gravity>
+      <pose frame=''>2.0425 -0 1.94503 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.017956 -1.5e-05 0.000155 0 -0 0</pose>
+        <mass>6.3154</mass>
+        <inertia>
+          <ixx>0.031746</ixx>
+          <ixy>1.7673e-07</ixy>
+          <ixz>-6.6558e-06</ixz>
+          <iyy>0.016686</iyy>
+          <iyz>1.4304e-07</iyz>
+          <izz>0.016723</izz>
+        </inertia>
+      </inertial>
+      <!-- <collision name='link_6_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kuka_kr210/meshes/kr210l150/collision/link_6.stl</uri>
+          </mesh>
+        </geometry>
+      </collision> -->
+      <visual name='link_6_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kuka_kr210/meshes/kr210l150/visual/link_6.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint_a6' type='revolute'>
+      <child>link_6</child>
+      <parent>link_5</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-6.10865</lower>
+          <upper>6.10865</upper>
+          <effort>0</effort>
+          <velocity>3.82227</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <plugin name="gravity_compensation" filename="libGravityCompensationPlugin.so"/>
+  </model>
+</sdf>

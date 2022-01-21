@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+
+  <model name="table_bin">
+    <static>true</static>
+
+    <link name="column_link">
+      <collision name="column">
+        <pose>0 0 0.3 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.4 0.5 .6 </size>
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.6</mu>
+              <mu2>0.6</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="column">
+        <pose>0 0 0.3 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.1</radius>
+            <length>0.6</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>PR2/Grey4</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="column2table" type="revolute">
+      <parent>column_link</parent>
+      <child>table_link</child>
+      <pose>0 0 0.3 0 0 0</pose>
+      <!-- <axis>
+        <xyz>0 0 1</xyz>
+      </axis> -->
+    </joint>
+
+    <link name="table_link">
+
+      <collision name="surface">
+        <pose>0 0 0.6 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.4 0.03</size>
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.6</mu>
+              <mu2>0.6</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="surface">
+        <pose>0 0 0.6 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.4 0.03</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Turquoise </name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="table2bin" type="prismatic">
+      <parent>table_link</parent>
+      <child>bin_link</child>
+      <pose>0 0 1 0 0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+    <link name="bin_link">
+
+      <collision name="bin">
+        <pose>0 0 0.68 0 0 0</pose>
+
+        <geometry>
+          <mesh>
+            <uri>model://table_bin/meshes/big_bin.stl</uri>
+          </mesh>
+          <!-- <box>
+            <size>0.4 0.5 .15 </size>
+          </box> -->
+        </geometry>
+      </collision>
+
+      <visual name="bin">
+        <pose>0 0 0.68 0 0 0</pose>
+
+        <geometry>
+          <mesh>
+            <uri>model://table_bin/meshes/big_bin.dae</uri>
+          </mesh>
+          <!-- <box>
+            <size>0.4 0.5 .15 </size>
+          </box> -->
+        </geometry>
+
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/DarkGrey </name>
+          </script>
+        </material>
+
+      </visual>
+    </link>
+
+
+  </model>
+
+
+</sdf>

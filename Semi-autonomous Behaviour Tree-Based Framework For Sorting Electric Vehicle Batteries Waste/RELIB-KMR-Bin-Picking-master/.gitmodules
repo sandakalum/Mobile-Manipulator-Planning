@@ -1,0 +1,19 @@
+[submodule "relib_ws/src/realsense_gazebo_plugin"]
+	path = relib_ws/src/realsense_gazebo_plugin
+	url = https://github.com/pal-robotics/realsense_gazebo_plugin.git
+[submodule "relib_ws/src/ros_controllers"]
+	path = relib_ws/src/ros_controllers
+	url = https://github.com/ros-controls/ros_controllers.git
+[submodule "relib_ws/src/moveit_grasps"]
+	path = relib_ws/src/moveit_grasps
+	url = https://github.com/ros-planning/moveit_grasps.git
+[submodule "relib_ws/src/BehaviorTree.ROS"]
+	path = relib_ws/src/BehaviorTree.ROS
+	url = https://github.com/BehaviorTree/BehaviorTree.ROS.git
+[submodule "relib_ws/src/eband_local_planner"]
+	path = relib_ws/src/eband_local_planner
+	url = https://github.com/utexas-bwi/eband_local_planner.git
+[submodule "relib_ws/src/teb_local_planner"]
+	path = relib_ws/src/teb_local_planner
+	url = https://github.com/rst-tu-dortmund/teb_local_planner.git
+	branch = melodic-devel

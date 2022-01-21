@@ -1,0 +1,11 @@
+string sceneName
+string objectName
+float32 sceneFilter
+float32 objectFilter
+float32 groupingThreshold
+float32 falseRemovalThreshold
+float32 vibrationConstraint
+bool visualise
+---
+geometry_msgs/PoseStamped poseStamped
+string   state

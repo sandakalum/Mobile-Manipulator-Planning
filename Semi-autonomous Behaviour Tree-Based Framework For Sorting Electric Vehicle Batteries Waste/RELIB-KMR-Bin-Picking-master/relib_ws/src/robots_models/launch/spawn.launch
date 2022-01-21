@@ -1,0 +1,37 @@
+<launch>
+
+    <!-- <group ns=""> -->
+    <param name="robot_description" textfile="$(find robots_models)/urdf/kr210l150.urdf" />
+    <rosparam file="$(find robots_models)/config/controllers.yaml" command="load" />
+
+    <node name="first_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model kr210_right -param robot_description -x 1.0 -y 2.1 -Y -1.5707" />
+
+    <!-- load the controllers -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/kr20_right_controller" args="joint_state_controller joint1_position_controller joint2_position_controller joint3_position_controller joint4_position_controller joint5_position_controller" />
+
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="use_gui" value="false" />
+        <rosparam param="source_list">[/kr20_right_controller/joint_states]</rosparam>
+    </node>
+    <!-- <node name="controller_spawner" pkg ="controller_manager" type="spawner" ns="/kr20_right_controller" args="base_to_second_joint_position_controller joint_state_controller - -shutdown-timeout 3"/> -->
+
+    <!-- converts joint states to TF transforms -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+        <remap from="joint_state" to="/kr20_right_controller/joint_states" />
+    </node>
+    <!-- </group> -->
+
+</launch><!-- <group ns="antenna_robot">
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" output="screen" args="-file $(find 
+     antenna_sim_description)/com_base_station/model.urdf -urdf -x 6.5 -y -6.5 -z 0 -model antenna" />
+
+    <arg name="model" default="$(find antenna_sim_description)/com_base_station/model.urdf" />
+    <param name="robot_description" command="$(find xacro)/xacro - -inorder $(arg model)" />
+
+    <rosparam command="load" file="$(find antenna_sim_description)/com_base_station/config/joints.yaml" ns="antenna_sim_joint_state_controller" />
+
+    <rosparam command="load" file="$(find antenna_sim_description)/com_base_station/config/antenna.yaml" ns="antenna_sim_antenna_controller" />
+
+    <node name="antenna_sim_controller_spawner" pkg="controller_manager" type="spawner" args="antenna_sim_joint_state_controller
+      antenna_sim_antenna_controller" />
+</group> -->

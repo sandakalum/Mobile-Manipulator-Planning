@@ -1,0 +1,64 @@
+base_local_planner: "dwa_local_planner/DWAPlannerROS"
+
+controller_frequency: 20.0      # 20.0
+controller_patience:  15.0      # 15.0
+
+DWAPlannerROS:
+
+  holonomic_robot: true
+
+  # Tolerances                  Defaults
+  yaw_goal_tolerance: 0.03      # 0.05
+  xy_goal_tolerance:  0.05      # 0.10
+  latch_xy_goal_tolerance: true # false
+
+  # Forward simulation          Defaults
+  use_dwa: true                 # true
+  sim_time: 1.7                 # 1.7
+  sim_granularity: 0.025        # 0.025
+  angular_sim_granularity: 0.10 # 0.10 (1 degree = 0.017 rad)
+  vx_samples: 13                 # 3 (was 13) 
+  vy_samples: 15                 # 10 (was 15)
+  vth_samples: 20               # 20
+
+  # Scoring                     Defaults
+  meter_scoring: false          # Is this even taken into account?
+  path_distance_bias: 32.00     # 32.0
+  goal_distance_bias: 24        # 24.0
+  occdist_scale: 0.03           # 0.01
+  forward_point_distance: 0.325 # 0.325
+  stop_time_buffer: 0.20        # 0.20
+  scaling_speed: 0.25           # 0.25
+  max_scaling_factor: 0.20      # 0.20
+  #heading_lookahead: 0.325
+  #heading_scoring_timestep: 0.8
+  #heading_scoring: true         # Is this even taken into account?
+  #penalize_negative_x: false    # Is this even taken into account?
+
+  #Robot Configuration Parameter: Acceleration and velocity limits
+
+  # acc_limit_trans: 1.0
+  acc_lim_x: 2.5                # 3.5
+  acc_lim_y: 2.5                # 3.5
+  acc_lim_theta: 1.0           # 3.5
+
+  # max_trans_vel: 0.5
+  # min_trans_vel: 0.1
+  max_vel_x: +1.0
+  min_vel_x: -0.6
+  max_vel_y: +0.6
+  min_vel_y: -0.6
+
+  # max_rot_vel: 1.2
+  # min_rot_vel: 0.4
+  max_vel_theta: 0.5
+  min_vel_theta: -0.5
+
+  # Other                       Defaults
+  oscillation_reset_dist: 0.05  # 0.05
+  oscillation_reset_angle: 0.20 # 0.20
+  prune_plan: true             # true
+  trans_stopped_vel: 0.1        # 0.1
+  #rot_stopped_vel: 0.1          # 0.1   -> Deprecated warning
+  theta_stopped_vel: 0.1 
+  publish_cost_grid_pc: false    # false

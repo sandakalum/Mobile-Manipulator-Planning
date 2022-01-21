@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<robot name="kuka_kmr_iiwa" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find kuka_kmr_description)/urdf/base/kmr_base_2.urdf.xacro" />
+    <xacro:include filename="$(find kuka_lbr_arm_description)/urdf/macros/lbr_iiwa_14_r820_macro.urdf.xacro"/>
+    <xacro:include filename="$(find kuka_lbr_arm_description)/urdf/macros/vg10_gripper_macro.urdf.xacro"/>
+    <xacro:include filename="$(find kuka_lbr_arm_description)/urdf/macros/kinect_gazebo_macro.xacro"/>
+    <xacro:include filename="$(find kuka_lbr_arm_description)/urdf/macros/vaccum_plugin.xacro"/>
+    <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
+
+    <xacro:property name="PI" value="3.14159" />
+    
+	<xacro:macro name="kuka_kmr_iiwa">
+    <!-- World -->
+        <!-- <link name="world">
+        </link>
+       
+        <joint name="world_base" type="planar">
+            <parent link="world"/>
+            <child link="base_footprint"/>
+            <axis xyz="1 1 0"/>
+        </joint> -->
+        <xacro:kmr_base base_mass="200"/>
+        <joint name="kmr_base_link_lbr_base" type="fixed">
+            <origin rpy="0 0 ${-PI/2}" xyz="0.365 -0.18 0.66" />
+            <parent link="base_link" />
+            <child link="lbr_base" />
+        </joint>
+        <xacro:kuka_lbr_iiwa_14_r820  effort="220" mass="1.0" />
+        <xacro:vg10_gripper  tool_link="vg10" parent_link ="link_7"/>
+        <!-- <xacro:kinect_macro  link_name="kinect" parent_link="vg10" /> -->
+
+        <!-- <sensor_d435 parent="link_7">
+          
+            <origin xyz="-0.15 0 0.136" rpy="0 -${PI/2} 0"/> 
+        </sensor_d435> -->
+        
+        <!-- <xacro:vaccum_plugin parent_link="vg10" x= "0.120" y ="0.0" z="0.0">
+            
+        </xacro:vaccum_plugin> -->
+        <!-- <origin xyz="0.13 0.0 0.0" rpy="0 0 0"/> -->
+        <!-- TODO: Apparaently planar_move plug-in causes the PathTolarecne problem in move it :( -->
+		<!-- <xacro:omni_steering/>
+        <xacro:laser_scans />       -->
+
+    </xacro:macro>
+
+   <xacro:kuka_kmr_iiwa/>
+
+</robot>

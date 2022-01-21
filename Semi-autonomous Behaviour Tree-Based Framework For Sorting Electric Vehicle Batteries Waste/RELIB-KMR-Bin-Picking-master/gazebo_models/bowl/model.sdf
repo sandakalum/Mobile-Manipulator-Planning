@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.5">  
+  <model name="bowl">
+    <static>false</static>
+    <link name="bowl_link">
+      <collision name="collision">
+        <geometry>
+		  <cylinder>
+			  <radius>0.0671</radius>
+			  <length>0.045</length>
+		  </cylinder>
+        </geometry>
+		<surface>
+			<friction>
+				<ode>
+					<mu>0.98</mu>
+					<mu2>0.98</mu2>
+				</ode>
+			</friction>
+		</surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://bowl/meshes/bowl.dae</uri>
+          </mesh>
+        </geometry>
+        <material> 
+		    <script>
+		        <uri>file://media/materials/scripts/gazebo.material</uri>
+		        <name>Gazebo/Green</name>
+		    </script>
+        </material>
+      </visual>
+	  <inertial>
+		<pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+        <mass>0.1</mass>
+		<inertia>
+			<ixx>0.00012943525</ixx>
+			<iyy>0.00012943525</iyy>
+			<izz>0.0002251205</izz>
+			<ixy>0.0</ixy>
+			<ixz>0.0</ixz>
+			<iyz>0.0</iyz>
+		</inertia>
+	  </inertial>
+	</link>
+	
+	<!-- <plugin name ="gt_pose" filename="libgazebo_ros_p3d.so">
+        <update_rate>50.0</update_rate>
+        <bodyName>leaf_cell_link</bodyName>
+        <topicName>cell_pose_1</topicName>
+        <frameName>world</frameName>
+        <xyzOffsets>0 0 0</xyzOffsets>
+        <rpyOffsets>0 0 0</rpyOffsets>
+        <gaussianNoise>0.0</gaussianNoise>
+      </plugin> -->
+  </model>
+</sdf>

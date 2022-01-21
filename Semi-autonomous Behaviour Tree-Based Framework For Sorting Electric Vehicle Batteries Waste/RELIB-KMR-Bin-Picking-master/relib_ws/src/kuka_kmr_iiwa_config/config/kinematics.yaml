@@ -1,0 +1,9 @@
+lbr_arm:
+  kinematics_solver: trac_ik_kinematics_plugin/TRAC_IKKinematicsPlugin #trac_ik_kinematics_plugin/TRAC_IKKinematicsPlugin #kuka_lbr_arm_lbr_arm/IKFastKinematicsPlugin #
+  kinematics_solver_search_resolution: 0.005
+  kinematics_solver_timeout: 0.005
+
+# lbr_arm:
+#   kinematics_solver: kuka_kmr_iiwa_lbr_arm/IKFastKinematicsPlugin #trac_ik_kinematics_plugin/TRAC_IKKinematicsPlugin #kuka_lbr_arm_lbr_arm/IKFastKinematicsPlugin #
+#   # kinematics_solver_search_resolution: 0.005
+#   # kinematics_solver_timeout: 0.005

@@ -1,0 +1,11 @@
+string object_name
+string scene_name
+float32 threshold
+float32 modelSearchRadius
+float32 sceneSearchRadius
+float32 leafSize
+
+bool visualise
+---
+geometry_msgs/PoseStamped poseStamped
+string   state

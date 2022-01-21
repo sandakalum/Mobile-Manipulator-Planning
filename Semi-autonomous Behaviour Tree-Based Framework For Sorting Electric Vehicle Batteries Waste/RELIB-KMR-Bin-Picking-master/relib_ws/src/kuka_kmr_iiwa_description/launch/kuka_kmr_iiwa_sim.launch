@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <arg name="x" default="-6"/>
+    <arg name="y" default="6"/>
+    <arg name="z" default="0.10"/>
+
+    <!-- Load URDF  for Rviz and Gazebo  -->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find kuka_kmr_iiwa_description)/urdf/kuka_kmr_iiwa.urdf.xacro'" />
+    
+    <!-- Run gazebo and world -->
+    <include file="$(find gazebo_ros)/launch/willowgarage_world.launch" />
+
+    <!-- Publish the joint states for control  -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+      <param name="use_gui" value="false"/>
+      <rosparam param="source_list">[/lbr_controller/joint_states]</rosparam>
+    </node>
+  
+    <!-- Combine joint values -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+    <!-- Run navigation nodes -->
+    <include file="$(find kuka_kmr_nav)/launch/kuka_kmr_nav.launch"/>
+
+    <!-- Show in Rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find kuka_kmr_iiwa_description)/rviz/iiwa.rviz"/>
+
+    <!-- Spawn the robot in Gazebo -->
+    <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+          args="-urdf -param robot_description -model kuka_kmr_iiwa -x $(arg x) -y $(arg y) -z $(arg z)" />
+
+    <!-- Run ros control for the lbr arm  -->
+    <include file="$(find kuka_kmr_iiwa_config)/launch/ros_controllers.launch"/>
+          
+</launch>

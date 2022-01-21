@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <arg name="object" default="leaf_cell" />
+  <arg name="solo" default="false" />
+  <!-- Launch the tracking node -->
+  <node pkg="visp_tracker" type="tracker" name="tracker_mbt" output="screen">
+    <param name="camera_prefix" value="/camera/color" />
+    <param name="tracker_type" value="mbt+klt" />
+  </node>
+
+
+
+</launch>

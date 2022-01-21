@@ -1,0 +1,14 @@
+
+<launch>
+  <!-- loads ros_controllers to the param server -->
+  <rosparam file="$(find kuka_lbr_arm_config)/config/moveit_controllers.yaml"/>
+  <param name= "use_controller_manager" value="false" />
+  <param name= "trajectory_execution/execution_duration_monitroing" value="false" />
+
+  <!-- loads moveit_controller_manager on the parameter server which is taken as argument 
+    if no argument is passed, moveit_simple_controller_manager will be set -->
+  <arg name="moveit_controller_manager" default="moveit_simple_controller_manager/MoveItSimpleControllerManager" />
+  <param name="moveit_controller_manager" value="$(arg moveit_controller_manager)"/>
+
+
+</launch>
