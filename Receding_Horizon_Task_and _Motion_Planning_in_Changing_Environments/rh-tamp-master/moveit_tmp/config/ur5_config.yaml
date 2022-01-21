@@ -1,0 +1,20 @@
+# Total planning attempts
+planning_attempts: 10
+
+# Planning group and link names
+arm_group_name: "manipulator"
+eef_name: "hand"
+hand_group_name: "hand"
+hand_frame: "ee_link"
+
+# Poses
+hand_open_pose: "open"
+hand_close_pose: "close"
+arm_home_pose: "ready"
+
+# Scene frames
+world_frame: "world"
+
+# Gripper grasp frame transform [x,y,z,r,p,y]
+#ik_frame: [0, 0, 0.1, 1.571, 0.785, 1.571]
+ik_frame: [0.15, 0, 0, 0, 0, 0]

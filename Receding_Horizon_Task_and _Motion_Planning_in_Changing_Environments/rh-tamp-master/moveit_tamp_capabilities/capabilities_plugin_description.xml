@@ -1,0 +1,7 @@
+<library path="libmoveit_tmp_capabilities">
+  <class name="move_group/ExecuteTMPSolutionCapability" type="move_group::ExecuteTMPSolutionCapability" base_class_type="move_group::MoveGroupCapability">
+    <description>
+      Action server to execute solutions generated through the MoveIt Task and Motion Planning.
+    </description>
+  </class>
+</library>

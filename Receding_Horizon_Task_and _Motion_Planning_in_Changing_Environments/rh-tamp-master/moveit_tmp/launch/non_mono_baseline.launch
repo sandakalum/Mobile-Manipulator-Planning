@@ -1,0 +1,18 @@
+<launch>
+
+<arg name="problem" default="problem_0" />
+<arg name="horizon" default="2" />
+
+<!--
+  <include file="$(find panda_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="true"/>
+  </include>
+-->
+
+<node name="non_mono_baseline" pkg="moveit_tmp" type="non_mono_baseline" respawn="false" output="screen">
+<rosparam command="load" file="$(find moveit_tmp)/config/prob_2/$(arg problem).yaml" />
+<rosparam command="load" file="$(find moveit_tmp)/config/ur_config.yaml" />
+<param name="horizon" type="int" value="$(arg horizon)" />
+</node>
+
+</launch>

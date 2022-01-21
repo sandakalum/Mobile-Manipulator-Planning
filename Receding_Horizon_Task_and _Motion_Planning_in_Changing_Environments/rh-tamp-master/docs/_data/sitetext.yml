@@ -1,0 +1,74 @@
+header:
+    title: Receding Horizon Task and Motion Planning
+    text: RH-TAMP
+    button: Tell Me More
+    buttonlink: "#description"
+
+clients:
+    section: clients
+    max-height: 100px
+    horizontal-scrolling: "" #"yes/no"
+    list:
+      - title: "unipd"
+        url: https://www.dei.unipd.it
+        logo: assets/img/clients/unipd.png
+      - title: "itrobotics"
+        url: https://www.it-robotics.it
+        logo: assets/img/clients/itr.png
+
+description:
+  media: assets/img/description/method_overview.jpg
+  subtext: An overview of the **Receding Horizon TAMP** method. Given a target task, a geometric reasoning module iteratively evaluates the feasibility of a sequence of *h+1* actions (the *actions horizon*) considered over the full set of *n* actions provided by the task planner. Hence, the motion planner guides the robot toward the first available configuration *q<sub>j</sub>*, and the process restarts by moving forward of one step the actions window of size *h+1*. If the plan is not feasible, the action fails, or the state of the system changes unexpectedly, the task planner should be executed again.
+
+experiments:
+    examples:
+      - name: "Clutter Table Problem"
+        description: The **Clutter Table** task and motion planning problem. The robot hasto pick up the red cylinder placed between 25 other ones. The robot can grasp cylindersonly from their side.
+        mediatype: "video"
+        media: assets/video/rhtamp_clutter.mp4
+      - name: "Non-Monotonic Problem"
+        description: The **Non-Monotonic** task and motion planning problem. The robot has to move the red and blue cylinders from their initial position to the positions corresponding to their color. The robot can grasp cylinders only from their side.
+        mediatype: "video"
+        media: assets/video/rhtamp.mp4
+      - name: "Sort Clutter Problem"
+        description: The **Sort Clutter** task and motion planning problem. The mobile robot has to transport the cylinders of different colors from the initial position to the right table, sorting them by color.
+        mediatype: "video"
+        media: assets/video/mobile_rhtamp.mp4
+
+code:
+  subtext: A software implementation of this project can be found on our [GitHub repository](https://github.com/nicolacastaman/rh-tamp). The implementation is based on ROS and our modification to support RH-TAMP is licensed for non-commercial use ([license summary](https://creativecommons.org/licenses/by-nc/4.0/)).
+
+team:
+    title: "People"
+    text:
+    section: team
+    people:
+      - name: "Nicola Castaman"
+        image: assets/img/team/castaman.jpg
+        #social:
+        #  - url: https://linkedin.com
+        #    icon: fab fa-linkedin-in
+      - name: "Enrico Pagello"
+        image: assets/img/team/pagello.jpg
+        #social:
+        #  - url: https://linkedin.com
+        #    icon: fab fa-linkedin-in
+      - name: "Emanuele Menegatti"
+        image: assets/img/team/menegatti.jpg
+        #social:
+        #  - url: https://linkedin.com
+        #    icon: fab fa-linkedin-in
+      - name: "Alberto Pretto"
+        image: assets/img/team/pretto.jpg
+        #social:
+        #  - url: https://linkedin.com
+        #    icon: fab fa-linkedin-in
+
+footer:
+    legal: "Privacy Policy"
+    social:
+      - url: https://github.com/nicolacastaman/rh-tamp
+        icon: "fab fa-github"
+
+
+# {{ site.data.sitetext.ex.ex | markdownify | default: example }}

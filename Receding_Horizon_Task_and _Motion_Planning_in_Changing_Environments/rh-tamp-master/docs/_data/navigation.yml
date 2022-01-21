@@ -1,0 +1,13 @@
+nav:
+
+  - title: "Description"
+    section: description
+
+  - title: "Experiments"
+    section: experiments
+
+  - title: "Code"
+    section: code
+
+  - title: "People"
+    section: team

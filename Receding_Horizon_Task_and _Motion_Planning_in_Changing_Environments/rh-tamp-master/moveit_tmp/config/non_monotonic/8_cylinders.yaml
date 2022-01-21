@@ -1,0 +1,81 @@
+num_objects: 8
+object_0:
+    pose: [0.0,0.0,0.001]
+    frame_id: surface_4
+object_1:
+    pose: [0.0,0.0,0.001]
+    frame_id: surface_5
+object_2:
+    pose: [0.0,0.0,0.001]
+    frame_id: surface_6
+object_3:
+    pose: [0.0,0.0,0.001]
+    frame_id: surface_7
+object_4:
+    pose: [0.0,0.0,0.001]
+    frame_id: surface_12
+object_5:
+    pose: [0.0,0.0,0.001]
+    frame_id: surface_13
+object_6:
+    pose: [0.0,0.0,0.001]
+    frame_id: surface_14
+object_7:
+    pose: [0.0,0.0,0.001]
+    frame_id: surface_15
+
+
+num_surfaces: 16
+surface_0:
+    pose: [0.50,-0.55,0.026,0,0,0]
+    frame_id: table
+surface_1:
+    pose: [0.50,-0.40,0.026,0,0,0]
+    frame_id: table
+surface_2:
+    pose: [0.50,-0.25,0.026,0,0,0]
+    frame_id: table
+surface_3:
+    pose: [0.50,-0.10,0.026,0,0,0]
+    frame_id: table
+
+surface_4:
+    pose: [0.60,-0.55,0.026,0,0,0]
+    frame_id: table
+surface_5:
+    pose: [0.60,-0.40,0.026,0,0,0]
+    frame_id: table
+surface_6:
+    pose: [0.60,-0.25,0.026,0,0,0]
+    frame_id: table
+surface_7:
+    pose: [0.60,-0.10,0.026,0,0,0]
+    frame_id: table
+
+
+surface_8:
+    pose: [-0.55,0.6,0.026,0,0,0]
+    frame_id: table
+surface_9:
+    pose: [-0.40,0.6,0.026,0,0,0]
+    frame_id: table
+surface_10:
+    pose: [-0.25,0.6,0.026,0,0,0]
+    frame_id: table
+surface_11:
+    pose: [-0.10,0.6,0.026,0,0,0]
+    frame_id: table
+
+surface_12:
+    pose: [-0.55,0.5,0.026,0,0,0]
+    frame_id: table
+surface_13:
+    pose: [-0.40,0.5,0.026,0,0,0]
+    frame_id: table
+surface_14:
+    pose: [-0.25,0.5,0.026,0,0,0]
+    frame_id: table
+surface_15:
+    pose: [-0.10,0.5,0.026,0,0,0]
+    frame_id: table
+

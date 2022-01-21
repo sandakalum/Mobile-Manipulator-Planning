@@ -1,0 +1,18 @@
+<launch>
+
+<arg name="problem" default="object_poses" />
+<arg name="horizon" default="2" />
+
+<!--
+  <include file="$(find panda_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="true"/>
+  </include>
+-->
+
+<node name="finite" pkg="moveit_tmp" type="finite" respawn="false" output="screen">
+<rosparam command="load" file="$(find moveit_tmp)/config/clutter/$(arg problem).yaml" />
+<rosparam command="load" file="$(find moveit_tmp)/config/ur_config.yaml" />
+<param name="horizon" type="int" value="$(arg horizon)" />
+</node>
+
+</launch>

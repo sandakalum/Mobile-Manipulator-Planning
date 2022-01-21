@@ -1,0 +1,9 @@
+<launch>
+
+<arg name="problem" default="object_poses" />
+
+<node name="baseline" pkg="moveit_tmp" type="baseline" respawn="false" output="screen">
+    <rosparam command="load" file="$(find moveit_tmp)/config/clutter/$(arg problem).yaml" />
+</node>
+
+</launch>

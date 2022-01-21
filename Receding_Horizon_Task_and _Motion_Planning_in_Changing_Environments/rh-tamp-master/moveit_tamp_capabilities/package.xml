@@ -1,0 +1,24 @@
+<package format="2">
+	<name>moveit_tmp_capabilities</name>
+	<version>0.0.0</version>
+	<description>
+	MoveGroupCapabilites to interact with MoveIt
+	</description>
+
+	<maintainer email="nicola.castaman@dei.unipd.it">Nicola Castaman</maintainer>
+
+	<license>BSD</license>
+
+	<buildtool_depend>catkin</buildtool_depend>
+
+	<depend>moveit_core</depend>
+	<depend>moveit_ros_move_group</depend>
+	<depend>actionlib</depend>
+	<depend>pluginlib</depend>
+	<depend>std_msgs</depend>
+	<depend>moveit_tmp_msgs</depend>
+
+	<export>
+		<moveit_ros_move_group plugin="${prefix}/capabilities_plugin_description.xml"/>
+	</export>
+</package>
