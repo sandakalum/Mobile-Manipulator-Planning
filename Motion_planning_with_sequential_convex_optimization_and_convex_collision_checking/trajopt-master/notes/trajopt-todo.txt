@@ -1,0 +1,55 @@
+Critical
+=========
+
+create examples of costs in python
+
+documentation on colllision costs, stationary initialization
+documentation on terminal output
+
+unit test collision constraint
+setcontactdistance screws you up if you have multiple collision cost groups
+try self-collisions in continuous collision cost
+
+RobotAndDOF is a mess now
+
+filtermask arguments in collision_terms
+
+fixed length steps: need a custom constraint + projection
+
+Eventually
+===========
+
+
+
+boost python arguments
+
+TrajArray/DblMatrix/MatrixXd mean the same thing
+
+PECost is PE^2
+
+play with merit_coeff ratio and other optimization params
+enable constraint scaling on all constraints
+
+analytic derivative for pose constraint.
+
+Figure out some consistent scheme for specifiying timestep of costs.
+
+velocity cost uses timestamps
+make optimization parameters settable
+
+make a function specifically for self-collision testing. or configure collision checker somehow.
+
+relate trust region to collision margin?
+
+Maybe
+=======
+
+error message for unrecognized arguments from json
+
+Partition links into groups and do broadphase filtering (?)
+Do some smarter self-collision filtering, e.g. with custom code for each robot.
+No need to do all the hulls every time you load up the robot.
+
+
+collisionchecker segfaults if bullet world isn't updated (still?)
+
