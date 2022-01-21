@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Config>        
+    <Problemfiles>
+        <pddldomain name="ff-domains/manipulationdomain.pddl" />
+        <pddlproblem name="ff-domains/manipulation_problem_A" />
+        <kautham name="OMPL_RRTconnect_table_rooms_R2_a2.xml" />
+        <directory name="/demos/OMPL_geo_demos/Table_Rooms_R2/"/>
+        <graspit name ="DUMMY NO GRASPIT TO BE USED HERE"/>
+    </Problemfiles>
+    <States>
+        <Initial>
+            <Object name="OBJA" kthindex="1"> -90 70 40 1 0 0 0 </Object> <!-- orientation in axis-angle (vx,vy,vz,theta) like in the kautham problem files-->
+            <Robot name="ROB" controlfile="controls/table_R2.cntr"> 0.9 0.1 </Robot>
+        </Initial>
+    </States>
+    <Actions>
+        <Pick robot="ROB" object="OBJA" region="ROOM2">
+            <Rob> 0 </Rob>
+            <Obj> 1 </Obj>
+            <Link> 0 </Link>
+            <Cont>controls/table_R2.cntr</Cont>
+            <Regioncontrols>0.31 0.67</Regioncontrols>
+            <Graspcontrols grasp="1">0.184 0.8</Graspcontrols>
+        </Pick>
+        <Place robot="ROB" object="OBJA" region="ROOM1">
+            <Rob> 0 </Rob>
+            <Obj> 1 </Obj>
+            <Cont>controls/table_R2.cntr</Cont>
+            <Regioncontrols>0.31 0.31</Regioncontrols>
+            <Graspcontrols grasp= "1"> 0.9 0.1</Graspcontrols>
+            <!--Poseregion> 0.1 0.0 0.15 0.3 0 0 0 0 </Poseregion-->
+        </Place>
+        <Move robot="ROB" region_from="ROOM1" region_to="ROOM2">
+            <Rob> 0 </Rob>
+            <Cont> controls/table_R2.cntr </Cont>
+            <InitControls> 0.31 0.31</InitControls>
+            <GoalControls> 0.31 0.67</GoalControls>
+        </Move>
+    </Actions>
+</Config>

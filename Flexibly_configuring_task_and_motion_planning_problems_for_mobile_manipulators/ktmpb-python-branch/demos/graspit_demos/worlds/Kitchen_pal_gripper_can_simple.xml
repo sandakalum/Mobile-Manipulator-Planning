@@ -1,0 +1,26 @@
+<world>
+	<obstacle>
+	        <filename>models/obstacles/kitchen_simple.xml</filename>
+	        <transform>
+	            <fullTransform>(+1 0 0 0)[0 0 0]</fullTransform>
+	        </transform>
+	</obstacle>
+	<graspableBody>
+		<filename>models/objects/can.xml</filename>
+		<transform>
+            <fullTransform>(+0.3991626501083374 0.004158435855060816 0.014741266146302223 -0.9167522192001343 ){-930.7267080836449 321.3941490764331 907.0)</fullTransform>
+		</transform>
+	</graspableBody>
+	<robot>
+		<filename>models/robots/pal_gripper/pal_gripper.xml</filename>
+		<dofValues>0.0225 0.0225 </dofValues>
+		<transform>
+			<fullTransform>(+1 +0 +0 +0)[+0 +0 +500]</fullTransform>
+		</transform>
+	</robot>
+	<camera>
+		<position>-129.932 +115.218 -468.874</position>
+		<orientation>-0.971052 -0.161034 +0.111074 +0.137073</orientation>
+		<focalDistance>+500</focalDistance>
+	</camera>
+</world>

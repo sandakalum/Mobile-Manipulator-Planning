@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<Robot name="table" robType="Freeflying">
+	<WeightSE3 rho_t="1.0" rho_r="1.0" />
+	<Joints size="1">
+                <Joint name="Base" ivFile="freeflying/table.iv">
+			<Description movable="true" />
+		</Joint>
+	</Joints>
+</Robot>

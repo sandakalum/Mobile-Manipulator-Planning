@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Config>        
+    <Problemfiles>
+        <pddldomain name="ff-domains/manipulationdomain.pddl" />
+        <pddlproblem name="ff-domains/manipulation_problem_A" />
+        <directory name="/demos/OMPL_geo_demos/Table_Rooms_R2/"/>
+    </Problemfiles>
+</Config>

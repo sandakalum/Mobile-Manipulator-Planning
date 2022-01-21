@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+
+<robot name="box3" >
+
+  <!-- Base -->
+  <link name="base">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.46
+        5" ixy="0.002" ixz="-0.001" iyy="0.483" iyz="0" izz="0.55093970"/>
+    </inertial>
+    <visual>
+      <geometry>
+	<mesh filename="AllegroHand/AllegroHandOptoforce.iv"/>
+      </geometry>
+      <material name="White"/>
+    </visual>
+    <collision>
+      <geometry>
+	<mesh filename="AllegroHand/AllegroHandOptoforce.iv"/>
+      </geometry>
+      <material name="White"/>
+    </collision>
+  </link>
+
+  
+</robot>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+     <arg name="ffconfigfile" default="/demos/OMPL_geo_demos/Table_Rooms_R2/ffconfig.xml" />
+     
+     <node name="ff_node_service" pkg="ff" type="ff_node_service" respawn="true" />
+     <node name="ff_client_py" pkg="ktmpb" type="ff_client_python_node.py" args=" $(arg ffconfigfile)" output="screen" required="true"/>
+</launch>

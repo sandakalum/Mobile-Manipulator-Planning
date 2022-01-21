@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+     <arg name="kthconfigfile" default="/demos/OMPL_geo_demos/Table_Rooms_R2/kthconfig.xml" />
+
+     <node name="kautham_node" pkg="kautham" type="kautham-rosnode" launch-prefix="xterm -e" />
+     <!--node name="kautham_node" pkg="kautham" type="kautham-rosnode" output="screen"  /-->
+     <node name="kautham_python_node" pkg="ktmpb" type="kautham_client_python_node.py"  args=" $(arg kthconfigfile)" output="screen" required="true"/>
+</launch>

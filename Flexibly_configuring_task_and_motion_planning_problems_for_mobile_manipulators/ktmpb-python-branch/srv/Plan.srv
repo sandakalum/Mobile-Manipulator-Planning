@@ -1,0 +1,5 @@
+string problem
+string domain
+---
+bool response
+string[] plan

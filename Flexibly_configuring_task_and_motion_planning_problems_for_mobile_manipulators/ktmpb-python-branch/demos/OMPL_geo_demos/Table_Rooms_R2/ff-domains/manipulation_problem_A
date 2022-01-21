@@ -1,0 +1,22 @@
+(define (problem manip_objA)
+
+(:domain manipulation)
+
+(:objects 
+    room1 room2 - location
+    objA - obstacle
+    Rob - robot
+)
+
+(:init
+    (at Rob room1)
+    (in objA room2)
+    (handEmpty)
+)
+
+(:goal
+    (in objA room1)
+)
+)
+
+

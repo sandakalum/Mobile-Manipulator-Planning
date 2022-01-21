@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot name="can">
+	<link name="base">
+	<inertial>
+        	 <origin xyz="0 0 0" rpy="0 0 0"/>
+        	 <mass value="0.05"/>
+        	 <inertia ixx="0.000683333"  ixy="0"  ixz="0" iyy="0.000683333" iyz="0" izz="0.000683333" />
+       </inertial>
+	<visual>
+		<origin xyz="0.0 0.0 -0.00255" rpy="0 0 0" />
+		<geometry>
+       			 <mesh filename="can/cokecan.dae" scale="0.0254 0.0254 0.0254"/>
+      		</geometry>
+		<material>
+			<color rgba="0 0 1 1" />
+		</material>
+		</visual>
+  	 <collision>
+		<origin xyz="0.0 0.0 -0.00255" rpy="0 0 0"/>
+            <geometry>
+       			 <mesh filename="can/cokecan.dae"  scale="0.0254 0.0254 0.0254"/>
+            </geometry>
+	    <material>
+			<color rgba="0 0 1 1" />
+	    </material>
+        </collision>
+	</link>
+</robot>
+

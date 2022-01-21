@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<!-- d0: gripper_r_joint, min=0, max=0.025 -->
+<!-- d1: gripper_r_joint_m, min=0, max=0.025 -->
+<EigenGrasps dimensions="2">
+	<EG>
+		<EigenValue value="0.5"/> <!--EigenValue is not used in the code at this stage -->
+		<!--Limits min="0" max="0"/-->
+		<DimVals d0="0.0125" d1="0.0125"/>
+	</EG>
+	<ORIGIN>
+		<EigenValue value="0.5"/> 
+		<DimVals d0="12.5" d1="12.5"/>
+	</ORIGIN>
+</EigenGrasps>

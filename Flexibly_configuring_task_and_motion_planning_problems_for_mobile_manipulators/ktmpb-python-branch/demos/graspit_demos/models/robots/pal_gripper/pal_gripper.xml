@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+<robot type="Hand">
+	<palm>gripper_link.xml</palm>
+		 <dof type="r">
+        <defaultVelocity>-10</defaultVelocity>
+        <maxEffort>5.0e+10</maxEffort>
+        <Kp>1.0e+11</Kp>
+        <Kd>1.0e+7</Kd>
+        <draggerScale>20</draggerScale>
+    </dof>
+	
+ <dof type="r">
+        <defaultVelocity>-10</defaultVelocity>
+        <maxEffort>5.0e+10</maxEffort>
+        <Kp>1.0e+11</Kp>
+        <Kd>1.0e+7</Kd>
+        <draggerScale>20</draggerScale>
+    </dof>
+
+	<chain> 
+		<transform> 
+			<translation>45 0 0</translation>
+			<rotationMatrix>2.22045e-16 0 -1 0 1 0 1 0 2.22045e-16 </rotationMatrix> 
+		</transform>
+		<joint type='Prismatic'>
+			<theta>0</theta>
+			<d> d1+0</d>
+			<a>0</a>
+			<alpha>0</alpha>
+			<minValue>0</minValue>
+			<maxValue>-40</maxValue>
+			<viscousFriction>5.0e+7</viscousFriction>
+		</joint>
+		<link dynamicJointType='Prismatic'>gripper_right_finger_link.xml</link>
+	</chain>
+	<chain> 
+		<transform> 
+			<translation>-45 0 0</translation>
+			<rotationMatrix>2.22045e-16 0 1 -0 1 0 -1 -0 2.22045e-16 </rotationMatrix> 
+		</transform>
+		<joint type='Prismatic'>
+			<theta>0</theta>
+			<d> d0+0</d>
+			<a>0</a>
+			<alpha>0</alpha>
+			<minValue>0</minValue>
+			<maxValue>-40</maxValue>
+			<viscousFriction>5.0e+7</viscousFriction>
+		</joint>
+		<link dynamicJointType='Prismatic'>gripper_left_finger_link.xml</link>
+	</chain>
+
+	<virtualContacts>virtual/contacts.xml</virtualContacts>
+</robot>

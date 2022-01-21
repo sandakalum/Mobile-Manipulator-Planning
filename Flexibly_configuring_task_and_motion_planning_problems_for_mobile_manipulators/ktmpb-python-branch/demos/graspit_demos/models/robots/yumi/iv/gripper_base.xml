@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<root>
+	<material>plastic</material>
+	<mass>2200</mass>
+	<cog>0 0 0</cog>
+	<inertia_matrix>100.1 0 0 0  100.1 0 0  0 100.1</inertia_matrix>
+	<geometryFile>gripper_base.iv</geometryFile>
+</root>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<Config>
+    <Problemfiles>
+        <pddldomain name="PDDL_domain_file.xml" />
+        <pddlproblem name="PDDL_problem_file.xml" />
+        <kautham name="kautham_problem_file.xml" />
+    </Problemfiles>
+    <States>
+        <Initial>
+            <Object name="object_name_1"> x y z qx qy qz qw </Object>
+            <Object name="object_name_2"> x y z qx qy qz qw </Object>
+            <Object name="object_name_n"> x y z qx qy qz qw </Object>
+            <Robot name="robot_name_1" controlfile="control_file_1"> c11 c12 </Robot>
+            <Robot name="robot_name_2" controlfile="control_file_2"> c21 c22 </Robot>
+            <Robot name="robot_name_n" controlfile="control_file_n"> cn1 cn2 </Robot>
+        </Initial>
+    </States>
+    <Actions>
+        <Pick robot="PDDL_robot" object="PDDL_object" region="PDDL_region">
+            <Rob> robot_name </Rob>
+            <Obj> object_name </Obj>
+            <Link> link_name </Link>
+            <Cont> control_file_manip </Cont>
+            <Regioncontrols> c11 c12</Regioncontrols>
+            <Graspcontrols grasp="grasp_name_1"> c11 c12</Graspcontrols>
+            <Graspcontrols grasp="grasp_name_2"> c21 c21</Graspcontrols>
+            <Graspcontrols grasp="grasp_name_n"> c21 c21</Graspcontrols>
+            <Pose> x y z qx qy qz qw </Pose>
+        </Pick>
+        <Place robot="PDDL_robot" object="PDDL_object" region="PDDL_region">
+            <Rob> robot_name </Rob>
+            <Obj> object_name </Obj>
+            <Cont> control_file_manip </Cont>
+            <Graspcontrols grasp= "grasp_name_1"> p11 p12</Graspcontrols>
+            <Graspcontrols grasp="grasp_name_2"> p21 p21</Graspcontrols>
+            <Graspcontrols grasp="grasp_name_n"> p21 p21</Graspcontrols>
+            <Pose> x y z qx qy qz qw </Pose>
+            <Poseregion> xmin xmax ymin ymaz z qx qy qz qw </Poseregion>
+        </Place>
+        <Move robot="PDDL_robot" region_from="PDDL_region_from" region_to="PDDL_region_to">
+            <Rob> robot_name </Rob>
+            <Cont> control_file_move </Cont>
+            <InitControls> c11 c12</InitControls>
+            <GoalControls> c21 c21</GoalControls>
+        </Move>
+    </Actions>
+</Config>

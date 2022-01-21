@@ -1,0 +1,1125 @@
+<?xml version="1.0" ?>
+<robot name="tiago" xmlns:xacro="http://www.ros.org/wiki/xacro"> 
+<link name="hand_palm_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0641 -0.0022 0.0021"/>
+      <!-- NOTE: Less than total palm mass of 0.598kg because actuator masses are specified separately -->
+      <mass value="0.4"/>
+      <inertia ixx="0.000305100" ixy="0.000005037" ixz="0.000015302" iyy="0.000811920" iyz="0.000007622" izz="0.000655851"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/palm.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/palm_collision.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_thumb_joint" type="fixed">
+    <parent link="hand_palm_link"/>
+    <child link="hand_thumb_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="-2.61799387799" upper="6.28318530718" velocity="3.35"/>
+    <dynamics damping="0.5" friction="0.0"/>
+    <!-- TODO: Tune -->
+    <safety_controller k_position="20" k_velocity="20" soft_lower_limit="-2.61799387799" soft_upper_limit="6.28318530718"/>
+  </joint>
+  <link name="hand_thumb_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.05"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!--To stabilize simulation-->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.001"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_index_joint" type="fixed">
+    <parent link="hand_palm_link"/>
+    <child link="hand_index_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="-3.05432619099" upper="6.80678408278" velocity="3.35"/>
+    <dynamics damping="0.5" friction="0.0"/>
+    <!-- TODO: Tune -->
+    <safety_controller k_position="20" k_velocity="20" soft_lower_limit="-3.05432619099" soft_upper_limit="6.80678408278"/>
+  </joint>
+  <link name="hand_index_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.05"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!--To stabilize simulation-->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.001"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_mrl_joint" type="fixed">
+    <parent link="hand_palm_link"/>
+    <child link="hand_mrl_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="-2.53072741539" upper="9.25024503557" velocity="3.56"/>
+    <dynamics damping="0.5" friction="0.0"/>
+    <!-- TODO: Tune -->
+    <safety_controller k_position="20" k_velocity="20" soft_lower_limit="-2.53072741539" soft_upper_limit="9.25024503557"/>
+  </joint>
+  <link name="hand_mrl_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.05"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!--To stabilize simulation-->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.001"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_thumb_abd_joint" type="fixed">
+    <parent link="hand_palm_link"/>
+    <child link="hand_thumb_abd_link"/>
+    <origin rpy="0 -1.1344640138 0" xyz="0.0901 0.0134 0.038"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="1.57079632679" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_thumb_abd_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0132 0.0037 -0.0017"/>
+      <mass value="0.014"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/thumb_abd_collision.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/thumb_abd_collision.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_thumb_virtual_1_joint" type="fixed">
+    <parent link="hand_thumb_abd_link"/>
+    <child link="hand_thumb_virtual_1_link"/>
+    <origin rpy="-1.14423785761 0 0" xyz="0.0225 0.003 0.005"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_thumb_virtual_1_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <mass value="0.01"/>
+      <!--TODO: can we make it zero and still have a stable dynamic simulation?-->
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_thumb_flex_1_joint" type="fixed">
+    <parent link="hand_thumb_virtual_1_link"/>
+    <child link="hand_thumb_flex_1_link"/>
+    <origin rpy="0 0 0" xyz="0.013 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_thumb_flex_1_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0047 0.0031 0.0"/>
+      <mass value="0.009"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_thumb_virtual_2_joint" type="fixed">
+    <parent link="hand_thumb_flex_1_link"/>
+    <child link="hand_thumb_virtual_2_link"/>
+    <origin rpy="0 0 0" xyz="0.009 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_thumb_virtual_2_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <mass value="0.01"/>
+      <!--TODO: can we make it zero and still have a stable dynamic simulation?-->
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_thumb_flex_2_joint" type="fixed">
+    <parent link="hand_thumb_virtual_2_link"/>
+    <child link="hand_thumb_flex_2_link"/>
+    <origin rpy="0 0 0" xyz="0.013 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_thumb_flex_2_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0096 0.003 0.0"/>
+      <mass value="0.015"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_tip_collision.stl"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_tip_collision.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_index_abd_joint" type="fixed">
+    <parent link="hand_palm_link"/>
+    <child link="hand_index_abd_link"/>
+    <origin rpy="-1.57079632679 -0.523598775598 0" xyz="0.1265 0.0042 0.0265"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="-0.523598775598" upper="0.523598775598" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_index_abd_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0018 0.0 0.0028"/>
+      <mass value="0.018"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_abd_collision.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_abd_collision.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_index_virtual_1_joint" type="fixed">
+    <parent link="hand_index_abd_link"/>
+    <child link="hand_index_virtual_1_link"/>
+    <origin rpy="1.57079632679 0 0" xyz="0.009 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_index_virtual_1_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <mass value="0.01"/>
+      <!--TODO: can we make it zero and still have a stable dynamic simulation?-->
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_index_flex_1_joint" type="fixed">
+    <parent link="hand_index_virtual_1_link"/>
+    <child link="hand_index_flex_1_link"/>
+    <origin rpy="0 0 0" xyz="0.013 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_index_flex_1_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0047 0.0031 0.0"/>
+      <mass value="0.009"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_index_virtual_2_joint" type="fixed">
+    <parent link="hand_index_flex_1_link"/>
+    <child link="hand_index_virtual_2_link"/>
+    <origin rpy="0 0 0" xyz="0.009 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_index_virtual_2_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <mass value="0.01"/>
+      <!--TODO: can we make it zero and still have a stable dynamic simulation?-->
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_index_flex_2_joint" type="fixed">
+    <parent link="hand_index_virtual_2_link"/>
+    <child link="hand_index_flex_2_link"/>
+    <origin rpy="0 0 0" xyz="0.013 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_index_flex_2_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0047 0.0031 0.0"/>
+      <mass value="0.009"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_index_virtual_3_joint" type="fixed">
+    <parent link="hand_index_flex_2_link"/>
+    <child link="hand_index_virtual_3_link"/>
+    <origin rpy="0 0 0" xyz="0.009 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_index_virtual_3_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <mass value="0.01"/>
+      <!--TODO: can we make it zero and still have a stable dynamic simulation?-->
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_index_flex_3_joint" type="fixed">
+    <parent link="hand_index_virtual_3_link"/>
+    <child link="hand_index_flex_3_link"/>
+    <origin rpy="0 0 0" xyz="0.013 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_index_flex_3_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0096 0.003 0.0"/>
+      <mass value="0.015"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_tip_collision.stl"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_tip_collision.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_middle_abd_joint" type="fixed">
+    <parent link="hand_palm_link"/>
+    <child link="hand_middle_abd_link"/>
+    <origin rpy="-1.57079632679 0 0" xyz="0.1335 0.0042 0.007"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="-0.523598775598" upper="0.523598775598" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_middle_abd_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0018 0.0 0.0028"/>
+      <mass value="0.018"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_abd_collision.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_abd_collision.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_middle_virtual_1_joint" type="fixed">
+    <parent link="hand_middle_abd_link"/>
+    <child link="hand_middle_virtual_1_link"/>
+    <origin rpy="1.57079632679 0 0" xyz="0.009 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_middle_virtual_1_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <mass value="0.01"/>
+      <!--TODO: can we make it zero and still have a stable dynamic simulation?-->
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_middle_flex_1_joint" type="fixed">
+    <parent link="hand_middle_virtual_1_link"/>
+    <child link="hand_middle_flex_1_link"/>
+    <origin rpy="0 0 0" xyz="0.013 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_middle_flex_1_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0047 0.0031 0.0"/>
+      <mass value="0.009"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_middle_virtual_2_joint" type="fixed">
+    <parent link="hand_middle_flex_1_link"/>
+    <child link="hand_middle_virtual_2_link"/>
+    <origin rpy="0 0 0" xyz="0.009 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_middle_virtual_2_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <mass value="0.01"/>
+      <!--TODO: can we make it zero and still have a stable dynamic simulation?-->
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_middle_flex_2_joint" type="fixed">
+    <parent link="hand_middle_virtual_2_link"/>
+    <child link="hand_middle_flex_2_link"/>
+    <origin rpy="0 0 0" xyz="0.013 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_middle_flex_2_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0047 0.0031 0.0"/>
+      <mass value="0.009"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_middle_virtual_3_joint" type="fixed">
+    <parent link="hand_middle_flex_2_link"/>
+    <child link="hand_middle_virtual_3_link"/>
+    <origin rpy="0 0 0" xyz="0.009 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_middle_virtual_3_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <mass value="0.01"/>
+      <!--TODO: can we make it zero and still have a stable dynamic simulation?-->
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_middle_flex_3_joint" type="fixed">
+    <parent link="hand_middle_virtual_3_link"/>
+    <child link="hand_middle_flex_3_link"/>
+    <origin rpy="0 0 0" xyz="0.013 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_middle_flex_3_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0096 0.003 0.0"/>
+      <mass value="0.015"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_tip_collision.stl"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_tip_collision.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_ring_abd_joint" type="fixed">
+    <parent link="hand_palm_link"/>
+    <child link="hand_ring_abd_link"/>
+    <origin rpy="-1.57079632679 0.261799387799 0" xyz="0.1265 0.0042 -0.0125"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="-0.523598775598" upper="0.523598775598" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_ring_abd_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0018 0.0 0.0028"/>
+      <mass value="0.018"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_abd_collision.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_abd_collision.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_ring_virtual_1_joint" type="fixed">
+    <parent link="hand_ring_abd_link"/>
+    <child link="hand_ring_virtual_1_link"/>
+    <origin rpy="1.57079632679 0 0" xyz="0.009 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_ring_virtual_1_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <mass value="0.01"/>
+      <!--TODO: can we make it zero and still have a stable dynamic simulation?-->
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_ring_flex_1_joint" type="fixed">
+    <parent link="hand_ring_virtual_1_link"/>
+    <child link="hand_ring_flex_1_link"/>
+    <origin rpy="0 0 0" xyz="0.013 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_ring_flex_1_link">
+    <inertial>tiago/meshes
+      <origin rpy="0 0 0" xyz="0.0047 0.0031 0.0"/>
+      <mass value="0.009"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_ring_virtual_2_joint" type="fixed">
+    <parent link="hand_ring_flex_1_link"/>
+    <child link="hand_ring_virtual_2_link"/>
+    <origin rpy="0 0 0" xyz="0.009 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_ring_virtual_2_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <mass value="0.01"/>
+      <!--TODO: can we make it zero and still have a stable dynamic simulation?-->
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_ring_flex_2_joint" type="fixed">
+    <parent link="hand_ring_virtual_2_link"/>
+    <child link="hand_ring_flex_2_link"/>
+    <origin rpy="0 0 0" xyz="0.013 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_ring_flex_2_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0047 0.0031 0.0"/>
+      <mass value="0.009"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_ring_virtual_3_joint" type="fixed">
+    <parent link="hand_ring_flex_2_link"/>
+    <child link="hand_ring_virtual_3_link"/>
+    <origin rpy="0 0 0" xyz="0.009 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_ring_virtual_3_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <mass value="0.01"/>
+      <!--TODO: can we make it zero and still have a stable dynamic simulation?-->
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_ring_flex_3_joint" type="fixed">
+    <parent link="hand_ring_virtual_3_link"/>
+    <child link="hand_ring_flex_3_link"/>
+    <origin rpy="0 0 0" xyz="0.013 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_ring_flex_3_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0096 0.003 0.0"/>
+      <mass value="0.015"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_tip_collision.stl"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_tip_collision.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_little_abd_joint" type="fixed">
+    <parent link="hand_palm_link"/>
+    <child link="hand_little_abd_link"/>
+    <origin rpy="-1.57079632679 0.523598775598 0" xyz="0.1165 0.0042 -0.032"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="-0.523598775598" upper="0.523598775598" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_little_abd_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0018 0.0 0.0028"/>
+      <mass value="0.018"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_abd_collision.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_abd_collision.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_little_virtual_1_joint" type="fixed">
+    <parent link="hand_little_abd_link"/>
+    <child link="hand_little_virtual_1_link"/>
+    <origin rpy="1.57079632679 0 0" xyz="0.009 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_little_virtual_1_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <mass value="0.01"/>
+      <!--TODO: can we make it zero and still have a stable dynamic simulation?-->
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_little_flex_1_joint" type="fixed">
+    <parent link="hand_little_virtual_1_link"/>
+    <child link="hand_little_flex_1_link"/>
+    <origin rpy="0 0 0" xyz="0.013 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_little_flex_1_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0047 0.0031 0.0"/>
+      <mass value="0.009"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_little_virtual_2_joint" type="fixed">
+    <parent link="hand_little_flex_1_link"/>
+    <child link="hand_little_virtual_2_link"/>
+    <origin rpy="0 0 0" xyz="0.009 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_little_virtual_2_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <mass value="0.01"/>
+      <!--TODO: can we make it zero and still have a stable dynamic simulation?-->
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_little_flex_2_joint" type="fixed">
+    <parent link="hand_little_virtual_2_link"/>
+    <child link="hand_little_flex_2_link"/>
+    <origin rpy="0 0 0" xyz="0.013 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_little_flex_2_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0047 0.0031 0.0"/>
+      <mass value="0.009"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_collision.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_little_virtual_3_joint" type="fixed">
+    <parent link="hand_little_flex_2_link"/>
+    <child link="hand_little_virtual_3_link"/>
+    <origin rpy="0 0 0" xyz="0.009 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_little_virtual_3_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <mass value="0.01"/>
+      <!--TODO: can we make it zero and still have a stable dynamic simulation?-->
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0065 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.013 0.002 0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hand_little_flex_3_joint" type="fixed">
+    <parent link="hand_little_virtual_3_link"/>
+    <child link="hand_little_flex_3_link"/>
+    <origin rpy="0 0 0" xyz="0.013 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.0" lower="0.0" upper="0.785398163397" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.0"/>
+  </joint>
+  <link name="hand_little_flex_3_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0096 0.003 0.0"/>
+      <mass value="0.015"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- To stabilize simulation -->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_tip_collision.stl"/>
+      </geometry>
+      <material name="Hey5DarkGrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/finger_flex_tip_collision.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+</robot>

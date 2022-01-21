@@ -1,0 +1,8 @@
+float32[] config
+int64 index
+---
+bool response
+bool collisionFree
+string msg
+int64 collObj
+uint32[] collObjs

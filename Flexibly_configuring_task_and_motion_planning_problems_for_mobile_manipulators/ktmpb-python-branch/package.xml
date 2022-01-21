@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package>
+  <name>ktmpb</name>
+  <version>1.0.0</version>
+  <description>ktmpb: interface between FF task planner and kautham motion planner</description>
+
+  <maintainer email="jan.rosell@upc.edu">Institute of Industrial and Control Engineering (IOC-UPC)</maintainer>
+
+  <license>GPLv2</license>
+
+  <url type="website">robotics.upc.edu</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>message_generation</build_depend>
+  <build_depend>ff</build_depend>
+  <build_depend>kautham</build_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>message_generation</run_depend>
+  <run_depend>ff</run_depend>
+  <run_depend>kautham_py</run_depend>
+  <run_depend>kautham</run_depend>
+
+  <export>
+  </export>
+</package>

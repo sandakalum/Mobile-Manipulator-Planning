@@ -1,0 +1,11 @@
+#Inventor V2.1 ascii
+
+Separator {
+    Material {
+            diffuseColor        0.0 1.0 1.0
+    }
+
+    Sphere {
+     radius 15.0
+    }
+}

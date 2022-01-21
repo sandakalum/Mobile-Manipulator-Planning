@@ -1,0 +1,5 @@
+int32 index
+float32[] setPos
+---
+bool response
+float32[] getPos

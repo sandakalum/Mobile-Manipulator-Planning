@@ -1,0 +1,5 @@
+string obstacle
+float32 scale
+float32[] home
+---
+int64 response

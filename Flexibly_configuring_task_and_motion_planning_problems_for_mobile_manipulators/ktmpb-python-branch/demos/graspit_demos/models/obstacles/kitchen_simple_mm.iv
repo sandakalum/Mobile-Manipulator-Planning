@@ -1,0 +1,13 @@
+#Inventor V2.1 ascii
+
+DEF root Separator {
+
+    #convert kitchen units from inches to mm
+    Scale {
+          scaleFactor 25.4 25.4 25.4
+    }
+        
+    File {
+        name "kitchen_simple.iv"
+    }
+}

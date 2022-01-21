@@ -1,0 +1,5 @@
+string controls
+float32[] init
+float32[] goal
+---
+bool response

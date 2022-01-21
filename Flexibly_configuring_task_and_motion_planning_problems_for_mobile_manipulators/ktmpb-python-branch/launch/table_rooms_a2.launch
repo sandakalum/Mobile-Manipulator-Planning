@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+     <!--arg name="tampconfigfile" default="/demos/OMPL_geo_demos/Table_Rooms_R2/tampconfig_b.xml" /-->
+     <arg name="tampconfigfile" default="/demos/OMPL_geo_demos/Table_Rooms_R2/tampconfig_a2.xml" />
+
+     <node name="kautham_node" pkg="kautham" type="kautham-rosnode" launch-prefix="xterm -e" />
+     <!--node name="kautham_node" pkg="kautham" type="kautham-rosnode" output="screen"  /-->
+     <node name="ff_node_service" pkg="ff" type="ff_node_service" respawn="true" />
+     <node name="ktmpb_python_node" pkg="ktmpb" type="ktmpb-python-interface.py"  args=" $(arg tampconfigfile)" output="screen" required="true"/>
+</launch>

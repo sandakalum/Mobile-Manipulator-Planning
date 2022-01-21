@@ -1,0 +1,23 @@
+# This service takes the path of world file and the output directory (to save the results) and return vector of grasping poses (pose of gripper in object frame).
+
+string world_file_path
+string output_path
+	#Number of iterations for the planning algorithm
+int32 maxPlanningSteps
+	#Number of times to repeat the planning process
+int32 repeatPlanning
+	#Maximum number of planning results to keep (of each planning repeat)
+int32 keepMaxPlanningResults
+    	#Finalize each planning result with an "auto-grasp" to ensure there really are
+    	#contacts between fingers and objects (sometimes, the grasp result is just very
+    	#close to the object, but not really touching it).
+	#Name of the object that we want to grasp
+#string objectName
+	#Type of action that robot wants to perform after graspig
+#string actionType
+bool finishWithAutograsp
+	#Save the results in .iv and world formates
+bool saveVisualResults
+---
+geometry_msgs/Transform[] grasping_poses
+

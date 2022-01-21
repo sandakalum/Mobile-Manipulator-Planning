@@ -1,0 +1,449 @@
+<?xml version="1.0" ?>
+<robot name="AllegroHandL">
+  <link name="Palm">
+    <visual>
+      <geometry>
+	<mesh filename="AllegroHand/left/base_link_left.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <collision>
+      <material name="black"/>
+        <origin xyz="-0.009300 0.00825 -0.0475" />
+        <geometry>
+          <box size="0.0408 0.0965 0.095" />
+        </geometry>
+    </collision>
+    <collision>
+      <material name="black"/>
+        <origin xyz="-0.009300 0 -0.02375" />
+        <geometry>
+          <box size="0.0408 0.113 0.0475" />
+        </geometry>
+    </collision>
+  </link>
+  <link name="Ring-base">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/link_0_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin xyz="0 0 0.0164"/>
+    </visual>
+    <collision>
+      <material name="black"/>
+      <geometry>
+        <box size="0.0196 0.0275 0.0164"/>
+      </geometry>
+      <origin xyz="0 0 0.0082"/>
+    </collision>
+  </link>
+  <joint name="joint_8.0" type="revolute">
+      <axis xyz="0 0 1"/>
+      <limit effort="1" lower="-0.47" upper="0.47" velocity="1"/>
+      <parent link="Palm"/>
+      <child link="Ring-base"/>
+      <origin rpy="-0.08726646255 0 0" xyz="0 0.0435 -0.001542"/>
+  </joint>
+  <link name="Ring-proximal">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/link_1_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963 -1.5707963 0"/>
+    </visual>
+    <collision>
+      <material name="black"/>
+      <geometry>
+        <box size="0.0196 0.0275 0.054"/>
+      </geometry>
+      <origin xyz="0 0 0.027"/>
+    </collision>
+  </link>
+  <joint name="joint_9.0" type="revolute">
+      <limit effort="1" lower="-0.196" upper="1.61" velocity="1"/>
+      <axis xyz="0 1 0"/>
+      <parent link="Ring-base"/>
+      <child link="Ring-proximal"/>
+      <origin xyz="0 0 0.0164"/>
+  </joint>
+  <link name="Ring-distal">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/link_2_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="-1.5707963 -1.5707963 0"/>
+    </visual>
+    <collision>
+      <material name="black"/>
+      <geometry>
+        <box size="0.0196 0.0275 0.0384"/>
+      </geometry>
+      <origin xyz="0 0 0.0192"/>
+    </collision>
+  </link>
+  <joint name="joint_10.0" type="revolute">
+      <axis xyz="0 1 0"/>
+      <limit effort="1" lower="-0.174" upper="1.709" velocity="1"/>
+      <parent link="Ring-proximal"/>
+      <child link="Ring-distal"/>
+      <origin xyz="0 0 0.054"/>
+  </joint>
+  <link name="Ring-last">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/link_3_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="-1.5707963 -1.5707963 0"/>
+    </visual>
+    <collision>
+     <geometry>
+        <mesh filename="AllegroHand/left/link_3_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="-1.5707963 -1.5707963 0"/>
+    </collision>
+  </link>
+  <joint name="joint_11.0" type="revolute">
+      <axis xyz="0 1 0"/>
+      <limit effort="1" lower="-0.227" upper="1.618" velocity="1"/>
+      <parent link="Ring-distal"/>
+      <child link="Ring-last"/>
+      <origin xyz="0 0 0.0384"/>
+  </joint>
+  <link name="link_11_0_tip">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/opsen5.wrl" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="3.141592654 0 1.5707963259" xyz="-0.00181 0.0040 0.0153"/>
+    </visual>
+    <collision>
+       <geometry>
+        <mesh filename="AllegroHand/left/opsen5.wrl" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="3.141592654 0 1.5707963259" xyz="-0.00181 0.0040 0.0153"/>
+    </collision>
+  </link>
+  <joint name="joint_11_0_tip" type="fixed">
+      <parent link="Ring-last"/>
+      <child link="link_11_0_tip"/>
+      <origin xyz="0 0 0.0267"/>
+  </joint>
+  <link name="Medium-base">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/link_0_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin xyz="0 0 0.0164"/>
+    </visual>
+    <collision>
+      <material name="black"/>
+      <geometry>
+        <box size="0.0196 0.0275 0.0164"/>
+      </geometry>
+      <origin xyz="0 0 0.0082"/>
+    </collision>
+  </link>
+  <joint name="joint_4.0" type="revolute">
+      <axis xyz="0 0 1"/>
+      <limit effort="1" lower="-0.47" upper="0.47" velocity="1"/>
+      <parent link="Palm"/>
+      <child link="Medium-base"/>
+      <origin xyz="0 0 0.0007"/>
+  </joint>
+  <link name="Medium-proximal">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/link_1_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963 -1.5707963 0"/>
+    </visual>
+    <collision>
+      <material name="black"/>
+      <geometry>
+        <box size="0.0196 0.0275 0.054"/>
+      </geometry>
+      <origin xyz="0 0 0.027"/>
+    </collision>
+  </link>
+  <joint name="joint_5.0" type="revolute">
+      <limit effort="1" lower="-0.196" upper="1.61" velocity="1"/>
+      <axis xyz="0 1 0"/>
+      <parent link="Medium-base"/>
+      <child link="Medium-proximal"/>
+      <origin xyz="0 0 0.0164"/>
+  </joint>
+  <link name="Medium-distal">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/link_2_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="-1.5707963 -1.5707963 0"/>
+    </visual>
+    <collision>
+      <material name="black"/>
+      <geometry>
+        <box size="0.0196 0.0275 0.0384"/>
+      </geometry>
+      <origin xyz="0 0 0.0192"/>
+    </collision>
+  </link>
+  <joint name="joint_6.0" type="revolute">
+      <axis xyz="0 1 0"/>
+      <limit effort="1" lower="-0.174" upper="1.709" velocity="1"/>
+      <parent link="Medium-proximal"/>
+      <child link="Medium-distal"/>
+      <origin xyz="0 0 0.054"/>
+  </joint>
+  <link name="Medium-last">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/link_3_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="-1.5707963 -1.5707963 0"/>
+    </visual>
+    <collision>
+       <geometry>
+        <mesh filename="AllegroHand/left/link_3_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="-1.5707963 -1.5707963 0"/>
+    </collision>
+  </link>
+  <joint name="joint_7.0" type="revolute">
+      <axis xyz="0 1 0"/>
+      <limit effort="1" lower="-0.227" upper="1.618" velocity="1"/>
+      <parent link="Medium-distal"/>
+      <child link="Medium-last"/>
+      <origin xyz="0 0 0.0384"/>
+  </joint>
+  <link name="link_7_0_tip">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/opsen5.wrl" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="3.141592654 0 1.5707963259" xyz="-0.00181 0.0040 0.0153"/>
+    </visual>
+    <collision>
+     <geometry>
+        <mesh filename="AllegroHand/left/opsen5.wrl" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="3.141592654 0 1.5707963259" xyz="-0.00181 0.0040 0.0153"/>
+    </collision>
+  </link>
+  <joint name="joint_7_0_tip" type="fixed">
+      <parent link="Medium-last"/>
+      <child link="link_7_0_tip"/>
+      <origin xyz="0 0 0.0267"/>
+  </joint>
+  <link name="Index-base">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/link_0_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin xyz="0 0 0.0164"/>
+    </visual>
+    <collision>
+      <material name="black"/>
+      <geometry>
+        <box size="0.0196 0.0275 0.0164"/>
+      </geometry>
+      <origin xyz="0 0 0.0082"/>
+    </collision>
+  </link>
+  <joint name="joint_0.0" type="revolute">
+      <axis xyz="0 0 1"/>
+      <limit effort="1" lower="-0.47" upper="0.47" velocity="1"/>
+      <parent link="Palm"/>
+      <child link="Index-base"/>
+      <origin rpy="0.08726646255 0 0" xyz="0 -0.0435 -0.001542"/>
+  </joint>
+  <link name="Index-proximal">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/link_1_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963 -1.5707963 0"/>
+    </visual>
+    <collision>
+      <material name="black"/>
+      <geometry>
+        <box size="0.0196 0.0275 0.054"/>
+      </geometry>
+      <origin xyz="0 0 0.027"/>
+    </collision>
+  </link>
+  <joint name="joint_1.0" type="revolute">
+      <limit effort="1" lower="-0.196" upper="1.61" velocity="1"/>
+      <axis xyz="0 1 0"/>
+      <parent link="Index-base"/>
+      <child link="Index-proximal"/>
+      <origin xyz="0 0 0.0164"/>
+  </joint>
+  <link name="Index-distal">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/link_2_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="-1.5707963 -1.5707963 0"/>
+    </visual>
+    <collision>
+      <material name="black"/>
+      <geometry>
+        <box size="0.0196 0.0275 0.0384"/>
+      </geometry>
+      <origin xyz="0 0 0.0192"/>
+    </collision>
+  </link>
+  <joint name="joint_2.0" type="revolute">
+      <axis xyz="0 1 0"/>
+      <limit effort="1" lower="-0.174" upper="1.709" velocity="1"/>
+      <parent link="Index-proximal"/>
+      <child link="Index-distal"/>
+      <origin xyz="0 0 0.054"/>
+  </joint>
+  <link name="Index-last">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/link_3_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="-1.5707963 -1.5707963 0"/>
+    </visual>
+    <collision>
+     <geometry>
+        <mesh filename="AllegroHand/left/link_3_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="-1.5707963 -1.5707963 0"/>
+    </collision>
+  </link>
+  <joint name="joint_3.0" type="revolute">
+      <axis xyz="0 1 0"/>
+      <limit effort="1" lower="-0.227" upper="1.618" velocity="1"/>
+      <parent link="Index-distal"/>
+      <child link="Index-last"/>
+      <origin xyz="0 0 0.0384"/>
+  </joint>
+  <link name="link_3_0_tip">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/opsen5.wrl" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="3.141592654 0 1.5707963259" xyz="-0.00181 0.0040 0.0153"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="AllegroHand/left/opsen5.wrl" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="3.141592654 0 1.5707963259" xyz="-0.00181 0.0040 0.0153"/>
+    </collision>
+  </link>
+  <joint name="joint_3_0_tip" type="fixed">
+      <parent link="Index-last"/>
+      <child link="link_3_0_tip"/>
+      <origin xyz="0 0 0.0267"/>
+  </joint>
+  <link name="Thumb-base">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/link_12_0_left.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="-1.570796327 0 -1.570796327" xyz="-0.02775 0 0"/>
+    </visual>
+    <collision>
+      <material name="black"/>
+      <geometry>
+        <box size="0.0358 0.034 0.0455"/>
+      </geometry>
+      <origin xyz="-0.0179 0.009 0.0145"/>
+    </collision>
+  </link>
+  <joint name="joint_12.0" type="revolute">
+      <axis xyz="1 0 0"/>
+      <limit effort="1" lower="0.263" upper="1.396" velocity="1"/>
+      <parent link="Palm"/>
+      <child link="Thumb-base"/>
+    <origin rpy="0 -1.65806278845 1.5707963259" xyz="-0.0182 -0.019333 -0.045987"/>
+  </joint>
+  <link name="Thumb-proximal">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/link_13_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin xyz="0 0 0.016000001" rpy="3.141592654 0 3.141592654"/>
+    </visual>
+    <collision>
+      <material name="black"/>
+      <geometry>
+        <box size="0.0196 0.0275 0.0177"/>
+      </geometry>
+      <origin xyz="0 0 0.00885"/>
+    </collision>
+  </link>
+  <joint name="joint_13.0" type="revolute">
+      <axis xyz="0 0 -1"/>
+      <limit effort="1" lower="-0.105" upper="1.163" velocity="1"/>
+      <parent link="Thumb-base"/>
+      <child link="Thumb-proximal"/>
+      <origin xyz="-0.027 0.005 0.0399"/>
+  </joint>
+  <link name="Thumb-distal">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/link_14_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="-1.5707963259 -1.5707963259 0"/>
+    </visual>
+    <collision>
+      <material name="black"/>
+      <geometry>
+        <box size="0.0196 0.0275 0.0514"/>
+      </geometry>
+      <origin xyz="0 0 0.0257"/>
+    </collision>
+  </link>
+  <joint name="joint_14.0" type="revolute">
+      <axis xyz="0 1 0"/>
+      <limit effort="1" lower="-0.189" upper="1.644" velocity="1"/>
+      <parent link="Thumb-proximal"/>
+      <child link="Thumb-distal"/>
+      <origin xyz="0 0 0.0177"/>
+  </joint>
+  <link name="Thumb-last">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/link_15_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963259 -1.5707963259 0"/>
+    </visual>
+    <collision>
+       <geometry>
+        <mesh filename="AllegroHand/left/link_15_0.wrl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963259 -1.5707963259 0"/>
+    </collision>
+  </link>
+  <joint name="joint_15.0" type="revolute">
+      <axis xyz="0 1 0"/>
+      <limit effort="1" lower="-0.162" upper="1.719" velocity="1"/>
+      <parent link="Thumb-distal"/>
+      <child link="Thumb-last"/>
+      <origin xyz="0 0 0.0514"/>
+  </joint>
+  <link name="link_15_0_tip">
+    <visual>
+      <geometry>
+        <mesh filename="AllegroHand/left/opsen5.wrl" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="3.141592654 0 1.5707963259" xyz="-0.00181 0.0040 0.0153"/>
+    </visual>
+    <collision>
+     <geometry>
+        <mesh filename="AllegroHand/left/opsen5.wrl" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="3.141592654 0 1.5707963259" xyz="-0.00181 0.0040 0.0153"/>
+    </collision>
+  </link>
+  <joint name="joint_15_0_tip" type="fixed">
+      <parent link="Thumb-last"/>
+      <child link="link_15_0_tip"/>
+      <origin xyz="0 0 0.0423"/>
+  </joint>
+</robot>
+

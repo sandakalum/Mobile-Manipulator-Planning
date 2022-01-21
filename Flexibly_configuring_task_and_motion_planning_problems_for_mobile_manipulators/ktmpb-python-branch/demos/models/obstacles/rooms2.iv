@@ -1,0 +1,102 @@
+#Inventor V2.1 ascii
+
+Separator {
+    Material {
+        diffuseColor        0.8 0.2 0.2
+    }
+
+    Cube {
+     width 300.0
+     height 300.0
+     depth 2.0
+    }
+
+    Separator {
+        Translation {
+            translation 0.0 150 50.0
+        }
+        Material {
+        diffuseColor        0.8 0.2 0.2
+		    transparency 0.5
+        }
+        Cube {
+            width 300.0
+            height 2.0
+            depth 100.0
+        }
+    }
+
+    Separator {
+        Translation {
+            translation 0.0 -150.0 50.0
+        }
+        Material {
+        diffuseColor        0.8 0.2 0.2
+		    transparency 0.5
+        }
+        Cube {
+            width 300.0
+            height 2.0
+            depth 100.0
+        }
+     }
+     Separator {
+         Translation {
+            translation -150.0 0 50.0
+         }
+         Material {
+        diffuseColor        0.8 0.2 0.2
+		    transparency 0.5
+         }
+         Cube {
+            width 2.0
+            height 300.0
+            depth 100.0
+         }
+     }
+
+     Separator {
+         Translation {
+            translation 150.0 0.0 50.0
+         }
+         Material {
+        diffuseColor        0.8 0.2 0.2
+		    transparency 0.5
+         }
+         Cube {
+            width 2.0
+            height 300.0
+            depth 100.0
+         }
+      }
+      Separator {
+          Translation {
+            translation -112.5 0 50.0
+          }
+          Material {
+            diffuseColor        0.8 0.1 0.1
+		    transparency 0.5
+          }
+          Cube {
+            width 75.0
+            height 2.0
+            depth 100.0
+          }
+      }
+
+      Separator {
+          Translation {
+            translation 65.0 0.0 50.0
+          }
+          Material {
+            diffuseColor        0.8 0.1 0.1
+		    transparency 0.5
+          }
+          Cube {
+            width 170.0
+            height 2.0
+            depth 100.0
+          }
+       }
+
+ }

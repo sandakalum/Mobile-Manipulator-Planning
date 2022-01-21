@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<world>
+
+
+	<obstacle>
+	        <filename>models/obstacles/simpleFloor.xml</filename>
+	        <transform>
+	            <fullTransform>(+1 0 0 0)[0 0 0]</fullTransform>
+	        </transform>
+	</obstacle>
+	<obstacle>
+        	<filename>models/obstacles/table.xml</filename>
+        	<transform>
+        	    <fullTransform>(+1 0 0 0)[0 0 0]</fullTransform>
+        	</transform>
+    	</obstacle>
+	<graspableBody>
+		<filename>models/objects/objectSet/bottle.xml</filename>
+		<transform>
+            <fullTransform>(+1 1 0 0)[+0 +525.048 -440.928]</fullTransform>
+		</transform>
+	</graspableBody>
+
+
+	<robot>
+		<filename>models/robots/fetch_gripper/fetch_gripper.xml</filename>
+		<dofValues>0.0125 0.0125 </dofValues>
+		<transform>
+			<fullTransform>(+1 0 0 0)[0 0 0]</fullTransform>
+		</transform>
+	</robot>
+	<camera>
+		<position>+0 +0 +500</position>
+		<orientation>0 0 0 1</orientation>
+		<focalDistance>+500</focalDistance>
+	</camera>
+</world>
+

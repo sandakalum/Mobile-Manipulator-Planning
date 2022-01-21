@@ -1,0 +1,5 @@
+
+demos/OMPL_geo_demos/Table_Rooms_R2/ff-domains/manipulation_problem_B.ff
+demos/OMPL_geo_demos/Tiago-kitchen/ff-domains/manipulation_problem_redcan.ff
+demos/OMPL_geo_demos/Tiago-kitchen/taskfile_tampconfig.xml
+demos/OMPL_geo_demos/Tiago-kitchen/taskfile_tampconfig_pose.xml

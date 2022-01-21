@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+
+<robot name="tiago" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Base -->
+  <link name="base_link">
+    <inertial>
+      <mass value="28.26649"/>
+      <inertia ixx="0.46
+        5" ixy="0.002" ixz="-0.001" iyy="0.483" iyz="0" izz="0.55093970"/>
+    </inertial>
+    <visual><!-- right wheel -->
+      <origin rpy="-1.57 0 0" xyz="0 -0.2022 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/wheels/wheel.stl"/>
+      </geometry>
+      <material name="DarkGrey"/>
+    </visual>
+    <visual> <!-- left wheel -->
+      <origin rpy="1.57 0 0" xyz="0 0.2022 0"/>
+      <geometry>
+        <mesh filename="tiago/meshes/wheels/wheel.stl"/>
+      </geometry>
+      <material name="DarkGrey"/>
+    </visual>
+    <visual> <!-- body -->
+      <geometry>
+        <mesh filename="tiago/meshes/base/base.stl"/>
+      </geometry>
+      <material name="White"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="tiago/meshes/base/base_collision.dae"/>
+      </geometry>
+      <material name="White"/>
+    </collision>
+  </link>
+
+ 
+</robot>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<world>
+
+	<obstacle>
+	        <filename>models/obstacles/simpleFloor.xml</filename>
+	        <transform>
+	            <fullTransform>(+1 0 0 0)[0 0 0]</fullTransform>
+	        </transform>
+	</obstacle>
+	<obstacle>
+        	<filename>models/obstacles/table.xml</filename>
+        	<transform>
+        	    <fullTransform>(+1 0 0 0)[0 0 0]</fullTransform>
+        	</transform>
+    	</obstacle>
+	<graspableBody>
+		<filename>models/objects/BottomWing.xml</filename>
+		<transform>
+            <fullTransform>(+0.996 -0.0781588 +0.0111872 +0.0418439)[+0 +525.048 -500.928]</fullTransform>
+		</transform>
+	</graspableBody>
+
+	<robot>
+		<filename>models/robots/yumi/yumi.xml</filename>
+		<dofValues>0.0125 0.0125 </dofValues>
+		<transform>
+			<fullTransform>(0 0 0 1)[0 0 0]</fullTransform>
+		</transform>
+	</robot>
+	<camera>
+		<position>+0 +0 +500</position>
+		<orientation>0 0 0 1</orientation>
+		<focalDistance>+500</focalDistance>
+	</camera>
+</world>
+

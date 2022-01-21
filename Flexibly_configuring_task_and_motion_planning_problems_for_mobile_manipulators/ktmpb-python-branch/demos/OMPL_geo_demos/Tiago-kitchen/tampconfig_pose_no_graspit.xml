@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<Config>
+    <Problemfiles>
+        <pddldomain name="ff-domains/manipulationdomain.pddl" />
+        <pddlproblem name="ff-domains/manipulation_problem_redcan" />
+        <kautham name="tiago_mobile_counterA_counterB.xml" />
+        <directory name="/demos/OMPL_geo_demos/Tiago-kitchen/"/>
+        <graspit name =""/> <!--leave it empty if no graspit is to be used -->
+    </Problemfiles>
+    <States>
+        <!-- You can set a different instance of the problem by modifying the intial object poses-->
+        <!-- The Graspcontrols will be to be changed accordingly the new intial object poses-->
+        <!-- (be careful: if the objects change their initial room then also the pddl problem file has to be set accordingly) -->
+        <Initial>
+            <Object name="REDCAN" kthindex="0">  1.1 0 0.91 1 0 0 0</Object> <!-- orientation in axis-angle (vx,vy,vz,theta) like in the kautham problem files-->
+            <Robot name="TIAGO" controlfile="controls/tiago_simple_only_mobile.cntr"> 0.603 0.602 0.740 </Robot>
+        </Initial>
+    </States>
+    <Actions>
+        <Pick robot="TIAGO" object="REDCAN" region="COUNTERA">
+            <Rob> 0 </Rob> <!-- Index of the robot according to the order in the kautham problem file-->
+            <Obj> 0 </Obj> <!-- Index of the object according to the order in the kautham problem file-->
+            <Link> 14 </Link> <!-- Index of the robot link -->
+            <Cont>controls/tiago_simple_only_arm_gripper_counterA.cntr</Cont>
+            <Regioncontrols> 0.459 0.023 0.628 0.688 0.820 0.083 0.974 0.553 1.000</Regioncontrols>
+            <!--Graspcontrols grasp="lateralgrasp"> 0.194 0.511 0.599 0.369 0.758 0.594 0.500 0.417 1.000</Graspcontrols>
+            <Graspcontrols grasp="topgrasp"> 0.846 0.944 0.861 0.786 0.594 0.226 0.850 0.429 1.000</Graspcontrols-->
+            <Pose>1.1 0 0.91 0 0 0 1</Pose> <!--Orientation in quaternions qx qy qz qw -->
+            <Grasptransf grasp="lateralgrasp">-0.185 -0.01 0 0.707 0.707 0 0</Grasptransf><!--Orientation in quaternions qx qy qz qw -->
+            <Grasptransf grasp="topgrasp">-0.185 -0.01 0 0.707 0.707 0 0</Grasptransf><!--Orientation in quaternions qx qy qz qw -->
+        </Pick>
+        <Place robot="TIAGO" object="REDCAN" region="COUNTERB">
+            <Rob> 0 </Rob>
+            <Obj> 0 </Obj>
+            <Cont>controls/tiago_simple_only_arm_gripper_counterB.cntr</Cont>
+            <Regioncontrols> 0.459 0.023 0.628 0.688 0.820 0.083 0.974 0.553 1.000</Regioncontrols>
+            <!--Graspcontrols grasp= "lateralgrasp">0.210 0.045 0.599 0.369 0.906 0.594 0.500 0.417 1.000</Graspcontrols-->
+            <Poseregion>-0.95 -0.9 0.3 0.35  0.907 0.004158435855060816 0.014741266146302223 -0.9167522192001343 0.3991626501083374</Poseregion>
+            <Pose> -0.910 0.314 0.9071908593177795 0.004158435855060816 0.014741266146302223 -0.9167522192001343 0.3991626501083374</Pose>
+        </Place>
+        <Move robot="TIAGO" region_from="COUNTERA" region_to="COUNTERB">
+            <Rob> 0 </Rob>
+            <Cont>controls/tiago_simple_only_mobile.cntr</Cont>
+            <InitControls> 0.603 0.602 0.740</InitControls>
+            <GoalControls> 0.475 0.541 0.508</GoalControls>
+        </Move>
+    </Actions>
+</Config>

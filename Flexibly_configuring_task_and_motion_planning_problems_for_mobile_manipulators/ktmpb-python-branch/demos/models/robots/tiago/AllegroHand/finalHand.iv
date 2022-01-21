@@ -1,0 +1,919 @@
+#Inventor V2.1 ascii
+
+
+Separator {
+
+  Separator {
+
+    Separator {
+
+      Translation {
+        translation 0 0 0
+
+      }
+      Rotation {
+        rotation 0 0 1  0
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation -0.0093 0.00825 -0.047499999
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.040800001
+              height 0.096500002
+              depth 0.094999999
+
+            }
+          }
+          Separator {
+
+            Translation {
+              translation -0.0093 0 -0.02375
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.040800001
+              height 0.113
+              depth 0.047499999
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0 0.043499999 -0.001542
+
+      }
+      Rotation {
+        rotation 0.33936602 0.041030709 0.93975985  6.0272827
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0 0 0.0082
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.0196
+              height 0.0275
+              depth 0.0164
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0 0.044929348 0.014795594
+
+      }
+      Rotation {
+        rotation -0.047535934 -0.96993226 0.23868762  5.1804271
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0 0 0.027000001
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.0196
+              height 0.0275
+              depth 0.054000001
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0.046407253 0.035776801 0.040845525
+
+      }
+      Rotation {
+        rotation -0.088182695 -0.98745626 0.13097316  4.4034553
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0 0 0.019200001
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.0196
+              height 0.0275
+              depth 0.038400002
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0.081952117 0.026074648 0.030029263
+
+      }
+      Rotation {
+        rotation -0.10736888 -0.9911263 0.07836213  3.7151489
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0 0 0.01335
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.0196
+              height 0.0275
+              depth 0.026699999
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0.095898241 0.020703521 0.007903561
+
+      }
+      Rotation {
+        rotation -0.10736888 -0.9911263 0.07836213  3.7151489
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0.0043000001 0 0.0078999996
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            DEF _+0 Material {
+              diffuseColor 1 1 1
+              transparency 0
+
+            }
+            Cube {
+              width 0.018999999
+              height 0.023
+              depth 0.025
+
+            }
+          }
+          Separator {
+
+            Translation {
+              translation 0.0043000001 0 0.020400001
+
+            }
+            Rotation {
+              rotation -0 1 -0  4.712389
+
+            }
+            USE _+0
+            Rotation {
+              rotation 1 0 0  1.5707964
+
+            }
+            Cylinder {
+              radius 0.0115
+              height 0.018999999
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0 0 0.00069999998
+
+      }
+      Rotation {
+        rotation 0 0 -1.0000011  0.22089964
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0 0 0.0082
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.0196
+              height 0.0275
+              depth 0.0164
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0 0 0.017100003
+
+      }
+      Rotation {
+        rotation 0.10843289 0.97774249 -0.17961617  1.1062814
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0 0 0.027000001
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.0196
+              height 0.0275
+              depth 0.054000001
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0.046622999 -0.01046987 0.042253099
+
+      }
+      Rotation {
+        rotation 0.10986877 0.99068987 -0.080389455  1.8871415
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0 0 0.019200001
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.0196
+              height 0.0275
+              depth 0.038400002
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0.082333103 -0.018489093 0.030632403
+
+      }
+      Rotation {
+        rotation 0.11016855 0.99339294 -0.032148354  2.5772943
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0 0 0.01335
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.0196
+              height 0.0275
+              depth 0.026699999
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0.096344061 -0.021635456 0.0081227701
+
+      }
+      Rotation {
+        rotation 0.11016855 0.99339294 -0.032148354  2.5772943
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0.0043000001 0 0.0078999996
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            USE _+0
+            Cube {
+              width 0.018999999
+              height 0.023
+              depth 0.025
+
+            }
+          }
+          Separator {
+
+            Translation {
+              translation 0.0043000001 0 0.020400001
+
+            }
+            Rotation {
+              rotation -0 1 -0  4.712389
+
+            }
+            USE _+0
+            Rotation {
+              rotation 1 0 0  1.5707964
+
+            }
+            Cylinder {
+              radius 0.0115
+              height 0.018999999
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0 -0.043499999 -0.001542
+
+      }
+      Rotation {
+        rotation 0.55751991 0.036211547 -0.82938075  0.15630656
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0 0 0.0082
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.0196
+              height 0.0275
+              depth 0.0164
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation -7.2759576e-012 -0.044929352 0.014795594
+
+      }
+      Rotation {
+        rotation 0.1351065 0.98883152 -0.062919289  1.1019253
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0 0 0.027000001
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.0196
+              height 0.0275
+              depth 0.054000001
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0.047382642 -0.053279258 0.039314259
+
+      }
+      Rotation {
+        rotation 0.096246965 0.99535018 -0.0038369652  1.8883414
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0 0 0.019200001
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.0196
+              height 0.0275
+              depth 0.038400002
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0.083674595 -0.056982812 0.027325159
+
+      }
+      Rotation {
+        rotation 0.077371344 0.99669868 0.024605582  2.5811708
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0 0 0.01335
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.0196
+              height 0.0275
+              depth 0.026699999
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0.097913846 -0.056871448 0.0047392864
+
+      }
+      Rotation {
+        rotation 0.077371344 0.99669868 0.024605582  2.5811708
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0.0043000001 0 0.0078999996
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            USE _+0
+            Cube {
+              width 0.018999999
+              height 0.023
+              depth 0.025
+
+            }
+          }
+          Separator {
+
+            Translation {
+              translation 0.0043000001 0 0.020400001
+
+            }
+            Rotation {
+              rotation -0 1 -0  4.712389
+
+            }
+            USE _+0
+            Rotation {
+              rotation 1 0 0  1.5707964
+
+            }
+            Cylinder {
+              radius 0.0115
+              height 0.018999999
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation -0.018200001 -0.019332999 -0.045986999
+
+      }
+      Rotation {
+        rotation -0.70676798 0.092432514 -0.70138091  3.2034757
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation -0.017899999 0.0089999996 0.0145
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.035799999
+              height 0.034000002
+              depth 0.045499999
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0.020222465 -0.028797373 -0.073918164
+
+      }
+      Rotation {
+        rotation -0.71563625 -0.25304392 -0.65102488  3.8461225
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0 0 0.0088499999
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.0196
+              height 0.0275
+              depth 0.0177
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0.03765275 -0.031863824 -0.074186444
+
+      }
+      Rotation {
+        rotation -0.73839539 -0.2418019 -0.62952679  3.8620474
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0 0 0.025699999
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.0196
+              height 0.0275
+              depth 0.051399998
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0.087700546 -0.043198727 -0.077135623
+
+      }
+      Rotation {
+        rotation -0.30192509 -0.3807044 -0.87401682  3.5216985
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0 0 0.02115
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            Cube {
+              width 0.0196
+              height 0.0275
+              depth 0.042300001
+
+            }
+          }
+        }
+      }
+    }
+    Separator {
+
+      Translation {
+        translation 0.11520353 -0.020791786 -0.054096423
+
+      }
+      Rotation {
+        rotation -0.30192509 -0.3807044 -0.87401682  3.5216985
+
+      }
+      Separator {
+
+        Scale {
+          scaleFactor 1 1 1
+
+        }
+        Separator {
+
+          Separator {
+
+            Translation {
+              translation 0.0043000001 0 0.0078999996
+
+            }
+            Rotation {
+              rotation 0 0 1  0
+
+            }
+            USE _+0
+            Cube {
+              width 0.018999999
+              height 0.023
+              depth 0.025
+
+            }
+          }
+          Separator {
+
+            Translation {
+              translation 0.0043000001 0 0.020400001
+
+            }
+            Rotation {
+              rotation -0 1 -0  4.712389
+
+            }
+            USE _+0
+            Rotation {
+              rotation 1 0 0  1.5707964
+
+            }
+            Cylinder {
+              radius 0.0115
+              height 0.018999999
+
+            }
+          }
+        }
+      }
+    }
+  }
+  Separator {
+
+  }
+}

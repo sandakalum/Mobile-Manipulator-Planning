@@ -1,0 +1,22 @@
+(define (problem manip_redcan)
+
+(:domain manipulation)
+
+(:objects 
+    counterA counterB - location
+    redcan - obstacle
+    Tiago - robot
+)
+
+(:init
+    (at Tiago counterA)
+    (in redcan counterA)
+    (handEmpty)
+)
+
+(:goal
+    (in redcan counterB)
+)
+)
+
+

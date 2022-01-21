@@ -1,0 +1,74 @@
+<?xml version="1" encoding="UTF-8"?>
+<ControlSet>
+
+	<Offset>
+                <DOF name="tiago/X" value="0.5"/>      
+                <DOF name="tiago/Y" value="0.5"/>
+                <DOF name="tiago/Z" value="0.5"/>
+                <DOF name="tiago/X1" value="0"/>
+                <DOF name="tiago/X2" value="0.5"/>
+                <DOF name="tiago/X3" value="0.5"/>
+		<DOF name="tiago/torso_lift_link" value="0.500"/>
+		<DOF name="tiago/arm_1_link" value="0.500"/>
+		<DOF name="tiago/arm_2_link" value="0.500"/>
+	  	<DOF name="tiago/arm_3_link" value="0.5" />
+		<DOF name="tiago/arm_4_link" value="0.5" />
+		<DOF name="tiago/arm_5_link" value="0.500"/>
+		<DOF name="tiago/arm_6_link" value="0.500"/>
+		<DOF name="tiago/arm_7_link" value="0.500"/>
+		<DOF name="tiago/gripper_left_finger_link" value="0.500"/>
+		<DOF name="tiago/gripper_right_finger_link" value="0.500"/>
+
+	</Offset>
+
+  <Control name="X" eigValue="1.0">
+     <DOF name="tiago/X" value="1.0"></DOF>
+  </Control>
+
+  <Control name="Y" eigValue="1.0">
+     <DOF name="tiago/Y" value="1.0"></DOF>
+  </Control>
+
+  <Control name="RZ" eigValue="1.0">
+     <DOF name="tiago/X3" value="1.0"></DOF>
+  </Control>
+	
+  <Control name="torso_lift_link" eigValue="1">
+    <DOF name="tiago/torso_lift_link" value="1"/>
+  </Control>
+
+  <Control name="arm_1_link" eigValue="1">
+    <DOF name="tiago/arm_1_link" value="1"/>
+  </Control>
+
+  <Control name="arm_2_link" eigValue="1">
+    <DOF name="tiago/arm_2_link" value="1"/>
+  </Control>
+
+  <Control name="arm_3_link" eigValue="1">
+    <DOF name="tiago/arm_3_link" value="1"/>
+  </Control>
+
+  <Control name="arm_4_link" eigValue="1">
+    <DOF name="tiago/arm_4_link" value="1"/>
+  </Control>
+
+  <Control name="arm_5_link" eigValue="1">
+    <DOF name="tiago/arm_5_link" value="1"/>
+  </Control>
+
+  <Control name="arm_6_link" eigValue="1">
+    <DOF name="tiago/arm_6_link" value="1"/>
+  </Control>
+
+  <Control name="arm_7_link" eigValue="1">
+    <DOF name="tiago/arm_7_link" value="1"/>
+  </Control>
+
+  <Control name="gripper_fingers" eigValue="1">
+    <DOF name="tiago/gripper_left_finger_link" value="1"/>
+    <DOF name="tiago/gripper_right_finger_link" value="1"/>
+  </Control>
+
+	
+</ControlSet>

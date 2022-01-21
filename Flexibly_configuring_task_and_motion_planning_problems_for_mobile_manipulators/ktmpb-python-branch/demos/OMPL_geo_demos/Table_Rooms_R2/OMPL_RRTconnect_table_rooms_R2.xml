@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Problem name="OMPL_RRTConnect_table_rooms">
+	<Robot robot="robots/table.dh" scale="1.0">
+		<Limits name="X" min="-125.0" max="125.0" />
+		<Limits name="Y" min="-115.0" max="115.0" />
+		<Limits name="Z" min="50.0" max="50.0" />
+		<Home X="0.0" Y="0.0" Z="50.0" WX="0.0" WY="0.0" WZ="1.0" TH="0.0" />
+	</Robot>
+	<Obstacle obstacle="obstacles/rooms2.iv" scale="1.0">
+		<Home TH="0.0" WZ="0.0" WY="0.0" WX="1.0" Z="25.0" Y="0.0" X="0.0" />
+	</Obstacle>
+	<Controls robot="controls/table_R2.cntr" />
+	<Planner>
+		<Parameters>
+			<Name>omplRRTConnect</Name>
+			<Parameter name="_Max Planning Time">5.0</Parameter>
+			<Parameter name="_Speed Factor">1</Parameter>
+			<Parameter name="Range">10</Parameter>
+		</Parameters>
+		<Queries>
+			<Query>
+				<Init>0.9 0.1</Init>
+				<Goal>0.6 0.8</Goal>
+			</Query>
+		</Queries>
+	</Planner>
+</Problem>

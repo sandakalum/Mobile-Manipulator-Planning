@@ -1,0 +1,59 @@
+#Inventor V2.1 ascii
+
+Separator {
+    Material {
+            diffuseColor        0.0 1.0 0.0
+    }
+
+   Cube {
+     width 70.0
+     height 50.0
+     depth 2.0
+    }
+
+    Rotation{
+        rotation 1 0 0 1.5707963
+    }
+
+    Translation {
+     translation -30.0  -12.05 -20.0
+    }
+
+    Cylinder {
+     radius 5.0
+     height 20.0
+    } 
+
+    Translation {
+     translation 60.0 0.0 0.0
+    }
+    Material {
+            diffuseColor       1.0 1.0 1.0
+    }
+    Cylinder {
+     radius 5.0
+     height 20.0
+    }
+
+    Translation {
+     translation 0.0 0.0 40.0
+    }
+
+    Cylinder {
+     radius 5.0
+     height 20.0
+    }
+
+    Material {
+            diffuseColor        0.0 1.0 0.0
+    }
+    Translation {
+     translation -60.0 0.0 0.0
+    }
+
+    Cylinder {
+     radius 5.0
+     height 20.0
+    }
+
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Config>        
+    <Problemfiles>
+        <pddldomain name="ff-domains/manipulationdomain.pddl" />
+        <pddlproblem name="ff-domains/manipulation_problem_A" />
+        <kautham name="OMPL_RRTconnect_table_rooms_R2_a.xml" />
+        <directory name="/demos/OMPL_geo_demos/Table_Rooms_R2/"/>
+        <graspit name ="DUMMY NO GRASPIT TO BE USED HERE"/>
+    </Problemfiles>
+    <States>
+        <!-- You can set a different instance of the problem by modifying the intial object poses-->
+        <!-- The Graspcontrols will be to be changed accordingly the new intial object poses-->
+        <!-- (be careful: if the objects change their initial room then also the pddl problem file has to be set accordingly) -->
+        <Initial>
+            <Object name="OBJA" kthindex="1"> 20 70 40 1 0 0 0 </Object> <!-- orientation in axis-angle (vx,vy,vz,theta) like in the kautham problem files-->
+            <Robot name="ROB" controlfile="controls/table_R2.cntr"> 0.9 0.1 </Robot>
+        </Initial>
+    </States>
+    <Actions>
+        <Pick robot="ROB" object="OBJA" region="ROOM2">
+            <Rob> 0 </Rob> <!-- Index of the robot according to the order in the kautham problem file-->
+            <Obj> 1 </Obj> <!-- Index of the object according to the order in the kautham problem file-->
+            <Link> 0 </Link> <!-- Index of the robot link -->
+            <Cont>controls/table_R2.cntr</Cont> <!-- Control set-->
+            <Regioncontrols>0.31 0.67</Regioncontrols> <!--Controls that define the home robot configuration at this 'region'-->
+            <Graspcontrols grasp="1">0.6 0.8</Graspcontrols> <!--Controls that define the grasp configuration'-->
+        </Pick>
+        <Place robot="ROB" object="OBJA" region="ROOM1">
+            <Rob> 0 </Rob>
+            <Obj> 1 </Obj>
+            <Cont>controls/table_R2.cntr</Cont>
+            <Regioncontrols>0.31 0.31</Regioncontrols>
+            <Graspcontrols grasp= "1"> 0.9 0.1</Graspcontrols>
+            <!--Poseregion> 0.1 0.0 0.15 0.3 0 0 0 0 </Poseregion-->
+        </Place>
+        <Move robot="ROB" region_from="ROOM1" region_to="ROOM2">
+            <Rob> 0 </Rob>
+            <Cont> controls/table_R2.cntr </Cont>
+            <InitControls> 0.31 0.31</InitControls>
+            <GoalControls> 0.31 0.67</GoalControls>
+        </Move>
+    </Actions>
+</Config>

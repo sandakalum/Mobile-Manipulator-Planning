@@ -1,0 +1,8 @@
+float32[] pos
+int64 robIndx
+bool armType
+bool maintSameWrist
+float32[] conf
+---
+bool response
+float32[] conf
