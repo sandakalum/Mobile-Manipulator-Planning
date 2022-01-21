@@ -1,0 +1,12 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+#banner > a {
+	display: none !important;
+}
+
+#cen {
+	text-align: center;
+}
