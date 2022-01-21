@@ -15,9 +15,3 @@
 | Service robot system with an informationally structured environment| [DOI](https://doi-org.libproxy1.nus.edu.sg/10.1016/j.robot.2015.07.010) | [Code](https://github.com/irvs/ros_tms) |
 | Real-Time Adaptive Motion Planning (RAMP) of Mobile Manipulators in Dynamic Environments With Unforeseen Changes| [DOI](https://doi.org/10.1109/TRO.2008.2003277) | [Code](https://github.com/sterlingm/ramp) |
 | Mobile Manipulation Tutorial| [DOI](https://robotics.shanghaitech.edu.cn/static/robotics2020/MoManTu_Intro.pdf) | [Code](https://momantu.github.io/) |
-
-
-
-
-
-![](https://img.shields.io/github/stars/pandao/editor.md.svg) ![](https://img.shields.io/github/forks/pandao/editor.md.svg) ![](https://img.shields.io/github/tag/pandao/editor.md.svg) ![](https://img.shields.io/github/release/pandao/editor.md.svg) ![](https://img.shields.io/github/issues/pandao/editor.md.svg) ![](https://img.shields.io/bower/v/editor.md.svg)
