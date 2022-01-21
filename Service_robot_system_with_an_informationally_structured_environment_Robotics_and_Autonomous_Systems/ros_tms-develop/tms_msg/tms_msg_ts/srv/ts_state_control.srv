@@ -1,0 +1,7 @@
+uint64 rostime
+int32 type
+int32 state
+int32 cc_subtasks
+string error_msg
+---
+int32 result

@@ -1,0 +1,9 @@
+<launch>
+
+  <node pkg="tms_rs_greeting_demo" type="tms_rs_motion"  name="tms_rs_motion">
+  </node>
+
+  <node pkg="tms_rs_greeting_demo" type="tms_rs_motion"  name="tms_rs_speech">
+  </node>
+
+</launch>

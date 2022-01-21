@@ -1,0 +1,4 @@
+tms_msg_rc/katana_pos[] pose_array
+---
+uint32 success
+string message

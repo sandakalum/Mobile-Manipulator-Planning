@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+	<!-- Providing the SmartPal5 description file -->
+	<param name="robot_description" command="cat $(find smartpal5_description)/urdf/smartpal5.urdf.xacro" />
+
+	<!-- Starting joint_state_publisher node with GUI -->
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+		<param name="use_gui" value="true" />
+	</node>
+
+	<!-- Starting robot_state_publisher node -->
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+	<!-- Starting rviz node -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find smartpal5_description)/rviz_config/rviz_config.rviz" respawn="true" />
+
+</launch>

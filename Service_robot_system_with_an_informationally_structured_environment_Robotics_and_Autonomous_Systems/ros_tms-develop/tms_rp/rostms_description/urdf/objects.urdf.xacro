@@ -1,0 +1,442 @@
+<?xml version="1.0"?>
+<!-- Objects of ROS-TMS -->
+<robot name="objects" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Import all Gazebo-customization elements, including Gazebo colors -->
+  <xacro:include filename="$(find rostms_description)/urdf/objects_gazebo.urdf.xacro" />
+
+  <!-- meeting_chair -->
+  <xacro:macro name="meeting_chair_link" params="num">
+    <link name="meeting_chair${num}_x_link"/>
+
+    <joint name="meeting_chair${num}_x_joint" type="prismatic">
+      <parent link="world_link"/>
+      <child link="meeting_chair${num}_x_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <limit effort="1000.0" lower="0." upper="15." velocity="0.5"/>
+    </joint>
+
+    <link name="meeting_chair${num}_y_link"/>
+
+    <joint name="meeting_chair${num}_y_joint" type="prismatic">
+      <parent link="meeting_chair${num}_x_link"/>
+      <child link="meeting_chair${num}_y_link"/>
+      <origin xyz="0 0 0" rpy="0 0 1.57079633"/>
+      <limit effort="1000.0" lower="0." upper="8." velocity="0.5"/>
+    </joint>
+
+    <joint name="meeting_chair${num}_yaw_joint" type="continuous">
+      <parent link="meeting_chair${num}_y_link"/>
+      <child link="meeting_chair${num}_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="meeting_chair${num}_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://environmental_model/model/meeting_chair.dae"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.3978" rpy="0 0 0"/>
+      </visual>
+      <collision>
+        <geometry>
+          <cylinder radius="0.35" length="0.8"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.3978" rpy="0 0 0"/>
+      </collision>
+    </link>
+  </xacro:macro>
+
+  <xacro:macro name="objects">
+
+    <!-- chair -->
+    <link name="chair_x_link"/>
+
+    <joint name="chair_x_joint" type="prismatic">
+      <parent link="world_link"/>
+      <child link="chair_x_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <limit effort="1000.0" lower="0." upper="15." velocity="0.5"/>
+    </joint>
+
+    <link name="chair_y_link"/>
+
+    <joint name="chair_y_joint" type="prismatic">
+      <parent link="chair_x_link"/>
+      <child link="chair_y_link"/>
+      <origin xyz="0 0 0" rpy="0 0 1.57079633"/>
+      <limit effort="1000.0" lower="0." upper="8." velocity="0.5"/>
+    </joint>
+
+    <joint name="chair_yaw_joint" type="continuous">
+      <parent link="chair_y_link"/>
+      <child link="chair_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="chair_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://environmental_model/model/chair.dae"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.51" rpy="0.0 0.0 0.0"/>
+      </visual>
+      <collision>
+        <geometry>
+          <cylinder radius="0.35" length="1.1"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.51" rpy="0.0 0.0 0.0"/>
+      </collision>
+    </link>
+
+    <!-- refrigerator -->
+<!--     <link name="refrigerator_x_link"/>
+
+    <joint name="refrigerator_x_joint" type="prismatic">
+      <parent link="world_link"/>
+      <child link="refrigerator_x_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <limit effort="1000.0" lower="0." upper="15." velocity="0.5"/>
+    </joint>
+
+    <link name="refrigerator_y_link"/>
+
+    <joint name="refrigerator_y_joint" type="prismatic">
+      <parent link="refrigerator_x_link"/>
+      <child link="refrigerator_y_link"/>
+      <origin xyz="0 0 0" rpy="0 0 1.57079633"/>
+      <limit effort="1000.0" lower="0." upper="8." velocity="0.5"/>
+    </joint>
+
+    <joint name="refrigerator_yaw_joint" type="continuous">
+      <parent link="refrigerator_y_link"/>
+      <child link="refrigerator_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="refrigerator_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://environmental_model/model/refrigerator.dae"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.56" rpy="0 0 0"/>
+      </visual>
+      <collision>
+        <geometry>
+          <box size="0.6 0.5 1.1"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.56" rpy="0 0 0"/>
+      </collision>
+    </link> -->
+
+    <!-- Add meeting_chair -->
+    <xacro:meeting_chair_link num="1"/>
+    <xacro:meeting_chair_link num="2"/>
+    <xacro:meeting_chair_link num="3"/>
+    <xacro:meeting_chair_link num="4"/>
+
+    <!-- wagon -->
+    <link name="wagon_x_link"/>
+
+    <joint name="wagon_x_joint" type="prismatic">
+      <parent link="world_link"/>
+      <child link="wagon_x_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <limit effort="1000.0" lower="0." upper="15." velocity="0.5"/>
+    </joint>
+
+    <link name="wagon_y_link"/>
+
+    <joint name="wagon_y_joint" type="prismatic">
+      <parent link="wagon_x_link"/>
+      <child link="wagon_y_link"/>
+      <origin xyz="0 0 0" rpy="0 0 1.57079633"/>
+      <limit effort="1000.0" lower="0." upper="8." velocity="0.5"/>
+    </joint>
+
+    <joint name="wagon_yaw_joint" type="continuous">
+      <parent link="wagon_y_link"/>
+      <child link="wagon_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="wagon_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://environmental_model/model/wagon.dae"/>
+        </geometry>
+        <origin xyz="0. 0. 0.3" rpy="0 0 0"/>
+      </visual>
+      <collision>
+        <geometry>
+          <box size="0.6 0.4 0.7"/>
+        </geometry>
+        <origin xyz="0. 0. 0.3" rpy="0 0 0"/>
+      </collision>
+    </link>
+
+    <!-- object -->
+    <!-- chipstar_red -->
+    <link name="chipstar_red_x_link"/>
+
+    <joint name="chipstar_red_x_joint" type="prismatic">
+      <parent link="world_link"/>
+      <child link="chipstar_red_x_link"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <limit effort="1000.0" lower="0." upper="15." velocity="0.5"/>
+    </joint>
+
+    <link name="chipstar_red_y_link"/>
+
+    <joint name="chipstar_red_y_joint" type="prismatic">
+      <parent link="chipstar_red_x_link"/>
+      <child link="chipstar_red_y_link"/>
+      <origin rpy="0 0 1.57079633" xyz="0 0 0"/>
+      <limit effort="1000.0" lower="0." upper="8." velocity="0.5"/>
+    </joint>
+
+    <link name="chipstar_red_z_link"/>
+
+    <joint name="chipstar_red_z_joint" type="prismatic">
+      <parent link="chipstar_red_y_link"/>
+      <child link="chipstar_red_z_link"/>
+      <origin rpy="0 -1.57079633 0" xyz="0 0 0"/>
+      <limit effort="1000.0" lower="0." upper="3." velocity="0.5"/>
+    </joint>
+
+    <link name="chipstar_red_yaw_link"/>
+    <joint name="chipstar_red_yaw_joint" type="continuous">
+      <parent link="chipstar_red_z_link"/>
+      <child link="chipstar_red_yaw_link"/>
+      <origin rpy="-1.57079633 0 -1.57079633" xyz="0 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+    <link name="chipstar_red_pitch_link"/>
+    <joint name="chipstar_red_pitch_joint" type="continuous">
+      <parent link="chipstar_red_yaw_link"/>
+      <child link="chipstar_red_pitch_link"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <axis xyz="0 1 0"/>
+    </joint>
+    <joint name="chipstar_red_roll_joint" type="continuous">
+      <parent link="chipstar_red_pitch_link"/>
+      <child link="chipstar_red_link"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="chipstar_red_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://environmental_model/model/chipstar_red.dae"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0. 0. 0."/>
+      </visual>
+      <collision>
+        <geometry>
+          <cylinder radius="0.001" length="0.001"/>
+        </geometry>
+        <origin xyz="0 0 0" rpy="0. 0. 0."/>
+      </collision>
+    </link>
+
+    <!-- greentea_bottle -->
+    <link name="greentea_bottle_x_link"/>
+
+    <joint name="greentea_bottle_x_joint" type="prismatic">
+      <parent link="world_link"/>
+      <child link="greentea_bottle_x_link"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <limit effort="1000.0" lower="0." upper="15." velocity="0.5"/>
+    </joint>
+
+    <link name="greentea_bottle_y_link"/>
+
+    <joint name="greentea_bottle_y_joint" type="prismatic">
+      <parent link="greentea_bottle_x_link"/>
+      <child link="greentea_bottle_y_link"/>
+      <origin rpy="0 0 1.57079633" xyz="0 0 0"/>
+      <limit effort="1000.0" lower="0." upper="8." velocity="0.5"/>
+    </joint>
+
+    <link name="greentea_bottle_z_link"/>
+
+    <joint name="greentea_bottle_z_joint" type="prismatic">
+      <parent link="greentea_bottle_y_link"/>
+      <child link="greentea_bottle_z_link"/>
+      <origin rpy="0 -1.57079633 0" xyz="0 0 0"/>
+      <limit effort="1000.0" lower="0." upper="3." velocity="0.5"/>
+    </joint>
+
+    <link name="greentea_bottle_yaw_link"/>
+    <joint name="greentea_bottle_yaw_joint" type="continuous">
+      <parent link="greentea_bottle_z_link"/>
+      <child link="greentea_bottle_yaw_link"/>
+      <origin rpy="-1.57079633 0 -1.57079633" xyz="0 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+    <link name="greentea_bottle_pitch_link"/>
+    <joint name="greentea_bottle_pitch_joint" type="continuous">
+      <parent link="greentea_bottle_yaw_link"/>
+      <child link="greentea_bottle_pitch_link"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <axis xyz="0 1 0"/>
+    </joint>
+    <joint name="greentea_bottle_roll_joint" type="continuous">
+      <parent link="greentea_bottle_pitch_link"/>
+      <child link="greentea_bottle_link"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="greentea_bottle_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://environmental_model/model/greentea_bottle.dae"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0. 0. 0."/>
+      </visual>
+      <collision>
+        <geometry>
+          <cylinder radius="0.001" length="0.001"/>
+        </geometry>
+        <origin xyz="0 0 0" rpy="0. 0. 0."/>
+      </collision>
+    </link>
+
+    <!-- cancoffee -->
+    <link name="cancoffee_x_link"/>
+
+    <joint name="cancoffee_x_joint" type="prismatic">
+      <parent link="world_link"/>
+      <child link="cancoffee_x_link"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <limit effort="1000.0" lower="0." upper="15." velocity="0.5"/>
+    </joint>
+
+    <link name="cancoffee_y_link"/>
+
+    <joint name="cancoffee_y_joint" type="prismatic">
+      <parent link="cancoffee_x_link"/>
+      <child link="cancoffee_y_link"/>
+      <origin rpy="0 0 1.57079633" xyz="0 0 0"/>
+      <limit effort="1000.0" lower="0." upper="8." velocity="0.5"/>
+    </joint>
+
+    <link name="cancoffee_z_link"/>
+
+    <joint name="cancoffee_z_joint" type="prismatic">
+      <parent link="cancoffee_y_link"/>
+      <child link="cancoffee_z_link"/>
+      <origin rpy="0 -1.57079633 0" xyz="0 0 0"/>
+      <limit effort="1000.0" lower="0." upper="3." velocity="0.5"/>
+    </joint>
+
+    <link name="cancoffee_yaw_link"/>
+    <joint name="cancoffee_yaw_joint" type="continuous">
+      <parent link="cancoffee_z_link"/>
+      <child link="cancoffee_yaw_link"/>
+      <origin rpy="-1.57079633 0 -1.57079633" xyz="0 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+    <link name="cancoffee_pitch_link"/>
+    <joint name="cancoffee_pitch_joint" type="continuous">
+      <parent link="cancoffee_yaw_link"/>
+      <child link="cancoffee_pitch_link"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <axis xyz="0 1 0"/>
+    </joint>
+    <joint name="cancoffee_roll_joint" type="continuous">
+      <parent link="cancoffee_pitch_link"/>
+      <child link="cancoffee_link"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="cancoffee_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://environmental_model/model/cancoffee.dae"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0. 0. 0."/>
+      </visual>
+      <collision>
+        <geometry>
+          <cylinder radius="0.001" length="0.001"/>
+        </geometry>
+        <origin xyz="0 0 0" rpy="0. 0. 0."/>
+      </collision>
+    </link>
+
+    <!-- soysauce_bottle_black -->
+    <link name="soysauce_bottle_black_x_link"/>
+
+    <joint name="soysauce_bottle_black_x_joint" type="prismatic">
+      <parent link="world_link"/>
+      <child link="soysauce_bottle_black_x_link"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <limit effort="1000.0" lower="0." upper="15." velocity="0.5"/>
+    </joint>
+
+    <link name="soysauce_bottle_black_y_link"/>
+
+    <joint name="soysauce_bottle_black_y_joint" type="prismatic">
+      <parent link="soysauce_bottle_black_x_link"/>
+      <child link="soysauce_bottle_black_y_link"/>
+      <origin rpy="0 0 1.57079633" xyz="0 0 0"/>
+      <limit effort="1000.0" lower="0." upper="8." velocity="0.5"/>
+    </joint>
+
+    <link name="soysauce_bottle_black_z_link"/>
+
+    <joint name="soysauce_bottle_black_z_joint" type="prismatic">
+      <parent link="soysauce_bottle_black_y_link"/>
+      <child link="soysauce_bottle_black_z_link"/>
+      <origin rpy="0 -1.57079633 0" xyz="0 0 0"/>
+      <limit effort="1000.0" lower="0." upper="3." velocity="0.5"/>
+    </joint>
+
+    <link name="soysauce_bottle_black_yaw_link"/>
+    <joint name="soysauce_bottle_black_yaw_joint" type="continuous">
+      <parent link="soysauce_bottle_black_z_link"/>
+      <child link="soysauce_bottle_black_yaw_link"/>
+      <origin rpy="-1.57079633 0 -1.57079633" xyz="0 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+    <link name="soysauce_bottle_black_pitch_link"/>
+    <joint name="soysauce_bottle_black_pitch_joint" type="continuous">
+      <parent link="soysauce_bottle_black_yaw_link"/>
+      <child link="soysauce_bottle_black_pitch_link"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <axis xyz="0 1 0"/>
+    </joint>
+    <joint name="soysauce_bottle_black_roll_joint" type="continuous">
+      <parent link="soysauce_bottle_black_pitch_link"/>
+      <child link="soysauce_bottle_black_link"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="soysauce_bottle_black_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://environmental_model/model/soysauce_bottle_black.dae"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0. 0. 0."/>
+      </visual>
+      <collision>
+        <geometry>
+          <cylinder radius="0.001" length="0.001"/>
+        </geometry>
+        <origin xyz="0 0 0" rpy="0. 0. 0."/>
+      </collision>
+    </link>
+
+    <objects_sim/>
+
+  </xacro:macro>
+</robot>

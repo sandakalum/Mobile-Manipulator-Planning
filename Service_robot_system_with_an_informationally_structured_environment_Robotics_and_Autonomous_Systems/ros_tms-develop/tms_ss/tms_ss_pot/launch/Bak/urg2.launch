@@ -1,0 +1,14 @@
+<launch>
+  <group ns="urg2">
+    <node pkg="urg_node" name="urg_node" type="urg_node">
+      <param name="ip_address" value="192.168.0.10"/>
+      <param name="angle_min" value="-1.832595714595"/>
+      <param name="angle_max" value=" 1.832595714595"/>
+      <remap from="/urg2/scan" to="/LaserTracker2"/>
+    </node>
+    <!-- <node pkg="tms_ss_pot" type="change_nan" name="change_nan">
+      <remap from="/scan" to="/urg2/scan"/>
+      <remap from="/LaserTracker" to="/LaserTracker2"/>
+    </node> -->
+  </group>
+</launch>

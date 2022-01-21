@@ -1,0 +1,5 @@
+int8 cmd
+float64[] arg
+---
+int8 result
+float64[] val

@@ -1,0 +1,10 @@
+<map id="CTR3::ClosePort" name="CTR3::ClosePort">
+<area shape="rect" id="node2" href="$class_c_t_r3.html#a890606f65ef7913494ae41c6aabd5fd4" title="CTR3::AntennaPowerOFF" alt="" coords="357,5,533,32"/>
+<area shape="rect" id="node5" href="$class_c_t_r3.html#ae6aef26696f25ef915c6821b6ada40b0" title="CTR3::AntennaPowerON" alt="" coords="360,56,531,83"/>
+<area shape="rect" id="node6" href="$class_c_t_r3.html#adbd50e4143b3e344d3d5502043bf2a10" title="CTR3::Inventory2" alt="" coords="179,107,306,133"/>
+<area shape="rect" id="node8" href="$class_c_t_r3.html#ad76ae24fee078e665d6b4762b21d9098" title="CTR3::SetAntenna" alt="" coords="176,157,309,184"/>
+<area shape="rect" id="node9" href="$class_c_t_r3.html#aad0fa8aaed9250f6244160e846e295ca" title="CTR3::Setup" alt="" coords="608,171,707,197"/>
+<area shape="rect" id="node3" href="$ibs_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="781,95,832,121"/>
+<area shape="rect" id="node4" href="$class_c_intel_cab.html#ac447a91375cc34f3fa40ea5868769904" title="CIntelCab::UpdateObj" alt="" coords="582,95,733,121"/>
+<area shape="rect" id="node7" href="$class_c_t_r3.html#ab5e4f0b07c3a4bc37891f1de4b9f809d" title="CTR3::GetTagDiff" alt="" coords="381,107,510,133"/>
+</map>

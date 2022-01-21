@@ -1,0 +1,109 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+import rospy
+import tf
+import math
+
+from people_msgs.msg        import People
+from nav_msgs.msg           import Odometry
+from visualization_msgs.msg import Marker
+#from ublox_msgs.msg         import NavRELPOSNED
+
+class MeasuredDataClass:
+  def __init__(self):
+
+    gps_origin_x = rospy.get_param('~gps_origin_x', 0)
+    gps_origin_y = rospy.get_param('~gps_origin_y', 0)
+    gps_origin_a = rospy.get_param('~gps_origin_a', 0)
+
+    gps_subscribe        = rospy.get_param('~gps_subscribe', False)
+    self.float_subscribe = rospy.get_param('~float_subscribe', False)
+
+    people_topic_name = rospy.get_param('~people_topic_name', '/people_ninebot_cropped')
+
+    measured_in_topic_name  = rospy.get_param('~measured_in_topic_name', '/robot_measured_pos')
+    measured_out_topic_name = rospy.get_param('~measured_out_topic_name', 'odometry/measured')
+
+    self.global_frame   = rospy.get_param('~global_frame_id', 'map')
+    self.people_frame   = rospy.get_param('~people_frame_id', self.global_frame)
+    self.measured_frame = rospy.get_param('~measured_frame_id', self.global_frame)
+
+    print_tf = rospy.get_param('~print_tf', True)
+
+    self.people_pub = rospy.Publisher('/people', People, queue_size=10)
+    rospy.Subscriber(people_topic_name, People, self.callback_people, queue_size=10)
+
+    self.measured_pub = rospy.Publisher(measured_out_topic_name, Odometry, queue_size=10)
+    rospy.Subscriber(measured_in_topic_name, Odometry, self.callback_measured, queue_size=10)
+
+    if gps_subscribe == False: return
+    from ublox_msgs.msg import NavRELPOSNED
+
+    self.marker                 = Marker()
+    self.marker.header.frame_id = 'base_gps'
+    self.marker.type            = 3 #cylinder
+    self.marker.action          = 0 #add
+    self.marker.scale.x         = 0.2
+    self.marker.scale.y         = 0.2
+    self.marker.scale.z         = 1.0
+    self.marker.color.a         = 1.0
+    self.marker.lifetime        = rospy.Duration(1.0)
+
+    self.marker_pub = rospy.Publisher('/gps_marker', Marker, queue_size=10)
+    rospy.Subscriber("ublox_gps/navrelposned", NavRELPOSNED, self.callback_gps, queue_size=10)
+    
+    if print_tf == False: return
+    rate        = rospy.Rate(10) # 10hz
+    broadcaster = tf.TransformBroadcaster()
+    while not rospy.is_shutdown():
+      quate = tf.transformations.quaternion_from_euler(0, 0, gps_origin_a)
+      broadcaster.sendTransform((gps_origin_x, gps_origin_y, 0), quate, rospy.Time.now(), 'base_gps', self.global_frame)
+      rate.sleep()
+
+  def callback_people(self, data):
+    data.header.stamp    = rospy.Time.now()
+    data.header.frame_id = self.people_frame
+    self.people_pub.publish(data)
+
+  def callback_measured(self, data):
+    data.header.stamp    = rospy.Time.now()
+    data.header.frame_id = self.measured_frame
+    self.measured_pub.publish(data)
+
+  def callback_gps(self, data):
+
+    odom                      = Odometry()
+    odom.header.stamp         = rospy.Time.now()
+    odom.header.frame_id      = 'base_gps'
+    odom.pose.pose.position.x = data.relPosE / 100.0
+    odom.pose.pose.position.y = data.relPosN / 100.0
+    # odom.pose.pose.position.z = -(data.relPosD / 100.0)
+    odom.pose.pose.orientation.w = 1.0
+
+    if (data.flags == 23) or (self.float_subscribe and data.flags == 15):
+      self.measured_pub.publish(odom) 
+
+    if data.flags == 23:     #Fix
+      self.marker.color.r = 1
+      self.marker.color.g = 0
+      self.marker.color.b = 0
+    elif data.flags == 15:   #Float
+      self.marker.color.r = 0
+      self.marker.color.g = 1
+      self.marker.color.b = 0
+    else:                    #Other
+      self.marker.color.r = 1
+      self.marker.color.g = 1
+      self.marker.color.b = 1
+    self.marker.pose.position    = odom.pose.pose.position
+    self.marker.pose.position.z += self.marker.scale.z / 2.0
+    self.marker.pose.orientation = odom.pose.pose.orientation
+    self.marker_pub.publish(self.marker)
+
+if __name__ == '__main__':
+  rospy.init_node('portable_measured', anonymous=True)
+  try:
+    MeasuredDataClass()
+    rospy.spin()
+  except rospy.ROSInterruptException:
+    rospy.loginfo("portable_measured node finished.")

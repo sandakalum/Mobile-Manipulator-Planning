@@ -1,0 +1,99 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+import rospy
+import tf
+import sys
+import time
+import thread
+import wiringpi2
+
+from std_msgs.msg       import Float64
+from std_srvs.srv       import Empty
+
+from geometry_msgs.msg  import PoseStamped
+from geometry_msgs.msg  import PoseWithCovarianceStamped
+from actionlib_msgs.msg import GoalID
+from actionlib_msgs.msg import GoalStatusArray
+
+class LedControlClass:
+  def __init__(self):
+    self.pins = [2, 7, 3] #GPIO
+    self.ryb  = [0, 0, 0] #Red Yellow Blue
+    wiringpi2.wiringPiSetup()
+
+    for x in self.pins:
+      wiringpi2.pinMode(x, 1)
+      wiringpi2.digitalWrite(x, 1)
+
+  def update(self):
+    wiringpi2.digitalWrite(self.pins[0], self.ryb[0])
+    wiringpi2.digitalWrite(self.pins[1], self.ryb[1])
+    wiringpi2.digitalWrite(self.pins[2], self.ryb[2])
+
+class IndicatorClass:
+  def __init__(self):
+    rospy.on_shutdown(self.shutdown)
+
+    self.goal = PoseStamped()
+    self.leds = LedControlClass()
+
+    self.pre_status = 0
+
+    self.goal_pub   = rospy.Publisher('move_base_simple/goal', PoseStamped, queue_size=10)
+    self.cancel_pub = rospy.Publisher('move_base/cancel', GoalID, queue_size=10)
+    self.sound_pub  = rospy.Publisher('portable_sound', Float64, queue_size=10)
+
+    rospy.wait_for_service('move_base/clear_costmaps')
+    self.clear_costmaps = rospy.ServiceProxy('move_base/clear_costmaps', Empty)
+    
+    rospy.Subscriber('initialpose', PoseWithCovarianceStamped, self.callback_init, queue_size=10)
+    rospy.Subscriber('move_base_simple/goal', PoseStamped, self.callback_goal, queue_size=10)
+    rospy.Subscriber('move_base/status', GoalStatusArray, self.callback_status, queue_size=1)
+
+    rate = rospy.Rate(3)
+    self.leds.ryb = [0, 0, 1]
+    while not rospy.is_shutdown():
+      self.leds.update()
+      rate.sleep()
+
+  def callback_status(self, data):
+    
+    if len(data.status_list) <= 0: return
+    status = int(data.status_list[-1].status)
+
+    if (status == 3) and (self.pre_status != 3): #ゴールしたときに音を出す
+      self.sound_pub.publish(1.0)    
+    
+    if   status == 0: self.leds.ryb = [0, 0, 1] #pending
+    elif status == 1: self.leds.ryb = [0, 1, 0] #active
+    elif status == 2: self.leds.ryb = [0, 0, 1] #preempted
+    elif status == 3: self.leds.ryb = [1, 1, 1] #succeeded
+    elif status == 4:                           #aborted
+      self.leds.ryb = [1, 0, 0]
+      self.clear_costmaps()
+      self.goal_pub.publish(self.goal)
+      self.sound_pub.publish(0.5)
+    else: self.leds.ryb = [1, 0, 1]
+
+    self.pre_status = status
+
+  def callback_init(self, data):
+    self.clear_costmaps()
+
+  def callback_goal(self, data):
+    self.goal = data
+
+  def shutdown(self):
+    try:
+      for x in self.leds.pins:
+        wiringpi2.digitalWrite(x, 0)
+      self.cancel_pub.publish(GoalID())
+    except: pass
+
+if __name__ == '__main__':
+  rospy.init_node('portable_indicator')
+  try:
+    IndicatorClass()
+    rospy.spin()
+  except rospy.ROSInterruptException:
+    rospy.loginfo("portable_indicator node finished.")

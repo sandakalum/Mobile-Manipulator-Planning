@@ -1,0 +1,10 @@
+int32     id
+int32     mode
+float64   x
+float64   y
+float64   z
+float64   rr
+float64   rp
+float64   ry
+---
+int32 result

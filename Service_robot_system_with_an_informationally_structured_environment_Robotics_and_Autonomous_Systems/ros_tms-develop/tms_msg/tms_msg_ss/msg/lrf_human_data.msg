@@ -1,0 +1,10 @@
+Header header
+uint32[] iID
+uint32[] iHumanBehavior
+uint64[] iDetectedTime
+float32[] fLikelihood
+float32[] fSizeMax
+float32[] fPositionX
+float32[] fPositionY
+float32[] fDistributionX
+float32[] fDistributionY

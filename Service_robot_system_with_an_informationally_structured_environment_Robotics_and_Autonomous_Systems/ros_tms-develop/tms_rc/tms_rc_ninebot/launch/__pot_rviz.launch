@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find tms_rc_pot)/rviz/11portable.rviz"/>
+</launch>

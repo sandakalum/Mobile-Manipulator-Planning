@@ -1,0 +1,6 @@
+<map id="CLoadCell::Setup" name="CLoadCell::Setup">
+<area shape="rect" id="node2" href="$class_c_load_cell.html#a1b3857837a0bf6fd7bfb4944c4ac8c30" title="CLoadCell::ClosePort" alt="" coords="597,5,747,32"/>
+<area shape="rect" id="node3" href="$class_c_load_cell.html#ad6fb880bd0b8752530177b6df9d6094e" title="CLoadCell::OpenPort" alt="" coords="599,56,745,83"/>
+<area shape="rect" id="node4" href="$class_c_load_cell.html#ac7dda0d98c1af1df1062a4315c83c0d5" title="CLoadCell::ResetWeight" alt="" coords="179,31,346,57"/>
+<area shape="rect" id="node5" href="$class_c_load_cell.html#a33b28a515fc435aee4bc6b121fc479a8" title="CLoadCell::GetWeight" alt="" coords="395,31,549,57"/>
+</map>

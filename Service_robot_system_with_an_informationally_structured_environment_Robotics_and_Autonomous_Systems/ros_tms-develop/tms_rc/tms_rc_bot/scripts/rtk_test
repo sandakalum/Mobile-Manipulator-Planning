@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+import rospy
+from ublox_msgs.msg import NavRELPOSNED
+
+class RtkClass:
+  def __init__(self):
+    self.fix_pub   = rospy.Publisher("ublox_gps/navrelposned/fix",   NavRELPOSNED, queue_size=10)
+    self.float_pub = rospy.Publisher("ublox_gps/navrelposned/float", NavRELPOSNED, queue_size=10)
+    rospy.Subscriber("ublox_gps/navrelposned", NavRELPOSNED, self.callback_gps, queue_size=10)
+
+  def callback_gps(self, data):
+    if   data.flags == 23:   #Fix
+      self.fix_pub.publish(data)
+    elif data.flags == 15:   #Float
+      self.float_pub.publish(data)
+
+if __name__ == '__main__':
+  rospy.init_node('rtk_test', anonymous=True)
+  try:
+    RtkClass()
+    rospy.spin()
+  except rospy.ROSInterruptException:
+    rospy.loginfo("rtk node finished.")

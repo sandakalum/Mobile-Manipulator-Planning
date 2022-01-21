@@ -1,0 +1,49 @@
+/*
+	CommonData interface.
+	Copyright(C) 2014 Yaskawa Electric Corporation.
+*/
+
+#ifndef MOBILITY_IDL
+#define MOBILITY_IDL
+
+#include "Common.idl" // for Common Data
+
+module YeRTUnitMobility
+{
+interface mobility
+{
+	boolean stop();
+	boolean clearAlarm();
+	boolean setPower( in boolean OnOff);
+	boolean setServo( in boolean OnOff);
+	boolean getVersion( out string ver );
+	boolean pause();
+	boolean resume();
+	boolean unlock();
+	boolean getServoStatus(in unsigned long axisid, out boolean status);
+	boolean getActiveAlarm( in short numOfAlarm, out short numOfActiveAlarm, out AlarmSeq activeAlarms );
+	boolean setPosition( in double x_, in double y_, in double theta_ );
+	boolean getPosition( out double x_, out double y_, out double theta_ );
+	boolean getState( out short state, out string msg );
+	boolean setVelocity( in double velT, in double velR );
+	boolean setAcceleration( in double accT, in double accR );
+	boolean setJogTimeout( in short timeout );
+	boolean moveJog( in double vx_, in double vy_, in double vtheta_ );
+	boolean moveForward( in double x_ );
+	boolean moveTurn( in double theta_ );
+	boolean moveTurnContinuous(in double theta_);
+	boolean moveLinear( in double x_, in double y_, in double theta_ );
+	boolean moveLinearAbs( in double x_, in double y_, in double theta_ );
+	boolean moveCircular( in double centerX_, in double centerY_, in double angle );
+	boolean moveContinuous( in double x_, in double y_, in double theta_ );
+	boolean moveWagon( in double x_, in double y_ );
+	boolean moveWagonAbs( in double x_, in double y_ );
+	boolean getBatteryVoltage( out short voltage );
+};			// interface mobility
+
+
+
+	/* ===================================================================================== */
+};
+
+#endif

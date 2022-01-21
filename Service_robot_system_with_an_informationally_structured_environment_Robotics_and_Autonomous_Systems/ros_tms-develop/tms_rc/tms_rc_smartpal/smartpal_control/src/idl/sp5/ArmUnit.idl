@@ -1,0 +1,95 @@
+/*
+	CommonData interface.
+	Copyright(C) 2014 Yaskawa Electric Corporation.
+*/
+
+#ifndef ARMUNIT_IDL_
+#define ARMUNIT_IDL_
+
+#include "Common.idl" // for Common Data
+
+enum FrameID {
+  JOINT,
+  CARTESIAN
+};
+
+struct Acceleration {
+	unsigned long translation;
+	unsigned long rotation;
+};
+
+struct CartesianPos {
+	double px;
+	double py;
+	double pz;
+	double rx;
+	double ry;
+	double rz;
+};
+
+struct CartesianVel {
+	double x;
+	double y;
+	double z;
+	double rx;
+	double ry;
+	double rz;
+};
+
+enum CommandFrameType {
+	ORIGINAL,
+	TOOL
+};
+
+struct LimitValue {
+	double upper;
+	double lower;
+};
+
+typedef sequence<LimitValue> ArmLimitSeq;
+
+struct Velocity {
+	double translation;
+	double rotation;
+};
+
+interface ArmUnit {
+	long abort();
+	long clearAlarms();
+	long getActiveAlarm( in unsigned long numOfRequestAlm, out unsigned long numOfResponseAlm, out AlarmSeq alarms );
+	long getCommandPos( in FrameID id, out DoubleSeq position );
+	long getFeedbackPos( in FrameID id, out DoubleSeq position );
+	long getJointAcceleration( out unsigned long accel );
+	long getJointSoftLimit( out ArmLimitSeq softLimit );
+	long getLinearAcceleration( out Acceleration accel );
+	long getMaxJointVelocity( out DoubleSeq velocity );
+	long getMaxJointAcceleration( out DoubleSeq accel );
+	long getMotionRate( out unsigned long rate );
+	long getState( out unsigned long statusId, out string message );
+	long getVersion( out string versionMessage );
+	boolean isMoving();
+	boolean isPowerOn();
+	boolean isServoOn();
+	long moveJogJoint( in DoubleSeq velocity );
+	long moveJogLinear( in CommandFrameType cpType, in CartesianVel vel, in double redundancyVel );
+	long moveJointAbs( in DoubleSeq position, in double velocity );
+	long moveJointRel( in DoubleSeq position, in double velocity );
+	long moveLinearAbs( in CommandFrameType cpType, in CartesianPos absPos, in double redundancyPos,
+		in Velocity vel );
+	long moveLinearRel( in CommandFrameType cpType, in CartesianPos relPos, in double redundancyPos,
+		in Velocity vel );
+	long pause();
+	long powerOff();
+	long powerOn();
+	long resume();
+	long servoOff();
+	long servoOn();
+	long setControlPointOffset( in CartesianPos offset );
+	long setJogTimeout( in unsigned long time );
+	long setJointAcceleration( in unsigned long accel);
+	long setLinearAcceleration( in Acceleration accel);
+	long stop();
+
+};
+
+#endif

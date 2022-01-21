@@ -1,0 +1,157 @@
+Katana Native Interface - Changelog
+===================================
+(c) 2004-2009 Neuronics AG
+
+09.12.2009  -  v4.3.0 (jha)
+
+- integrated kinematics library source 1.3.0 with additional fixes (revision 6200)
+- integrated gcc 4.3 fix (by tfromm)
+- integrated serial comm and gripper fix (by M. Kopicki)
+
+12.02.2009  -  v4.2.0 (jha)
+
+- integrated kinematics library version 1.2.0
+- added function to get kinematics version
+
+30.01.2009  -  v4.1.0 (jha)
+
+- K450 firmware dependency: 2.1.x
+- Changed configfiles450 to support all current katana types (6M90A, 6M90B, 6M180 each with flange or gripper)
+- Added support for new current control loop
+- Boost dependencies added to source tree
+- New movement stack to connect movements implemented for use in C wrapper interface
+- Changes on polynomial PTP movement
+
+30.09.2008  -  v4.0.0 (pke)
+
+- K450 firmware dependency: 2.0.x
+- New kinematics library
+- New C wrapper
+- New Demos for LabView and Matlab integartion
+- Polynomial PTP movement
+- Deprecated Commands removed
+- Katana300 compatibility broken
+
+20.11.2007  -  v3.9.2 (pke)
+
+- K400 firmware dependency: 1.1.x
+- error handling enhanced
+- error messages from K400 are being automatically requested and displayed
+- cleaned up old deprecated files
+- build tree relies on make alone now.
+- convenience build dependencies in the windows installer now (boost)
+
+
+23.07.2007 - v3.9.0 (pke)
+-----------------
+
+- new calibration added for Katana400. From Katana400 V0.5.0 ff, the calibration works  only if the configfile entry [GENERAL]type is set to 400
+- Error protocol added (for Katana400 only), see Katana Manual for details.
+  If any error occurs on the Katana, it sends an error flag to the KNI (192).
+  If the user wants to handle that error, he can then send the getLastError flag (193) to the Katana.
+  This will return a string with the error description and an error flag as given in the error enum in cdlCOMExceptions.
+
+	The actual error can be retrieved afterwards by sending the error request message 193  (binary 1100 001) to the robot.
+	The response to that request with the information about the error has the following format:
+	<193><F1><F2><F3> <str1>.....<str50>
+	<193>			Hardcoded error flag
+	<F1>			The command literal of the last command that caused the error
+	<F2>			The error code (see below)
+	<F3>			The axis on which the error occured. Zero (0) if it does not apply to an axis
+	<str1>..<str50>	An optional ascii error string of 50 bytes
+
+
+21.05.2007 - v3.8.2 (jha)
+-----------------
+
+- halfed encoders for axis 3 on katanaHD400 to access the whole physical range
+- not starting linear movement on katanaHD400 before polynomes for 400ms movement sent
+
+
+23.04.2007 - v3.8.1 (jha)
+-----------------
+
+- sending linear movements to katanaHD400 adjusted
+
+
+12.04.2007 - v3.8.0 (jha)
+-----------------
+
+- adjusted configfiles400 for KatanaHD400
+
+- Visual C++ solution to build libraries and demos included in Windows installer
+
+- added a pthread implementation for windows (pthread-win32) to the demos, that use pthreads
+
+- new way to send linear movement to a KatanaHD400, makes use of new technology of KatanaHD400
+
+
+12.03.2007 - v3.7.0 (jha)
+-----------------
+
+- new config files for KatanaHD400 (Katana 1.2) hardware
+
+- software adjustments for KatanaHD400
+
+- kinematics adjustments
+
+
+19.01.2007 - v3.6.01 (jha)
+-----------------
+
+- new linear movement function, that uses multiple splines for smooth movement instead of always four splines which caused serious problems.
+
+- integrated KNI.python and K4D functions from other branches.
+
+- new demos
+
+
+05.04.2006 - v3.5.01 (tm)
+-----------------
+
+
+17.01.2006 - v3.3.05 (tm)
+-----------------
+
+- new "per motor" parameter for calibration order
+
+
+15.11.2005 - v3.3.03
+-----------------
+
+- New function that lets the user command more than 1 linear movement without
+breaks or delays between each movement.
+
+
+17.10.2005 - v3.3.02
+-----------------
+
+- Avoid moving motor 6 when IKgoto and IKmov are used.
+- Command implemented to read all motor positions simultaneously.
+- Crash limits implemented.
+
+
+21.06.2005 - v3.3.01
+-----------------
+
+- Realease of a new version. New module is incorporated to the
+structure and allows the user to steer the robot following linear trajectories.
+- New methods added to the kinematics module's main class.
+
+
+01.04.2005 - v3.2.02
+-----------------
+
+- Important changes on the file structure that is distributed.
+- Time management on Linux bug fixed.
+
+04.01.2005 - v3.2.01
+-----------------
+
+- Release of the new version. KNI is divided into 2 modules: the base module with
+the basic operations and a new module that implements inverse kineamatics.
+
+
+Neuronics AG
+Software Development
+Last Update: 30.01.2009

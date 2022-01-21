@@ -1,0 +1,10 @@
+uint32 furniture_id
+sensor_msgs/PointCloud2 cloud
+sensor_msgs/PointCloud2 model
+geometry_msgs/Pose furniture
+geometry_msgs/Pose2D robot
+geometry_msgs/Pose sensor
+---
+sensor_msgs/PointCloud2 cloud
+time tMeasuredTime
+geometry_msgs/PoseArray objects

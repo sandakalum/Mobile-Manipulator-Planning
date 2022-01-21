@@ -1,0 +1,140 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+import rospy
+import tf
+import math
+import numpy
+from geometry_msgs.msg  import PoseStamped
+from geometry_msgs.msg  import Twist
+from actionlib_msgs.msg import GoalID
+
+import thread
+import subprocess
+
+class Getch:
+  def __call__(self):
+    import sys, tty, termios
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+    try:
+      tty.setraw(sys.stdin.fileno())
+      ch = sys.stdin.read(1)
+    finally:
+      termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    return ch
+
+class KeyopClass:
+
+  def __init__(self):
+    rospy.on_shutdown(self.shutdown)
+
+    name_space        = rospy.get_param('~name_space', 'portable1')
+    
+    self.max_rot_vel  = rospy.get_param('~max_rot_vel', 0.2)
+    self.angular_step = rospy.get_param('~angular_step', 0.01)
+    self.goal_frame   = rospy.get_param('~goal_frame_id', '/map1')
+
+    self.goal_pub   = rospy.Publisher('/' + name_space + '/move_base_simple/goal', PoseStamped, queue_size=100)
+    self.cancel_pub = rospy.Publisher('/' + name_space + '/move_base/cancel', GoalID, queue_size=10)
+    self.twist_pub  = rospy.Publisher('/' + name_space + '/keyop', Twist, queue_size=100)
+
+    self.ang_vel = 0.0
+    self.manual_flag = False
+
+    thread.start_new_thread(self.manual_control, ())
+
+    print('\n\nInput key (1->goal_1 / 2->goal_2 / f->follower)\n\n')
+
+    rate = rospy.Rate(100) # 100hz
+    while not rospy.is_shutdown():
+      getch = Getch()
+      x = getch()
+
+      if  (ord(x) == 27): # 「ESC」
+        self.shutdown()
+        break
+      elif (ord(x) == 3): # 「CTRL + C」
+        self.shutdown()
+        break
+      elif (x == '1'):
+        print('set goal position 1\n')
+        self.goal_plotout(2.0, 0.0, math.pi)
+      elif (x == '2'):
+        print('set goal position 2\n')
+        self.goal_plotout(9.0, -2.7, -1.9)
+      elif (x == '3'):
+        print('cancel goal position\n')
+        self.twist_pub.publish(Twist())
+        self.cancel_pub.publish(GoalID())
+      elif (x == 'f'):
+        print('start ninebot_follower\n')
+        self.twist_pub.publish(Twist())
+        self.cancel_pub.publish(GoalID())
+        subprocess.call("roslaunch tms_rc_bot server_follower.launch", shell=True)
+        break
+
+      pre_manual_flag = self.manual_flag
+
+      if   (x == 'a'):
+        self.manual_flag = True
+        self.ang_vel = self.ang_vel + self.angular_step
+      elif (x == 'd'):
+        self.manual_flag = True
+        self.ang_vel = self.ang_vel - self.angular_step
+      elif (x == 's'):
+        self.manual_flag = True
+        self.ang_vel = 0
+      elif (x == 'w'):
+        print('manual control finish'+ '\n')
+        self.manual_flag = False
+      else:
+        self.manual_flag = False
+
+      if pre_manual_flag == True and self.manual_flag == False: 
+        self.twist_pub.publish(Twist())
+      rate.sleep()
+
+  def goal_plotout(self, goalX, goalY, goalAngle):
+    quate = tf.transformations.quaternion_from_euler(0, 0, goalAngle)
+    goal = PoseStamped()
+    goal.pose.position.x = goalX
+    goal.pose.position.y = goalY
+    goal.pose.position.z = 0
+    goal.pose.orientation.x = quate[0]
+    goal.pose.orientation.y = quate[1]
+    goal.pose.orientation.z = quate[2]
+    goal.pose.orientation.w = quate[3]
+    goal.header.frame_id = self.goal_frame
+    goal.header.stamp = rospy.Time.now()
+    self.goal_pub.publish(goal)
+
+  def manual_control(self):
+    key_vel = Twist()
+    rate = rospy.Rate(10)
+    while not rospy.is_shutdown():
+      if self.manual_flag == True:
+
+        self.ang_vel = numpy.clip(self.ang_vel, -self.max_rot_vel, self.max_rot_vel)
+        if abs(self.ang_vel) < 0.001: self.ang_vel = 0.0
+
+        key_vel.angular.z = self.ang_vel
+        self.twist_pub.publish(key_vel)
+        print('angular_z = ' + str(self.ang_vel) + '\r\n')
+
+      else: self.ang_vel = 0
+      rate.sleep()
+
+  def shutdown(self):
+    try:
+      self.cancel_pub.publish(GoalID())
+      self.twist_pub.publish(Twist())
+    except: pass
+
+if __name__ == '__main__':
+  rospy.init_node('server_keyop', anonymous=True)
+  try:
+    KeyopClass()
+    rospy.loginfo("server_keyop node finished.")
+    exit(0)
+  except rospy.ROSInterruptException:
+    rospy.loginfo("server_keyop node finished.")

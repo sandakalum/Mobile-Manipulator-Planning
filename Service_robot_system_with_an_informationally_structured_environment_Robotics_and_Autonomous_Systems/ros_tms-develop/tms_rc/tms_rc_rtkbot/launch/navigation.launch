@@ -1,0 +1,194 @@
+<launch>
+
+<!-- @ Args @ -->
+    <!-- initial pose -->
+    <arg name="initialpose_x" value="0"/>
+    <arg name="initialpose_y" value="0"/>
+    <arg name="initialpose_a" value="0"/>
+    <arg name="initial_state" value="[$(arg initialpose_x), $(arg initialpose_y), 0, 0, 0, $(arg initialpose_a), 0, 0, 0, 0, 0, 0, 0, 0, 0]"/>
+
+    <!-- frame / topic -->
+    <arg name="global_frame" value="map"/>
+    <arg name="odom_frame"   value="odom"/>
+    <arg name="base_frame"   value="base_footprint"/>
+    <arg name="scan_frame"   value="base_scan"/>
+    <arg name="gnss_topic_name" value="gnss_data"/>
+
+    <!-- file -->
+    <arg name="place" value="map_coi_f1"/>
+    <arg name="map_file" value="$(find tms_rc_rtkbot)/maps/$(arg place)/map.yaml"/> 
+    <arg name="gnss_to_map_config_file" value="$(find tms_rc_rtkbot)/param/sensor/gnss_to_map/$(arg place).yaml"/>
+    
+    <arg name="velodyne_calibration_file" value="$(env HOME)/VLP16-HiRes.yaml"/>
+
+    <!-- External I/O -->
+    <arg name="use_RTK-GNSS" value="true"/>
+    <arg name="use_Velodyne" value="true"/>
+    <arg name="use_Ninebot_Serial" value="true"/>
+    <arg name="rtk_device_name" value="usb_rsaq5"/>
+    <arg name="serial_device_name" value="nucleo"/>
+
+<!-- RTK-GNSS -->
+<group if="$(arg use_RTK-GNSS)">
+    <node pkg="nmea_navsat_driver" type="nmea_serial_driver" name="nmea_serial_driver" output="screen">
+        <remap from="fix" to="$(arg gnss_topic_name)"/>
+        <param name="port" value="/dev/$(arg rtk_device_name)"/>
+        <param name="baud" value="115200"/>
+    </node>
+</group>
+
+<!-- Velodyne VLP-16 -->
+<group if="$(arg use_Velodyne)">
+    <!-- bring up VLP-16 -->
+    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch">
+        <arg name="calibration" value="$(arg velodyne_calibration_file)"/>
+    </include>
+
+    <!-- Velodyne Filter -->
+    <node pkg="tms_rc_rtkbot" type="velodyne_filter" name="velodyne_filter" output="screen">
+        <param name="ring_no_min" value="2"/>
+        <param name="ring_no_max" value="4"/>
+        <param name="velodyne_topic_name" value="velodyne_points"/>
+    </node>
+
+    <!-- push pointcloud_to_laserscan nodelet into sensor's nodelet manager-->
+    <node pkg="nodelet" type="nodelet" name="pointcloud_to_laserscan_nodelet" args="load pointcloud_to_laserscan/pointcloud_to_laserscan_nodelet velodyne_nodelet_manager">
+        <!-- <remap from="cloud_in" to="velodyne_points"/> -->
+        <remap from="cloud_in" to="velodyne_points_filtered"/>
+        <remap from="scan" to="scan_converted"/>
+        <rosparam file="$(find tms_rc_rtkbot)/param/sensor/pointcloud_to_laserscan.yaml"/>
+    </node>
+</group>
+
+<!-- Ninebot Serial -->
+<group if="$(arg use_Ninebot_Serial)">
+    <node pkg="tms_rc_rtkbot" type="ninebot_serial" name="ninebot_serial" output="screen">
+        <param name="port" value="/dev/$(arg serial_device_name)"/>
+    </node>
+</group>    
+
+<!-- @ Map Server @ -->
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
+        <param name="frame_id" value="$(arg global_frame)"/>
+    </node>
+
+<!-- @ Static TF @ -->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="world_to_map"
+    args="0 0 0 0 0 0 world_link $(arg global_frame)">
+    </node>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_measured"
+    args="0 0 0 0 0 0 $(arg global_frame) base_measured">
+    </node>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="foot_to_scan"
+    args="0.1 0 0.36 0.785398 0 0 $(arg base_frame) $(arg scan_frame)">
+    </node>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="scan_to_velodyne"
+    args="0 0 0 0 0 0 $(arg scan_frame) velodyne">
+    </node>
+
+<!-- @ Move Base @ -->
+    <arg name="move_base" default="true"/>
+    <node pkg="move_base" type="move_base" name="move_base" respawn="false" output="screen" if="$(arg move_base)">
+        <remap from="odom"                            to="/odometry/filtered"/>
+        <!-- <remap from="odom"                            to="/portable1/odom"/> -->
+        <param name="global_costmap/global_frame"     value="$(arg global_frame)"/>
+        <param name="global_costmap/robot_base_frame" value="$(arg base_frame)"/>
+        <param name="local_costmap/global_frame"      value="$(arg global_frame)"/>
+        <param name="local_costmap/robot_base_frame"  value="$(arg base_frame)"/>
+        <rosparam file="$(find tms_rc_rtkbot)/param/ninebot/move_base.yaml"/>
+        <rosparam file="$(find tms_rc_rtkbot)/param/ninebot/global_planner.yaml"/>
+        <rosparam file="$(find tms_rc_rtkbot)/param/ninebot/local_planner.yaml"/>
+        <rosparam file="$(find tms_rc_rtkbot)/param/ninebot/costmap_separate.yaml"/>
+        <rosparam file="$(find tms_rc_rtkbot)/param/ninebot/costmap_common.yaml" ns="global_costmap"/>
+        <rosparam file="$(find tms_rc_rtkbot)/param/ninebot/costmap_common.yaml" ns="local_costmap"/>
+    </node>
+
+<!-- @ Cmd Vel Mux @ -->
+    <node pkg="rostopic" type="rostopic" name="safe" args="pub safety_twist geometry_msgs/Twist '[0, 0, 0]' '[0, 0, 0]' -r 10"/>
+    <node args="standalone yocs_cmd_vel_mux/CmdVelMuxNodelet" pkg="nodelet" type="nodelet" name="cmd_vel_mux">
+        <param name="yaml_cfg_file"  value="$(find tms_rc_rtkbot)/param/common/cmd_vel_mux.yaml"/>
+        <remap from="~input/keyop"   to="keyop"/>
+        <remap from="~input/remote"  to="remote"/>
+        <remap from="~input/cmd_vel" to="cmd_vel_smoother"/>
+        <remap from="~input/safety"  to="safety_twist"/>
+        <remap from="~output"        to="mux_twist"/>
+    </node>
+
+<!-- @ Portable Position @ -->
+    <node pkg="tms_rc_rtkbot" type="portable_position" name="portable_position" output="screen">
+        <param name="odom_topic_name" value="/odometry/filtered"/>
+        <param name="global_frame_id" value="$(arg global_frame)"/>
+        <param name="base_frame_id"   value="$(arg base_frame)"/>
+        <param name="marker_name"     value="ninebot"/>
+        <param name="print_marker"    value="false"/>
+    </node>
+
+<!-- @ Portable Smoother Cmd @ -->
+    <node pkg="tms_rc_rtkbot" type="portable_smoother" name="portable_smoother_cmd" output="screen">
+        <param name="input_topic_name"  value="cmd_vel"/>
+        <param name="output_topic_name" value="cmd_vel_smoother"/>
+        <param name="acc_lim_th"        value="2.5"/>
+        <param name="time_out"          value="0.5"/>
+        <param name="ignore_stop"       value="false"/>
+    </node>
+
+<!-- @ Ninebot Navigator @ -->
+    <node pkg="tms_rc_rtkbot" type="ninebot_navigator" name="ninebot_navigator" output="screen">
+        <param name="cmd_vel_topic"   value="cmd_vel"/>
+        <param name="odom_topic_name" value="odometry/wheel"/>
+    </node>
+
+<!-- @ Portable Indicator @ -->
+    <node pkg="tms_rc_rtkbot" type="portable_indicator" name="portable_indicator" output="screen"/>
+
+<!-- @ Ninebot Controller @ -->
+    <node pkg="tms_rc_rtkbot" type="ninebot_controller" name="ninebot_controller" output="screen">
+        <param name="cmd_vel_topic" value="mux_twist"/>
+        <param name="max_rot_vel"   value="0.2"/>
+    </node>
+
+<!-- @ Ninebot Odometry @ -->
+    <node pkg="tms_rc_rtkbot" type="ninebot_odometry" name="ninebot_odometry" output="screen">
+        <param name="odom_topic_name" value="odometry/wheel"/>   
+        <param name="odom_frame_id"   value="$(arg odom_frame)"/>
+        <param name="base_frame_id"   value="$(arg base_frame)"/>
+        <param name="wheel_radius"    value="0.123"/>
+        <param name="wheel_tread"     value="0.485"/>
+        <param name="print_tf"        value="true"/>
+    </node>
+
+<!-- @ Map To Odom (Ekf) @ -->
+    <rosparam file="$(find tms_rc_rtkbot)/param/ninebot/robot_local_separate.yaml"/>
+    <node pkg="robot_localization" type="ekf_localization_node" name="map_to_odom" output="screen">
+        <rosparam file="$(find tms_rc_rtkbot)/param/ninebot/robot_local_common.yaml"/>
+        <rosparam param="initial_state" subst_value="True">$(arg initial_state)</rosparam>
+        <remap from="set_pose"          to="initialpose"/>
+        <param name="map_frame"         value="$(arg global_frame)"/>
+        <param name="odom_frame"        value="$(arg odom_frame)"/>    
+        <param name="base_link_frame"   value="$(arg base_frame)"/>
+        <param name="world_frame"       value="$(arg global_frame)"/>
+    </node>
+
+<!-- @ gnss_to_map @-->
+    <node pkg="tms_rc_rtkbot" type="gnss_to_map" name="gnss_to_map" output="screen">
+        <param name="map_frame_name" value="$(arg global_frame)"/>
+        <param name="odom_frame_name" value="$(arg odom_frame)"/>
+        <param name="in_topic_name" value="$(arg gnss_topic_name)"/>
+        <param name="out_topic_name" value="odometry/measured_gps"/>
+        <rosparam file="$(arg gnss_to_map_config_file)"/>
+    </node>
+
+<!-- @ rtk_p2sen_diplexer @-->
+   <node pkg="tms_rc_rtkbot" type="rtk_p2sen_diplexer" name="rtk_p2sen_diplexer" output="screen">
+        <param name="in_topic_p2sen" value="ninebot_measured_pos"/>
+        <param name="in_topic_gps" value="odometry/measured_gps"/>
+        <param name="in_topic_navsat" value="gnss_data"/>
+        <param name="out_topic_name" value="odometry/measured"/>
+    </node>
+
+
+</launch>
+

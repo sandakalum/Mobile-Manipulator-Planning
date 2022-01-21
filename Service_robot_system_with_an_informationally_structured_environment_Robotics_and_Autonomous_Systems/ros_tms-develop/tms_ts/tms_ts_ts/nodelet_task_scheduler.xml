@@ -1,0 +1,9 @@
+<library path="lib/libtms_ts_nodelet">
+  <class name="tms_ts_nodelet/ROS_TMS_TS" 
+  type="tms_ts_nodelet::ROS_TMS_TS" 
+  base_class_type="nodelet::Nodelet">
+    <description>                                                               
+      A node to execute subtasks sequentially.                                      
+    </description>
+  </class>
+</library>

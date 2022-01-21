@@ -1,0 +1,7 @@
+int32 object
+float32 object_detect_time
+int32 robot_collision
+int32 wagon_collision
+int32 voronoi
+int32 dist_from_obj_i
+float32 dist_from_obj_f

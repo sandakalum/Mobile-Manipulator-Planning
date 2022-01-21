@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<package>
+  <name>ros_tms</name>
+  <version>4.0.1</version>
+  <description>The ros_tms meta package</description>
+
+  <maintainer email="kawamura@ait.kyushu-u.ac.jp">Akihiro Kawamura</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://irvs.github.io/ros_tms/</url>
+  <url type="repository">https://github.com/irvs/ros_tms</url>
+  <url type="bugtracker">https://github.com/irvs/ros_tms/issues</url>
+
+  <!-- 2016 Members -->
+  <author email="watanabe@irvs.ait.kyushu-u.ac.jp">Yuta Watanabe</author>
+  <author email="horikawa@irvs.ait.kyushu-u.ac.jp">Yuta Horikawa</author>
+  <author email="shigekane@irvs.ait.kyushu-u.ac.jp">Akio Shigekane</author>
+  <author email="inada@irvs.ait.kyushu-u.ac.jp">Daisuke Inada</author>
+  <author email="k_nakashima@irvs.ait.kyushu-u.ac.jp">Kazuto Nakashima</author>
+  <author email="onishi@irvs.ait.kyushu-u.ac.jp">Masatomo Onishi</author>
+
+  <!-- 2015 Members -->
+  <author email="passionvirus@gmail.com">Yoonseok Pyo</author>
+  <author email="sakamoto@irvs.ait.kyushu-u.ac.jp">Junya Sakamoto</author>
+  <author email="watanabe@irvs.ait.kyushu-u.ac.jp">Yuta Watanabe</author>
+  <author email="horikawa@irvs.ait.kyushu-u.ac.jp">Yuta Horikawa</author>
+  <author email="shigekane@irvs.ait.kyushu-u.ac.jp">Akio Shigekane</author>
+  <author email="inada@irvs.ait.kyushu-u.ac.jp">Daisuke Inada</author>
+  <author email="k_nakashima@irvs.ait.kyushu-u.ac.jp">Kazuto Nakashima</author>
+  <author email="onishi@irvs.ait.kyushu-u.ac.jp">Masatomo Onishi</author>
+
+  <!-- 2014 Alumni -->
+  <author email="hashiguchi@irvs.ait.kyushu-u.ac.jp">Yuka Hashiguchi</author>
+  <author email="tetsuro@irvs.ait.kyushu-u.ac.jp">Tetsuro Oishi</author>
+  <author email="suginohara@irvs.ait.kyushu-u.ac.jp">Kazuya Suginohara</author>
+  <author email="alaoui.hao@gmail.com">Omar Alaoui</author>
+
+  <!-- 2013 Alumni -->
+  <author email="a_nagata@irvs.ait.kyushu-u.ac.jp">Akihiro Nagata</author>
+  <author email="nakashima@irvs.ait.kyushu-u.ac.jp">Kouhei Nakashima</author>
+  <author email="kuwahata@irvs.ait.kyushu-u.ac.jp">Shunya Kuwahata</author>
+  <author email="kusaka@irvs.ait.kyushu-u.ac.jp">Kazuya Kusaka</author>
+
+  <!-- 2012 Alumni -->
+  <author email="tanaka@irvs.ait.kyushu-u.ac.jp">Masahide Tanaka</author>
+
+  <!-- Director -->
+  <author email="kawamura@ait.kyushu-u.ac.jp">Akihiro Kawamura</author>
+  <author email="tsuji@ait.kyushu-u.ac.jp">Tokuo Tsuji</author>
+  <author email="kurazume@ait.kyushu-u.ac.jp">Ryo Kurazume</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>

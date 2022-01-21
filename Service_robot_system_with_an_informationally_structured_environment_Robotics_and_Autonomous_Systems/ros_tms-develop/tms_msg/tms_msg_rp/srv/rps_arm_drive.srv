@@ -1,0 +1,6 @@
+uint32 robot_id
+uint32 arm_id
+float32[] joint_angles
+---
+uint32 success
+string message

@@ -1,0 +1,21 @@
+/*
+	LumbarUnit interface.
+	Copyright (C) 2014 Yaskawa Electric Corporation.
+*/
+
+#ifndef LUMBARUNIT_IDL_
+#define LUMBARUNIT_IDL_
+
+#include "LumbarExtAxes.idl"
+
+interface LumbarUnit : LumbaExtAxes {
+	boolean move( in double lowerAxis, in double upperAxis, in double velocity, in double accel );
+	boolean moveUpperAxis( in double position, in double velocity, in double accel );
+	boolean moveLowerAxis( in double position, in double velocity, in double accel );
+	boolean getFeedback( out double lowerAxis, out double upperAxis );
+	boolean getCommand( out double lowerAxis, out double upperAxis );
+	boolean moveCooperative( in double position, in double velocity, in double accel );
+
+};
+
+#endif

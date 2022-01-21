@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<robot name="CheckerBox">
+  <link name="Box">
+    <visual>
+      <geometry>
+        <mesh filename="package://skeleton_description/model/checker_box/checker_box.dae"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </visual>
+  </link>
+</robot>
+

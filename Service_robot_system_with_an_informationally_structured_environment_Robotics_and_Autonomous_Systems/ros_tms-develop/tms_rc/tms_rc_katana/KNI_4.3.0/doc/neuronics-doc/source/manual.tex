@@ -1,0 +1,48 @@
+\documentclass{neuronicsmanual}
+
+% -----------------------------------------------------------------------------
+% User settings
+% -----------------------------------------------------------------------------
+% \myDoctype {Dokumenttyp (z.B. Handbuch)}
+\myDivision {Neuronics R\&D}
+\myProduct{Katana\,450}
+\myTitle {API Documentation}
+\mySubTitle {Katana Native Interface}
+\myAuthor {SDU}{2008}
+\myVersion {0.0.4}
+\myDocnum {233559}
+%\myConfidential{Vertraulich}
+%\myDraft{Entwurf}
+%\myObsolete{Obsolet}
+\myLanguage{english} % german or english
+
+\usepackage{doxygen-neuronics}
+\setcounter{tocdepth}{1}
+% -----------------------------------------------------------------------------
+% Document: provide the two files abstract.tex and history.tex
+% -----------------------------------------------------------------------------
+\begin{document}
+\printTitlePage
+\setupLanguage            % setup configured language
+\setupWatermarks          % setup watermarks
+\printLeader[historyfile=history, lof=false, toc=true]
+
+% -----------------------------------------------------------------------------
+% Input user files with LaTex text sections
+% -----------------------------------------------------------------------------
+
+\input{einleitung} 
+\input{filelist}
+
+% -----------------------------------------------------------------------------
+% Appendix
+% -----------------------------------------------------------------------------
+% \appendix
+% \input{anhang}
+
+% -----------------------------------------------------------------------------
+% Append the bibliogrphy
+% -----------------------------------------------------------------------------
+%\input{bibliography}
+
+\end{document}

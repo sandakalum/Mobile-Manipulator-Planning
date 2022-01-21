@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script src="mbedRPC.js" language="javascript"></script>
+    <script type="text/javascript">
+      mbed      = new HTTPRPC();
+      startpin  = new DigitalOut(mbed, p21);
+      closepin  = new DigitalOut(mbed, p22);
+      openpin   = new DigitalOut(mbed, p23);
+      clearpin  = new DigitalOut(mbed, p24);      
+    </script>
+  </head>
+  <body>
+    <script language="javascript">
+      function closeDoor() {
+        clearpin.write(0);
+        setTimeout('',100);
+        clearpin.write(1);
+        setTimeout('',100);
+        startpin.write(0);
+        setTimeout('',100);
+        closepin.write(1);
+        setTimeout('',100);
+        openpin.write(0);
+        setTimeout('',100);
+        startpin.write(1);
+      }
+      function openDoor() {
+        clearpin.write(0);
+        setTimeout('',100);
+        clearpin.write(1);
+        setTimeout('',100);
+        startpin.write(0);
+        setTimeout('',100);
+        closepin.write(0);
+        setTimeout('',100);
+        openpin.write(1);
+        setTimeout('',100);
+        startpin.write(1);
+      }
+    </script>
+    <button onclick="openDoor()">Open</button>
+    <button onclick="closeDoor()">Close</button>
+  </body>
+</html>
+

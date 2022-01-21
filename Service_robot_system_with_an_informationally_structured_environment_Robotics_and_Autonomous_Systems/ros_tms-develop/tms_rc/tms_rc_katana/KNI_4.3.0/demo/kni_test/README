@@ -1,0 +1,8 @@
+# README for kni_test demo
+# Neuronics AG
+# 2007-2009
+
+This test demo uses many different function calls to test KNI before release.
+
+This test reads point data from files named:
+Katana6M90A_F, Katana6M90A_G, Katana6M90B_F, Katana6M90B_G, Katana6M180

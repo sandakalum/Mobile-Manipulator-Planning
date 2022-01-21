@@ -1,0 +1,83 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+
+import serial
+import rospy
+from geometry_msgs.msg import PoseStamped
+from nav_msgs.msg import Odometry
+
+frame_id = "/world_link"
+
+class SerialClass:
+  def __init__(self):
+      
+    ser           = serial.Serial()
+    ser.port      = rospy.get_param('~port', '/dev/ttyACM0')
+    ser.baudrate  = 115200
+
+    while True:
+          if not rospy.is_shutdown():
+                try:
+                  ser.open()
+                  break
+                except:
+                  rospy.logerr('Error connecting to Serial : Could not open Serial')
+                  continue
+          else: return
+    
+    pub1 = rospy.Publisher('pozyx', PoseStamped, queue_size=1000)
+    pub2 = rospy.Publisher('ninebot_measured_pos', Odometry, queue_size=1000)
+
+    while not rospy.is_shutdown():
+          try:
+            line = ser.readline()
+            data = line.split(',')
+
+            id = int(data[0])
+            x  = int(data[1]) * 0.001
+            y  = int(data[2]) * 0.001
+            z  = int(data[3]) * 0.001
+            qx = float(data[4])
+            qy = float(data[5])
+            qz = float(data[6])
+            qw = float(data[7].strip('\r\n'))
+
+            rospy.loginfo("Pozyx: id = %d, x = %f, y = %f, z = %f, qx = %f, qy = %f, qz = %f, qw = %f", id, x, y, z, qx, qy, qz, qw)
+
+            pozyx = PoseStamped()
+            pozyx.header.frame_id = frame_id
+            pozyx.header.stamp = rospy.Time.now()
+            pozyx.pose.position.x = x
+            pozyx.pose.position.y = y
+            pozyx.pose.position.z = z
+            pozyx.pose.orientation.x = qx
+            pozyx.pose.orientation.y = qy
+            pozyx.pose.orientation.z = qz
+            pozyx.pose.orientation.w = qw
+
+            pub1.publish(pozyx)
+
+            odom = Odometry()
+            odom.header.frame_id = frame_id
+            odom.header.stamp = rospy.Time.now()
+            odom.pose.pose.position.x = x
+            odom.pose.pose.position.y = y
+            odom.pose.pose.position.z = z
+            odom.pose.pose.orientation.x = qx
+            odom.pose.pose.orientation.y = qy
+            odom.pose.pose.orientation.z = qz
+            odom.pose.pose.orientation.w = qw
+
+            pub2.publish(odom)
+          except: continue
+    
+    ser.close()
+
+
+if __name__ == '__main__':
+  rospy.init_node('pozyx_serial', anonymous=True)
+  try:
+    SerialClass()
+    rospy.spin()
+  except rospy.ROSInterruptException:
+    rospy.loginfo("pozyx_serial node finished.")

@@ -1,0 +1,1258 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 84
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /MotionPlanning1
+        - /MotionPlanning1/Scene Geometry1
+        - /MotionPlanning1/Scene Robot1
+        - /MotionPlanning1/Scene Robot1/Links1
+        - /MotionPlanning1/Scene Robot1/Links1/bsen_celling_link1
+        - /Marker1
+        - /Marker2
+      Splitter Ratio: 0.742560029
+    Tree Height: 247
+  - Class: rviz/Help
+    Name: Help
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: false
+      Line Style:
+        Line Width: 0.0299999993
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 59
+      Reference Frame: <Fixed Frame>
+      Value: false
+    - Class: moveit_rviz_plugin/MotionPlanning
+      Enabled: true
+      Move Group Namespace: ""
+      MoveIt_Goal_Tolerance: 0.10000000000000001
+      MoveIt_Planning_Attempts: 10
+      MoveIt_Planning_Time: 5
+      MoveIt_Use_Constraint_Aware_IK: true
+      MoveIt_Warehouse_Host: 127.0.0.1
+      MoveIt_Warehouse_Port: 33829
+      MoveIt_Workspace:
+        Center:
+          X: 0
+          Y: 0
+          Z: 0
+        Size:
+          X: 2
+          Y: 2
+          Z: 2
+      Name: MotionPlanning
+      Planned Path:
+        Interrupt Display: false
+        Links:
+          All Links Enabled: false
+          Expand Joint Details: false
+          Expand Link Details: false
+          Expand Tree: false
+          Link Tree Style: Links in Alphabetic Order
+          base_footprint:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          bed_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          bsen_celling_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: false
+          bsen_room_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          bsen_wall_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          camera_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          cancoffee_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          cancoffee_pitch_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          cancoffee_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          cancoffee_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          cancoffee_yaw_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          cancoffee_z_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          carpet_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          chair_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          chair_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          chair_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          chipstar_red_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          chipstar_red_pitch_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          chipstar_red_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          chipstar_red_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          chipstar_red_yaw_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          chipstar_red_z_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          drawer_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          greentea_bottle_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          greentea_bottle_pitch_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          greentea_bottle_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          greentea_bottle_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          greentea_bottle_yaw_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          greentea_bottle_z_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          intelingent_shelf_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          kitchen_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_arm_j1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_arm_j2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_arm_j3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_arm_j4_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_arm_j5_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_arm_j6_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_arm_j7_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_end_effector_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_gripper_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_gripper_thumb_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lumbar_lower_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lumbar_upper_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          meeting_chair1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          meeting_chair1_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          meeting_chair1_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          meeting_chair2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          meeting_chair2_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          meeting_chair2_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          meeting_chair3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          meeting_chair3_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          meeting_chair3_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          meeting_chair4_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          meeting_chair4_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          meeting_chair4_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          meeting_door_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          meeting_table_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_arm_j1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_arm_j2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_arm_j3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_arm_j4_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_arm_j5_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_arm_j6_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_arm_j7_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_end_effector_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_gripper_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_gripper_thumb_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          refrigerator_door_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          refrigerator_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          smartpal5_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          smartpal5_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          smartpal5_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          sofa_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          sofa_table_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          soysauce_bottle_black_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          soysauce_bottle_black_pitch_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          soysauce_bottle_black_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          soysauce_bottle_black_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          soysauce_bottle_black_yaw_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          soysauce_bottle_black_z_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          tree_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          tv_multi_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          tv_table_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wagon_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wagon_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          wagon_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          wardrobe_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wheelchair_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wheelchair_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          wheelchair_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          workdesk_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          world_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+        Loop Animation: false
+        Robot Alpha: 0.5
+        Show Robot Collision: false
+        Show Robot Visual: false
+        Show Trail: false
+        State Display Time: 0.05 s
+        Trajectory Topic: move_group/display_planned_path
+      Planning Metrics:
+        Payload: 1
+        Show Joint Torques: false
+        Show Manipulability: false
+        Show Manipulability Index: false
+        Show Weight Limit: false
+        TextHeight: 0.0799999982
+      Planning Request:
+        Colliding Link Color: 255; 0; 0
+        Goal State Alpha: 1
+        Goal State Color: 250; 128; 0
+        Interactive Marker Size: 0
+        Joint Violation Color: 255; 0; 255
+        Planning Group: l_arm
+        Query Goal State: false
+        Query Start State: false
+        Show Workspace: false
+        Start State Alpha: 1
+        Start State Color: 0; 255; 0
+      Planning Scene Topic: move_group/monitored_planning_scene
+      Robot Description: robot_description
+      Scene Geometry:
+        Scene Alpha: 1
+        Scene Color: 50; 230; 50
+        Scene Display Time: 0.200000003
+        Show Scene Geometry: true
+        Voxel Coloring: Z-Axis
+        Voxel Rendering: Occupied Voxels
+      Scene Robot:
+        Attached Body Color: 150; 50; 150
+        Links:
+          All Links Enabled: false
+          Expand Joint Details: false
+          Expand Link Details: false
+          Expand Tree: false
+          Link Tree Style: Links in Alphabetic Order
+          base_footprint:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          bed_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          bsen_celling_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: false
+          bsen_room_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          bsen_wall_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          camera_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          cancoffee_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          cancoffee_pitch_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          cancoffee_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          cancoffee_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          cancoffee_yaw_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          cancoffee_z_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          carpet_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          chair_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          chair_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          chair_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          chipstar_red_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          chipstar_red_pitch_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          chipstar_red_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          chipstar_red_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          chipstar_red_yaw_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          chipstar_red_z_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          drawer_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          greentea_bottle_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          greentea_bottle_pitch_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          greentea_bottle_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          greentea_bottle_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          greentea_bottle_yaw_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          greentea_bottle_z_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          intelingent_shelf_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          kitchen_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_arm_j1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_arm_j2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_arm_j3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_arm_j4_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_arm_j5_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_arm_j6_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_arm_j7_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_end_effector_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_gripper_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          l_gripper_thumb_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lumbar_lower_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lumbar_upper_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          meeting_chair1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          meeting_chair1_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          meeting_chair1_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          meeting_chair2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          meeting_chair2_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          meeting_chair2_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          meeting_chair3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          meeting_chair3_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          meeting_chair3_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          meeting_chair4_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          meeting_chair4_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          meeting_chair4_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          meeting_door_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          meeting_table_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_arm_j1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_arm_j2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_arm_j3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_arm_j4_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_arm_j5_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_arm_j6_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_arm_j7_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_end_effector_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_gripper_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          r_gripper_thumb_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          refrigerator_door_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          refrigerator_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          smartpal5_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          smartpal5_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          smartpal5_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          sofa_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          sofa_table_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          soysauce_bottle_black_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          soysauce_bottle_black_pitch_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          soysauce_bottle_black_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          soysauce_bottle_black_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          soysauce_bottle_black_yaw_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          soysauce_bottle_black_z_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          tree_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          tv_multi_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          tv_table_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wagon_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wagon_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          wagon_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          wardrobe_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wheelchair_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wheelchair_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          wheelchair_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          workdesk_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          world_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+        Robot Alpha: 1
+        Show Robot Collision: false
+        Show Robot Visual: true
+      Value: true
+    - Class: rviz/Marker
+      Enabled: false
+      Marker Topic: /nonvoronoi_map_marker
+      Name: Nonvoronoi
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /voronoi_map_marker
+      Name: Voronoi
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: false
+      Marker Topic: /dynamic_map_marker
+      Name: DynamicMap
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
+    - Class: rviz/MarkerArray
+      Enabled: false
+      Marker Topic: /robot_path_marker
+      Name: RobotPath
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
+    - Class: rviz/MarkerArray
+      Enabled: false
+      Marker Topic: /shadow_path_marker
+      Name: RobotShadow
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
+    - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: true
+      Links:
+        All Links Enabled: false
+        Body:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Head:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LeftArm1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LeftArm2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LeftElbowVirtual:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        LeftFoot:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LeftHand1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LeftHipVirtual1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        LeftHipVirtual2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        LeftKneeVirtual:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        LeftLeg1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LeftLeg2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LeftShoulderVirtual1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        LeftShoulderVirtual2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        LeftWristVirtual:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        Link Tree Style: Links in Alphabetic Order
+        Neck:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        NeckVirtual:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        RightArm1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RightArm2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RightElbowVirtual:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        RightFoot:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RightHand1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RightHipVirtual1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        RightHipVirtual2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        RightKneeVirtual:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        RightLeg1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RightLeg2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RightShoulderVirtual1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        RightShoulderVirtual2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        RightWristVirtual:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+      Name: RobotModel
+      Robot Description: skeleton_description1
+      TF Prefix: ""
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: visualization_marker_array
+      Name: MarkerArray
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: false
+      Marker Topic: /laser_visualization1
+      Name: MarkerArray
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
+    - Class: rviz/MarkerArray
+      Enabled: false
+      Marker Topic: /laser_visualization2
+      Name: MarkerArray
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
+    - Class: rviz/MarkerArray
+      Enabled: false
+      Marker Topic: /laser_visualization3
+      Name: MarkerArray
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /visualization_marker
+      Name: Marker
+      Namespaces:
+        "": true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /heartrate
+      Name: Marker
+      Namespaces:
+        "": true
+      Queue Size: 100
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: world_link
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+  Value: true
+  Views:
+    Current:
+      Class: rviz/XYOrbit
+      Distance: 10.0487194
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.0599999987
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Focal Point:
+        X: 9.14282227
+        Y: 2.20936084
+        Z: 9.33612955e-06
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.0500000007
+      Name: Current View
+      Near Clip Distance: 0.00999999978
+      Pitch: 0.904795825
+      Target Frame: world_link
+      Value: XYOrbit (rviz)
+      Yaw: 4.2331214
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 1056
+  Help:
+    collapsed: false
+  Hide Left Dock: false
+  Hide Right Dock: false
+  Motion Planning:
+    collapsed: false
+  QMainWindow State: 000000ff00000000fd0000000100000000000002b8000003dafc0200000005fb000000100044006900730070006c00610079007301000000280000018c000000dd00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000003b0000000b0000000b000fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e006701000001ba00000248000001cc00ffffff00000481000003da00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Views:
+    collapsed: false
+  Width: 1855
+  X: 65
+  Y: 24

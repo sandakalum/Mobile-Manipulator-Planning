@@ -1,0 +1,28 @@
+/*
+	ExtAxes interface.
+	Copyright (C) 2014 Yaskawa Electric Corporation.
+*/
+
+#ifndef GRIPPEREXTAXES_IDL_
+#define GRIPPEREXTAXES_IDL_
+
+#include "Common.idl" // for Common Data
+
+interface GripperExtAxes {
+	boolean servoOn();
+	boolean servoOff();
+	boolean isPowerOn();
+	boolean isServoOn();
+	boolean pause();
+	boolean resume();
+	boolean stop();
+	boolean abort();
+	boolean isMoving();
+	boolean clearAlarms();
+	boolean getActiveAlarm(in unsigned long maximumNumber, out unsigned long numberOfAlarm, out AlarmSeq alarmArray);
+	boolean getSoftLimit(out unsigned long numberOfData, out LimitSeq limitArray);
+	boolean getVersion(out string versionMessage);
+
+};
+
+#endif

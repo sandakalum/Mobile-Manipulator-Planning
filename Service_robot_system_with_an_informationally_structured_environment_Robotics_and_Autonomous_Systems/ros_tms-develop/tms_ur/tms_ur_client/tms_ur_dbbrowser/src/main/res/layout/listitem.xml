@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+    
+    <ImageView 
+        android:id="@+id/objicon"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:contentDescription="@string/descImage"
+        />
+    <TextView
+        android:id="@+id/objname"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:text="test"
+        android:textSize="30sp"
+        android:layout_height="50sp"
+        />
+        
+
+</LinearLayout>

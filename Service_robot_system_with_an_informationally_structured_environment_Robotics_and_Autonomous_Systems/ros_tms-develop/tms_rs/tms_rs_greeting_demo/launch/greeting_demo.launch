@@ -1,0 +1,7 @@
+<launch>
+
+  <node pkg="tms_rs_greeting_demo" type="tms_rs_greeting"  name="tms_rs_greeting">
+  <rosparam command="load" file="$(find tms_rs_greeting_demo)/open_campus.yaml" />
+  </node>
+
+</launch>

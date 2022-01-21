@@ -1,0 +1,103 @@
+<!-- "odom"->"base_footprint"のtfを推定して発行.  -->
+<!-- オドメトリのchild_frame_idがEKF推定後の座標系のframe_idになっていないとバグるので注意 -->
+<!-- @todo: トピック名を相対パスに -->
+<launch>
+  <!--<env name="ROSCONSOLE_CONFIG_FILE"
+       value="$(find for_testing)/use_debug_level.conf"/>-->
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_relative" clear_params="true" output="screen">
+      <param name="frequency" value="10"/>
+      <param name="sensor_timeout" value="10.0"/>
+      <param name="two_d_mode" value="true"/>
+
+      <param name="map_frame" value="map"/>
+      <param name="odom_frame" value="odom"/>
+      <param name="base_link_frame" value="base_footprint"/>
+      <param name="world_frame" value="odom"/>
+
+      <param name="transform_time_offset" value="0.0"/>
+
+      <param name="odom0" value="odom"/>
+      <param name="imu0" value="imu/data"/>
+      <rosparam param="odom0_config">[false, false, false,
+                                      false, false, false,
+                                      true,  false, false,
+                                      false, false, true,
+                                      false, false, false]</rosparam>
+      <rosparam param="imu0_config">[false, false, false,
+                                     false,  false,  false,
+                                     <!-- true,  true,  true, -->
+                                     false, false, false,
+                                     false,  false,  true,
+                                     false,  false,  false]</rosparam>
+                                     <!-- true,  true,  true]</rosparam> -->
+      <param name="odom0_differential" value="false"/>
+      <param name="imu0_differential" value="false"/>
+      <param name="odom1_relative" value="false"/>
+      <param name="imu0_relative" value="true"/>
+      <param name="imu0_remove_gravitational_acceleration" value="true"/>
+
+      <param name="print_diagnostics" value="true"/>
+      <param name="odom0_queue_size" value="100"/>
+      <param name="imu0_queue_size" value="100"/>
+
+      <!-- If your data is subject to outliers, use these threshold settings, expressed as Mahalanobis distances, to control
+           how far away from the current vehicle state a sensor measurement is permitted to be. Each defaults to
+           numeric_limits<double>::max() if unspecified. -->
+      <!-- <param name="odom0_pose_rejection_threshold" value="5"/>
+      <param name="odom0_twist_rejection_threshold" value="1"/>
+      <param name="pose0_rejection_threshold" value="2"/>
+      <param name="twist0_rejection_threshold" value="1.2"/>
+      <param name="imu0_pose_rejection_threshold" value="0.3"/>
+      <param name="imu0_twist_rejection_threshold" value="0.1"/>
+      <param name="imu0_linear_acceleration_rejection_threshold" value="0.1"/> -->
+
+      <!-- Debug settings. Not for the faint of heart. Outputs a ludicrous amount of information to the file
+           specified by debug_out_file. I hope you like matrices! Defaults to false if unspecified. -->
+      <param name="debug"           value="true"/>
+      <!-- Defaults to "robot_localization_debug.txt" if unspecified. -->
+      <param name="debug_out_file"  value="debug_ekf_localization.txt"/>
+
+      <!-- The process noise covariance matrix can be difficult to tune, and can vary for each application, so it
+           is exposed as a configuration parameter. The values are ordered as x, y, z, roll, pitch, yaw, vx, vy, vz,
+           vroll, vpitch, vyaw, ax, ay, az. Defaults to the matrix below if unspecified. -->
+      <rosparam param="process_noise_covariance">[0.05, 0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0.05, 0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0.06, 0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0.03, 0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0.03, 0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0.06, 0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0.025, 0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0.025, 0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0.04, 0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0.01, 0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0.01, 0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0.02, 0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0.01, 0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0.01, 0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0.015]</rosparam>
+
+      <!-- This represents the initial value for the state estimate error covariance matrix. Setting a diagonal value (a
+           variance) to a large value will result in early measurements for that variable being accepted quickly. Users should
+           take care not to use large values for variables that will not be measured directly. The values are ordered as x, y,
+           z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az. Defaults to the matrix below if unspecified. -->
+           <rosparam param="initial_estimate_covariance">[1e-9, 0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    1e-9, 0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    1e-9, 0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    1e-9, 0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    1e-9, 0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    1e-9, 0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    1e-9, 0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    1e-9, 0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    1e-9, 0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    1e-9,  0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     1e-9,  0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     1e-9,  0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     1e-9, 0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    1e-9, 0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    1e-9]</rosparam>
+
+
+      <!-- Placeholder for output topic remapping -->
+      <remap from="odometry/filtered" to="odometry/ekf_relative"/>
+    </node>
+</launch>

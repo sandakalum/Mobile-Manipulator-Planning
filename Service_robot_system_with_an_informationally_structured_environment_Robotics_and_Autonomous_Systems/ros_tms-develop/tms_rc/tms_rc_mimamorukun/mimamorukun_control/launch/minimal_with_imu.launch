@@ -1,0 +1,13 @@
+<launch>
+  <group ns="mimamorukun">
+    <node  args="0 0 0 0 0 0 base_footprint base_link 100" name="tf_pub" pkg="tf" type="static_transform_publisher"/>
+    <include file="$(find tms_rc_mimamorukun_control)/launch/includes/minimal.launch.xml"/>
+    <node pkg="myahrs_driver" type="myahrs_driver" name="myahrs_driver">
+      <param name="frame_id" value="base_link"/>
+      <param name="is_publish_tf" value="false"/>
+      <!--<param name="frame_id" value="imu_link"/>
+      <param name="is_publish_tf" value="true"/>-->
+    </node>
+    <include file="$(find tms_rc_mimamorukun_control)/launch/includes/ekf_odom_imu.launch.xml"/>
+  </group>
+</launch>

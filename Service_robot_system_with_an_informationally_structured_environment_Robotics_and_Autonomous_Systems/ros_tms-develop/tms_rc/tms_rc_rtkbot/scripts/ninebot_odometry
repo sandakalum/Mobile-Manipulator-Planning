@@ -1,0 +1,108 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+import rospy
+import math 
+import tf
+
+from math import cos, sin, sqrt, pi
+
+from nav_msgs.msg import Odometry
+from std_msgs.msg import String
+from std_msgs.msg import Float64
+
+class OdometryClass:
+  def __init__(self):
+
+    self.odom_frame = rospy.get_param('~odom_frame_id', 'odom')
+    self.base_frame = rospy.get_param('~base_frame_id', 'base_footprint')
+    self.print_tf   = rospy.get_param('~print_tf', False)
+
+    self.radius    = rospy.get_param('~wheel_radius', 0.123) # タイヤの半径(人が乗った場合 ： 0.123, 手で押す場合 : 0.129)
+    self.tread     = rospy.get_param('~wheel_tread',  0.485) # タイヤ間距離
+    self.r_pulse   = rospy.get_param('~encoder_pulse', 4000) # エンコーダが一周した際のエンコーダ値（パルス数×4）
+    self.k_encoder = 2.0 * math.pi * self.radius / self.r_pulse
+
+    self.odom_pub    = rospy.Publisher(rospy.get_param('~odom_topic_name', 'odom'), Odometry, queue_size=1000)
+    self.broadcaster = tf.TransformBroadcaster()
+
+    self.position_x = 0.0
+    self.position_y = 0.0
+    self.pose_yaw   = 0.0
+
+    rospy.Subscriber('serial_string', String, self.callback_string, queue_size=100)
+    rospy.Subscriber('wheel_radius', Float64, self.callback_radius, queue_size=1)
+    rospy.Subscriber('wheel_tread',  Float64, self.callback_tread,  queue_size=1)
+    
+  def callback_string(self, data):
+    try:
+      split_date = data.data.split(",")
+      if (len(split_date) < 3): return
+      
+      delta_r = int(split_date[0])
+      delta_l = int(split_date[1])
+      delta_t = float(split_date[2])
+      
+      if delta_t <= 0: return
+    except: return
+
+    delta_r = self.k_encoder * delta_r
+    delta_l = self.k_encoder * delta_l
+
+    delta_x  = (delta_r + delta_l) * 0.5
+    delta_th = (delta_r - delta_l) / self.tread
+
+    self.simple_integral(delta_x)
+    #self.precision_integral(delta_r, delta_l, delta_th)
+
+    self.pose_yaw += delta_th
+    while self.pose_yaw >  pi: self.pose_yaw -= 2.0 * pi
+    while self.pose_yaw < -pi: self.pose_yaw += 2.0 * pi
+
+    quate = tf.transformations.quaternion_from_euler(0.0, 0.0, self.pose_yaw)
+    odom                         = Odometry()
+    odom.header.stamp            = rospy.Time.now()
+    odom.header.frame_id         = self.odom_frame
+    odom.child_frame_id          = self.base_frame
+    odom.pose.pose.position.x    = self.position_x
+    odom.pose.pose.position.y    = self.position_y
+    odom.pose.pose.orientation.x = quate[0]
+    odom.pose.pose.orientation.y = quate[1]
+    odom.pose.pose.orientation.z = quate[2]
+    odom.pose.pose.orientation.w = quate[3]
+    odom.twist.twist.linear.x    = delta_x  / delta_t
+    odom.twist.twist.angular.z   = delta_th / delta_t
+    self.odom_pub.publish(odom)
+
+    if self.print_tf == True:
+      self.broadcaster.sendTransform( \
+        (self.position_x, self.position_y, 0.0), quate, \
+        rospy.Time.now(), self.base_frame, self.odom_frame)
+
+  def simple_integral(self, dx):
+    self.position_x += cos(self.pose_yaw) * dx
+    self.position_y += sin(self.pose_yaw) * dx
+
+  def precision_integral(self, dr, dl, dth):
+    if dth != 0:
+      dx = ((dr + dl) * sin(dth * 0.5) * cos(self.pose_yaw + (dth * 0.5))) / dth
+      dy = ((dr + dl) * sin(dth * 0.5) * sin(self.pose_yaw + (dth * 0.5))) / dth
+    else:
+      dx = (dr + dl) * cos(self.pose_yaw + (dth * 0.5)) * 0.5
+      dy = (dr + dl) * sin(self.pose_yaw + (dth * 0.5)) * 0.5           
+    self.position_x += dx
+    self.position_y += dy
+
+  def callback_radius(self, data):
+    self.radius = data.data
+    self.k_encoder = 2.0 * math.pi * self.radius / self.r_pulse
+
+  def callback_tread(self, data):
+    self.tread = data.data
+
+if __name__ == '__main__':
+  rospy.init_node('ninebot_odometry', anonymous=True)
+  try:
+    OdometryClass()
+    rospy.spin()
+  except rospy.ROSInterruptException:
+    rospy.loginfo("ninebot_odometry node finished.")

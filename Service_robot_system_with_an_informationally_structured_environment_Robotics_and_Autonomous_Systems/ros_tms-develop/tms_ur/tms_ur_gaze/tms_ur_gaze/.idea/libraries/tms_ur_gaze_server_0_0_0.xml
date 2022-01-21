@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="tms_ur_gaze_server-0.0.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/tms_ur_gaze_client/libs/tms_ur_gaze_server-0.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,24 @@
+
+subscribers:
+
+  - name:        "Keyboard operation"
+    topic:       "input/keyop"
+    timeout:     0.2
+    priority:    10
+    
+  - name:        "Remote control"
+    topic:       "input/remote"
+    timeout:     0.2
+    priority:    9
+
+  - name:        "Navigation stack"
+    topic:       "input/cmd_vel"
+    timeout:     0.2
+    priority:    8
+
+  - name:        "Safety net"
+    topic:       "input/safety"
+    timeout:     0.5
+    priority:    7
+
+publisher:       "output"

@@ -1,0 +1,15 @@
+<launch>
+        
+  <node pkg="tms_ss_fss_exe" type="fss_classify"   name="fss_classify">
+  </node>
+
+  <node pkg="tms_ss_fss_exe" type="fss_cluster"    name="fss_cluster">
+  </node>
+
+  <node pkg="tms_ss_fss_exe" type="fss_transform"  name="fss_transform">
+  </node>
+
+  <node pkg="tms_ss_fss_exe" type="fss_preprocess" name="fss_preprocess" >
+  </node>
+
+</launch>

@@ -1,0 +1,4 @@
+int32 robot_id
+tms_msg_rp/rps_pos_param[] param_array
+---
+int8 result

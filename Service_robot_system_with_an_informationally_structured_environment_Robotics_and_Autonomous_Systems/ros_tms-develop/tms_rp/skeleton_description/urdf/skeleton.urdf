@@ -1,0 +1,389 @@
+<?xml version="1.0"?>
+<robot name="Human">
+  <!-- <^^^^^^^^^^^^> -->
+  <!-- <   Links    > -->
+  <!-- <vvvvvvvvvvvv> -->
+  <link name="Body" >
+    <visual>
+      <geometry>
+        <mesh filename="package://skeleton_description/model/male/Body.dae"/>
+      </geometry>
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+      <!--<origin xyz="0 0 1.1" rpy="0 0 0" />-->
+    </visual>
+  </link>
+
+  <link name="Neck" >
+    <visual>
+      <geometry>
+        <mesh filename="package://skeleton_description/model/male/Neck.dae"/>
+      </geometry>
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+    </visual>
+  </link>
+
+  <link name="Head" >
+    <visual>
+      <geometry>
+        <mesh filename="package://skeleton_description/model/male/Head.dae"/>
+      </geometry>
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+    </visual>
+  </link>
+
+  <link name="RightArm1" >
+    <visual>
+      <geometry>
+        <mesh filename="package://skeleton_description/model/male/RightArm1.dae"/>
+      </geometry>
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+    </visual>
+  </link>
+
+  <link name="RightArm2" >
+    <visual>
+      <geometry>
+        <mesh filename="package://skeleton_description/model/male/RightArm2.dae"/>
+      </geometry>
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+    </visual>
+  </link>
+
+  <link name="RightHand1" >
+    <visual>
+      <geometry>
+        <mesh filename="package://skeleton_description/model/male/RightHand1.dae"/>
+      </geometry>
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+    </visual>
+  </link>
+
+  <link name="LeftArm1" >
+    <visual>
+      <geometry>
+        <mesh filename="package://skeleton_description/model/male/LeftArm1.dae"/>
+      </geometry>
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+    </visual>
+  </link>
+
+  <link name="LeftArm2" >
+    <visual>
+      <geometry>
+        <mesh filename="package://skeleton_description/model/male/LeftArm2.dae"/>
+      </geometry>
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+    </visual>
+  </link>
+
+  <link name="LeftHand1" >
+    <visual>
+      <geometry>
+        <mesh filename="package://skeleton_description/model/male/LeftHand1.dae"/>
+      </geometry>
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+    </visual>
+  </link>
+
+  <link name="RightLeg1" >
+    <visual>
+      <geometry>
+        <mesh filename="package://skeleton_description/model/male/RightLeg1.dae"/>
+      </geometry>
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+    </visual>
+  </link>
+
+  <link name="RightLeg2" >
+    <visual>
+      <geometry>
+        <mesh filename="package://skeleton_description/model/male/RightLeg2.dae"/>
+      </geometry>
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+    </visual>
+  </link>
+
+  <link name="RightFoot" >
+    <visual>
+      <geometry>
+        <mesh filename="package://skeleton_description/model/male/RightFoot.dae"/>
+      </geometry>
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+    </visual>
+  </link>
+
+  <link name="LeftLeg1" >
+    <visual>
+      <geometry>
+        <mesh filename="package://skeleton_description/model/male/LeftLeg1.dae"/>
+      </geometry>
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+    </visual>
+  </link>
+
+  <link name="LeftLeg2" >
+    <visual>
+      <geometry>
+        <mesh filename="package://skeleton_description/model/male/LeftLeg2.dae"/>
+      </geometry>
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+    </visual>
+  </link>
+
+  <link name="LeftFoot" >
+    <visual>
+      <geometry>
+        <mesh filename="package://skeleton_description/model/male/LeftFoot.dae"/>
+      </geometry>
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+    </visual>
+  </link>
+
+
+  <!-- <^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^> -->
+  <!-- <   Virtual Links for multi DoF joints   > -->
+  <!-- <vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv> -->
+  <link name="RightShoulderVirtual1"/>
+  <link name="RightShoulderVirtual2"/>
+  <link name="RightElbowVirtual"/>
+  <link name="LeftShoulderVirtual1"/>
+  <link name="LeftShoulderVirtual2"/>
+  <link name="LeftElbowVirtual"/>
+  <link name="RightHipVirtual1"/>
+  <link name="RightHipVirtual2"/>
+  <link name="RightKneeVirtual"/>
+  <link name="LeftHipVirtual1"/>
+  <link name="LeftHipVirtual2"/>
+  <link name="LeftKneeVirtual"/>
+  <link name="RightWristVirtual"/>
+  <link name="LeftWristVirtual"/>
+  <link name="NeckVirtual"/>
+
+
+  <!-- <^^^^^^^^^^^^> -->
+  <!-- <   Joints   > -->
+  <!-- <vvvvvvvvvvvvv -->
+  <!--
+  <joint name="WAIST_JOINT1" type="continuous">
+    <parent link="Neck"/>
+    <child link="Head"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="WAIST_JOINT2" type="continuous">
+    <parent link="Neck"/>
+    <child link="Head"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  -->
+
+  <!-- Right Shoulder -->
+  <joint name="R_ARM_JOINT1" type="continuous">
+    <axis xyz="-1.0 0.0 0.0"/>
+    <origin xyz="0.185 0 0.29" rpy="0 0 0" />
+    <parent link="Body"/>
+    <child link="RightShoulderVirtual1"/>
+  </joint>
+
+  <joint name="R_ARM_JOINT2" type="continuous">
+    <axis xyz="0.0 1.0 0.0"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 1.57079632679 0" />
+    <parent link="RightShoulderVirtual1"/>
+    <child link="RightShoulderVirtual2"/>
+  </joint>
+
+  <joint name="R_ARM_JOINT3" type="continuous">
+    <axis xyz="-1.0 0.0 0.0"/>
+    <!--<origin xyz="0.0 0.0 0.0" rpy="-1.57079632679 0 0" />-->
+    <parent link="RightShoulderVirtual2"/>
+    <child link="RightArm1"/>
+  </joint>
+
+  <!-- Right Elbow -->
+  <joint name="R_ARM_JOINT4" type="continuous">
+    <axis xyz="0.0 0.0 -1.0"/>
+    <origin xyz="0.215 0 0" rpy="0 0 0.0" />
+    <parent link="RightArm1"/>
+    <child link="RightElbowVirtual"/>
+  </joint>
+
+  <joint name="R_ARM_JOINT5" type="continuous">
+    <parent link="RightElbowVirtual"/>
+    <child link="RightArm2"/>
+  </joint>
+
+  <!-- Right Wrist -->
+  <joint name="R_ARM_JOINT6" type="continuous">
+    <origin xyz="0.22 0 0" rpy="0 0 0" />
+    <parent link="RightArm2"/>
+    <child link="RightWristVirtual"/>
+  </joint>
+
+  <joint name="R_ARM_JOINT7" type="continuous">
+    <parent link="RightWristVirtual"/>
+    <child link="RightHand1"/>
+  </joint>
+
+  <!--
+  <joint name="R_ARM_JOINT8" type="continuous">
+    <parent link="RightWristVirtual"/>
+    <child link="RightHand1"/>
+  </joint>
+  -->
+
+  <!-- Left Shoulder -->
+  <joint name="L_ARM_JOINT1" type="continuous">
+    <axis xyz="-1.0 0.0 0.0"/>
+    <origin xyz="-0.185 0 0.29" rpy="0.0 0.0 0.0" />
+    <parent link="Body"/>
+    <child link="LeftShoulderVirtual1"/>
+  </joint>
+
+  <joint name="L_ARM_JOINT2" type="continuous">
+    <axis xyz="0.0 1.0 0.0"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 4.71238898038 0" />
+    <parent link="LeftShoulderVirtual1"/>
+    <child link="LeftShoulderVirtual2"/>
+  </joint>
+
+  <joint name="L_ARM_JOINT3" type="continuous">
+    <axis xyz="1.0 0.0 0.0"/>
+    <!--<origin xyz="0.0 0.0 0.0" rpy="-1.57079632679 0 0" />-->
+    <parent link="LeftShoulderVirtual2"/>
+    <child link="LeftArm1"/>
+  </joint>
+
+  <!-- Left Elbow -->
+  <joint name="L_ARM_JOINT4" type="continuous">
+    <axis xyz="0.0 0.0 1.0"/>
+    <origin xyz="-0.215 0 0" rpy="0 0 0.0" />
+    <parent link="LeftArm1"/>
+    <child link="LeftElbowVirtual"/>
+  </joint>
+
+  <joint name="L_ARM_JOINT5" type="continuous">
+    <parent link="LeftElbowVirtual"/>
+    <child link="LeftArm2"/>
+  </joint>
+
+  <!-- Left Wrist -->
+  <joint name="L_ARM_JOINT6" type="continuous">
+    <origin xyz="-0.22 0 0" rpy="0 0 0" />
+    <parent link="LeftArm2"/>
+    <child link="LeftWristVirtual"/>
+  </joint>
+
+  <joint name="L_ARM_JOINT7" type="continuous">
+    <parent link="LeftWristVirtual"/>
+    <child link="LeftHand1"/>
+  </joint>
+
+  <!--
+  <joint name="L_ARM_JOINT8" type="continuous">
+    <parent link="LeftWristVirtual"/>
+    <child link="LeftHand1"/>
+  </joint>
+  -->
+
+  <!-- Neck -->
+  <joint name="NECK_JOINT0" type="continuous">
+    <origin xyz="0 0 0.35" rpy="0 0 0" />
+    <parent link="Body"/>
+    <child link="Neck"/>
+  </joint>
+
+  <joint name="NECK_JOINT1" type="continuous">
+    <origin xyz="0 0.04 0.03" rpy="0 0 0" />
+    <parent link="Neck"/>
+    <child link="NeckVirtual"/>
+  </joint>
+
+  <joint name="NECK_JOINT2" type="continuous">
+    <parent link="NeckVirtual"/>
+    <child link="Head"/>
+  </joint>
+
+  <!-- Right Hip -->
+  <joint name="R_LEG_JOINT1" type="continuous">
+    <axis xyz="-1.0 0.0 0.0"/>
+    <origin xyz="0.072 0 -0.25" rpy="0 0 0" />
+    <parent link="Body"/>
+    <child link="RightHipVirtual1"/>
+  </joint>
+
+  <joint name="R_LEG_JOINT2" type="continuous">
+    <axis xyz="0.0 1.0 0.0"/>
+    <parent link="RightHipVirtual1"/>
+    <child link="RightHipVirtual2"/>
+  </joint>
+
+  <joint name="R_LEG_JOINT3" type="continuous">
+    <axis xyz="0.0 0.0 1.0"/>
+    <parent link="RightHipVirtual2"/>
+    <child link="RightLeg1"/>
+  </joint>
+
+  <!-- Right Knee -->
+  <joint name="R_LEG_JOINT4" type="continuous">
+    <axis xyz="-1.0 0.0 0.0"/>
+    <origin xyz="0.0 0 -0.3" rpy="0 0 0" />
+    <parent link="RightLeg1"/>
+    <child link="RightKneeVirtual"/>
+  </joint>
+
+  <joint name="R_LEG_JOINT5" type="continuous">
+    <parent link="RightKneeVirtual"/>
+    <child link="RightLeg2"/>
+  </joint>
+
+  <!-- Right Ankle -->
+  <joint name="R_LEG_JOINT6" type="continuous">
+    <origin xyz="0.0 0 -0.42" rpy="0 0 0" />
+    <parent link="RightLeg2"/>
+    <child link="RightFoot"/>
+  </joint>
+
+  <!-- Left Hip -->
+  <joint name="L_LEG_JOINT1" type="continuous">
+    <axis xyz="-1.0 0.0 0.0"/>
+    <origin xyz="-0.072 0 -0.25" rpy="0 0 0" />
+    <parent link="Body"/>
+    <child link="LeftHipVirtual1"/>
+  </joint>
+
+  <joint name="L_LEG_JOINT2" type="continuous">
+    <axis xyz="0.0 1.0 0.0"/>
+    <parent link="LeftHipVirtual1"/>
+    <child link="LeftHipVirtual2"/>
+  </joint>
+
+  <joint name="L_LEG_JOINT3" type="continuous">
+    <axis xyz="0.0 0.0 1.0"/>
+    <parent link="LeftHipVirtual2"/>
+    <child link="LeftLeg1"/>
+  </joint>
+
+  <!-- Left Knee -->
+  <joint name="L_LEG_JOINT4" type="continuous">
+    <axis xyz="-1.0 0.0 0.0"/>
+    <origin xyz="0.0 0 -0.3" rpy="0 0 0" />
+    <parent link="LeftLeg1"/>
+    <child link="LeftKneeVirtual"/>
+  </joint>
+
+  <joint name="L_LEG_JOINT5" type="continuous">
+    <parent link="LeftKneeVirtual"/>
+    <child link="LeftLeg2"/>
+  </joint>
+
+  <!-- Left Ankle -->
+  <joint name="L_LEG_JOINT6" type="continuous">
+    <origin xyz="0.0 0 -0.42" rpy="0 0 0" />
+    <parent link="LeftLeg2"/>
+    <child link="LeftFoot"/>
+  </joint>
+
+
+</robot>

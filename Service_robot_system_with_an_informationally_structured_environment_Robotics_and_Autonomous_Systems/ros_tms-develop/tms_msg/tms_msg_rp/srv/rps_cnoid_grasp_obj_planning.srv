@@ -1,0 +1,10 @@
+uint8 robot_id
+uint8 obj_id
+tms_msg_rp/rps_position robot_pos
+tms_msg_rp/rps_joint_angle pre_robot_joint_angle
+tms_msg_rp/rps_position obj_pos
+---
+uint32 success
+string message
+tms_msg_rp/rps_joint_angle[] robot_joint_angle
+

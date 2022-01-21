@@ -1,0 +1,48 @@
+<launch>
+
+  <!-- local frame name -->
+  <arg name="global_frame" value="map"/>
+  <arg name="odom_frame"   value="odom"/>
+  <arg name="base_frame"   value="base_footprint"/>
+  <arg name="scan_frame"   value="base_scan"/>
+
+  <!-- ninebot serial -->
+  <node pkg="tms_rc_bot" type="ninebot_serial" name="ninebot_serial" output="screen">
+    <param name="port" value="/dev/ttyACM1"/>
+  </node>
+
+  <!-- ninebot odometry -->
+  <node pkg="tms_rc_bot" type="ninebot_odometry" name="ninebot_odometry" output="screen">
+    <param name="odom_topic_name" value="odom"/>   
+    <param name="odom_frame_id"   value="$(arg odom_frame)"/>
+    <param name="base_frame_id"   value="$(arg base_frame)"/>
+    <param name="wheel_radius"    value="0.129"/>
+    <param name="wheel_tread"     value="0.485"/>
+    <param name="print_tf"        value="true"/>
+  </node>
+
+  <!-- ninebot static tf -->
+  <node pkg="tf" type="static_transform_publisher" name="map_to_odom"
+    args="0 0 0 0 0 0 $(arg global_frame) $(arg odom_frame) 100">
+  </node>
+  <node pkg="tf" type="static_transform_publisher" name="link_to_scan"
+    args="0.1 0 0.36 0 0 0 $(arg base_frame) $(arg scan_frame) 100">
+  </node>
+
+  <!-- ninebot urg -->
+  <arg name="urg_range" value="1.5708"/>
+  <node pkg="urg_node" type="urg_node" name="urg_node" output="screen">
+    <param name="ip_address" value="192.168.0.10"/>
+    <param name="frame_id" value="$(arg scan_frame)"/>
+    <param name="angle_min" value="-$(arg urg_range)"/>
+    <param name="angle_max" value="$(arg urg_range)"/>
+  </node>
+
+  <!-- ninebot myahrs -->
+  <!-- <node pkg="myahrs_driver" type="myahrs_driver" name="myahrs_driver">
+    <param name="port"            value="/dev/ttyACM0"/>
+    <param name="parent_frame_id" value="$(arg base_frame)"/>
+    <param name="frame_id"        value="$(arg scan_frame)"/>
+  </node> -->
+
+</launch>

@@ -1,0 +1,73 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+import rospy
+
+from nav_msgs.msg import Odometry
+from people_msgs.msg import People
+from visualization_msgs.msg import Marker, MarkerArray
+
+class VisualizeTrackingMarkerClass:
+    def __init__(self):
+
+        self.pub_marker_people = rospy.Publisher(rospy.get_param('~people_marker_topic_name', 'marker_people'), MarkerArray, queue_size=1000)
+        rospy.Subscriber("people_ninebot_cropped", People, self.callback_people, queue_size=1000)
+        self.pub_marker_ninebot = rospy.Publisher(rospy.get_param('~ninebot_marker_topic_name', 'marker_ninebot'), Marker, queue_size=1000)
+        rospy.Subscriber("ninebot_measured_pos", Odometry, self.callback_ninebot, queue_size=1000)        
+
+    def callback_people(self, data):
+        marker_people = MarkerArray()
+        person_id = 10
+
+        for p in data.people:
+            marker_person = Marker()
+            marker_person.header.frame_id = "/world_link"
+            marker_person.header.stamp = rospy.Time.now()
+            person_id += 1
+            marker_person.id = person_id
+            marker_person.type = 10 # Mesh
+            marker_person.action = 0 # Add
+            marker_person.lifetime = rospy.Duration(0.5)
+
+            marker_person.scale.x = 0.025
+            marker_person.scale.y = 0.025
+            marker_person.scale.z = 0.025
+            marker_person.pose.position = p.position
+            marker_person.pose.orientation.x = 0
+            marker_person.pose.orientation.y = 0
+            marker_person.pose.orientation.z = 0
+            marker_person.pose.orientation.w = 1
+
+            marker_person.mesh_resource = "package://tms_ss_pot/meshes/WalkingMan4.dae"
+            marker_person.mesh_use_embedded_materials = True
+
+            marker_people.markers.append(marker_person)
+        
+        self.pub_marker_people.publish(marker_people)
+
+    def callback_ninebot(self, data):
+        marker_ninebot = Marker()
+        marker_ninebot.header.frame_id = "/world_link"
+        marker_ninebot.header.stamp = rospy.Time.now()
+        marker_ninebot.id = 1
+        marker_ninebot.type = 10 # Mesh
+        marker_ninebot.action = 0 # Add
+        marker_ninebot.lifetime = rospy.Duration(0.5)
+
+        marker_ninebot.scale.x = 0.01
+        marker_ninebot.scale.y = 0.01
+        marker_ninebot.scale.z = 0.01
+        marker_ninebot.pose = data.pose.pose
+
+        marker_ninebot.mesh_resource = "package://tms_ss_pot/meshes/ninebot_v2.dae"
+        marker_ninebot.mesh_use_embedded_materials = True
+
+        self.pub_marker_ninebot.publish(marker_ninebot)  
+
+
+if __name__ == "__main__":
+    rospy.init_node("visualize_tracking_marker", anonymous=True)
+    try:
+        VisualizeTrackingMarkerClass()
+        rospy.spin()
+    except rospy.ROSInterruptException:
+        rospy.loginfo("visualize_tracking_marker node finished.")

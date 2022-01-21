@@ -1,0 +1,7 @@
+<launch>
+  <!--machine name="pi0" address="192.168.4.120" env-loader="/home/pi/catkin_ws/devel/env.sh" user="pi" password="raspberry" default="true"/>
+  <node machine="pi0" pkg="tms_ur_listener" name="tms_ur_listener_client" type="tms_ur_listener_client.py" output="screen"/-->
+  <group ns="pi0">
+    <node pkg="tms_ur_listener" name="tms_ur_listener_client" type="tms_ur_listener_client.py" output="screen"/>
+  </group>
+</launch>

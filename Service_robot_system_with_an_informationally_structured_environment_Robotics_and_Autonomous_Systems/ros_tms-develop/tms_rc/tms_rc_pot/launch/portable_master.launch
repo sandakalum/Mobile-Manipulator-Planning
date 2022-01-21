@@ -1,0 +1,7 @@
+<launch>
+  <!-- Map server -->
+  <arg name="map_file" default="$(find tms_rc_pot)/maps/map_coi_f2/map.yaml"/>
+  <!-- <arg name="map_file" default="$(find tms_rc_pot)/maps/map_coi_f1/map.yaml"/> -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+  <node name="pot_server" pkg="tms_rc_pot" type="portable_server.py" output="screen" respawn="true" respawn_delay="3"/>
+</launch>

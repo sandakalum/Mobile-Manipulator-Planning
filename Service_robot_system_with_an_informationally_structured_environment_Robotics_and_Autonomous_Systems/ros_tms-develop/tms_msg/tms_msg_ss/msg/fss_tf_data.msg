@@ -1,0 +1,14 @@
+Header header
+time tMeasuredTime
+bool[] bIsReflect
+bool[] bIsForwardPoint
+float32[] fDistance
+float32[] fIntensity
+float32[] fIntrinsicIntensity
+float32[] fAcuteAngle
+float32[] fX1
+float32[] fY1
+float32[] fX2
+float32[] fY2
+float32[] fOcclusionX
+float32[] fOcclusionY

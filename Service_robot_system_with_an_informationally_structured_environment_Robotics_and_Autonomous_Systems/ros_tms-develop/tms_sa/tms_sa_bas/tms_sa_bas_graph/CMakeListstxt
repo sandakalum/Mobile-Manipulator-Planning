@@ -1,0 +1,67 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(tms_sa_bas_graph)
+
+find_package(catkin REQUIRED COMPONENTS roscpp)
+
+###################################
+## catkin specific configuration ##
+###################################
+catkin_package(
+   LIBRARIES tms_sa_bas_graph
+   CATKIN_DEPENDS roscpp message_runtime
+)
+
+###########
+## Build ##
+###########
+
+include_directories(include
+  ${catkin_INCLUDE_DIRS}
+)
+
+
+################################################################################
+# Qt Environment
+# Reference > http://qtnode.net/wiki/Qt4_with_cmake
+################################################################################
+find_package(Qt4)
+set(QT_USE_QTCORE TRUE)
+set(QT_USE_QTGUI TRUE)
+#set(QT_USE_QTOPENGL TRUE)
+#set(QT_USE_QTXML TRUE)
+include(${QT_USE_FILE})
+
+#add_definitions(-DQT_NO_KEYWORDS)
+
+################################################################################
+# Sources and Sections
+################################################################################
+set(    sources1
+    src/main.cpp
+    src/mainwindow.cpp
+    src/qnode.cpp
+)
+
+# QT_RESOURCES
+file(GLOB QT_RESOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} src/*.qrc)
+# QT_FORMS
+file(GLOB QT_FORMS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ui/*.ui)
+# QT_MOC
+file(GLOB_RECURSE QT_MOC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} FOLLOW_SYMLINKS src/*.hpp)
+# QT_SOURCES
+file(GLOB_RECURSE QT_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} FOLLOW_SYMLINKS src/*.cpp)
+
+QT4_ADD_RESOURCES(QT_RESOURCES_CPP ${QT_RESOURCES})
+QT4_WRAP_UI(QT_FORMS_HPP ${QT_FORMS})
+QT4_WRAP_CPP(QT_MOC_HPP ${QT_MOC})
+
+include_directories(${include_directories} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} /usr/include/qwt /usr/local/qwt-6.0.1/include)
+link_directories(/usr/lib /usr/local/qwt-6.0.1/lib)
+link_libraries(-lqwt)
+
+##############################################################################
+# Binaries
+##############################################################################
+add_executable(bas_graph  ${sources1} ${QT_RESOURCES_CPP} ${QT_FORMS_HPP} ${QT_MOC_HPP})
+target_link_libraries(bas_graph ${catkin_LIBRARIES})
+add_dependencies(bas_graph DEPENDS tms_msg_ss_gencpp tms_msg_db_gencpp)

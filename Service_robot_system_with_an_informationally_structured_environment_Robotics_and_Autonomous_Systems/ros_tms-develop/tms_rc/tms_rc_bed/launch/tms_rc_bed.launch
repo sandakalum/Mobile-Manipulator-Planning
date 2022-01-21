@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="tms_rc_bed" name="tms_rc_bed" type="main.py" output="screen" launch-prefix="sudo -E PYTHONPATH=$(env PYTHONPATH)"/>
+</launch>

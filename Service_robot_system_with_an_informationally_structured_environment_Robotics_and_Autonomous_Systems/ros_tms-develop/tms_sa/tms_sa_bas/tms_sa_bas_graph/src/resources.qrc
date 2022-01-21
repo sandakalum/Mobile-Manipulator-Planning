@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/capture.png</file>
+        <file>images/fileprint.png</file>
+        <file>images/filesave.png</file>
+        <file>images/basg.ico</file>
+    </qresource>
+</RCC>

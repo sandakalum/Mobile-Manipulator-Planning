@@ -1,0 +1,27 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(tms_dev_rs)
+
+## Find catkin macros and libraries
+## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
+## is used, also find other catkin packages
+find_package(catkin REQUIRED COMPONENTS roscpp std_msgs sensor_msgs pcl_ros cv_bridge)
+
+catkin_package(
+   INCLUDE_DIRS include
+#  LIBRARIES tms_to
+  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
+#  DEPENDS system_lib
+)
+
+include_directories(include
+  ${catkin_INCLUDE_DIRS}
+)
+
+
+add_executable(tms_to_find_objects_rev2 src/tms_to_find_objects_rev2.cpp)
+target_link_libraries(tms_to_find_objects_rev2 ${catkin_LIBRARIES})
+add_dependencies(tms_to_find_objects_rev2 DEPENDS tms_msg_db_gencpp tms_msg_ss_gencpp)
+
+add_executable(tms_rs_fall_detection src/tms_rs_fall_detection.cpp)
+target_link_libraries(tms_rs_fall_detection ${catkin_LIBRARIES})
+add_dependencies(tms_rs_fall_detection DEPENDS tms_msg_db_gencpp tms_msg_ss_gencpp)

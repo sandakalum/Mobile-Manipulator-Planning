@@ -1,0 +1,1 @@
+{ "options" : { "create" : "rostmsdb.now" }, "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "ns" : "rostmsdb.now", "name" : "_id_" } ] }

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package>
+  <name>tms_msg_ss</name>
+  <version>1.0.2</version>
+  <license>BSD</license>
+  <description>The tms_msg_ss package</description>
+
+  <maintainer email="kawamura@ait.kyushu-u.ac.jp">Akihiro Kawamura</maintainer>
+
+  <url type="website">http://robotics.ait.kyushu-u.ac.jp/index-e.html</url>
+  <url type="git">https://github.com/irvs/ros_tms</url>
+
+  <author email="passionvirus@gmail.com">Yoonseok Pyo</author>
+  <author email="kuwahata@irvs.ait.kyushu-u.ac.jp">Shunya Kuwahata</author>
+  <author email="kusaka@irvs.ait.kyushu-u.ac.jp">Kazuya Kusaka</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>std_msgs</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+
+  <build_depend>message_generation</build_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+
+  <export>
+  </export>
+</package>

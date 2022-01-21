@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="diagnostic_msgs-1.11.7">
+    <CLASSES>
+      <root url="jar:///opt/ros/indigo/share/maven/org/ros/rosjava_messages/diagnostic_msgs/1.11.7/diagnostic_msgs-1.11.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

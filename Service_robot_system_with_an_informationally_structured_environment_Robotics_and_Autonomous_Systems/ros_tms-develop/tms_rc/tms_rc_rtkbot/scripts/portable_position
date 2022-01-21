@@ -1,0 +1,78 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+import rospy
+import tf
+import math
+
+from nav_msgs.msg           import Odometry
+from visualization_msgs.msg import Marker
+
+class PositionPubClass:
+  def __init__(self):
+
+    print_marker = rospy.get_param('~print_marker', True)
+    marker_name  = rospy.get_param('~marker_name', 'ninebot')
+
+    self.global_frame = rospy.get_param('~global_frame_id', 'map')
+    self.base_frame   = rospy.get_param('~base_frame_id', 'base_footprint')
+
+    odom_topic   = rospy.get_param('~odom_topic_name', 'odom')
+    odometry_pub = rospy.Publisher(odom_topic, Odometry, queue_size=10)
+    if print_marker == True:
+      marker_pub   = rospy.Publisher('/' + marker_name + '_marker', Marker, queue_size=10)
+    
+    odom                    = Odometry()
+    odom.header.frame_id    = self.global_frame
+    odom.child_frame_id     = self.base_frame
+
+    if print_marker == True:
+
+      marker                  = Marker()
+      marker.header.frame_id  = self.global_frame
+      marker.type             = 10 #mesh
+      marker.action           = 0  #add
+      marker.lifetime         = rospy.Duration(0.5)
+      
+      if marker_name == 'ninebot':
+
+        marker.scale.x       = 0.01
+        marker.scale.y       = 0.01
+        marker.scale.z       = 0.01
+        marker.color.r       = 140 / 255.0
+        marker.color.g       = 140 / 255.0
+        marker.color.b       = 140 / 255.0
+        marker.color.a       = 0.9
+        marker.mesh_resource = 'package://tms_rc_rtkbot/meshes/ninebot_v2.dae'
+        marker.mesh_use_embedded_materials = True
+        
+      else: 
+        marker.type = 3
+
+    rate     = rospy.Rate(10) # 10hz
+    listener = tf.TransformListener()
+    while not rospy.is_shutdown():
+      try:
+        (point, quate) = listener.lookupTransform(self.global_frame, self.base_frame, rospy.Time(0))
+        odom.pose.pose.position.x    = point[0]
+        odom.pose.pose.position.y    = point[1]
+        odom.pose.pose.position.z    = 0
+        odom.pose.pose.orientation.x = quate[0]
+        odom.pose.pose.orientation.y = quate[1]
+        odom.pose.pose.orientation.z = quate[2]
+        odom.pose.pose.orientation.w = quate[3]
+        odometry_pub.publish(odom)
+
+        if print_marker == True:
+          marker.pose.position    = odom.pose.pose.position
+          marker.pose.orientation = odom.pose.pose.orientation
+          marker_pub.publish(marker)
+
+      except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException): pass
+      rate.sleep()
+
+if __name__ == '__main__':
+  rospy.init_node('portable_position', anonymous=True)
+  try:
+    PositionPubClass()
+  except rospy.ROSInterruptException:
+    rospy.loginfo("portable_position node finished.")

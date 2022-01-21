@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+
+  <!-- world model -->
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Robot -->
+    <include>
+			<uri>model://smartpal</uri>
+      <pose>9.5 5.1 0 0 0 1.5707</pose>
+			<plugin name="smartpal" filename="libsmartpal.so"/>
+		</include>
+
+    <!-- Object -->
+    <!--include>
+			<uri>model://beer</uri>
+      <pose>9.3 5.8 0.7 0 0 0</pose>
+		</include-->
+
+  </world>
+</sdf>

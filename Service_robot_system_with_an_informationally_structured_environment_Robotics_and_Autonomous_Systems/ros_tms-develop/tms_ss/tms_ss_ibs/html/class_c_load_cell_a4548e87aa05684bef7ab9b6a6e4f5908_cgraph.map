@@ -1,0 +1,5 @@
+<map id="CLoadCell::GetWeightDiff" name="CLoadCell::GetWeightDiff">
+<area shape="rect" id="node2" href="$class_c_load_cell.html#a33b28a515fc435aee4bc6b121fc479a8" title="CLoadCell::GetWeight" alt="" coords="230,31,383,57"/>
+<area shape="rect" id="node3" href="$class_c_load_cell.html#a1b3857837a0bf6fd7bfb4944c4ac8c30" title="CLoadCell::ClosePort" alt="" coords="432,5,581,32"/>
+<area shape="rect" id="node4" href="$class_c_load_cell.html#ad6fb880bd0b8752530177b6df9d6094e" title="CLoadCell::OpenPort" alt="" coords="433,56,580,83"/>
+</map>

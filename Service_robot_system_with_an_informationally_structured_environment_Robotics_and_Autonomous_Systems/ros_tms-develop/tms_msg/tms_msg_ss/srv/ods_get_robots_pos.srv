@@ -1,0 +1,6 @@
+sensor_msgs/PointCloud2 model
+geometry_msgs/Pose furniture
+geometry_msgs/Pose2D robot
+geometry_msgs/Pose sensor
+---
+geometry_msgs/Pose2D m_robot

@@ -1,0 +1,78 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+import rospy
+import tf
+
+from visualization_msgs.msg import Marker
+from nav_msgs.msg           import Odometry
+
+class TestClass:
+  def __init__(self):
+
+    self.marker = Marker()
+    self.marker.header.frame_id = 'base_gps'
+    self.marker.type            = 3 #cylinder
+    self.marker.action          = 0 #add
+    self.marker.scale.x         = 0.14
+    self.marker.scale.y         = 0.14
+    self.marker.scale.z         = 1.0
+    self.marker.color.a         = 1.0
+    self.marker.lifetime        = rospy.Duration(0)
+    self.id                     = 0
+    self.marker_pub = rospy.Publisher('/gps_marker2', Marker, queue_size=10)    
+    rospy.Subscriber("/gps_marker", Marker, self.callback_gps, queue_size=10)
+
+    self.odom_pub = rospy.Publisher("portable1/odometry/wheel2", Odometry, queue_size=10)
+    rospy.Subscriber("portable1/odometry/wheel", Odometry, self.callback_odom, queue_size=10)
+
+    self.marker2 = Marker()
+    self.marker2.type     = 3 #cylinder
+    self.marker2.action   = 0 #add
+    self.marker2.scale.x  = 0.2
+    self.marker2.scale.y  = 0.2
+    self.marker2.scale.z  = 1.0
+    self.marker2.color.a  = 1.0
+    self.marker2.lifetime = rospy.Duration(0)
+    self.id2              = 0
+    self.marker_pub2 = rospy.Publisher('/odom_marker', Marker, queue_size=10)  
+    #rospy.Subscriber("portable1/odom", Odometry, self.callback_odom2, queue_size=10)
+    rospy.Subscriber("portable1/odometry/wheel2", Odometry, self.callback_odom2, queue_size=10)
+
+  def callback_gps(self, data):
+    self.marker.pose.position    = data.pose.position
+    # self.marker.pose.position.z  = -1.0
+    self.marker.pose.orientation = data.pose.orientation
+    # self.marker.color.r          = data.color.r
+    # self.marker.color.g          = data.color.g
+    # self.marker.color.b          = data.color.b
+    self.marker.color.r          = 0
+    self.marker.color.g          = 1
+    self.marker.color.b          = 0
+    self.marker.id               = self.id
+    self.id += 1
+    self.marker_pub.publish(self.marker)
+
+  def callback_odom(self, data):
+    data.header.frame_id = "map1"
+    self.odom_pub.publish(data)
+
+  def callback_odom2(self, data):
+    self.marker2.header.frame_id  = data.header.frame_id
+    # self.marker2.pose.position.z  = -1.0
+    self.marker2.pose.position    = data.pose.pose.position
+    self.marker2.pose.orientation = data.pose.pose.orientation
+    self.marker2.color.r          = 1
+    self.marker2.color.g          = 0
+    self.marker2.color.b          = 0
+    self.marker2.id               = self.id2
+    self.id2 += 1
+    self.marker_pub2.publish(self.marker2)
+
+if __name__ == '__main__':
+  rospy.init_node('test', anonymous=True)
+  try:
+    TestClass()
+    rospy.spin()
+    rospy.loginfo("test node finished.")
+  except rospy.ROSInterruptException:
+    rospy.loginfo("test node finished.")

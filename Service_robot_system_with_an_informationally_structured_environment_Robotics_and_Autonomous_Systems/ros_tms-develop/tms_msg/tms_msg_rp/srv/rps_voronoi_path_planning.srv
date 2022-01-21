@@ -1,0 +1,8 @@
+uint32 robot_id
+tms_msg_rp/rps_position start_pos
+tms_msg_rp/rps_position goal_pos
+---
+uint32 success
+string message
+tms_msg_rp/rps_position[] VoronoiPath
+tms_msg_rp/rps_route voronoi_path

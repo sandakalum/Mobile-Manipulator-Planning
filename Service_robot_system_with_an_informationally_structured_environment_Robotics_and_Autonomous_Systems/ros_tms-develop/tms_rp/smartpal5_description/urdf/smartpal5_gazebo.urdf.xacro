@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<robot name="robots" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- ros_control plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/smartpal</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="base_link">
+  </gazebo>
+
+  <gazebo reference="lumbar_lower_link">
+  </gazebo>
+
+  <gazebo reference="lumbar_upper_link">
+  </gazebo>
+
+  <gazebo reference="camera_link">
+  </gazebo>
+
+  <gazebo reference="l_arm_j1_link">
+  </gazebo>
+
+  <gazebo reference="l_arm_j2_link">
+  </gazebo>
+
+  <gazebo reference="l_arm_j3_link">
+  </gazebo>
+
+  <gazebo reference="l_arm_j4_link">
+  </gazebo>
+
+  <gazebo reference="l_arm_j5_link">
+  </gazebo>
+
+  <gazebo reference="l_arm_j6_link">
+  </gazebo>
+
+  <gazebo reference="l_arm_j7_link">
+  </gazebo>
+
+  <gazebo reference="l_gripper_link">
+  </gazebo>
+
+  <gazebo reference="l_end_effector_link">
+  </gazebo>
+
+  <gazebo reference="l_gripper_thumb_link">
+  </gazebo>
+
+  <gazebo reference="r_arm_j1_link">
+  </gazebo>
+
+  <gazebo reference="r_arm_j2_link">
+  </gazebo>
+
+  <gazebo reference="r_arm_j3_link">
+  </gazebo>
+
+  <gazebo reference="r_arm_j4_link">
+  </gazebo>
+
+  <gazebo reference="r_arm_j5_link">
+  </gazebo>
+
+  <gazebo reference="r_arm_j6_link">
+  </gazebo>
+
+  <gazebo reference="r_arm_j7_link">
+  </gazebo>
+
+  <gazebo reference="r_gripper_link">
+  </gazebo>
+
+  <gazebo reference="r_end_effector_link">
+  </gazebo>
+
+  <gazebo reference="r_gripper_thumb_link">
+  </gazebo>
+
+  <xacro:macro name="robots_sim">
+  </xacro:macro>
+</robot>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package>
+  <name>tms_rs_greeting_demo</name>
+  <version>0.0.1</version>
+  <license>BSD</license>
+  <description>The tms_rs_greeting_demo package</description>
+
+  <maintainer email="hashiguchi@irvs.ait.kyushu-u.ac.jp">hashiguchi</maintainer>
+
+  <url type="website">http://robotics.ait.kyushu-u.ac.jp/index-e.html</url>
+  <url type="git">https://github.com/irvs/ros_tms</url>
+
+  <author email="hashiguchi@irvs.ait.kyushu-u.ac.jp">hashiguchi</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>tms_msg_rs</build_depend>
+  <build_depend>tms_msg_rc</build_depend>
+    
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>tms_msg_rs</run_depend>
+  <run_depend>tms_msg_rc</run_depend>
+
+  <export>
+  </export>
+</package>

@@ -1,0 +1,7 @@
+int32 src_object_id
+---
+int32 src_id
+string src_name
+int32[] object_id
+string[] name
+uint32[] type

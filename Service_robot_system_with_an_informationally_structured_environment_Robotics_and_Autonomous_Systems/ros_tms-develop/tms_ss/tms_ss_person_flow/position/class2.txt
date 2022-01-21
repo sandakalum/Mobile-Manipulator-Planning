@@ -1,0 +1,6 @@
+mode:2,
+LRF_number:2,4,
+inival:0,0,0,0,
+start_time:0.0,
+feature:2,
+

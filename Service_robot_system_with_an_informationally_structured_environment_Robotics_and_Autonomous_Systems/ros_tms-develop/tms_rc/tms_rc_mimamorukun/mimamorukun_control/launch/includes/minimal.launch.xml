@@ -1,0 +1,17 @@
+<launch>
+  <arg default="$(find tms_rc_mimamorukun_control)/param/cmd_vel_mux.yaml" name="config_file"/>
+  <arg name="publish_tf" default="false"/>
+  <node args="standalone yocs_cmd_vel_mux/CmdVelMuxNodelet" name="cmd_vel_mux" pkg="nodelet" type="nodelet">
+    <param name="yaml_cfg_file" value="$(arg config_file)"/>
+    <remap from="/mimamorukun/cmd_vel_mux/output/cmd_vel" to="cmd_vel"/>
+  </node>
+  <node name="driver" output="screen" pkg="tms_rc_mimamorukun_control" type="mimamorukun_node">
+    <param name="IP_ADDR" value="192.168.11.99"/>
+    <param name="turn_Kp" value="0.5"/>
+    <param name="publish_tf" value="$(arg publish_tf)"/>
+    <!--<param name="dist_par_pulse_l" value="0.5642723477760184"/>-->
+    <param name="dist_par_pulse_l" value="0.5654117986441656"/>
+    <param name="dist_par_pulse_r" value="0.5654117986441656"/>
+    <param name="wheel_dist" value="530.7317073170732"/>
+  </node>
+</launch>

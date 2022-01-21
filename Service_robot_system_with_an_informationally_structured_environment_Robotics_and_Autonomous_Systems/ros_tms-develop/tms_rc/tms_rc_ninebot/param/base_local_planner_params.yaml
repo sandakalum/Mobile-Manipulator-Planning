@@ -1,0 +1,67 @@
+
+TrajectoryPlannerROS:
+
+# Robot Configuration Parameters
+  #max_vel_x: 0.05
+  #min_vel_x: 0.01
+  max_vel_x: 1.00
+  min_vel_x: 0.10
+
+  #max_vel_theta:  0.1
+  #min_vel_theta: -0.1
+  #min_in_place_vel_theta: -0.1
+  max_vel_theta:  0.2
+  min_vel_theta: -0.2
+  min_in_place_vel_theta: 0.2
+
+  #acc_lim_x: 1.6
+  #acc_lim_y: 0
+  #acc_lim_theta: 1.6
+  acc_lim_x: 2.5
+  acc_lim_y: 0
+  acc_lim_theta: 3.0
+
+  escape_vel: -1.0
+
+# Differential-drive robot configuration
+  holonomic_robot: false
+  y_vels: [-0.3, -0.1, 0.1, 0.3] # valid if holonomic_robot is true
+
+# Goal Tolerance Parameters
+  yaw_goal_tolerance: 7.0
+  xy_goal_tolerance: 0.2
+  latch_xy_goal_tolerance: true # rotate in place even if it ends up outside the goal tolerance 
+
+# Forward Simulation Parameters
+  sim_time: 3.0
+  sim_granularity: 0.025
+  angular_sim_granularity : 0.025
+  vx_samples: 6
+  vtheta_samples: 20
+  controller_frequency: 20.0 
+
+# Trajectory Scoring Parameters
+  meter_scoring: true
+  gdist_scale: 0.8
+  pdist_scale: 0.6
+  occdist_scale: 0.01
+  heading_lookahead: 0.625
+  heading_scoring: true
+  heading_scoring_timestep: 0.8
+  dwa: true
+  publish_cost_grid_pc: false
+
+# Oscillation Prevention Parameters
+  oscillation_reset_dist: 0.1
+
+# Global Plan Parameters
+  prune_plan: true
+
+# Rotate Recovery
+  #acc_lim_th: 1.4
+  #max_rotational_vel: 0.1
+  #min_in_place_rotational_vel: 0.04
+  #acc_lim_th: 1.4
+  #max_rotational_vel: 3.2
+  #min_in_place_rotational_vel: 0.5
+

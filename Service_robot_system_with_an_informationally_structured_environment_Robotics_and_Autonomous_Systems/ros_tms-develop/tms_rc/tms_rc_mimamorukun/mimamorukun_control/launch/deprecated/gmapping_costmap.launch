@@ -1,0 +1,35 @@
+<launch>
+<group ns="mimamorukun">
+<!-- gmapping -->
+<include file="$(find tms_rc_mimamorukun_control)/launch/includes/gmapping.launch.xml"/>
+
+<!-- コストマップ -->
+<node name="costmap_node" pkg="costmap_2d" type="costmap_2d_node">
+  <rosparam command="load" ns="costmap" file="$(find tms_rc_mimamorukun_control)/param/costmap_human_tracker.yaml" />
+</node>
+
+<!-- トピック名を変えてLRFを起動 -->
+  <!-- <arg  default="/scan:=/human_tracker_inputs" name="remap"/> -->
+  <!-- <node args="$(arg remap)" name="urg_fl" pkg="urg_node" type="urg_node"> -->
+  <node name="urg_fl" pkg="urg_node" type="urg_node">
+    <param  name="ip_address" type="str" value="192.168.1.10"/>
+    <param  name="frame_id" type="str" value="lrf1"/>
+    <param  name="publish_multiecho" type="bool" value="false"/>
+    <param  name="publish_intensity" type="bool" value="true"/>
+  </node>
+  <!-- <node args="$(arg remap)" name="urg_fr" pkg="urg_node" type="urg_node"> -->
+    <!-- <param  name="ip_address" type="str" value="192.168.0.10"/> -->
+    <!-- <param  name="frame_id" type="str" value="lrf2"/> -->
+    <!-- <param  name="publish_multiecho" type="bool" value="false"/> -->
+    <!-- <param  name="publish_intensity" type="bool" value="true"/> -->
+  <!-- </node> -->
+
+<!-- tfツリーの子にLRFを配置 -->
+  <arg  default="/lrf1" name="child1"/>
+  <node  args="0.55 0.3 0 1.5707963267948966  0 0 /base_footprint $(arg child1) 100" name="tf_lrf_pub1" pkg="tf" type="static_transform_publisher"/>
+  <!-- <arg  default="/lrf2" name="child2"/> -->
+  <!-- <node  args="0.55 -0.3 0 -1.5707963267948966  0 0 /base_footprint $(arg child2) 100" name="tf_lrf_pub2" pkg="tf" type="static_transform_publisher"/> -->
+  <node  args="0.2 0 1.2 0 0 0 /base_footprint /cockpit 100" name="tf_lrf_pub3" pkg="tf" type="static_transform_publisher"/>
+  <node  args="0.2 0 0.5 0 0 0 /base_footprint /base_link 100" name="tf_lrf_pub4" pkg="tf" type="static_transform_publisher"/>
+  </group>
+</launch>

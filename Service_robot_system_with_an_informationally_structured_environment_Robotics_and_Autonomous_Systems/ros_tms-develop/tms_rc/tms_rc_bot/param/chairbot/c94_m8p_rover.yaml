@@ -1,0 +1,59 @@
+# Configuration Settings for C94-M8P device
+
+debug: 1                    # Range 0-4 (0 means no debug statements will print)
+
+uart1:
+  baudrate: 19200           # C94-M8P specific
+  in: 32                    # RTCM 3
+  out: 0                    # No UART out for rover
+
+rate:     1                 # in Hz
+nav_rate: 1                 # [# of measurement cycles], recommended 1 Hz
+
+dynamic_model: automotive
+#dynamic_model: portable
+#dynamic_model: pedestrain
+
+fix_mode: auto
+dr_limit: 0
+
+save:
+  mask:   0
+  device: 0
+# load:
+#   mask: 7966 
+#   device: 2
+
+gnss:
+  gps:     true
+  sbas:    false
+  galileo: false
+  beidou:  true
+  imes:    false
+  qzss:    true
+  glonass: false
+  qzss_sig_cfg: 65536
+
+sbas:
+  usage: 1
+
+dgnss_mode: 3               # Fixed mode
+use_adr:    false
+enable_ppp: false           # Not supported by C94-M8P
+
+# dat:
+#   set_dat: true
+#   majA:    6378137.0000
+#   flat:    298.2572235630
+#   shift:   [0.0, 0.0, 0.0]
+#   rot:     [0.0, 0.0, 0.0]
+#   scale:   0.0
+
+inf: 
+  all: true                 # Whether to display all INF messages in console
+
+# Enable u-blox message publishers
+publish:
+  all: false
+  nav:
+    relposned: true

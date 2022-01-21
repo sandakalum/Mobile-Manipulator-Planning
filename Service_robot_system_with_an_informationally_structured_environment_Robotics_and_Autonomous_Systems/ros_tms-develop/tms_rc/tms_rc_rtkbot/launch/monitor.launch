@@ -1,0 +1,9 @@
+<launch>
+
+<!-- RViz -->
+    <node name="rviz_monitor" pkg="rviz" type="rviz" args="-d $(find tms_rc_rtkbot)/rviz/rviz_monitor_cfg.rviz" respawn="true"/>
+
+<!-- Generate Marker -->
+    <node pkg="tms_rc_rtkbot" name="generate_marker" type="generate_marker" output="screen"/>
+
+</launch>

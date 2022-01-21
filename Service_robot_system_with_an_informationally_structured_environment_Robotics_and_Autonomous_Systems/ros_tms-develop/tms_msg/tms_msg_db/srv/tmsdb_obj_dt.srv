@@ -1,0 +1,4 @@
+uint32 furniture_id
+---
+float32 furniture_x
+float32 furniture_y

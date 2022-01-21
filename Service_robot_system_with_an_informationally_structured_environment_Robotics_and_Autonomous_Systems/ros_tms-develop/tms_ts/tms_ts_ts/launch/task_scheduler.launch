@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="viewer" default="false"/>
+
+  <node pkg="tms_ts_ts" type="ts_master" name="ts_master" output="screen"/>
+  <node pkg="tms_ts_subtask" type="tms_ts_subtask" name="ts_subtask" output="screen"/>
+  <group if="$(arg viewer)">
+    <node pkg="smach_viewer" type="smach_viewer.py" name="ts_smach_viewer" />
+  </group>
+</launch>

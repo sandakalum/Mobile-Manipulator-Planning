@@ -1,0 +1,138 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+import rospy
+import tf
+import math
+
+import roslib.packages
+
+from datetime import datetime
+
+from interactive_markers.interactive_marker_server import *
+from visualization_msgs.msg import *
+
+
+class CalibrationClass:
+  def __init__(self):
+
+    self.gps_origin_x = rospy.get_param('~gps_origin_x', 0)
+    self.gps_origin_y = rospy.get_param('~gps_origin_y', 0)
+    self.gps_origin_a = rospy.get_param('~gps_origin_a', 0)
+
+    self.global_frame = rospy.get_param('~global_frame_id', 'world_link')
+    self.file_name    = rospy.get_param('~file_name', 'c94_m8p_origin.yaml')
+    self.file_name    = self.file_name + '.' + datetime.now().strftime("%Y%m%d-%H%M")
+    self.file_name    = roslib.packages.get_pkg_dir('tms_rc_bot') + '/param/' + self.file_name
+  
+    self.text_marker                 = Marker()
+    self.text_marker.header.frame_id = self.global_frame
+    self.text_marker.type            = Marker.TEXT_VIEW_FACING
+    self.text_marker.scale.x         = 0.2
+    self.text_marker.scale.y         = 0.2
+    self.text_marker.scale.z         = 0.2
+    self.text_marker.color.r         = 1.0
+    self.text_marker.color.g         = 1.0
+    self.text_marker.color.b         = 1.0
+    self.text_marker.color.a         = 1.0
+
+    self.marker_pub = rospy.Publisher('/gps_origin_marker', Marker, queue_size=10)
+
+    server = InteractiveMarkerServer("interactive_marker")
+
+    quate = tf.transformations.quaternion_from_euler(0.0, 0.0, self.gps_origin_a)
+      
+    int_marker                    = InteractiveMarker()
+    int_marker.header.frame_id    = self.global_frame
+    int_marker.name               = "calibration_marker"
+    int_marker.pose.position.x    = self.gps_origin_x
+    int_marker.pose.position.y    = self.gps_origin_y
+    int_marker.pose.orientation.x = quate[0]
+    int_marker.pose.orientation.y = quate[1]
+    int_marker.pose.orientation.z = quate[2]
+    int_marker.pose.orientation.w = quate[3]
+
+    marker         = Marker()
+    marker.type    = Marker.SPHERE
+    marker.scale.x = 0.2
+    marker.scale.y = 0.2
+    marker.scale.z = 0.2
+    marker.color.r = 1.0
+    marker.color.g = 1.0
+    marker.color.b = 1.0
+    marker.color.a = 1.0
+
+    marker_control = InteractiveMarkerControl()
+    marker_control.always_visible = True
+    marker_control.markers.append(marker)
+
+    int_marker.controls.append(marker_control)
+
+    control = InteractiveMarkerControl()
+    control.orientation.w = 0
+    control.orientation.x = 0
+    control.orientation.y = 0
+    control.orientation.z = 0
+    control.name = "move_x"
+    control.interaction_mode = InteractiveMarkerControl.MOVE_AXIS
+    int_marker.controls.append(control)
+
+    control = InteractiveMarkerControl()
+    control.orientation.w = 0.5
+    control.orientation.x = 0.5
+    control.orientation.y = 0.5
+    control.orientation.z = 0.5
+    control.name = "move_y"
+    control.interaction_mode = InteractiveMarkerControl.MOVE_AXIS
+    int_marker.controls.append(control)
+
+    control = InteractiveMarkerControl()
+    control.orientation.w = -0.5
+    control.orientation.x = -0.5
+    control.orientation.y = -0.5
+    control.orientation.z = 0.5
+    control.name = "rotate"
+    # control.interaction_mode = InteractiveMarkerControl.MOVE_ROTATE
+    control.interaction_mode = InteractiveMarkerControl.ROTATE_AXIS
+    int_marker.controls.append(control)
+
+    server.insert(int_marker, self.processFeedback)
+    server.applyChanges()
+
+    rate        = rospy.Rate(10) # 10hz
+    broadcaster = tf.TransformBroadcaster()
+    while not rospy.is_shutdown():
+      quate = tf.transformations.quaternion_from_euler(0, 0, self.gps_origin_a)
+      broadcaster.sendTransform((self.gps_origin_x, self.gps_origin_y, 0), quate, rospy.Time.now(), 'base_gps', self.global_frame)
+      rate.sleep()
+
+  def processFeedback(self, data):
+
+    p = data.pose.position
+    o = data.pose.orientation
+    q = (o.x, o.y, o.z, o.w)
+    e = tf.transformations.euler_from_quaternion(q)
+    t = 'gps_origin_x: '+'{0:.5f}'.format(p.x)+'\ngps_origin_y: '+'{0:.5f}'.format(p.y)+'\ngps_origin_a: '+'{0:.5f}'.format(e[2])
+
+    file = open(self.file_name, 'w')
+    file.write(t)
+    file.close()
+
+    self.gps_origin_x = p.x
+    self.gps_origin_y = p.y
+    self.gps_origin_a = e[2]
+
+    self.text_marker.text             = t
+    self.text_marker.pose.position    = p
+    self.text_marker.pose.orientation = o
+    self.text_marker.pose.position.x += 1
+    self.text_marker.pose.position.y += 1
+    self.text_marker.pose.position.z += 1
+    self.marker_pub.publish(self.text_marker)
+    
+if __name__ == '__main__':
+  rospy.init_node('chairbot_calibration', anonymous=True)
+  try:
+    CalibrationClass()
+    rospy.spin()
+  except rospy.ROSInterruptException:
+    rospy.loginfo("chairbot_calibration node finished.")

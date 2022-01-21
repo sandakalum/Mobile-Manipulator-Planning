@@ -1,0 +1,17 @@
+*.[oa]
+*.so
+demo/commands/commands
+demo/control/control
+demo/kni_test/kni_test
+demo/kni_wrapper/kni_wrapper
+demo/mykni/mykni
+demo/wrapper_control/wrapper_control
+lib/kinematics/AnalyticalGuess/lib/
+lib/kinematics/AnalyticalGuess/src/.alog
+lib/kinematics/AnalyticalGuess/src/.clog
+lib/kinematics/AnalyticalGuess/src/.slog
+lib/kinematics/roboop/bench
+lib/kinematics/roboop/demo
+lib/kinematics/roboop/demo_2dof_pd
+lib/kinematics/roboop/demo_katana
+lib/kinematics/roboop/rtest

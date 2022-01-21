@@ -1,0 +1,26 @@
+<launch>
+
+<group ns="portable1">
+
+  <!-- urg node -->
+  <arg name="urg_range" value="1.5708"/>
+  <arg name="scan_frame"   value="base_scan1"/>
+  <node pkg="urg_node" type="urg_node" name="urg_node" output="screen">
+    <remap from="scan"       to="urg_scan"/>
+    <param name="ip_address" value="192.168.0.10"/>
+    <param name="frame_id"   value="$(arg scan_frame)"/>
+    <param name="angle_min"  value="-$(arg urg_range)"/>
+    <param name="angle_max"  value="$(arg urg_range)"/>
+  </node>
+
+  <!-- portable indicator -->
+  <arg name="move_base" default="true"/>
+  <node pkg="tms_rc_bot" type="portable_indicator" name="portable_indicator" output="screen" if="$(arg move_base)"/>
+
+  <!-- ninebot serial -->
+  <node pkg="tms_rc_bot" type="ninebot_serial" name="ninebot_serial" output="screen">
+    <param name="port" value="/dev/ttyACM1"/>
+  </node>
+  
+</group>
+</launch>

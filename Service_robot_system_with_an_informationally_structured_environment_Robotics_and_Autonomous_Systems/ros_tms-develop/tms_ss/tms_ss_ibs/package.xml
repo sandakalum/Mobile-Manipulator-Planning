@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package>
+  <name>tms_ss_ibs</name>
+  <version>1.1.1</version>
+  <license>BSD</license>
+  <description>The tms_ss_ibs package</description>
+ 
+  <maintainer email="shigekane@irvs.ait.kyushu-u.ac.jp">Akio Shigekane</maintainer>
+
+  <url type="website">http://robotics.ait.kyushu-u.ac.jp/index-e.html</url>
+  <url type="git">https://github.com/irvs/ros_tms</url>
+
+  <author email="shigekane@irvs.ait.kyushu-u.ac.jp">Akio Shigekane</author>
+  <author email="passionvirus@gmail.com">Yoonseok Pyo</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>tf2</build_depend>
+  <build_depend>tf2_ros</build_depend>
+  <build_depend>tf2-geometry-msgs</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>message_runtime</run_depend>
+  <run_depend>tf2</run_depend>
+  <run_depend>tf2_ros</run_depend>
+  <run_depend>tf2-geometry-msgs</run_depend>
+    
+  <export>
+  </export>
+</package>

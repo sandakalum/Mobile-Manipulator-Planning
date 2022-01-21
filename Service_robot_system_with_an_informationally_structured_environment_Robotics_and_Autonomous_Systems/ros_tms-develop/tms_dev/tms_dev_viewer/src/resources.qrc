@@ -1,0 +1,39 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/1downarrow.png</file>
+        <file>images/1uparrow.png</file>
+        <file>images/add.png</file>
+        <file>images/bottom.png</file>
+        <file>images/copy.png</file>
+        <file>images/cut.png</file>
+        <file>images/del.png</file>
+        <file>images/edit_add.png</file>
+        <file>images/edit_remove.png</file>
+        <file>images/exit.png</file>
+        <file>images/filenew.png</file>
+        <file>images/fileprint.png</file>
+        <file>images/filesave.png</file>
+        <file>images/list-add.png</file>
+        <file>images/list-delete.png</file>
+        <file>images/list-remove.png</file>
+        <file>images/minus-sign.png</file>
+        <file>images/new.png</file>
+        <file>images/open.png</file>
+        <file>images/paste.png</file>
+        <file>images/player_pause.png</file>
+        <file>images/player_play.png</file>
+        <file>images/player_stop.png</file>
+        <file>images/plus-sign.png</file>
+        <file>images/record.png</file>
+        <file>images/remove.png</file>
+        <file>images/stop.png</file>
+        <file>images/zoomin.png</file>
+        <file>images/zoominx.png</file>
+        <file>images/zoomout.png</file>
+        <file>images/zoomoutx.png</file>
+        <file>images/refresh.png</file>
+        <file>images/lrfviewer.ico</file>
+        <file>images/capture.png</file>
+        <file>images/fssv.ico</file>
+    </qresource>
+</RCC>

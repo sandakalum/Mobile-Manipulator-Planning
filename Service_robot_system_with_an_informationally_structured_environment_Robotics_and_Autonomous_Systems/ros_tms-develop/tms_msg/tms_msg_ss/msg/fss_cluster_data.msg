@@ -1,0 +1,10 @@
+Header header
+time tMeasuredTime
+uint32[] iID
+float32[] fCenterX
+float32[] fCenterY
+float32[] fSize
+float32[] fAvgIntrinsicIntensity
+tms_msg_ss/fss_tf_datas[] LrfData
+float32[] fOcclusionX
+float32[] fOcclusionY

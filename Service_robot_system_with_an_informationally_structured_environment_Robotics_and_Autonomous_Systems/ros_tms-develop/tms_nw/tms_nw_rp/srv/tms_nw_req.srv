@@ -1,0 +1,12 @@
+string url
+string service_name
+string service_type
+int32 task_id
+int32 robot_id
+int32 object_id
+int32 user_id
+int32 place_id
+int32 priority
+---
+int32 result
+float32[] val

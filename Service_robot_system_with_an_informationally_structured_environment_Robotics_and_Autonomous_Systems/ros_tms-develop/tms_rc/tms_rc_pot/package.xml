@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <name>tms_rc_pot</name>
+  <version>0.0.0</version>
+  <description>The tms_rc_pot package</description>
+  <maintainer email="kurt@todo.todo">kurt</maintainer>
+  <license>TODO</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>turtle_sim</build_depend>
+  <build_depend>urg_node</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>tf</run_depend>
+  <export>
+  </export>
+</package>

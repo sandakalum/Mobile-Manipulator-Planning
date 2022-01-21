@@ -1,0 +1,11 @@
+uint8 person_id
+uint8 robot_id
+tms_msg_rp/rps_route[] in_path
+float32 weight_Length
+float32 weight_Rotation
+float32 weight_View
+---
+uint8 success
+string message
+tms_msg_rp/rps_route[] out_path
+uint32[] out_path_rank

@@ -1,0 +1,6 @@
+<launch>
+  <node pkg="tms_rc_double" type="pose2frame" args="pose:=pf_filtered" name="pose2frame_3d"/>
+  <node pkg="tms_rc_double" type="pose2frame" args="pose:=pf_filtered _mode_2d:=true" name="pose2frame_2d" output="screen" />
+  <!--<node pkg="chairbot_selfdrive" type="pose2frame" args="pose:=ndt_pose" name="pose2frame_3d"/>-->
+  <!--<node pkg="chairbot_selfdrive" type="pose2frame" args="pose:=ndt_pose _mode_2d:=true" name="pose2frame_2d"/>-->
+</launch>

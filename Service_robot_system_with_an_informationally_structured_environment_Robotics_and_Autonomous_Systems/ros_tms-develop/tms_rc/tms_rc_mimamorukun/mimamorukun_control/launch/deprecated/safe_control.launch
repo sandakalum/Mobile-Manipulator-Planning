@@ -1,0 +1,34 @@
+<launch>
+  <node launch-prefix="xterm -e" name="joy_node" output="screen" pkg="joy" type="joy_node">
+    <param  name="dev" value="/dev/input/js0"/>
+  </node>
+  <node name="mimamorukun_safe_control" output="screen" pkg="tms_rc_mimamorukun_control" type="mimamorukun_safe_control">
+    <param  name="IP_ADDR" value="192.168.11.99"/>
+    <param  name="turn_Kp" value="0.5"/>
+  </node>
+
+<!-- LRFを起動 -->
+  <!-- <arg  default="/scan:=/human_tracker_inputs" name="remap"/> -->
+<!-- LRF(左前) -->
+  <!-- <node args="$(arg remap)" name="urg_node1" pkg="urg_node" type="urg_node"> -->
+    <!-- <param  name="ip_address" type="str" value="192.168.0.10"/> -->
+    <!-- <param  name="frame_id" type="str" value="lrf_fl"/> -->
+    <!-- <param  name="publish_multiecho" type="bool" value="false"/> -->
+    <!-- <param  name="publish_intensity" type="bool" value="true"/> -->
+  <!-- </node> -->
+  <!-- <node  args="0.5 0.4 0 0 0 0 /base_footprint /lrf_fl 100" name="stf_fl" pkg="tf" type="static_transform_publisher"/> -->
+<!-- LRF(右前) -->
+  <!-- <node args="$(arg remap)" name="urg_node2" pkg="urg_node" type="urg_node"> -->
+    <!-- <param  name="ip_address" type="str" value="192.168.0.9"/> -->
+    <!-- <param  name="frame_id" type="str" value="lrf_fr"/> -->
+    <!-- <param  name="publish_multiecho" type="bool" value="false"/> -->
+    <!-- <param  name="publish_intensity" type="bool" value="true"/> -->
+  <!-- </node> -->
+  <!-- <node  args="0.5 -0.4 0 0 0 0 /base_footprint /lrf_fr 100" name="stf_fr" pkg="tf" type="static_transform_publisher"/> -->
+
+<!-- 人物トラッカーを起動 -->
+  <!-- <node name="human_tracker" output="screen" pkg="tracking" type="human_tracker"> -->
+    <!-- <param  name="LRF_USE_NUM" value="2"/> -->
+    <!-- <param  name="cutoff_dist" value="2.0"/> -->
+  <!-- </node> -->
+</launch>

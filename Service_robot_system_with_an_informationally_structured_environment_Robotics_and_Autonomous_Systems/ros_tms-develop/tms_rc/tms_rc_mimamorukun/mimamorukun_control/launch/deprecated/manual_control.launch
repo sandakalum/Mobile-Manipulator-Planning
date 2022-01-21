@@ -1,0 +1,8 @@
+<launch>
+	<node pkg="joy" type="joy_node" name="joy_node" output="screen" launch-prefix="xterm -e">
+		<param name="dev" value="/dev/input/js0" />
+	</node>
+	<node pkg="tms_rc_mimamorukun_control" type="mimamorukun_manual_control" name="mimamorukun_manual_control" output="screen">
+        <param name="IP_ADDR" value="192.168.11.99"/>
+    </node>
+</launch>

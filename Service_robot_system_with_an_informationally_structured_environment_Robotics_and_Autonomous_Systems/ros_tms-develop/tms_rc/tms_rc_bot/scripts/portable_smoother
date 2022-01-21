@@ -1,0 +1,92 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+import rospy
+import threading
+
+from geometry_msgs.msg import Twist
+
+ROS_RATE = 100
+
+class SmootherClass:
+  def __init__(self):
+    rospy.on_shutdown(self.shutdown)
+
+    input_topic  = rospy.get_param('~input_topic_name', 'wii_cmd')
+    output_topic = rospy.get_param('~output_topic_name','cmd_vel_mux/input/keyop')
+
+    acc_lim_xy = rospy.get_param('~acc_lim_xy', 3.0)
+    acc_lim_th = rospy.get_param('~acc_lim_th', 5.0)
+
+    ignore_stop = rospy.get_param('~ignore_stop', False)
+    time_out    = rospy.get_param('~time_out', 1.0)
+
+    self.twist_update = False
+    self.twist_pub    = rospy.Publisher(output_topic, Twist, queue_size=100)
+    self.input_twist  = Twist()
+    self.mutex        = threading.Lock()
+
+    rospy.Subscriber(input_topic, Twist, self.callback_twist, queue_size=100)
+
+    p_tgt_vx = p_tgt_vw = 0.0
+
+    rate = rospy.Rate(ROS_RATE) # 100hz
+    false_counter = time_out * ROS_RATE
+    acc_lim_xy /= ROS_RATE
+    acc_lim_th /= ROS_RATE
+    while not rospy.is_shutdown():
+      
+      rate.sleep()
+
+      if self.twist_update == False: 
+        false_counter += 1
+        if false_counter >= time_out * ROS_RATE:
+          p_tgt_vx = p_tgt_vw = 0.0
+          false_counter = time_out * ROS_RATE
+          continue 
+      else: false_counter = 0
+
+      self.mutex.acquire()
+      twist = self.input_twist
+      self.twist_update = False
+      self.mutex.release()
+
+      tgt_vx = twist.linear.x
+      tgt_vw = twist.angular.z
+
+      if ignore_stop == True:
+        if   tgt_vx > p_tgt_vx + acc_lim_xy: tgt_vx = p_tgt_vx + acc_lim_xy
+        elif tgt_vx < p_tgt_vx - acc_lim_xy: tgt_vx = p_tgt_vx - acc_lim_xy
+        if   tgt_vw > p_tgt_vw + acc_lim_th: tgt_vw = p_tgt_vw + acc_lim_th
+        elif tgt_vw < p_tgt_vw - acc_lim_th: tgt_vw = p_tgt_vw - acc_lim_th
+      else:
+        if   (tgt_vx > 0.0) and (tgt_vx > p_tgt_vx + acc_lim_xy): tgt_vx = p_tgt_vx + acc_lim_xy
+        elif (tgt_vx < 0.0) and (tgt_vx < p_tgt_vx - acc_lim_xy): tgt_vx = p_tgt_vx - acc_lim_xy
+        if   (tgt_vw > 0.0) and (tgt_vw > p_tgt_vw + acc_lim_th): tgt_vw = p_tgt_vw + acc_lim_th
+        elif (tgt_vw < 0.0) and (tgt_vw < p_tgt_vw - acc_lim_th): tgt_vw = p_tgt_vw - acc_lim_th
+      
+      p_tgt_vx = tgt_vx
+      p_tgt_vw = tgt_vw
+
+      twist.linear.x  = tgt_vx
+      twist.angular.z = tgt_vw
+
+      self.twist_pub.publish(twist)
+
+  def callback_twist(self, data): 
+    self.mutex.acquire()
+    self.input_twist  = data
+    self.twist_update = True
+    self.mutex.release()
+
+  def shutdown(self):
+    try:
+      self.twist_pub.publish(Twist())
+    except: pass
+
+if __name__ == '__main__':
+  rospy.init_node('portable_smoother', anonymous=True)
+  try:
+    SmootherClass()
+    rospy.spin()
+  except rospy.ROSInterruptException:
+    rospy.loginfo("portable_smoother node finished.")

@@ -1,0 +1,12 @@
+Header header
+time tMeasuredTime
+bool isDetect
+uint32[] iID
+float64[] SensingTime
+float32[] fLikelihood
+float32[] fSizeMax
+float32[] fAveCenterX
+float32[] fAveCenterY
+float32[] fDistributionX
+float32[] fDistributionY
+accumulate_data[] accumulate

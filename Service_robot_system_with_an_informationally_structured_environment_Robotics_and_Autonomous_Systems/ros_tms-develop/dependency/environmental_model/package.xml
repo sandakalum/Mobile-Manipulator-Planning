@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package>
+  <name>environmental_model</name>
+  <version>0.1.0</version>
+  <description>The environmental_model package</description>
+
+  <maintainer email="kawamura@ait.kyushu-u.ac.jp">Akihiro Kawamura</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://robotics.ait.kyushu-u.ac.jp/index-e.html</url>
+  <url type="git">https://github.com/irvs/ros_tms</url>
+
+  <author email="watanabe@irvs.ait.kyushu-u.ac.jp">Yuta Watanabe</author>
+  <author email="passionvirus@gmail.com">Yoonseok Pyo</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>urdf</build_depend>
+  <run_depend>urdf</run_depend>
+
+  <export>
+  </export>
+</package>

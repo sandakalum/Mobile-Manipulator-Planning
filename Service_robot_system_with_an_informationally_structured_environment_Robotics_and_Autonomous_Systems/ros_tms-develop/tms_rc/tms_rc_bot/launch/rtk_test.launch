@@ -1,0 +1,11 @@
+<launch>
+
+  <node pkg="ublox_gps" type="ublox_gps" name="ublox_gps" output="screen">
+    <rosparam file="$(find tms_rc_bot)/param/chairbot/c94_m8p_test.yaml"/>
+    <param name="device"     value="/dev/ttyACM0"/>
+    <param name="frame_id"   value="rtk"/>
+  </node>
+
+  <node pkg="tms_rc_bot" type="rtk_test" name="rtk_test" output="screen"/>
+
+</launch>

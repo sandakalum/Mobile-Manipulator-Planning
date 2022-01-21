@@ -1,0 +1,8 @@
+uint8 robot_id
+tms_msg_rp/rps_position robot_pos
+int8 LR_flg
+tms_msg_rp/rps_position palm_pos
+float32 palm_z
+---
+int8 result
+tms_msg_rp/rps_joint_angle out_joint_angle

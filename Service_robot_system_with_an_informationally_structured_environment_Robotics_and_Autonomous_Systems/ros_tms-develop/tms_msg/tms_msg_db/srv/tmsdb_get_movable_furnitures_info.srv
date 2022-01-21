@@ -1,0 +1,12 @@
+uint32 furnitures_id
+---
+uint64 rostime
+float32 furniture_x
+float32 furniture_y
+float32 furniture_z
+float32 furnitures_theta
+float32 furnitures_width
+float32 furnitures_depth
+float32 furnitures_height
+uint32 furnitures_state
+uint32 furnitures_place

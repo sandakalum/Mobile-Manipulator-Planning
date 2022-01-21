@@ -1,0 +1,9 @@
+<map id="CLoadCell::ClosePost" name="CLoadCell::ClosePost">
+<area shape="rect" id="node2" href="$class_c_load_cell.html#a33b28a515fc435aee4bc6b121fc479a8" title="CLoadCell::GetWeight" alt="" coords="206,56,359,83"/>
+<area shape="rect" id="node4" href="$class_c_load_cell.html#aed02b108d6edd17adc845a0d86fa0871" title="CLoadCell::Setup" alt="" coords="649,56,775,83"/>
+<area shape="rect" id="node3" href="$class_c_load_cell.html#ac7dda0d98c1af1df1062a4315c83c0d5" title="CLoadCell::ResetWeight" alt="" coords="409,56,575,83"/>
+<area shape="rect" id="node7" href="$class_c_load_cell.html#a4548e87aa05684bef7ab9b6a6e4f5908" title="CLoadCell::GetWeightDiff" alt="" coords="625,5,799,32"/>
+<area shape="rect" id="node5" href="$class_c_stage.html#a3a2ea0f98635ec14875cbbe1ccb5d89e" title="CStage::Setup" alt="" coords="870,56,978,83"/>
+<area shape="rect" id="node6" href="$ibs_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="1048,31,1099,57"/>
+<area shape="rect" id="node8" href="$class_c_intel_cab.html#ac447a91375cc34f3fa40ea5868769904" title="CIntelCab::UpdateObj" alt="" coords="849,5,999,32"/>
+</map>

@@ -1,0 +1,64 @@
+###### main block
+# M: motion, S: speech, *_t: timing 
+testM: ['hello0']
+testS: ['speech0']
+testS_t: [5.0]
+
+test2M: ['thankyou']
+test2S: ['speech1']
+test2S_t: [3.0]
+
+initialM: ['initial']
+initialS: ['speech00']
+initialS_t: [1.0]
+
+open_ref_demoM: ['open']
+open_ref_demoS: ['speech4']
+open_ref_demoS_t: [10.0]
+
+greeting_for_opencampus0M: ['hello', 'thankyou', 'enjoy', 'fight0']
+greeting_for_opencampus0S: ['speech0', 'speech1', 'speech2', 'speech3']
+greeting_for_opencampus0S_t: [10.0, 5.0, 5.0, 3.0]
+
+greeting_for_opencampus1M: ['hello', 'thankyou', 'enjoy', 'fight1']
+greeting_for_opencampus1S: ['speech0', 'speech1', 'speech2', 'speech3']
+greeting_for_opencampus1S_t: [10.0, 5.0, 5.0, 3.0]
+
+###### sub block
+hello0: ['motion0', 'motion1']
+
+initial: ['motion00']
+hello: ['motion1', 'motion0', 'motion1', 'motion0']
+thankyou: ['motion5', 'motion6']
+enjoy: ['motion7']
+fight0: ['motion8', 'motion9']
+fight1: ['motion10', 'motion11']
+
+open: ['motion12']
+
+###### motion value
+motion00: [0.0, 0.0, 0.0, 0.0, -10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+motion0: [0.0, 0.0, 0.0, 1.1, -14.3, 56.6, 120.5, 0.0, 23.5, 0.0, 0.0, 0.0, -10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+motion1: [0.0, 0.0, 0.0, 1.1, -14.3, 56.6, 108.8, 0.0, 23.5, 0.0, 0.0, 0.0, -10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+motion2: [0.0, 0.0, 0.0, 1.1, -14.3, 56.6, 120.5, 0.0, 23.5, 0.0, 0.0, 0.0, -10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+motion3: [0.0, 0.0, 0.0, 1.1, -14.3, 56.6, 108.8, 0.0, 23.5, 0.0, 0.0, 0.0, -10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+motion4: [0.0, 0.0, 0.0, 1.1, -14.3, 56.6, 120.5, 0.0, 23.5, 0.0, 0.0, 0.0, -10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+motion5: [0.0, -6.0, 30.0, 4.7, -45.2, -49.0, 120.5, 23.5, 15.5, -22.4, 0.0, 0.0, -10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+motion6: [0.0, 0.0, 0.0, 4.7, -45.2, -49.0, 120.5, 23.5, 15.5, -22.4, 0.0, 0.0, -10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+motion7: [0.0, 0.0, 0.0, 0.0, -22.2, 41.4, 40.0, 64.3, 5.5, 0.0, 0.0, 0.0, -22.2, 41.4, 40.0, 64.3, 5.5, 0.0, 0.0]
+motion8: [0.0, 0.0, 0.0, 10.6, -47.2, -91.0, 72.7, 80.8, 0.0, 37.7, 0.0, 20.1, -25.5, 23.5, 115.0, 77.0, 0.0, -30.0, 0.0]
+motion9: [0.0, 0.0, 0.0, 10.6, -47.2, -91.0, 72.7, 80.8, 0.0, 37.7, 0.0, 55.7, -25.5, 23.5, 115.0, 77.0, 0.0, -30.0, 0.0]
+motion10: [0.0, 0.0, 0.0, 20.0, -25.5, 23.5, 115.0, 77.0, 0.0, -30.0, 0.0, 20.0, -25.5, 23.5, 115.0, 77.0, 0.0, -30.0, 0.0]
+motion11: [0.0, 0.0, 0.0, 51.0, -25.5, 23.5, 115.0, 77.0, 0.0, -30.0, 0.0, 51.0, -25.5, 23.5, 115.0, 77.0, 0.0, -30.0, 0.0]
+
+motion12: [-126.0, 0.0, 0.0, 0.0, -24.0, 101.0, 35.8, 65.5, 0.0, -17.7, 0.0, 0.0, -10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+###### speech value
+speech00: 'initial'
+speech0: 'Hello, I am Smartpal five.'
+speech1: 'Thank you for coming to our laboratory today.'
+speech2: 'Please enjoy watching my demonstration.'
+speech3: 'Ganbarimasu'
+
+speech4: 'Open the door.'
+speech5: 'Close the door.'

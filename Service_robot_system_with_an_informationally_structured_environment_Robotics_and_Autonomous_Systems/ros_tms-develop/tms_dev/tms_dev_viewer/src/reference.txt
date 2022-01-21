@@ -1,0 +1,133 @@
+
+    Prefix information
+                    Made by Yoonseok Pyo / Modify 2012.11.19
+
+    Primitive Type	Range of Values	Prefix	Example (c++, 32bit)	C / C++	Python	Java
+    bool	true or false	b	bool bIsRun;	uint8_t	bool
+    int8	−128 ~ +127	i8	int8_t i8Data;	int8_t	int
+    uint8	0 ~ 255	ui8	uint8_t ui8Data;	uint8_t	int
+    int16	−32,768 ~ +32,767	i16	int16_t i16Data;	int16_t	int
+    uint16	0 ~ 65,535	ui16	uint16_t ui16Data;	uint16_t	int
+    int32	−2,147,483,648 ~ +2,147,483,647	i32	int32_t i32Data;	int32_t	int
+    uint32	0 ~ 18,446,744,073,709,551,615	ui32	uint32_t ui32Data;	uint32_t	int
+    int64	−9,223,372,036,854,775,808 ~ +9,223,372,036,854,775,807	i64	int64_t i64Data;	int64_t	long
+    uint64	0 ~ 18,446,744,073,709,551,615	ui64	int64_t ui64Data;	uint64_t	long
+    float32	3.4E +/- 38 (7 digits)	f	float fData;	float	float
+    float64	1.7E +/- 308 (15 digits)	d	double dData;	double	float
+
+    Type	"Range of Values
+<system dependent (32bit OS,C++)>"	Prefix	Example (c++, 32bit)
+    char	8bit, –128 ~ 127	c	char cCode;
+    unsigned char	8bit, 0 ~ 255	uc	unsigned char ucCode;
+    short	16bit, −32,768 ~ +32,767	sh	short shData;
+    unsigned short	16bit, 0 ~ 65,535	ush	unsigned short ushData;
+    int	32bit, −2,147,483,648 ~ +2,147,483,647	i or i32	int iData; or i32Data;
+    unsigned int	32bit, 0 ~ 18,446,744,073,709,551,615	ui or ui32	unsigned int uiData; or ui32Data;
+    long	32bit, −2,147,483,648 ~ +2,147,483,647	l	long lData;
+    unsigned long	32bit, 0 ~ 18,446,744,073,709,551,615	ul	unsigned long ulData;
+    long long 	64bit, –9,223,372,036,854,775,808 ~ 9,223,372,036,854,775,807	ll	long long llData;
+    unsigned long long	64bit, 0 ~ 18,446,744,073,709,551,615	ull	unsigned long long ullData;
+
+    Type		Prefix	Example (c++, 32bit)	C / C++	Python
+    string		s	string sMessage;	std::string	string
+    point 		p+	"void* pData;
+int* piData;"
+    array		+a	"char caName[32];
+int iaData[50];"
+    handle		h	HANDLE hWnd;
+    struct		st	LINEINFO stLineInfo;
+    enum		E/e	"typedef enum
+{
+    eTYPE_VALUE1,
+    eTYPE_VALUE2
+}ETYPE;
+
+enum type = upper case E
+enum value= lower case e"
+    class		C	class CHuman
+    vector		v+	"vector<int> viData;
+vector<LINEINFO> vstLineInfo;"	std::vector	tuple
+    list		list+	"list<int> listiData;
+list<LINEINFO> liststLineInfo;"	std::list	list
+    time				ros::Time	rospy.Time
+    duration				ros::Duration	rospy.Duration
+
+    Scope		Prefix	Example (c++, 32bit)
+    local variable 		none	"void dummy(void)
+{
+    int iCount;
+}"
+    function variable		f_	void dummy(int f_iCount);
+    member variable		m_	"class CDummy
+{
+    int m_iCount;
+}"
+    static variable		s_	static int s_iCount = 100;
+    global variable		g_	int g_iCount
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

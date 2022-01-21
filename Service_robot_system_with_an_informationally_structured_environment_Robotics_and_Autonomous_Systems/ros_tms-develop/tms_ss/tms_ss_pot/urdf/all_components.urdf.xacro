@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- All components of ROS-TMS project -->
+<robot name="rostms" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Import common properties -->
+  <xacro:include filename="$(find rostms_description)/urdf/common_properties.urdf.xacro" />
+
+  <!-- Used for fixing all components to 'world' frame of RViz and Gazebo 'world' -->
+  <link name="world_link"/>
+
+  <joint name="world_bsen_room_joint" type="fixed">
+    <parent link="world_link"/>
+    <child link="bsen_room_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Defines the components tags -->
+  <xacro:include filename="$(find tms_ss_pot)/urdf/map.urdf.xacro" />
+  <xacro:environments/>
+
+</robot>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/tms_ur_arviewer/tms_ur_arviewer.iml" filepath="$PROJECT_DIR$/tms_ur_arviewer/tms_ur_arviewer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tms_ur_client.iml" filepath="$PROJECT_DIR$/tms_ur_client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tms_ur_commander/tms_ur_commander.iml" filepath="$PROJECT_DIR$/tms_ur_commander/tms_ur_commander.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tms_ur_dbbrowser/tms_ur_dbbrowser.iml" filepath="$PROJECT_DIR$/tms_ur_dbbrowser/tms_ur_dbbrowser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tms_ur_sanmoku/tms_ur_sanmoku.iml" filepath="$PROJECT_DIR$/tms_ur_sanmoku/tms_ur_sanmoku.iml" />
+    </modules>
+  </component>
+</project>

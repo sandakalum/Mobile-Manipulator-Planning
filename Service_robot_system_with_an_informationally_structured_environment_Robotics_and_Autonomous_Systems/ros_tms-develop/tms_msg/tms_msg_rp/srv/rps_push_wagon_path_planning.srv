@@ -1,0 +1,12 @@
+uint32 robot_id
+uint32 wagon_id
+tms_msg_rp/rps_position start_robot_pos
+tms_msg_rp/rps_position start_wagon_pos
+tms_msg_rp/rps_position goal_robot_pos
+---
+uint32 success
+string message
+tms_msg_rp/rps_position[] RobotPath
+float32[] control_wagon_th
+tms_msg_rp/rps_position[] WagonPath
+tms_msg_rp/rps_joint_angle[] joint_angle_array

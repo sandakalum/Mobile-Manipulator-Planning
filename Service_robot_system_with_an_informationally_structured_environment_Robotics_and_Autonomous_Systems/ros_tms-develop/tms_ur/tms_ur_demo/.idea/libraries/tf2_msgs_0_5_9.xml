@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="tf2_msgs-0.5.9">
+    <CLASSES>
+      <root url="jar:///opt/ros/indigo/share/maven/org/ros/rosjava_messages/tf2_msgs/0.5.9/tf2_msgs-0.5.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,28 @@
+<launch>
+  <group ns="tms_rc_double">
+    <group ns="room928">
+      <!--点群マップ，グリッドマップ-->
+      <node name="map_server" pkg="map_server" type="map_server" args="$(find tms_rc_double)/resources/map_928.yaml" />
+
+      <!--static transform-->
+      <include file="$(find tms_rc_double)/launch/includes/tf_common.launch.xml" />
+      <node pkg="tf2_ros" type="static_transform_publisher" args="2.661 -2.515 0 0.64228116473391323555 0 0 map world" name="tf_world"/>
+
+      <!--tf publisher
+      <node name="double_control" pkg="tms_rc_double" type="double_control" output="screen"/>
+      -->
+      <!--rviz -->
+      <node name="rviz" pkg="rviz" type="rviz" args="$(find tms_rc_double)/rviz/double.rviz">
+        <remap from="/move_base_simple/goal" to="/tms_rc_double/room928/move_base_simple/goal"/>
+      </node>
+      <!--自己位置推定-->
+      <!--
+      <node pkg="tms_rc_double" type="tms_ss_double_pozyx" name="tms_ss_double_pozyx" output="screen">
+      <remap from="tms_rc_double/room928/tms_db_data" to="/tms_db_data"/>
+      </node>
+      -->
+      <!-- Move base -->
+      <include file="$(find tms_rc_double)/launch/includes/move_base.launch.xml" />
+    </group>  
+  </group>
+</launch>

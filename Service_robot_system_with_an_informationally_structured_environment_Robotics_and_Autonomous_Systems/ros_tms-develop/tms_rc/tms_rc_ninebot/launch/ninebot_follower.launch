@@ -1,0 +1,22 @@
+<launch>
+
+<!-- portable number -->
+<arg name="number" default="1"/>
+
+<group ns="portable$(arg number)">
+
+  <!-- local frame name -->
+  <arg name="global_frame"   value="map$(arg number)"/>
+  <arg name="base_footprint_combined" value="base_footprint_combined$(arg number)"/>
+
+  <!-- ninebot human follower-->
+  <node pkg="tms_rc_ninebot" type="ninebot_human_follower.py" name="ninebot_human_follower" output="screen">
+    <param name="pose_topic_name"   value="/ninebot_pos"/>
+    <param name="people_topic_name" value="/people_ninebot_cropped"/>
+    <param name="goal_topic_name"   value="/move_base_simple/goal"/>
+    <param name="global_frame_id"   value="$(arg global_frame)"/>
+    <param name="base_frame_id"     value="$(arg base_footprint_combined)"/>
+  </node>
+
+</group>
+</launch>

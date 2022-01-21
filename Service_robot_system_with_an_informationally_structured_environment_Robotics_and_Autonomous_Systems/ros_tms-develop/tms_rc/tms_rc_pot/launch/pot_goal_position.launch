@@ -1,0 +1,29 @@
+<launch>
+  <!-- pot goal position coi f2  -->
+
+  <node  args="17.154 -20.323 0 -2.338 0 0 goal 1"   name="plot_out1"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="23.221 -26.333 0 -2.244 0 0 goal 2"   name="plot_out2"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="24.246 -34.539 0  2.480 0 0 goal 3"   name="plot_out3"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="18.716 -41.025 0  0.958 0 0 goal 4"   name="plot_out4"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="10.954 -35.844 0  0.894 0 0 goal 5"   name="plot_out5"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="3.038  -31.142 0  0.954 0 0 goal 6"   name="plot_out6"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="-0.882 -24.383 0 -0.779 0 0 goal 7"   name="plot_out7"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="5.668  -18.245 0 -0.847 0 0 goal 8"   name="plot_out8"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="12.043 -13.997 0 -2.327 0 0 goal 9"   name="plot_out9"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="6.255  -7.732  0 -2.470 0 0 goal 10"  name="plot_out10" pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="2.193  -2.296  0 -2.476 0 0 goal 11" name="plot_out11" pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+
+
+  <!-- pot goal position coi f1 -->
+  <!-- <node  args="13.432 -9.020 0 1.636  0 0 goal 1"   name="plot_out1"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="5.366 -9.364 0 1.611  0 0 goal 2"   name="plot_out2"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="-24.814 -15.704 0 -1.700 0 0 goal 3"   name="plot_out3" pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="-14.752 -17.127 0 -1.559 0 0 goal 4"   name="plot_out4" pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="-3.013 -13.990 0 -0.001 0 0 goal 5"   name="plot_out5"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="2.254 -20.605 0 3.134 0 0 goal 6"   name="plot_out6"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="2.398 -29.953 0 -3.122 0 0 goal 7"   name="plot_out7"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="-2.915 -34.329 0 1.842  0 0 goal 8"   name="plot_out8"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="-9.385 -32.228 0 0.065  0 0 goal 9"   name="plot_out9"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="-10.236 -23.292 0 0.009  0 0 goal 10"  name="plot_out10"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="-3.950 -26.244 0 -2.968 0 0 goal 11"  name="plot_out11"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/> -->
+</launch>

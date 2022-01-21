@@ -1,0 +1,14 @@
+<launch>
+
+  <!-- global frame name -->
+  <arg name="server_frame" default="map"/>
+
+  <!-- global map server -->
+  <arg name="map_file" value="$(find tms_rc_ninebot)/maps/map_bsen_p/map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
+    <param name="frame_id"  value="$(arg server_frame)"/>
+    <remap from="map"          to="$(arg server_frame)"/>
+    <remap from="map_metadata" to="$(arg server_frame)_metadata"/>
+  </node>
+
+</launch>

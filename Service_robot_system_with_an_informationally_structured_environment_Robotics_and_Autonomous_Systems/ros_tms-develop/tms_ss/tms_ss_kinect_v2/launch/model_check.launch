@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- For visualize skeleton in rViz -->
+  <group ns="sim">
+    <param name="robot_description" textfile="$(find skeleton_description)/urdf/skeleton.urdf"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+    <param name="use_gui" value="false"/>
+    <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/> -->
+    <!-- <node name="skeleton_offset_publisher" pkg="tf" type="static_transform_publisher"
+      args="7.3 5.6 1.1 0 0 1 0.0 world_link Body 10"/> -->
+  </group>
+</launch>

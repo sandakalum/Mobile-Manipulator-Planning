@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- title for the dialog showing the error of camera hardware -->
+    <string name="camera_error_title">Camera error</string>
+
+    <!-- message for the dialog showing the error of camera hardware -->
+    <string name="cannot_connect_camera">Cannot connect to camera.</string>
+
+    <!-- Details dialog "OK" button. Dismisses dialog. -->
+    <string name="details_ok">OK</string>
+
+	<string name="app_name">tms_ur_dbbrowser</string>
+	
+    <string name="txtDesc">NoImage</string>
+    <string name="Result">RESULT</string>
+    <string name="txtSend">SEND</string>
+    <string name="descImage">No Image</string>
+    <string name="txtUser">UserID:</string>
+    <string name="userID">1</string>
+    <string name="txtPlace">Destination:</string>
+    <string name="placeID">14</string>
+    <string name="txtTime">minits Later</string>
+    <string name="time">0</string>
+    <string name="txtRenew">RENEW</string>
+    <string name="txtApply">Apply</string>
+    <string name="txtCancel">Cancel</string>
+    <string name="txtSetting">SET</string>
+    <string name="titleUID">UserID:</string>
+    <string name="titleFTPIP">IPAddress(FTPServer):</string>
+    <string name="titleFTPUsrName">FtpUsrName:</string>
+    <string name="titleFTPPass">FTPPass:</string>
+</resources>

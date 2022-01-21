@@ -1,0 +1,13 @@
+<launch>
+
+  <node pkg="tms_rp_rps_planner" name="rps_goal_planner" type="rps_goal_planner">
+  </node>
+
+  <node pkg="tms_rp_rps_planner" name="rps_voronoi_path_planner" type="rps_voronoi_path_planner">
+  </node>
+  
+  <node pkg="tms_rp_rps_planner" name="rps_push_wagon_path_planner" type="rps_push_wagon_path_planner">
+  </node>
+
+
+</launch>

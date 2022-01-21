@@ -1,0 +1,11 @@
+int32 ftof
+int32 ftos
+int32 ftot
+int32 stof
+int32 stos
+int32 stot
+int32 ttof
+int32 ttos
+int32 ttot
+int32 righter
+int32 lefter

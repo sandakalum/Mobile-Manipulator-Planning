@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- Robots of ROS-TMS -->
+<robot name="robots" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Import all Gazebo-customization elements, including Gazebo colors -->
+  <xacro:include filename="$(find smartpal5_description)/urdf/smartpal5_gazebo.urdf.xacro" />
+    <xacro:robots_sim/>
+
+  <xacro:macro name="robots">
+    <xacro:include filename="$(find smartpal5_description)/urdf/smartpal5.urdf.xacro" />
+    <xacro:include filename="$(find tms_rc_mimamorukun_control)/urdf/wheelchair.urdf.xacro" />
+  </xacro:macro>
+</robot>

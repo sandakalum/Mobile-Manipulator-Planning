@@ -1,0 +1,9 @@
+{ "url": "192.168.4.94",
+  "service_name": "/tms_ts_master",
+  "service_type": "tms_msg_ts/ts_req",
+  "task_id": 8100,
+  "robot_id": 2012,
+  "object_id": 0, 
+  "user_id": 1100, 
+  "place_id": 0, 
+  "priority": 0}

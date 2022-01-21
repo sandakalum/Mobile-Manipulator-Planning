@@ -1,0 +1,117 @@
+<launch>
+<arg name="number" value="11" />
+<group ns="pot$(arg number)">
+  <!-- arg -->
+  <arg name="odom" value="odom$(arg number)" />
+  <arg name="base_footprint" value="base_footprint$(arg number)" />
+  <arg name="base_link"      value="base_link$(arg number)" />
+  <arg name="base_scan"    value="base_scan$(arg number)" />
+  <arg name="topic_scan"   value="scan" />
+  <arg name="global_frame"   value="map$(arg number)" />
+
+  <!-- coi f1 -->
+  <!--
+  <arg name="initialpose_x" default="63.983"/>
+  <arg name="initialpose_y" default="-24.744"/>
+  <arg name="initialpose_a" default="-3.115"/>
+  -->
+
+  <!-- coi f2 --> 
+  <arg name="initialpose_x" default="4.834"/>
+  <arg name="initialpose_y" default="4.670"/>
+  <arg name="initialpose_a" default="-0.931"/>
+
+  <!-- rouka wheelchiarbot detect test -->
+  <!--
+  <arg name="initialpose_x" default="-1.078"/>
+  <arg name="initialpose_y" default="2.163"/>
+  <arg name="initialpose_a" default="-2.488"/>
+  -->
+
+  <!-- test -->
+  <!--
+  <arg name="initialpose_x" default="5.435"/>
+  <arg name="initialpose_y" default="4.352"/>
+  <arg name="initialpose_a" default="-2.492"/>
+  -->
+  
+  <!-- portable position -->
+  <node pkg="tms_rc_pot" type="arduino_serial.py" name="arduino_serial">
+  </node>
+
+  <!-- portable urg -->
+  <node pkg="urg_node" type="urg_node" name="portable_urg_node" output="screen">
+      <param name="frame_id" value="$(arg base_scan)" />
+      <!-- param name="serial_port" value="/dev/ttyACM0" / -->
+      <param name="ip_address" value="192.168.0.10" />
+      <!-- param name="angle_min" value="-1.832595714595" / -->
+      <param name="angle_min" value="-1.5708" />
+      <!-- param name="angle_max" value=" 1.832595714595" / -->
+      <param name="angle_max" value=" 1.5708" />
+      <param name="skip" value="0" />
+  </node>
+
+  <!-- portable myahrs -->
+  <node pkg="myahrs_driver" type="myahrs_driver" name="myahrs_driver">
+    <param name="port" value="/dev/ttyACM0" />
+    <param name="baud_rate" value="115200" />
+  </node>
+
+  <!-- portable stater -->
+  <node pkg="tms_rc_pot" type="portable_stater" name="portable_stater">
+  </node>
+
+  <!-- portable tf -->
+  <node pkg="tms_rc_pot" type="portable_tf_node_first" name="portable_tf_node_first" output="screen">
+  <param name="odom_param" value="$(arg odom)" />
+  <param name="base_footprint_param" value="$(arg base_footprint)" />
+  </node>
+  <node pkg="tms_rc_pot" type="portable_tf_node_second" name="portable_tf_node_second" output="screen">
+  <param name="base_footprint_param" value="$(arg base_footprint)" />
+  <param name="base_link_param" value="$(arg base_link)" />
+  <param name="base_scan_param" value="$(arg base_scan)" />
+  </node>
+
+  <!-- Map server -->
+  <!-- arg name="map_file" default="$(find tms_rc_pot)/maps/map_coi_f1/map.yaml"/ -->
+  <arg name="map_file" default="$(find tms_rc_pot)/maps/map_coi_f2/map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
+  <param name="frame_id" value="$(arg global_frame)" />
+  </node>
+
+  <!-- AMCL -->
+  <include file="$(find tms_rc_pot)/launch/amcl.launch.xml"/>
+  <param name="amcl/odom_frame_id"  value="odom$(arg number)"/>
+  <param name="amcl/base_frame_id"  value="base_footprint$(arg number)"/>
+  <param name="amcl/global_frame_id" value="map$(arg number)"/>
+  <param name="amcl/initial_pose_x" value="$(arg initialpose_x)"/>
+  <param name="amcl/initial_pose_y" value="$(arg initialpose_y)"/>
+  <param name="amcl/initial_pose_a" value="$(arg initialpose_a)"/>
+
+ <!-- move_base -->
+  <arg name="cmd_vel_topic" default="mobile_base/commands/velocity" />
+  <arg name="odom_topic" default="$(arg odom)" />
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find tms_rc_pot)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find tms_rc_pot)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find tms_rc_pot)/param/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find tms_rc_pot)/param/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find tms_rc_pot)/param/base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find tms_rc_pot)/param/move_base_params.yaml" command="load" />
+
+    <param name="global_costmap/global_frame" value="$(arg global_frame)"/>
+    <param name="global_costmap/robot_base_frame" value="$(arg base_footprint)"/>
+    <param name="global_costmap/scan/sensor_frame" value="$(arg base_scan)"/>
+    <param name="local_costmap/global_frame" value="$(arg odom)"/>
+    <param name="local_costmap/robot_base_frame" value="$(arg base_footprint)"/>
+    <param name="local_costmap/scan/sensor_frame" value="$(arg base_scan)"/>
+
+    <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
+    <remap from="$(arg odom)"  to="$(arg odom_topic)"/>
+  </node>
+
+  <node  args="$(arg number) 0"  name="controller$(arg number)"  pkg="tms_rc_pot"  type="portable_controller3.py" output="screen"/>
+  <node  args="$(arg number) $(arg initialpose_x) $(arg initialpose_y) $(arg initialpose_a)"  name="send_data$(arg number)"  pkg="tms_rc_pot"  type="send_data.py" output="screen"/>
+
+ </group>
+</launch>

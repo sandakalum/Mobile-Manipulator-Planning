@@ -1,0 +1,4 @@
+uint32 command
+---
+uint32 ispmove
+uint32 ispspin

@@ -1,0 +1,44 @@
+// Tag ReaderWriter IDL 20070121
+
+typedef sequence <octet> TagData;
+
+// タグ ID、タグデータ格納用配列
+module Tag {
+    interface ReaderWriter {
+
+    attribute unsigned long CommPort; // シリアル通信ポート設定、取得
+    attribute boolean isPortOpen; // シリアル通信ポート開閉設定、取得
+    attribute unsigned long BaudRate; // シリアル通信速度設定、取得
+    attribute unsigned long Parity; // シリアル通信パリティ設定、取得
+    attribute unsigned long Stopbits; // シリアル通信ストップビット設定、取得
+    attribute string IPAddress; // リーダライタ IP アドレス
+    attribute unsigned long ServerPort; // リーダライタポート番号
+    attribute boolean isConnect; // イーサネットコネクション設定、状態
+    attribute double RecvTimeOut; // レスポンス受信待ち時間(秒)設定、取得
+    attribute long LastStatus; // 最後に実行した R/W 制御メソッドの実行結果取得
+
+    // リーダライタ設定
+    boolean intialize(); // リーダライタ初期化
+    boolean setConfig(in long confNo, in long confVal); // 動作パラメータ設定
+    long getConfig(in long confNo); // 動作パラメータ取得
+    boolean setupCom(in unsigned long baud, in unsigned long stop, in unsigned
+    long parity); // リーダライタシリアル設定
+    boolean RFPowerOff(); // 無線出力停止
+    boolean setPower(in long power); // 送信出力設定
+    long getPower(); // 送信出力取得
+    long getNoiseLevel(); // リーダライタ受信ノイズ状況取得
+    boolean tagReset(); // 通信範囲内タグリセット
+    // ISO タグアクセスメソッド
+    boolean inventory(out TagData uids); // ISO タグの UID 取得
+    boolean ISORead(in long blockAddr, in long blockNum, out TagData data, in
+    TagData uid); // 指定タグデータ取得
+    boolean ISOWrite(in long blockAddr, in long blockNum, in TagData data, in
+    TagData uid); // 指定タグデータ書き込み
+    boolean ISOStayQuiet(in TagData uid); // 指定タグ休止
+    boolean ISOResetToReady(in TagData uid); // 指定タグリセット
+    // その他
+    boolean senseTag(out long kind); // タグ種類取得
+    boolean stop(in long cmdClass); // 現在動作終了
+    };
+};
+

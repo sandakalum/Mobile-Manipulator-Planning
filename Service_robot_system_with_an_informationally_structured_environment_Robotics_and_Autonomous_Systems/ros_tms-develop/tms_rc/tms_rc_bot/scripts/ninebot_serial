@@ -1,0 +1,103 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+
+#--低レベルとの通信規格
+#　  全て１バイト単位で通信（１バイトを一定時間受け取れなかった場合低レベル側で停止命令が出る）
+#　  上位１ビットが1の時警告ブザーを鳴らし、0の時は音は停止
+#　  下位7ビットが0~126の時、63を中心とし63より小さい時はCW方向、大きい時はCCW方向へ回転
+#    127の時は静止（127は緊急停止として用意しているが現在のところ63と127の違いはなし）
+#    0の時:中心値 - 0.2[v] 、 126の時:中心値 + 0.2[V]が回路からNinebotへ出される
+#    （低レベル側では、中心値±0.2[V]までしか出ないように設定している）
+
+import serial
+import time
+import rospy
+import numpy
+import tty
+import sys
+import termios
+import threading
+
+from std_msgs.msg import Int8
+from std_msgs.msg import Float64
+from std_msgs.msg import String
+
+ROS_RATE = 100
+
+class SerialClass:
+  def __init__(self):
+    rospy.on_shutdown(self.shutdown)
+
+    self.cmd           = 63
+    self.sound_counter = 0
+    self.mutex         = threading.Lock()
+    self.ser           = serial.Serial()
+    self.ser.port      = rospy.get_param('~port', '/dev/ttyACM1')
+    self.ser.baudrate  = rospy.get_param('~baud_rate', 115200)
+
+    while True:
+      if not rospy.is_shutdown():
+        try:
+          self.ser.open()
+          time.sleep(7)
+          break
+        except:
+          rospy.logerr('Error connecting to Serial : Could not open Serial')
+          time.sleep(7)
+          continue
+      else: return 
+
+    pub = rospy.Publisher('serial_string', String, queue_size=1000)
+    
+    rospy.Subscriber('serial_cmd', Int8, self.callback_cmd, queue_size=100)   
+    rospy.Subscriber('portable_sound', Float64, self.callback_sound, queue_size=10)
+    
+    sound = False
+    send  = 127
+    self.ser.write(chr(send))
+
+    rate = rospy.Rate(ROS_RATE)
+    while not rospy.is_shutdown():
+      rate.sleep()
+      
+      if 0 < self.sound_counter:
+        sound = True
+        self.mutex.acquire()
+        self.sound_counter -= 1
+        self.mutex.release()
+      else: sound = False
+
+      cmd = self.cmd
+      if cmd > 127: cmd = 63
+
+      if sound == True: send = 0x80 | cmd
+      else            : send = 0x7f & cmd 
+
+      try:
+        self.ser.write(chr(send))
+        #rospy.loginfo("nucleo_serial : send = %d", send)
+        line = self.ser.readline()
+        pub.publish(line)
+      except: continue
+
+  def callback_cmd(self, data):
+    self.cmd = data.data
+
+  def callback_sound(self, data):
+    self.mutex.acquire()
+    self.sound_counter += int(data.data * ROS_RATE)
+    self.mutex.release()
+
+  def shutdown(self):
+    try:
+      self.ser.write(chr(127))
+      self.ser.close()
+    except: pass
+
+if __name__ == '__main__':
+  rospy.init_node('ninebot_serial', anonymous=True)
+  try:
+    SerialClass()
+    rospy.spin()
+  except rospy.ROSInterruptException:
+    rospy.loginfo("ninebot_serial node finished.")

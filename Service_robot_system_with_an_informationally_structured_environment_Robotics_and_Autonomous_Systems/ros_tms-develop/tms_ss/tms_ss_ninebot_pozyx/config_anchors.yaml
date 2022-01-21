@@ -1,0 +1,88 @@
+pozyx_anchors:
+# # 1
+#   - id: 0x6044
+#     coor_x: -27.476
+#     coor_y: -8.039
+# # 2
+#   - id: 0x6e15
+#     coor_x: -11.096
+#     coor_y: 2.612
+# # 3
+#   - id: 0x6e30
+#     coor_x: 3.423
+#     coor_y: 13.252
+# # 4
+#   - id: 0x6e58
+#     coor_x: 19.015
+#     coor_y: 27.244
+# # 5
+#   - id: 0x6e22
+#     coor_x: -25.448
+#     coor_y: -16.174
+# # 6
+#   - id: 0x6e39
+#     coor_x: -8.735
+#     coor_y: -15.017
+# # 7
+#   - id: 0x6037
+#     coor_x: 11.108
+#     coor_y: 0.657
+# # 8
+#   - id: 0x6e49
+#     coor_x: 35.743
+#     coor_y: 4.081
+# # 9 
+#   - id: 0x6e11
+#     coor_x: 46.601
+#     coor_y: 29.822
+#     # coor_x: 70.839
+#     # coor_y: 60.474
+# # 10
+#   - id: 0x6e0b
+#     coor_x: 61.462
+#     coor_y: 39.014
+# # 11
+#   - id: 0x694c
+#     coor_x: 66.839
+#     coor_y: 49.511
+# # 12
+#   - id: 0x6e08
+#     coor_x: 72.77
+#     coor_y: 74.072
+# # 13
+#   - id: 0x6954
+#     coor_x: 48.319
+#     coor_y: 18.575
+#     # coor_x: 76.838
+#     # coor_y: 51.398 
+# # 14
+#   - id: 0x6e5c
+#     coor_x: 62.389
+#     coor_y: 31.236
+# # 15
+#   - id: 0x6050
+#     coor_x: 81.744
+#     coor_y: 41.521
+#     # coor_x: 71.906
+#     # coor_y: 43.546
+# # 16
+#   - id: 0x6023
+#     coor_x: 82.578
+#     coor_y: 57.5
+
+# 1
+  - id: 0x6044
+    coor_x: 0
+    coor_y: 0
+# 2
+  - id: 0x6e15
+    coor_x: 18
+    coor_y: 0
+# 3
+  - id: 0x6e30
+    coor_x: 0
+    coor_y: 18
+# 4
+  - id: 0x6e58
+    coor_x: 18
+    coor_y: 18

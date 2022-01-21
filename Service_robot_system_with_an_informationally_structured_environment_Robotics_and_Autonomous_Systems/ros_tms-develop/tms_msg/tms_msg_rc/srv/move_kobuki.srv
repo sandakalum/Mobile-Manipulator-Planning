@@ -1,0 +1,4 @@
+float64 goal_dis
+float64 goal_ang
+---
+uint32 success

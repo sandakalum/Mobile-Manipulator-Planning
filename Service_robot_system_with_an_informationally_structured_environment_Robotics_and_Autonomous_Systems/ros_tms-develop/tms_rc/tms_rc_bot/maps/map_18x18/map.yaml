@@ -1,0 +1,11 @@
+image: map2.png
+resolution: 0.155
+# resolution: 0.005
+# origin: [-10.000000, -10.000000, 0.000000]
+# origin: [0,0,0]
+origin: [-6.350000, -6.350000, 0.000000]
+# origin: [-24.550000, -24.550000, 0.000000]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196
+

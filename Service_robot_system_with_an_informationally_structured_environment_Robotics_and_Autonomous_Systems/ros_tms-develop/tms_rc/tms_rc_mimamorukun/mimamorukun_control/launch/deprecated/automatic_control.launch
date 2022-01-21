@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="tms_rc_mimamorukun_control" type="mimamorukun_automatic_control" name="mimamorukun_automatic_control" output="screen">
+        <param name="IP_ADDR" value="192.168.11.99" />
+    </node>
+</launch>

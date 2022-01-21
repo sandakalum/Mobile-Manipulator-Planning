@@ -1,0 +1,35 @@
+
+base_global_planner: "global_planner/GlobalPlanner"
+#base_global_planner: "navfn/NavfnROS"
+#base_global_planner: "carrot_planner/CarrotPlanner"
+
+
+base_local_planner: "dwa_local_planner/DWAPlannerROS"
+#base_local_planner: "base_local_planner/TrajectoryPlannerROS"
+#base_local_planner: "eband_local_planner/EBandPlannerROS"
+#base_local_planner: "teb_local_planner/TebLocalPlannerROS"
+
+
+recovery_behaviors:
+  - name: 'conservative_reset'
+    type: 'clear_costmap_recovery/ClearCostmapRecovery'
+  - name: 'aggressive_reset'
+    type: 'clear_costmap_recovery/ClearCostmapRecovery'
+
+conservative_reset: 
+  reset_distance: 3.0
+
+aggressive_reset:
+  reset_distance: 0.0
+
+# controller_frequency: 5.0
+controller_frequency: 10.0
+controller_patience:  3.0
+
+planner_frequency: 1.0
+planner_patience:  5.0
+
+oscillation_timeout:       30.0
+oscillation_distance:      1.0
+recovery_behavior_enabled: True
+clearing_rotation_allowed: false

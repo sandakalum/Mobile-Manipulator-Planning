@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package>
+  <name>tms_ss_ods_color_segmentation</name>
+  <version>1.0.1</version>
+  <license>BSD</license>
+  <description>tms_ss_ods_color_segmentation package</description>
+
+  <maintainer email="kawamura@ait.kyushu-u.ac.jp">Akihiro Kawamura</maintainer>
+
+  <url type="website">http://robotics.ait.kyushu-u.ac.jp/index-e.html</url>
+  <url type="git">https://github.com/irvs/ros_tms</url>
+
+  <author email="kuwahata@irvs.ait.kyushu-u.ac.jp">Shunya Kuwahata</author>
+  <author email="passionvirus@gmail.com">Yoonseok Pyo</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- <build_depend>pcl</build_depend> -->
+  <build_depend>cv_bridge</build_depend>
+  <build_depend>pcl_ros</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+
+  <!-- <run_depend>pcl</run_depend> -->
+  <run_depend>cv_bridge</run_depend>
+  <run_depend>pcl_ros</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+
+  <export>
+  </export>
+</package>

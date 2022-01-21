@@ -1,0 +1,6 @@
+<launch>
+  <node pkg="tms_rc_ninebot" type="ninebot_keyop" name="ninebot_keyop" output="screen" />
+  <!--
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find tms_rc_ninebot)/rviz/ninebot.rviz"/>
+  -->
+</launch>

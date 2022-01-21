@@ -1,0 +1,4 @@
+uint32 id
+---
+geometry_msgs/PoseArray objects
+float64[] radious

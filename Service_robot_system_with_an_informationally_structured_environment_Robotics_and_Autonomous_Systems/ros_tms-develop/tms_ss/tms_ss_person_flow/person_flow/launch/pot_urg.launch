@@ -1,0 +1,7 @@
+<launch>
+  <group ns="pot_urg1">
+    <node pkg="urg_node" name="urg_node" type="urg_node">
+    <param name="serial_port" value="/dev/ttyACM1" />
+    </node>
+  </group>
+</launch>

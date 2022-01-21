@@ -1,0 +1,7 @@
+int32 command
+bool type
+int32 robot_id
+float64[] arg
+---
+int32 result
+float32[] val

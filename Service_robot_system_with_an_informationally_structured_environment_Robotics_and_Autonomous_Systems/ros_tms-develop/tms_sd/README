@@ -1,0 +1,12 @@
+TMS_SD Packages
++ vicon_bridge 
+: http://wiki.ros.org/vicon_bridge
++ hokuyo_node or urg_node
+: sudo apt-get install ros-hydro-hokuyo-node or sudo apt-get install ros-hydro-urg-node
++ openni
+: sudo apt-get install ros-hydro-openni2-camera  
+: sudo apt-get install ros-hydro-openni2-launch  
+: sudo apt-get install ros-hydro-openni-camera   
+: sudo apt-get install ros-hydro-openni-tracker
+: sudo apt-get install ros-hydro-openni-launch 
+

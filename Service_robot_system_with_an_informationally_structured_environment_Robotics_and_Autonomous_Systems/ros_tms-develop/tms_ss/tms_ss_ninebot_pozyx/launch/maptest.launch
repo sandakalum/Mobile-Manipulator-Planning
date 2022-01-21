@@ -1,0 +1,19 @@
+<launch>
+  <!-- local map server -->
+
+  <!-- <arg name="map_file" value="$(find tms_ss_ninebot_pozyx)/maps/map_huistenbosch_entrance/map.yaml"/> -->
+  <arg name="map_file" value="$(find tms_ss_ninebot_pozyx)/maps/huistenbosch_windmill/map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
+    <param name="frame_id" value="map"/>
+  </node>
+
+  <!-- Static TF -->
+  <node pkg="tf" type="static_transform_publisher" name="world_to_map" args="0 0 0 0 0 0 world_link map 100" />
+
+   <!-- Visualize -->
+  <node name="anchor_visualize" pkg="tms_ss_ninebot_pozyx" type="debug_anchor_visualize.py" />
+
+  <!-- RViz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tms_ss_ninebot_pozyx)/rviz_config.rviz" respawn="true" />
+
+</launch>

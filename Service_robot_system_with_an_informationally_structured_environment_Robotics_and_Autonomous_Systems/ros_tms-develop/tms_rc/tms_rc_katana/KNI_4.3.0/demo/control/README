@@ -1,0 +1,10 @@
+# README for socketcontrol demo
+# Neuronics AG
+# 2007
+
+This demo uses TCP/IP sockets to connect to a Katana 1.2 or a Katana model in
+Webots. It uses various functions from KNI to control de robot.
+
+***
+In the project properties, the path to WSock32.Lib has to be adapted under windows.
+***

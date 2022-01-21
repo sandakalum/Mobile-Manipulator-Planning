@@ -1,0 +1,10 @@
+uint32 task_id
+uint32 target_id
+uint32 robot_id
+---
+uint32 success
+string message
+tms_msg_rp/rps_position target_pos
+tms_msg_rp/rps_position[] goal_pos
+tms_msg_rp/rps_joint_angle[] joint_angle_array
+tms_msg_rp/rps_route rps_goal_candidate

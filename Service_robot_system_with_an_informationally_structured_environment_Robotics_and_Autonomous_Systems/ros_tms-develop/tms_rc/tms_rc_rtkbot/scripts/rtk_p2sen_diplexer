@@ -1,0 +1,87 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+
+import rospy
+from nav_msgs.msg import Odometry
+from sensor_msgs.msg import NavSatFix
+
+
+class RtkP2senDiplexerClass:
+    def __init__(self):
+        # Params
+        in_topic_p2sen = rospy.get_param('~in_topic_p2sen', 'ninebot_measured_pos')
+        in_topic_gps = rospy.get_param('~in_topic_gps', 'odometry/measured_gps')
+        in_topic_navsat = rospy.get_param('~in_topic_navsat', 'gnss_data')
+        out_topic_odom = rospy.get_param('~out_topic_odom', 'odometry/measured')
+
+        # Pub, Sub
+        rospy.Subscriber(in_topic_p2sen, Odometry, self.p2sen_callback, queue_size=10)
+        rospy.Subscriber(in_topic_gps, Odometry, self.gps_callback, queue_size=10)
+        rospy.Subscriber(in_topic_navsat, NavSatFix, self.navsat_callback, queue_size=10)
+        self.pub = rospy.Publisher(out_topic_odom, Odometry, queue_size=10)
+        self.pub_localization_method = rospy.Publisher("diplexer_localization_method", Odometry, queue_size=10)
+
+        # Var
+        self.p2sen_odom = Odometry()
+        self.gps_odom = Odometry()
+        self.navsat = NavSatFix()
+        self.localization_method = "gps"
+
+        ## Callbackが1回でも呼ばれてるかどうか (データがあるか)
+        self.p2sen_callback_called = False
+        self.gps_callback_called = False
+        ## 何回連続で Fix or Float 以外になったらP2-Senに切り替えるか
+        self.non_rtk_cnt = 0
+        self.non_rtk_threash = 5
+
+        # Main
+        while not rospy.is_shutdown():
+            
+            # Decision
+            gps_status = self.navsat.status.status
+            if gps_status == 2 or gps_status == 3:
+                self.localization_method = "gps"
+                self.non_rtk_cnt = 0
+            elif gps_status == -1 or gps_status == 0 or gps_status == 1:
+                self.non_rtk_cnt += 1
+
+            if self.non_rtk_cnt >= self.non_rtk_threash:
+                self.localization_method = "p2sen"
+
+            localization_method_msg = Odometry()
+            localization_method_msg.header.stamp = rospy.Time.now()
+
+            ## Publish
+            if self.localization_method == "gps" and self.gps_callback_called:
+                self.gps_odom.header.stamp = rospy.Time.now()
+                self.pub.publish(self.gps_odom)
+                localization_method_msg.header.frame_id = "gps"
+            elif self.localization_method == "p2sen" and self.p2sen_callback_called:
+                self.p2sen_odom.header.stamp = rospy.Time.now()
+                self.pub.publish(self.p2sen_odom)
+                localization_method_msg.header.frame_id = "p2sen"
+            else:
+                localization_method_msg.header.frame_id = "None"
+
+            self.pub_localization_method.publish(localization_method_msg)
+    
+
+    def p2sen_callback(self, p2sen_data):
+        self.p2sen_odom = p2sen_data
+        self.p2sen_callback_called = True
+    
+    def gps_callback(self, gps_data):
+        self.gps_odom = gps_data
+        self.gps_callback_called = True
+
+    def navsat_callback(self, navsat_data):
+        self.navsat = navsat_data
+
+
+if __name__ == '__main__':
+    rospy.init_node('rtk_p2sen_diplexer', anonymous=True)
+    try:
+        RtkP2senDiplexerClass()
+        rospy.spin()
+    except rospy.ROSInterruptException:
+        rospy.loginfo("rtk_p2sen_diplexer node finished.")

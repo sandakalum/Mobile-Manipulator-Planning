@@ -1,0 +1,19 @@
+
+map_to_odom:
+
+  odom1: odometry/measured
+  odom1_config: [true,  true,  false,
+                 false, false, false,
+                 false, false, false,
+                 false, false, false,
+                 false, false, false]
+  odom1_queue_size: 10
+  odom1_nodelay: true
+  odom1_differential: false
+  odom1_relative: false
+
+  odom1_pose_rejection_threshold: 5
+  
+#odom_to_base:
+
+

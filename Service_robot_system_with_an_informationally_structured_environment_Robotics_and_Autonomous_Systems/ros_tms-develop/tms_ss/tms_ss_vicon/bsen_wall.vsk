@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+
+<KinematicModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" MODEL="bsen_wall" VERSION="2.5" xsi:noNamespaceSchemaLocation="http://www.vicon.com/Schemas/ViconVST.xsd">
+
+
+
+  <Parameters>
+
+    <StaticParameter ADVANCED="1" HIDDEN="1" NAME="bsen_wall_Unlabeled6037_x" PRIOR="7171.0" QUANTITY="length" READONLY="1" REQUIRED="0" VALUE="7171.0" />
+
+    <StaticParameter ADVANCED="1" HIDDEN="1" NAME="bsen_wall_Unlabeled6037_y" PRIOR="158.0" QUANTITY="length" READONLY="1" REQUIRED="0" VALUE="158.0" />
+
+    <StaticParameter ADVANCED="1" HIDDEN="1" NAME="bsen_wall_Unlabeled6037_z" PRIOR="75.0" QUANTITY="length" READONLY="1" REQUIRED="0" VALUE="75.0" />
+
+    <Parameter HIDDEN="1" NAME="bsen_wall_Unlabeled6038_x" PRIOR="14430.5351562" SD="0" VALUE="14430.5351562" />
+
+    <Parameter HIDDEN="1" NAME="bsen_wall_Unlabeled6038_y" PRIOR="4504.60400391" SD="0" VALUE="4504.60400391" />
+
+    <Parameter HIDDEN="1" NAME="bsen_wall_Unlabeled6038_z" PRIOR="74.9997719968" SD="0" VALUE="74.9997719968" />
+
+    <Parameter HIDDEN="1" NAME="bsen_wall_Unlabeled6039_x" PRIOR="8760.54968262" SD="0" VALUE="8760.54968262" />
+
+    <Parameter HIDDEN="1" NAME="bsen_wall_Unlabeled6039_y" PRIOR="149.511065483" SD="0" VALUE="149.511065483" />
+
+    <Parameter HIDDEN="1" NAME="bsen_wall_Unlabeled6039_z" PRIOR="75.0304851942" SD="0" VALUE="75.0304851942" />
+
+    <Parameter HIDDEN="1" NAME="bsen_wall_Unlabeled6035_x" PRIOR="7476.68322754" SD="0" VALUE="7476.68322754" />
+
+    <Parameter HIDDEN="1" NAME="bsen_wall_Unlabeled6035_y" PRIOR="5545.43164062" SD="0" VALUE="5545.43164062" />
+
+    <Parameter HIDDEN="1" NAME="bsen_wall_Unlabeled6035_z" PRIOR="82.856107235" SD="0" VALUE="82.856107235" />
+
+    <Parameter HIDDEN="1" NAME="bsen_wall_Unlabeled6049_x" PRIOR="12768.9462891" SD="0" VALUE="12768.9462891" />
+
+    <Parameter HIDDEN="1" NAME="bsen_wall_Unlabeled6049_y" PRIOR="158.11953833" SD="0" VALUE="158.11953833" />
+
+    <Parameter HIDDEN="1" NAME="bsen_wall_Unlabeled6049_z" PRIOR="74.999798396" SD="0" VALUE="74.999798396" />
+
+  </Parameters>
+
+
+
+  <Skeleton>
+
+    <Segment BOUNDS="-50 -50 -50 50 50 50 " CONTEXT="General" INERTIA="0 0 0 " MASS="0 " MASS-CENTRE="0 0 0 " NAME="bsen_wall" RGB="255 164 0">
+
+      <JointFree BOUNDS="0 0 0 0 0 0 0 0 0 0 0 0" COVARIANCE="2.46490001678467 0 0 0 0 0  0 2.46490001678467 0 0 0 0  0 0 246.490005493164 0 0 0  0 0 0 1000000 0 0  0 0 0 0 1000000 0  0 0 0 0 0 1000000  " MEAN="0 0 0 0 0 0" NAME="World_bsen_wall" POST-ORIENTATION="0 0 0" POST-POSITION="0 0 0" PRE-ORIENTATION="0 0 0" PRE-POSITION="0 0 0" SIGNS="+ + + + + + " T="* * * * * * ">
+
+        <JointTemplate COVARIANCE="2.46490001678467 0 0 0 0 0  0 2.46490001678467 0 0 0 0  0 0 246.490005493164 0 0 0  0 0 0 1000000 0 0  0 0 0 0 1000000 0  0 0 0 0 0 1000000  " MEAN="0 0 0 0 0 0" POST-ORIENTATION="0 0 0 " POST-POSITION="0 0 0 " PRE-ORIENTATION="0 0 0 " PRE-POSITION="0 0 0 " TPOSE-COVARIANCE="0.100000001490116 0 0 0 0 0  0 0.100000001490116 0 0 0 0  0 0 0.100000001490116 0 0 0  0 0 0 0.100000001490116 0 0  0 0 0 0 0.100000001490116 0  0 0 0 0 0 0.100000001490116  " TPOSE-MEAN="0 0 0 0 0 0" />
+
+      </JointFree>
+
+    </Segment>
+
+  </Skeleton>
+
+
+
+  <MarkerSet>
+
+    <Markers>
+
+      <Marker COVARIANCE="1 0 0 0 1 0 0 0 1 " NAME="Unlabeled6038" POSITION="14430.54 4504.6 74.999771997" RADIUS="12.5" RGB="255 164 0" SEGMENT="bsen_wall" STATUS="required">
+
+        <MarkerTemplate COVARIANCE="1 0 0 0 1 0 0 0 1 " PLACEMENT-COVARIANCE="1 0 0 0 1 0 0 0 1 " POSITION="'bsen_wall_Unlabeled6038_x' 'bsen_wall_Unlabeled6038_y' 'bsen_wall_Unlabeled6038_z'" />
+
+      </Marker>
+
+      <Marker COVARIANCE="1 0 0 0 1 0 0 0 1 " NAME="Unlabeled6039" POSITION="8760.55 149.51107 75.0304852" RADIUS="12.5" RGB="255 164 0" SEGMENT="bsen_wall" STATUS="optional">
+
+        <MarkerTemplate COVARIANCE="1 0 0 0 1 0 0 0 1 " PLACEMENT-COVARIANCE="1 0 0 0 1 0 0 0 1 " POSITION="'bsen_wall_Unlabeled6039_x' 'bsen_wall_Unlabeled6039_y' 'bsen_wall_Unlabeled6039_z'" />
+
+      </Marker>
+
+      <Marker COVARIANCE="1 0 0 0 1 0 0 0 1 " NAME="Unlabeled6037" POSITION="7171.0 158.0 75.0" RADIUS="12.5" RGB="255 164 0" SEGMENT="bsen_wall" STATUS="optional">
+
+        <MarkerTemplate COVARIANCE="1 0 0 0 1 0 0 0 1 " PLACEMENT-COVARIANCE="1 0 0 0 1 0 0 0 1 " POSITION="'bsen_wall_Unlabeled6037_x' 'bsen_wall_Unlabeled6037_y' 'bsen_wall_Unlabeled6037_z'" />
+
+      </Marker>
+
+      <Marker COVARIANCE="1 0 0 0 1 0 0 0 1 " NAME="Unlabeled6035" POSITION="7476.683 5545.43 82.85611" RADIUS="12.5" RGB="255 164 0" SEGMENT="bsen_wall" STATUS="optional">
+
+        <MarkerTemplate COVARIANCE="1 0 0 0 1 0 0 0 1 " PLACEMENT-COVARIANCE="1 0 0 0 1 0 0 0 1 " POSITION="'bsen_wall_Unlabeled6035_x' 'bsen_wall_Unlabeled6035_y' 'bsen_wall_Unlabeled6035_z'" />
+
+      </Marker>
+
+      <Marker COVARIANCE="1 0 0 0 1 0 0 0 1 " NAME="Unlabeled6049" POSITION="12768.95 158.119538 74.999798396" RADIUS="12.5" RGB="255 164 0" SEGMENT="bsen_wall" STATUS="optional">
+
+        <MarkerTemplate COVARIANCE="1 0 0 0 1 0 0 0 1 " PLACEMENT-COVARIANCE="1 0 0 0 1 0 0 0 1 " POSITION="'bsen_wall_Unlabeled6049_x' 'bsen_wall_Unlabeled6049_y' 'bsen_wall_Unlabeled6049_z'" />
+
+      </Marker>
+
+    </Markers>
+
+    <Sticks>
+
+      <Stick MARKER1="Unlabeled6038" MARKER2="Unlabeled6039" RGB="255 164 0" />
+
+      <Stick MARKER1="Unlabeled6038" MARKER2="Unlabeled6037" RGB="255 164 0" />
+
+      <Stick MARKER1="Unlabeled6038" MARKER2="Unlabeled6035" RGB="255 164 0" />
+
+      <Stick MARKER1="Unlabeled6038" MARKER2="Unlabeled6049" RGB="255 164 0" />
+
+      <Stick MARKER1="Unlabeled6039" MARKER2="Unlabeled6037" RGB="255 164 0" />
+
+      <Stick MARKER1="Unlabeled6039" MARKER2="Unlabeled6035" RGB="255 164 0" />
+
+      <Stick MARKER1="Unlabeled6039" MARKER2="Unlabeled6049" RGB="255 164 0" />
+
+      <Stick MARKER1="Unlabeled6037" MARKER2="Unlabeled6035" RGB="255 164 0" />
+
+      <Stick MARKER1="Unlabeled6037" MARKER2="Unlabeled6049" RGB="255 164 0" />
+
+      <Stick MARKER1="Unlabeled6035" MARKER2="Unlabeled6049" RGB="255 164 0" />
+
+    </Sticks>
+
+  </MarkerSet>
+
+
+
+  <Alignment />
+
+
+
+</KinematicModel>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package>
+  <name>rostms_bringup</name>
+  <version>0.0.1</version>
+  <description>The rostms_description package</description>
+
+  <maintainer email="kawamura@ait.kyushu-u.ac.jp">Akihiro Kawamura</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://irvs.github.io/ros_tms/</url>
+  <url type="repository">https://github.com/irvs/ros_tms</url>
+  <url type="bugtracker">https://github.com/irvs/ros_tms/issues</url>
+
+  <author email="passionvirus@gmail.com">Yoonseok Pyo</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+  </export>
+</package>

@@ -1,0 +1,35 @@
+n_of_particles: #パーティクル数
+ 100
+update: #背景を更新する頻度,何回ごとにUpdateするか 0ならUpdateしない
+ #100
+ 0
+max_lrf_range: #LRFの最大計測範囲
+ 30.0
+min_lrf_range:
+ 0.1
+target_area: #ターゲットの存在範囲
+ [-100, -100, 100, 100]
+particle_area: #クラスタを中心にパーティクルを散布する範囲(0.1m 四方)
+ 0.1
+m_sigma: #尤度計算用の分散
+ 0.3
+pos_noise: #パーティクル更新時のノイズ(位置)
+ 0.01
+vel_noise: #パーティクル更新時のノイズ(速度)
+ 0.01
+max_vel:
+ 0.1
+m_min_distance: #クラスタと既存のPFとの距離が1m以下なら,既存のPFに紐付け
+ 0.5
+m_initial_dist: #500mm四方にパーティクルを初期配置
+ 0.3
+lrf1_pos: #LRF1の座標(x, y, yaw[deg])
+ [-7.52811431885, -9.66771888733, 90.0]
+lrf2_pos: #LRF2の座標(x, y, yaw[deg])
+ [-8.98015213013, -13.0168190002, 180.0]
+lrf3_pos: #LRF3の座標(x, y, yaw[deg])
+ [-3.55956315994, -18.2101402283, 90.0]
+lrf4_pos: #LRF4の座標(x, y, yaw[deg])
+ [-1000.0, -1000.0, 0.0]
+lrf_active: # LRFを使用するかどうか
+ [true, true, true, false]

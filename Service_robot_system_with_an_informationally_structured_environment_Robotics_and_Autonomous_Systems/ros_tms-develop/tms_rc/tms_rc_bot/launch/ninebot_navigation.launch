@@ -1,0 +1,202 @@
+<launch>
+
+<!-- initial pose -->
+<arg name="initialpose_x" value="0"/>
+<arg name="initialpose_y" value="0"/>
+<arg name="initialpose_a" value="0"/>
+<arg name="initial_state" value="[$(arg initialpose_x), $(arg initialpose_y), 0, 0, 0, $(arg initialpose_a), 0, 0, 0, 0, 0, 0, 0, 0, 0]"/>
+
+<!-- frame name -->
+<arg name="global_frame" value="map1"/>
+<arg name="odom_frame"   value="odom1"/>
+<arg name="base_frame"   value="base_footprint1"/>
+<arg name="scan_frame"   value="base_scan1"/>
+
+<group ns="portable1">
+
+  <!-- map server -->
+  <arg name="map_file" value="$(find tms_rc_bot)/maps/huistenbosch_entrance/map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
+    <param name="frame_id" value="$(arg global_frame)"/>
+  </node>
+
+  <!-- static tf -->
+  <node pkg="tf" type="static_transform_publisher" name="world_to_map"
+    args="0 0 0 0 0 0 world_link $(arg global_frame) 100">
+  </node>
+  
+  <node pkg="tf" type="static_transform_publisher" name="map_to_measured"
+    args="0 0 0 0 0 0 $(arg global_frame) base_measured 100">
+  </node>
+
+  <node pkg="tf" type="static_transform_publisher" name="foot_to_scan"
+    args="0.1 0 0.36 0 0 0 $(arg base_frame) $(arg scan_frame) 100">
+  </node>
+  
+  <!-- move base -->
+  <arg name="move_base" default="true"/>
+  <node pkg="move_base" type="move_base" name="move_base" respawn="false" output="screen" if="$(arg move_base)">
+    <remap from="odom"                            to="/portable1/odom"/>
+    <param name="global_costmap/global_frame"     value="$(arg global_frame)"/>
+    <param name="global_costmap/robot_base_frame" value="$(arg base_frame)"/>
+    <param name="local_costmap/global_frame"      value="$(arg global_frame)"/>
+    <param name="local_costmap/robot_base_frame"  value="$(arg base_frame)"/>
+    <rosparam file="$(find tms_rc_bot)/param/ninebot/move_base.yaml"/>
+    <rosparam file="$(find tms_rc_bot)/param/ninebot/global_planner.yaml"/>
+    <rosparam file="$(find tms_rc_bot)/param/ninebot/local_planner.yaml"/>
+    <rosparam file="$(find tms_rc_bot)/param/ninebot/costmap_separate.yaml"/>
+    <rosparam file="$(find tms_rc_bot)/param/ninebot/costmap_common.yaml" ns="global_costmap"/>
+    <rosparam file="$(find tms_rc_bot)/param/ninebot/costmap_common.yaml" ns="local_costmap"/>
+  </node>
+
+  <!-- cmd vel mux -->
+  <node pkg="rostopic" type="rostopic" name="safe" args="pub safety_twist geometry_msgs/Twist '[0, 0, 0]' '[0, 0, 0]' -r 10"/>
+  <node args="standalone yocs_cmd_vel_mux/CmdVelMuxNodelet" pkg="nodelet" type="nodelet" name="cmd_vel_mux">
+    <param name="yaml_cfg_file"  value="$(find tms_rc_bot)/param/common/cmd_vel_mux.yaml"/>
+    <remap from="~input/keyop"   to="keyop"/>
+    <remap from="~input/remote"  to="remote"/>
+    <remap from="~input/cmd_vel" to="cmd_vel_smoother"/>
+    <remap from="~input/safety"  to="safety_twist"/>
+    <remap from="~output"        to="mux_twist"/>
+  </node>
+
+  <!-- urg node -->
+  <arg name="urg_range" value="1.5708"/>
+  <node pkg="urg_node" type="urg_node" name="urg_node" output="screen">
+    <remap from="scan"       to="urg_scan"/>
+    <param name="ip_address" value="192.168.0.10"/>
+    <param name="frame_id"   value="$(arg scan_frame)"/>
+    <param name="angle_min"  value="-$(arg urg_range)"/>
+    <param name="angle_max"  value="$(arg urg_range)"/>
+  </node>
+
+  <!-- portable laser -->
+  <node pkg="tms_rc_bot" type="portable_laser" name="portable_laser" output="screen">
+    <param name="input_scan_name"  value="urg_scan"/>
+    <param name="output_scan_name" value="scan"/>
+    <param name="range_min"        value="0.1"/>
+    <param name="range_max"        value="20"/>
+  </node>
+
+  <!-- portable indicator -->
+  <node pkg="tms_rc_bot" type="portable_indicator" name="portable_indicator" output="screen" if="$(arg move_base)"/>
+
+  <!-- portable position -->
+  <node pkg="tms_rc_bot" type="portable_position" name="portable_position" output="screen">
+    <param name="odom_topic_name" value="/portable1/odom"/>
+    <param name="global_frame_id" value="$(arg global_frame)"/>
+    <param name="base_frame_id"   value="$(arg base_frame)"/>
+    <param name="marker_name"     value="ninebot"/>
+    <param name="print_marker"    value="true"/>
+  </node>
+
+  <!-- portable measured -->
+  <node pkg="tms_rc_bot" type="portable_measured" name="portable_measured" output="screen">
+    <param name="people_topic_name"       value="/people_ninebot_cropped"/>
+    <param name="measured_in_topic_name"  value="/ninebot_measured_pos"/>
+    <param name="measured_out_topic_name" value="odometry/measured"/>
+    <param name="global_frame_id"         value="$(arg global_frame)"/>
+    <param name="people_frame_id"         value="$(arg global_frame)"/>
+    <param name="measured_frame_id"       value="base_measured"/>
+  </node>
+
+  <!-- portable wiiremote -->
+  <node pkg="tms_rc_bot" type="portable_wiiremote" name="portable_wiiremote" output="screen">
+    <param name="cmd_vel_topic" value="wii_cmd"/>
+    <param name="linear_active" value="false"/>
+    <param name="max_rot_vel"   value="0.15"/>
+  </node>
+
+  <!-- portable smoother remote -->
+  <node pkg="tms_rc_bot" type="portable_smoother" name="portable_smoother_remote" output="screen">
+    <param name="input_topic_name"  value="wii_cmd"/>
+    <param name="output_topic_name" value="remote"/>
+    <param name="acc_lim_th"        value="3.0"/>
+    <param name="time_out"          value="0.5"/>
+    <param name="ignore_stop"       value="true"/>
+  </node>
+
+  <!-- portable smoother cmd-->
+  <node pkg="tms_rc_bot" type="portable_smoother" name="portable_smoother_cmd" output="screen">
+    <param name="input_topic_name"  value="cmd_vel"/>
+    <param name="output_topic_name" value="cmd_vel_smoother"/>
+    <param name="acc_lim_th"        value="2.5"/>
+    <param name="time_out"          value="0.5"/>
+    <param name="ignore_stop"       value="false"/>
+  </node>
+
+  <!-- ninebot navigator -->
+  <node pkg="tms_rc_bot" type="ninebot_navigator" name="ninebot_navigator" output="screen">
+    <param name="cmd_vel_topic"   value="cmd_vel"/>
+    <param name="odom_topic_name" value="odometry/wheel"/>
+  </node>
+
+  <!-- ninebot controller -->
+  <node pkg="tms_rc_bot" type="ninebot_controller" name="ninebot_controller" output="screen">
+    <param name="cmd_vel_topic" value="mux_twist"/>
+    <param name="max_rot_vel"   value="0.2"/>
+  </node>
+
+  <!-- ninebot serial -->
+  <node pkg="tms_rc_bot" type="ninebot_serial" name="ninebot_serial" output="screen">
+    <param name="port" value="/dev/ttyACM1"/>
+  </node>
+
+  <!-- ninebot odometry -->
+  <node pkg="tms_rc_bot" type="ninebot_odometry" name="ninebot_odometry" output="screen">
+    <param name="odom_topic_name" value="odometry/wheel"/>   
+    <param name="odom_frame_id"   value="$(arg odom_frame)"/>
+    <param name="base_frame_id"   value="$(arg base_frame)"/>
+    <param name="wheel_radius"    value="0.123"/>
+    <param name="wheel_tread"     value="0.485"/>
+    <param name="print_tf"        value="true"/>
+  </node>
+
+  <!-- map_to_odom -->
+  <rosparam file="$(find tms_rc_bot)/param/ninebot/robot_local_separate.yaml"/>
+  <node pkg="robot_localization" type="ekf_localization_node" name="map_to_odom" output="screen">
+    <rosparam file="$(find tms_rc_bot)/param/ninebot/robot_local_common.yaml"/>
+    <rosparam param="initial_state" subst_value="True">$(arg initial_state)</rosparam>
+    <remap from="set_pose"          to="initialpose"/>
+    <param name="map_frame"         value="$(arg global_frame)"/>
+    <param name="odom_frame"        value="$(arg odom_frame)"/>    
+    <param name="base_link_frame"   value="$(arg base_frame)"/>
+    <param name="world_frame"       value="$(arg global_frame)"/>
+  </node>
+
+  <!-- odom_to_base -->
+  <!-- <node pkg="robot_localization" type="ekf_localization_node" name="odom_to_base" output="screen">
+    <rosparam file="$(find tms_rc_bot)/param/ninebot/robot_local_common.yaml"/>
+    <rosparam param="initial_state" subst_value="True">$(arg initial_state)</rosparam>
+    <remap from="set_pose"          to="initialpose"/>
+    <param name="map_frame"         value="$(arg global_frame)"/>
+    <param name="odom_frame"        value="$(arg odom_frame)"/>    
+    <param name="base_link_frame"   value="$(arg base_frame)"/>
+    <param name="world_frame"       value="$(arg odom_frame)"/>
+  </node> -->
+
+  <!-- fake_localization -->
+  <!-- <node pkg="fake_localization" type="fake_localization" name="fake_localization" output="screen">
+    <remap from="base_pose_ground_truth" to="odometry/wheel"/>
+    <param name="global_frame_id"        value="$(arg global_frame)"/>
+    <param name="odom_frame_id"          value="$(arg odom_frame)"/>
+    <param name="base_frame_id"          value="$(arg base_frame)"/>
+    <param name="initial_pose_x"         value="$(arg initialpose_x)"/>
+    <param name="initial_pose_y"         value="$(arg initialpose_y)"/>
+    <param name="initial_pose_a"         value="$(arg initialpose_a)"/>
+  </node> -->
+
+  <!-- amcl -->
+  <!-- <node pkg="amcl" type="amcl" name="amcl" output="screen">
+    <rosparam file="$(find tms_rc_bot)/param/ninebot/robot_local_amcl.yaml"/>
+    <param name="global_frame_id" value="$(arg global_frame)"/>
+    <param name="odom_frame_id"   value="$(arg odom_frame)"/>
+    <param name="base_frame_id"   value="$(arg base_frame)"/>
+    <param name="initial_pose_x"  value="$(arg initialpose_x)"/>
+    <param name="initial_pose_y"  value="$(arg initialpose_y)"/>
+    <param name="initial_pose_a"  value="$(arg initialpose_a)"/>
+  </node> -->
+  
+</group>
+</launch>
+

@@ -1,0 +1,27 @@
+<launch>
+
+  <!-- Urg Node (Remote) -->
+  <include file="$(find tms_ss_pot)/launch/bringup_multiple_poles.launch">
+      <arg name="urg1" value="true"/>
+      <arg name="urg2" value="true"/>
+      <arg name="urg3" value="true"/>
+      <arg name="urg4" value="false"/>
+  </include>
+
+  <!-- Laser Visualizer -->
+  <node pkg="tms_ss_pot" type="laser_visualize_multi" name="laser_visualize_multi"/>
+
+  <!-- TF -->
+  <node pkg="tf" type="static_transform_publisher" name="world_2_map" args="0 0 0
+ 0 0 0 /world_link /map 100"/>
+
+  <!-- Map server -->
+  <arg name="map_file" default="$(find tms_rc_rtkbot)/maps/map_coi_f1/map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
+    <param name="frame_id" value="map" />
+  </node>
+
+  <!-- RViz -->
+  <node name="rviz_tracker" pkg="rviz" type="rviz" args="-d $(find tms_ss_pot)/rviz/laser_calib.rviz" respawn="true" />
+
+</launch>

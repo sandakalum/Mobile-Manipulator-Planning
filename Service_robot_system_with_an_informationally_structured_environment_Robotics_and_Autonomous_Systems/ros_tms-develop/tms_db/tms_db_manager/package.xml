@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package>
+  <name>tms_db_manager</name>
+  <version>0.2.0</version>
+  <description>The tms_db_manager package</description>
+
+  <maintainer email="kawamura@ait.kyushu-u.ac.jp">Akihiro Kawamura</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://irvs.github.io/ros_tms/</url>
+  <url type="repository">https://github.com/irvs/ros_tms</url>
+  <url type="bugtracker">https://github.com/irvs/ros_tms/issues</url>
+
+  <author email="passionvirus@gmail.com">Yoonseok Pyo</author>
+  <author email="hashiguchi@irvs.ait.kyushu-u.ac.jp">hashiguchi</author>
+  <author email="a_nagata@irvs.ait.kyushu-u.ac.jp">Akihiro Nagata</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>tms_msg_db</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>tms_msg_db</run_depend>
+
+  <export>
+  </export>
+</package>

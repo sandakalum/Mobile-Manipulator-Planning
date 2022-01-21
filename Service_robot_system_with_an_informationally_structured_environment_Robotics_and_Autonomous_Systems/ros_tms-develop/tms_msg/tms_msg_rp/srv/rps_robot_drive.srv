@@ -1,0 +1,5 @@
+uint32 robot_id
+tms_msg_rp/rps_route[] rps_path
+---
+uint32 success
+string message

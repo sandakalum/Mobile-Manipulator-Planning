@@ -1,0 +1,10 @@
+int32 rid
+tms_msg_rp/pos rpos
+int32 oid
+tms_msg_rp/pos opos
+int32 pid
+tms_msg_rp/pos ppos
+int32 time
+---
+int32 result
+

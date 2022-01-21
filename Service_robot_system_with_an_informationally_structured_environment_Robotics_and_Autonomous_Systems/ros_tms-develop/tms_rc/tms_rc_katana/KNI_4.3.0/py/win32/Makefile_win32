@@ -1,0 +1,47 @@
+#===========================================================================
+# KNI Python interface Makefile
+# copyright Neuronics Switzerland 2005-2008
+# Authors: see AUTHORS file in the KNI root directory 
+#===========================================================================
+
+PYTHON_VERSION    = python25
+PYTHON_BASE       = c:\$(PYTHON_VERSION)
+
+PYTHON_INCLUDE = $(PYTHON_BASE)\include
+PYTHON_LIB  = $(PYTHON_BASE)\libs\$(PYTHON_VERSION).lib
+
+KNI_INCLUDE   = ..\..\include
+KNI_LIBPATH   =	..\..\lib\win32
+
+KNI_LIBRARIES = kni.lib KNIBase.lib KNI_InvKin.lib KNI_LM.lib
+
+WIN_INCLUDE = c:\Program Files\Microsoft Platform SDK\Include
+WIN_LIBS = "C:\Program Files\Microsoft Platform SDK\Lib\uuid.lib"
+
+
+CXX             =       cl
+CXXFLAGS        =       /c /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_USRDLL" /D "PY_EXPORTS" /D "_WINDLL" /D "_MBCS" /FD /EHsc /MD
+LDD             =       link
+LDDFLAGS        =       /MANIFEST:NO /SUBSYSTEM:WINDOWS
+
+KNI_wrap.cxx:
+  swig -c++ -python -Fmicrosoft KNI.i
+
+KNI_wrap.obj: KNI_wrap.cxx
+  $(CXX) $(CXXFLAGS) /I "$(PYTHON_INCLUDE)" /I "$(KNI_INCLUDE)" /I "$(WIN_INCLUDE)" KNI_wrap.cxx
+  
+KNI_wrap_noswig.obj: 
+  $(CXX) $(CXXFLAGS) /I "$(PYTHON_INCLUDE)" /I "$(KNI_INCLUDE)" /I "$(WIN_INCLUDE)" KNI_wrap.cxx
+
+all: KNI_wrap_noswig.obj
+  if not exist $(PYTHON_VERSION) mkdir $(PYTHON_VERSION)
+  $(LDD) /OUT:$(PYTHON_VERSION)\_KNI.dll /DLL $(LDDFLAGS) /LIBPATH:$(KNI_LIBPATH) KNI_wrap.obj $(KNI_LIBRARIES) $(PYTHON_LIB) $(WIN_LIBS)
+
+rebuild: KNI_wrap.obj
+  if not exist $(PYTHON_VERSION) mkdir $(PYTHON_VERSION)
+  $(LDD) /OUT:$(PYTHON_VERSION)\_KNI.dll /DLL $(LDDFLAGS) /LIBPATH:$(KNI_LIBPATH) KNI_wrap.obj $(KNI_LIBRARIES) $(PYTHON_LIB) $(WIN_LIBS)
+
+clean:
+	del *.obj *.o *~ *.pyc *.zip
+
+#===========================================================================

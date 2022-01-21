@@ -1,0 +1,1983 @@
+<sdf version='1.4'>
+  <model name='smartpal'>
+    <link name='base_link'>
+      <pose>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.052126 0.108656 0.373229 0 -0 0</pose>
+        <mass>63.5</mass>
+        <inertia>
+          <ixx>10.9666</ixx>
+          <ixy>-0.465314</ixy>
+          <ixz>-0.911564</ixz>
+          <iyy>9.97209</iyy>
+          <iyz>-2.01156</iyz>
+          <izz>5.37582</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_body_vehicle.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_collision_camera_link'>
+        <pose>0.02 -4.21574e-05 1.3465 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.2 0.08</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name='base_link_collision_lumbar_lower_link'>
+        <pose>0 0 0.4365 -1.57075 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_body_lumbar-J1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_collision_lumbar_upper_link'>
+        <pose>0 -9.72863e-06 0.6465 -1.57075 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_body_lumbar-J2.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_body_vehicle.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_visual_camera_link'>
+        <pose>0.02 -4.21574e-05 1.3465 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.03 0.15 0.05</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name='base_link_visual_lumbar_lower_link'>
+        <pose>0 0 0.4365 -1.57075 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_body_lumbar-J1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_visual_lumbar_upper_link'>
+        <pose>0 -9.72863e-06 0.6465 -1.57075 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_body_lumbar-J2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='world_smartpal5_joint' type='revolute'>
+      <child>base_link</child>
+      <parent>world</parent>
+      <axis>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+        </limit>
+        <dynamics>
+          <damping>0</damping>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <link name='l_arm_j1_link'>
+      <pose>-0.025 0.199968 1.12651 1.57084 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.1 0 -0 0</pose>
+        <mass>0.6</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='l_arm_j1_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftArm_J1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='l_arm_j1_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftArm_J1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='l_arm_j1_joint' type='revolute'>
+      <child>l_arm_j1_link</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 -1 -4.36732e-05</xyz>
+        <limit>
+          <lower>-0.7679</lower>
+          <upper>3.1066</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='l_arm_j2_link'>
+      <pose>-0.025 0.199968 1.12651 2.35615 1.57073 2.35619</pose>
+      <inertial>
+        <pose>0 0 -0.1 0 -0 0</pose>
+        <mass>0.6</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='l_arm_j2_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftArm_J2.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='l_arm_j2_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftArm_J2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='l_arm_j2_joint' type='revolute'>
+      <child>l_arm_j2_link</child>
+      <parent>l_arm_j1_link</parent>
+      <axis>
+        <xyz>1 4.63288e-05 -4.63246e-05</xyz>
+        <limit>
+          <lower>-0.2443</lower>
+          <upper>1.9024</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='l_arm_j3_link'>
+      <pose>-0.025 0.199968 1.12651 3.14155 -4.63246e-05 -3.14159</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='l_arm_j3_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftArm_J3.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='l_arm_j3_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftArm_J3.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='l_arm_j3_joint' type='revolute'>
+      <child>l_arm_j3_link</child>
+      <parent>l_arm_j2_link</parent>
+      <axis>
+        <xyz>-4.63246e-05 4.63268e-05 -1</xyz>
+        <limit>
+          <lower>-2.0769</lower>
+          <upper>2.0769</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='l_arm_j4_link'>
+      <pose>-0.00501158 0.19998 0.876508 1.57089 4.63245e-05 2.65561e-06</pose>
+      <inertial>
+        <pose>0 0 -0.3 0 -0 0</pose>
+        <mass>0.6</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='l_arm_j4_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftArm_J4.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='l_arm_j4_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftArm_J4.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='l_arm_j4_joint' type='revolute'>
+      <child>l_arm_j4_link</child>
+      <parent>l_arm_j3_link</parent>
+      <axis>
+        <xyz>2.65132e-06 -1 -9.26537e-05</xyz>
+        <limit>
+          <lower>-0.0174</lower>
+          <upper>2.2514</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='l_arm_j5_link'>
+      <pose>-0.0250116 0.19998 0.876509 -3.14155 4.63245e-05 2.65561e-06</pose>
+      <inertial>
+        <pose>0 0 0.1 0 -0 0</pose>
+        <mass>0.4</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='l_arm_j5_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftArm_J5.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='l_arm_j5_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftArm_J5.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='l_arm_j5_joint' type='revolute'>
+      <child>l_arm_j5_link</child>
+      <parent>l_arm_j4_link</parent>
+      <axis>
+        <xyz>-4.63246e-05 4.63268e-05 -1</xyz>
+        <limit>
+          <lower>-2.0769</lower>
+          <upper>2.0769</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='l_arm_j6_link'>
+      <pose>-0.0250246 0.199993 0.596509 2.0345 -1.57069 -0.463656</pose>
+      <inertial>
+        <pose>-0.1 0 0 0 -0 0</pose>
+        <mass>0.4</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='l_arm_j6_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftArm_J6.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='l_arm_j6_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftArm_J6.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='l_arm_j6_joint' type='revolute'>
+      <child>l_arm_j6_link</child>
+      <parent>l_arm_j5_link</parent>
+      <axis>
+        <xyz>4.89803e-05 -1 -4.63312e-05</xyz>
+        <limit>
+          <lower>-0.2617</lower>
+          <upper>0.7504</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='l_arm_j7_link'>
+      <pose>-0.0250246 0.199993 0.596509 2.65519 1.57069 2.65529</pose>
+      <inertial>
+        <pose>0.0335998 1.59223e-07 -0.1 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>2</ixx>
+          <ixy>-3.56657e-09</ixy>
+          <ixz>-9.46378e-15</ixz>
+          <iyy>2.00075</iyy>
+          <iyz>-4.51376e-20</iyz>
+          <izz>2.00075</izz>
+        </inertia>
+      </inertial>
+      <collision name='l_arm_j7_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftArm_J7.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='l_arm_j7_link_collision_l_end_effector_link'>
+        <pose>0.166 -0.0100051 -3.18431e-07 -2.65359e-06 2.65359e-06 -1.57084</pose>
+        <geometry>
+          <box>
+            <size>0.001 0.001 0.001</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name='l_arm_j7_link_collision_l_gripper_link'>
+        <pose>0.056 0 0 -2.65359e-06 2.65359e-06 -1.57084</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftGripper_gripper.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='l_arm_j7_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftArm_J7.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='l_arm_j7_link_visual_l_end_effector_link'>
+        <pose>0.166 -0.0100051 -3.18431e-07 -2.65359e-06 2.65359e-06 -1.57084</pose>
+        <geometry>
+          <box>
+            <size>0.001 0.001 0.001</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name='l_arm_j7_link_visual_l_gripper_link'>
+        <pose>0.056 0 0 -2.65359e-06 2.65359e-06 -1.57084</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftGripper_gripper.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='l_arm_j7_joint' type='revolute'>
+      <child>l_arm_j7_link</child>
+      <parent>l_arm_j6_link</parent>
+      <axis>
+        <xyz>1 9.53113e-05 -9.26469e-05</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>0.5</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='l_gripper_thumb_link'>
+      <pose>-0.0250312 0.172995 0.498509 -1.57089 2.66205e-06 -1.5707</pose>
+      <inertial>
+        <pose>0 0 -0.1 0 -0 0</pose>
+        <mass>0.4</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='l_gripper_thumb_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftGripper_g-thumb.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='l_gripper_thumb_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftGripper_g-thumb.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='l_gripper_thumb_joint' type='revolute'>
+      <child>l_gripper_thumb_link</child>
+      <parent>l_arm_j7_link</parent>
+      <axis>
+        <xyz>1 9.26578e-05 -9.53005e-05</xyz>
+        <limit>
+          <lower>-1.0122</lower>
+          <upper>0.1396</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='r_arm_j1_link'>
+      <pose>-0.025 -0.200032 1.12649 1.57084 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.1 0 -0 0</pose>
+        <mass>0.6</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='r_arm_j1_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightArm_J1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='r_arm_j1_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightArm_J1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='r_arm_j1_joint' type='revolute'>
+      <child>r_arm_j1_link</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 -1 -4.36732e-05</xyz>
+        <limit>
+          <lower>-0.7679</lower>
+          <upper>3.1066</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='r_arm_j2_link'>
+      <pose>-0.025 -0.200032 1.12649 0.755969 1.57073 0.755922</pose>
+      <inertial>
+        <pose>0 0 -0.1 0 -0 0</pose>
+        <mass>0.6</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='r_arm_j2_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightArm_J2.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='r_arm_j2_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightArm_J2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='r_arm_j2_joint' type='revolute'>
+      <child>r_arm_j2_link</child>
+      <parent>r_arm_j1_link</parent>
+      <axis>
+        <xyz>1 -4.63288e-05 4.63248e-05</xyz>
+        <limit>
+          <lower>-1.9024</lower>
+          <upper>0.2443</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='r_arm_j3_link'>
+      <pose>-0.025 -0.200032 1.12649 3.14155 4.63249e-05 3.1415</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='r_arm_j3_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightArm_J3.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='r_arm_j3_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightArm_J3.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='r_arm_j3_joint' type='revolute'>
+      <child>r_arm_j3_link</child>
+      <parent>r_arm_j2_link</parent>
+      <axis>
+        <xyz>4.63289e-05 4.36732e-05 -1</xyz>
+        <limit>
+          <lower>-2.0769</lower>
+          <upper>2.0769</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='r_arm_j4_link'>
+      <pose>-0.00498842 -0.200023 0.876492 1.57089 -4.6325e-05 -9.0002e-05</pose>
+      <inertial>
+        <pose>0 0 -0.3 0 -0 0</pose>
+        <mass>0.6</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='r_arm_j4_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightArm_J4.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='r_arm_j4_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightArm_J4.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='r_arm_j4_joint' type='revolute'>
+      <child>r_arm_j4_link</child>
+      <parent>r_arm_j3_link</parent>
+      <axis>
+        <xyz>-8.99979e-05 -1 -9.00042e-05</xyz>
+        <limit>
+          <lower>-0.0174</lower>
+          <upper>2.2514</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='r_arm_j5_link'>
+      <pose>-0.0249884 -0.200021 0.876491 -3.14155 -4.6325e-05 -9.0002e-05</pose>
+      <inertial>
+        <pose>0 0 0.1 0 -0 0</pose>
+        <mass>0.4</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='r_arm_j5_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightArm_J5.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='r_arm_j5_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightArm_J5.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='r_arm_j5_joint' type='revolute'>
+      <child>r_arm_j5_link</child>
+      <parent>r_arm_j4_link</parent>
+      <axis>
+        <xyz>4.63289e-05 4.36732e-05 -1</xyz>
+        <limit>
+          <lower>-2.0769</lower>
+          <upper>2.0769</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='r_arm_j6_link'>
+      <pose>-0.0249754 -0.200009 0.596491 -3.14159 -1.57075 -1.57085</pose>
+      <inertial>
+        <pose>-0.1 0 0 0 -0 0</pose>
+        <mass>0.4</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='r_arm_j6_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightArm_J6.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='r_arm_j6_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightArm_J6.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='r_arm_j6_joint' type='revolute'>
+      <child>r_arm_j6_link</child>
+      <parent>r_arm_j5_link</parent>
+      <axis>
+        <xyz>-4.36732e-05 -1 -4.36774e-05</xyz>
+        <limit>
+          <lower>-0.2617</lower>
+          <upper>0.7504</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='r_arm_j7_link'>
+      <pose>-0.0249754 -0.200009 0.596491 1.57074 1.57075 1.57075</pose>
+      <inertial>
+        <pose>0.0335998 -1.59215e-07 -0.1 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>2</ixx>
+          <ixy>3.5664e-09</ixy>
+          <ixz>-9.46378e-15</ixz>
+          <iyy>2.00075</iyy>
+          <iyz>4.45917e-20</iyz>
+          <izz>2.00075</izz>
+        </inertia>
+      </inertial>
+      <collision name='r_arm_j7_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightArm_J7.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='r_arm_j7_link_collision_r_end_effector_link'>
+        <pose>0.166 0.00999971 -3.18431e-07 -2.65359e-06 2.65359e-06 -2.65359e-06</pose>
+        <geometry>
+          <box>
+            <size>0.001 0.001 0.001</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name='r_arm_j7_link_collision_r_gripper_link'>
+        <pose>0.056 0 0 -2.65359e-06 2.65359e-06 -2.65359e-06</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightGripper_gripper.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='r_arm_j7_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightArm_J7.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='r_arm_j7_link_visual_r_end_effector_link'>
+        <pose>0.166 0.00999971 -3.18431e-07 -2.65359e-06 2.65359e-06 -2.65359e-06</pose>
+        <geometry>
+          <box>
+            <size>0.001 0.001 0.001</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name='r_arm_j7_link_visual_r_gripper_link'>
+        <pose>0.056 0 0 -2.65359e-06 2.65359e-06 -2.65359e-06</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightGripper_gripper.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='r_arm_j7_joint' type='revolute'>
+      <child>r_arm_j7_link</child>
+      <parent>r_arm_j6_link</parent>
+      <axis>
+        <xyz>1 2.65359e-06 2.38519e-09</xyz>
+        <limit>
+          <lower>-1.0122</lower>
+          <upper>1</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='r_gripper_thumb_link'>
+      <pose>-0.0249757 -0.173004 0.498492 -1.5708 9.00042e-05 -1.57079</pose>
+      <inertial>
+        <pose>0 0 -0.1 0 -0 0</pose>
+        <mass>0.4</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='r_gripper_thumb_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightGripper_g-thumb.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='r_gripper_thumb_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightGripper_g-thumb.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='r_gripper_thumb_joint' type='revolute'>
+      <child>r_gripper_thumb_link</child>
+      <parent>r_arm_j7_link</parent>
+      <axis>
+        <xyz>1 5.3073e-06 -2.65109e-06</xyz>
+        <limit>
+          <lower>-0.1396</lower>
+          <upper>1.0122</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+  </model>
+</sdf>
+rt@rt:~/catkin_ws/src/ros_tms/tms_rp/smartpal5_gazebo/urdf$ gzsdf print smartpal_gazebo.urdf.xacro
+<sdf version='1.4'>
+  <model name='smartpal'>
+    <link name='base_link'>
+      <pose>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.052126 0.108656 0.373229 0 -0 0</pose>
+        <mass>63.5</mass>
+        <inertia>
+          <ixx>10.9666</ixx>
+          <ixy>-0.465314</ixy>
+          <ixz>-0.911564</ixz>
+          <iyy>9.97209</iyy>
+          <iyz>-2.01156</iyz>
+          <izz>5.37582</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_body_vehicle.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_collision_camera_link'>
+        <pose>0.02 -4.21574e-05 1.3465 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.2 0.08</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name='base_link_collision_lumbar_lower_link'>
+        <pose>0 0 0.4365 -1.57075 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_body_lumbar-J1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_collision_lumbar_upper_link'>
+        <pose>0 -9.72863e-06 0.6465 -1.57075 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_body_lumbar-J2.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_body_vehicle.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_visual_camera_link'>
+        <pose>0.02 -4.21574e-05 1.3465 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.03 0.15 0.05</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name='base_link_visual_lumbar_lower_link'>
+        <pose>0 0 0.4365 -1.57075 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_body_lumbar-J1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_visual_lumbar_upper_link'>
+        <pose>0 -9.72863e-06 0.6465 -1.57075 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_body_lumbar-J2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='world_smartpal5_joint' type='revolute'>
+      <child>base_link</child>
+      <parent>world</parent>
+      <axis>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+        </limit>
+        <dynamics>
+          <damping>0</damping>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <link name='l_arm_j1_link'>
+      <pose>-0.025 0.199968 1.12651 1.57084 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.1 0 -0 0</pose>
+        <mass>0.6</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='l_arm_j1_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftArm_J1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='l_arm_j1_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftArm_J1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='l_arm_j1_joint' type='revolute'>
+      <child>l_arm_j1_link</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 -1 -4.36732e-05</xyz>
+        <limit>
+          <lower>-0.7679</lower>
+          <upper>3.1066</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='l_arm_j2_link'>
+      <pose>-0.025 0.199968 1.12651 2.35615 1.57073 2.35619</pose>
+      <inertial>
+        <pose>0 0 -0.1 0 -0 0</pose>
+        <mass>0.6</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='l_arm_j2_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftArm_J2.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='l_arm_j2_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftArm_J2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='l_arm_j2_joint' type='revolute'>
+      <child>l_arm_j2_link</child>
+      <parent>l_arm_j1_link</parent>
+      <axis>
+        <xyz>1 4.63288e-05 -4.63246e-05</xyz>
+        <limit>
+          <lower>-0.2443</lower>
+          <upper>1.9024</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='l_arm_j3_link'>
+      <pose>-0.025 0.199968 1.12651 3.14155 -4.63246e-05 -3.14159</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='l_arm_j3_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftArm_J3.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='l_arm_j3_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftArm_J3.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='l_arm_j3_joint' type='revolute'>
+      <child>l_arm_j3_link</child>
+      <parent>l_arm_j2_link</parent>
+      <axis>
+        <xyz>-4.63246e-05 4.63268e-05 -1</xyz>
+        <limit>
+          <lower>-2.0769</lower>
+          <upper>2.0769</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='l_arm_j4_link'>
+      <pose>-0.00501158 0.19998 0.876508 1.57089 4.63245e-05 2.65561e-06</pose>
+      <inertial>
+        <pose>0 0 -0.3 0 -0 0</pose>
+        <mass>0.6</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='l_arm_j4_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftArm_J4.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='l_arm_j4_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftArm_J4.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='l_arm_j4_joint' type='revolute'>
+      <child>l_arm_j4_link</child>
+      <parent>l_arm_j3_link</parent>
+      <axis>
+        <xyz>2.65132e-06 -1 -9.26537e-05</xyz>
+        <limit>
+          <lower>-0.0174</lower>
+          <upper>2.2514</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='l_arm_j5_link'>
+      <pose>-0.0250116 0.19998 0.876509 -3.14155 4.63245e-05 2.65561e-06</pose>
+      <inertial>
+        <pose>0 0 0.1 0 -0 0</pose>
+        <mass>0.4</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='l_arm_j5_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftArm_J5.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='l_arm_j5_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftArm_J5.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='l_arm_j5_joint' type='revolute'>
+      <child>l_arm_j5_link</child>
+      <parent>l_arm_j4_link</parent>
+      <axis>
+        <xyz>-4.63246e-05 4.63268e-05 -1</xyz>
+        <limit>
+          <lower>-2.0769</lower>
+          <upper>2.0769</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='l_arm_j6_link'>
+      <pose>-0.0250246 0.199993 0.596509 2.0345 -1.57069 -0.463656</pose>
+      <inertial>
+        <pose>-0.1 0 0 0 -0 0</pose>
+        <mass>0.4</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='l_arm_j6_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftArm_J6.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='l_arm_j6_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftArm_J6.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='l_arm_j6_joint' type='revolute'>
+      <child>l_arm_j6_link</child>
+      <parent>l_arm_j5_link</parent>
+      <axis>
+        <xyz>4.89803e-05 -1 -4.63312e-05</xyz>
+        <limit>
+          <lower>-0.2617</lower>
+          <upper>0.7504</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='l_arm_j7_link'>
+      <pose>-0.0250246 0.199993 0.596509 2.65519 1.57069 2.65529</pose>
+      <inertial>
+        <pose>0.0335998 1.59223e-07 -0.1 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>2</ixx>
+          <ixy>-3.56657e-09</ixy>
+          <ixz>-9.46378e-15</ixz>
+          <iyy>2.00075</iyy>
+          <iyz>-4.51376e-20</iyz>
+          <izz>2.00075</izz>
+        </inertia>
+      </inertial>
+      <collision name='l_arm_j7_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftArm_J7.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='l_arm_j7_link_collision_l_end_effector_link'>
+        <pose>0.166 -0.0100051 -3.18431e-07 -2.65359e-06 2.65359e-06 -1.57084</pose>
+        <geometry>
+          <box>
+            <size>0.001 0.001 0.001</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name='l_arm_j7_link_collision_l_gripper_link'>
+        <pose>0.056 0 0 -2.65359e-06 2.65359e-06 -1.57084</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftGripper_gripper.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='l_arm_j7_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftArm_J7.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='l_arm_j7_link_visual_l_end_effector_link'>
+        <pose>0.166 -0.0100051 -3.18431e-07 -2.65359e-06 2.65359e-06 -1.57084</pose>
+        <geometry>
+          <box>
+            <size>0.001 0.001 0.001</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name='l_arm_j7_link_visual_l_gripper_link'>
+        <pose>0.056 0 0 -2.65359e-06 2.65359e-06 -1.57084</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftGripper_gripper.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='l_arm_j7_joint' type='revolute'>
+      <child>l_arm_j7_link</child>
+      <parent>l_arm_j6_link</parent>
+      <axis>
+        <xyz>1 9.53113e-05 -9.26469e-05</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>0.5</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='l_gripper_thumb_link'>
+      <pose>-0.0250312 0.172995 0.498509 -1.57089 2.66205e-06 -1.5707</pose>
+      <inertial>
+        <pose>0 0 -0.1 0 -0 0</pose>
+        <mass>0.4</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='l_gripper_thumb_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_leftGripper_g-thumb.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='l_gripper_thumb_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_leftGripper_g-thumb.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='l_gripper_thumb_joint' type='revolute'>
+      <child>l_gripper_thumb_link</child>
+      <parent>l_arm_j7_link</parent>
+      <axis>
+        <xyz>1 9.26578e-05 -9.53005e-05</xyz>
+        <limit>
+          <lower>-1.0122</lower>
+          <upper>0.1396</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='r_arm_j1_link'>
+      <pose>-0.025 -0.200032 1.12649 1.57084 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.1 0 -0 0</pose>
+        <mass>0.6</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='r_arm_j1_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightArm_J1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='r_arm_j1_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightArm_J1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='r_arm_j1_joint' type='revolute'>
+      <child>r_arm_j1_link</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 -1 -4.36732e-05</xyz>
+        <limit>
+          <lower>-0.7679</lower>
+          <upper>3.1066</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='r_arm_j2_link'>
+      <pose>-0.025 -0.200032 1.12649 0.755969 1.57073 0.755922</pose>
+      <inertial>
+        <pose>0 0 -0.1 0 -0 0</pose>
+        <mass>0.6</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='r_arm_j2_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightArm_J2.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='r_arm_j2_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightArm_J2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='r_arm_j2_joint' type='revolute'>
+      <child>r_arm_j2_link</child>
+      <parent>r_arm_j1_link</parent>
+      <axis>
+        <xyz>1 -4.63288e-05 4.63248e-05</xyz>
+        <limit>
+          <lower>-1.9024</lower>
+          <upper>0.2443</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='r_arm_j3_link'>
+      <pose>-0.025 -0.200032 1.12649 3.14155 4.63249e-05 3.1415</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='r_arm_j3_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightArm_J3.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='r_arm_j3_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightArm_J3.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='r_arm_j3_joint' type='revolute'>
+      <child>r_arm_j3_link</child>
+      <parent>r_arm_j2_link</parent>
+      <axis>
+        <xyz>4.63289e-05 4.36732e-05 -1</xyz>
+        <limit>
+          <lower>-2.0769</lower>
+          <upper>2.0769</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='r_arm_j4_link'>
+      <pose>-0.00498842 -0.200023 0.876492 1.57089 -4.6325e-05 -9.0002e-05</pose>
+      <inertial>
+        <pose>0 0 -0.3 0 -0 0</pose>
+        <mass>0.6</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='r_arm_j4_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightArm_J4.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='r_arm_j4_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightArm_J4.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='r_arm_j4_joint' type='revolute'>
+      <child>r_arm_j4_link</child>
+      <parent>r_arm_j3_link</parent>
+      <axis>
+        <xyz>-8.99979e-05 -1 -9.00042e-05</xyz>
+        <limit>
+          <lower>-0.0174</lower>
+          <upper>2.2514</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='r_arm_j5_link'>
+      <pose>-0.0249884 -0.200021 0.876491 -3.14155 -4.6325e-05 -9.0002e-05</pose>
+      <inertial>
+        <pose>0 0 0.1 0 -0 0</pose>
+        <mass>0.4</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='r_arm_j5_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightArm_J5.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='r_arm_j5_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightArm_J5.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='r_arm_j5_joint' type='revolute'>
+      <child>r_arm_j5_link</child>
+      <parent>r_arm_j4_link</parent>
+      <axis>
+        <xyz>4.63289e-05 4.36732e-05 -1</xyz>
+        <limit>
+          <lower>-2.0769</lower>
+          <upper>2.0769</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='r_arm_j6_link'>
+      <pose>-0.0249754 -0.200009 0.596491 -3.14159 -1.57075 -1.57085</pose>
+      <inertial>
+        <pose>-0.1 0 0 0 -0 0</pose>
+        <mass>0.4</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='r_arm_j6_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightArm_J6.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='r_arm_j6_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightArm_J6.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='r_arm_j6_joint' type='revolute'>
+      <child>r_arm_j6_link</child>
+      <parent>r_arm_j5_link</parent>
+      <axis>
+        <xyz>-4.36732e-05 -1 -4.36774e-05</xyz>
+        <limit>
+          <lower>-0.2617</lower>
+          <upper>0.7504</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='r_arm_j7_link'>
+      <pose>-0.0249754 -0.200009 0.596491 1.57074 1.57075 1.57075</pose>
+      <inertial>
+        <pose>0.0335998 -1.59215e-07 -0.1 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>2</ixx>
+          <ixy>3.5664e-09</ixy>
+          <ixz>-9.46378e-15</ixz>
+          <iyy>2.00075</iyy>
+          <iyz>4.45917e-20</iyz>
+          <izz>2.00075</izz>
+        </inertia>
+      </inertial>
+      <collision name='r_arm_j7_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightArm_J7.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='r_arm_j7_link_collision_r_end_effector_link'>
+        <pose>0.166 0.00999971 -3.18431e-07 -2.65359e-06 2.65359e-06 -2.65359e-06</pose>
+        <geometry>
+          <box>
+            <size>0.001 0.001 0.001</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name='r_arm_j7_link_collision_r_gripper_link'>
+        <pose>0.056 0 0 -2.65359e-06 2.65359e-06 -2.65359e-06</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightGripper_gripper.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='r_arm_j7_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightArm_J7.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='r_arm_j7_link_visual_r_end_effector_link'>
+        <pose>0.166 0.00999971 -3.18431e-07 -2.65359e-06 2.65359e-06 -2.65359e-06</pose>
+        <geometry>
+          <box>
+            <size>0.001 0.001 0.001</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name='r_arm_j7_link_visual_r_gripper_link'>
+        <pose>0.056 0 0 -2.65359e-06 2.65359e-06 -2.65359e-06</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightGripper_gripper.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='r_arm_j7_joint' type='revolute'>
+      <child>r_arm_j7_link</child>
+      <parent>r_arm_j6_link</parent>
+      <axis>
+        <xyz>1 2.65359e-06 2.38519e-09</xyz>
+        <limit>
+          <lower>-1.0122</lower>
+          <upper>1</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='r_gripper_thumb_link'>
+      <pose>-0.0249757 -0.173004 0.498492 -1.5708 9.00042e-05 -1.57079</pose>
+      <inertial>
+        <pose>0 0 -0.1 0 -0 0</pose>
+        <mass>0.4</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='r_gripper_thumb_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/collision/Pal5_rightGripper_g-thumb.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='r_gripper_thumb_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://smartpal/visual/Pal5_rightGripper_g-thumb.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='r_gripper_thumb_joint' type='revolute'>
+      <child>r_gripper_thumb_link</child>
+      <parent>r_arm_j7_link</parent>
+      <axis>
+        <xyz>1 5.3073e-06 -2.65109e-06</xyz>
+        <limit>
+          <lower>-0.1396</lower>
+          <upper>1.0122</upper>
+          <effort>100</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+  </model>
+</sdf>

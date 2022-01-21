@@ -1,0 +1,35 @@
+/*
+  CommonData interface.
+  Copyright(C) 2014 Yaskawa Electric Corporation.
+*/
+
+#ifndef COMMON
+#define COMMON
+
+enum AlarmType {
+  FAULT,
+  WARNING,
+  UNKNOWN
+};
+
+struct Alarm {
+  unsigned long code;
+  AlarmType type;
+  string description;
+};
+
+struct AxisLimit {
+  unsigned long id;
+  double upper;
+  double lower;
+};
+
+typedef sequence<short> ShortSeq;
+typedef sequence<long> LongSeq;
+typedef sequence<float> FloatSeq;
+typedef sequence<double> DoubleSeq;
+
+typedef sequence<Alarm> AlarmSeq;
+typedef sequence<AxisLimit> LimitSeq;
+
+#endif

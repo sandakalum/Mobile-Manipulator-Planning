@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package>
+  <name>tms_ss_xtion</name>
+  <version>0.1.0</version>
+  <description>The tms_ss_xtion package</description>
+  <license>BSD</license>
+
+  <maintainer email="onishi@irvs.kyushu-u.ac.jp">Masatomo-Onishi</maintainer>
+
+  <author email="onishi@irvs.kyushu-u.ac.jp">Masatomo Onishi</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>pcl_ros</build_depend>
+  <build_depend>libopencv-dev</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>pcl_ros</run_depend>
+  <run_depend>libopencv-dev</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+
+  <export>
+  </export>
+</package>

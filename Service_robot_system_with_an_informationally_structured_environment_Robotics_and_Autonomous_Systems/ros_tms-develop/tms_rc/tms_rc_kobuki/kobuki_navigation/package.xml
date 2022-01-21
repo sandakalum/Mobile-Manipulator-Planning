@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<package>
+
+  <name>kobuki_navigation</name>
+  <version>0.0.1</version>
+  <description>The kobuki_navigation package</description>
+
+  <maintainer email="kawamura@ait.kyushu-u.ac.jp">Akihiro Kawamura</maintainer>
+
+  <url type="website">http://oroca.org/</url>
+  <url type="git">https://github.com/oroca/oroca-ros-pkg</url>
+
+  <license>The MIT License</license>
+
+  <author email="passionvirus@gmail.com">Yoonseok Pyo</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>amcl</build_depend>
+  <build_depend>kobuki_node</build_depend>
+  <build_depend>kobuki_tf</build_depend>
+  <build_depend>map_server</build_depend>
+  <build_depend>move_base</build_depend>
+  <build_depend>urg_node</build_depend>
+
+  <run_depend>amcl</run_depend>
+  <run_depend>kobuki_node</run_depend>
+  <run_depend>kobuki_tf</run_depend>
+  <run_depend>map_server</run_depend>
+  <run_depend>move_base</run_depend>
+  <run_depend>urg_node</run_depend>
+
+  <export>
+  </export>
+
+</package>

@@ -1,0 +1,6 @@
+# README for kni_wrapper demo
+# Neuronics AG
+# PKE 2008
+
+This demo uses the kni_wrapper dll which enables access from non-object oriented environments (C, LabView etc.)
+

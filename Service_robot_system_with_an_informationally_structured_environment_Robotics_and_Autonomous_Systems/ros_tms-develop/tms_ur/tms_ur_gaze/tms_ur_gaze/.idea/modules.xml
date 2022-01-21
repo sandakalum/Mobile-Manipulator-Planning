@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/tms_ur_gaze.iml" filepath="$PROJECT_DIR$/tms_ur_gaze.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tms_ur_gaze_client/tms_ur_gaze_client.iml" filepath="$PROJECT_DIR$/tms_ur_gaze_client/tms_ur_gaze_client.iml" />
+    </modules>
+  </component>
+</project>
+

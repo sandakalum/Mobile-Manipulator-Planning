@@ -1,0 +1,5 @@
+int32 id
+string task
+---
+int8 result
+tms_msg_rs/robot_task data

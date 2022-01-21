@@ -1,0 +1,113 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+import rospy
+import tf
+import math
+
+from interactive_markers.interactive_marker_server import *
+from visualization_msgs.msg import *
+
+class CalibrationClass:
+  def __init__(self):
+    
+    self.global_frame = rospy.get_param('~global_frame_id', 'world_link')
+
+    self.marker_pub = rospy.Publisher('/gps_origin_marker', Marker, queue_size=10)
+    server = InteractiveMarkerServer("interactive_marker")
+    
+    int_marker = InteractiveMarker()
+    int_marker.header.frame_id = self.global_frame
+    int_marker.name = "my_marker"
+    # int_marker.description = "RTK Origin"
+
+    marker = Marker()
+    marker.type = Marker.SPHERE
+    marker.scale.x = 0.2
+    marker.scale.y = 0.2
+    marker.scale.z = 0.2
+    marker.color.r = 0.5
+    marker.color.g = 0.5
+    marker.color.b = 0.5
+    marker.color.a = 1.0
+
+    marker_control = InteractiveMarkerControl()
+    marker_control.always_visible = True
+    marker_control.markers.append(marker)
+
+    int_marker.controls.append(marker_control)
+
+    control = InteractiveMarkerControl()
+    control.orientation.w = 0
+    control.orientation.x = 0
+    control.orientation.y = 0
+    control.orientation.z = 0
+    control.name = "move_x"
+    control.interaction_mode = InteractiveMarkerControl.MOVE_AXIS
+    int_marker.controls.append(control)
+
+    control = InteractiveMarkerControl()
+    control.orientation.w = 0.5
+    control.orientation.x = 0.5
+    control.orientation.y = 0.5
+    control.orientation.z = 0.5
+    control.name = "move_y"
+    control.interaction_mode = InteractiveMarkerControl.MOVE_AXIS
+    int_marker.controls.append(control)
+
+    control = InteractiveMarkerControl()
+    control.orientation.w = -0.5
+    control.orientation.x = -0.5
+    control.orientation.y = -0.5
+    control.orientation.z = 0.5
+    control.name = "rotate"
+    # control.interaction_mode = InteractiveMarkerControl.MOVE_ROTATE
+    control.interaction_mode = InteractiveMarkerControl.ROTATE_AXIS
+    int_marker.controls.append(control)
+
+    # control = InteractiveMarkerControl()
+    # control.interaction_mode = InteractiveMarkerControl.BUTTON
+    # control.name = "button"
+    # control.always_visible = True
+    # control.markers.append(marker)
+    # int_marker.controls.append(control)
+
+    server.insert(int_marker, self.processFeedback)
+    server.applyChanges()
+
+
+  def processFeedback(self, data):
+    
+    # if data.event_type == InteractiveMarkerFeedback.BUTTON_CLICK:
+    #   print "test"
+
+    p = data.pose.position
+    q = data.pose.orientation
+    quaternion = (q.x, q.y, q.z, q.w)
+    e = tf.transformations.euler_from_quaternion(quaternion)
+    text = 'x= ' + '{0:.5f}'.format(p.x) + '\ny = ' + '{0:.3f}'.format(p.y) + '\na = ' + '{0:.3f}'.format(e[2])
+
+    text_marker                  = Marker()
+    text_marker.header.frame_id  = self.global_frame
+    text_marker.text             = text
+    text_marker.type             = 9 #cylinder
+    text_marker.action           = 0 #add
+    text_marker.scale.x          = 0.2
+    text_marker.scale.y          = 0.2
+    text_marker.scale.z          = 0.2
+    text_marker.color.r          = 1
+    text_marker.color.g          = 1
+    text_marker.color.b          = 1
+    text_marker.color.a          = 1
+    text_marker.pose.position    = data.pose.position
+    text_marker.pose.position.z  = 1
+    text_marker.pose.position.x  = data.pose.position.x + 1
+    text_marker.pose.orientation = data.pose.orientation
+    self.marker_pub.publish(text_marker)
+
+if __name__ == '__main__':
+  rospy.init_node('chairbot_calibration', anonymous=True)
+  try:
+    CalibrationClass()
+    rospy.spin()
+  except rospy.ROSInterruptException:
+    rospy.loginfo("chairbot_calibration node finished.")

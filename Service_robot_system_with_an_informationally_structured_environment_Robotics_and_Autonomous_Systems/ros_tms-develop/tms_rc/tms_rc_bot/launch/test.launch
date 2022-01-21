@@ -1,0 +1,50 @@
+<launch>
+
+  <!-- <node pkg="ublox_gps" type="ublox_gps" name="ublox_gps" output="screen">
+    <rosparam file="$(find tms_rc_bot)/param/chairbot/c94_m8p_test.yaml"/>
+    <param name="device"     value="/dev/ttyACM0"/>
+    <param name="frame_id"   value="rtk"/>
+  </node> -->
+
+  <arg name="global_frame" value="map1"/>
+  <arg name="odom_frame"   value="odom1"/>
+  <arg name="base_frame"   value="base_footprint1"/>
+  <arg name="scan_frame"   value="base_scan1"/>
+
+  <group ns="portable1">
+    <!-- map server -->
+    <arg name="map_file" value="$(find tms_rc_bot)/maps/map_6x2.5/map.yaml"/>
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
+      <param name="frame_id" value="$(arg global_frame)"/>
+    </node>
+
+    <!-- static tf -->
+    <node pkg="tf" type="static_transform_publisher" name="world_to_map"
+      args="0 0 0 0 0 0 world_link $(arg global_frame) 100">
+    </node>
+    <node pkg="tf" type="static_transform_publisher" name="map_to_measured"
+      args="0 0 0 0 0 0 $(arg global_frame) base_measured 100">
+    </node>
+    <node pkg="tf" type="static_transform_publisher" name="foot_to_scan"
+      args="0.1 0 0.36 0 0 0 $(arg base_frame) $(arg scan_frame) 100">
+    </node>
+  </group>
+
+  <!-- chairbot driver -->
+  <!-- <node pkg="tms_rc_bot" type="chairbot_driver" name="chairbot_driver" output="screen">
+    <remap from="odom"          to="odometry/wheel"/>
+    <remap from="cmd_vel"       to="socket_twist"/>
+    <param name="ip_address"    value="192.168.11.99"/>
+    <param name="spin_Kp"       value="1000"/>
+    <param name="spin_Ki"       value="100"/>
+    <param name="spin_Kd"       value="0"/>
+    <param name="odom_frame_id" value="odom"/>
+    <param name="base_frame_id" value="base"/>
+    <param name="wheel_radius"  value="0.183"/>
+    <param name="wheel_tread"   value="0.544"/>
+    <param name="max_trans_vel" value="0.3"/>
+    <param name="max_rot_vel"   value="0.8"/>
+    <param name="print_tf"      value="true"/>  
+  </node> -->
+
+</launch>

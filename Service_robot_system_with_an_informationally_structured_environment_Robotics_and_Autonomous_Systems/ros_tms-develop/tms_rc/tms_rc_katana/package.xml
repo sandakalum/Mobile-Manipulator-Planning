@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package>
+  <name>tms_rc_katana</name>
+  <version>1.0.2</version>
+  <license>BSD</license>
+  <description>The tms_rc_katana package</description>
+
+  <maintainer email="kawamura@ait.kyushu-u.ac.jp">Akihiro Kawamura</maintainer>
+
+  <url type="website">http://robotics.ait.kyushu-u.ac.jp/index-e.html</url>
+  <url type="git">https://github.com/irvs/ros_tms</url>
+
+  <author email="passionvirus@gmail.com">Yoonseok Pyo</author>
+  <author email="a_nagata@irvs.ait.kyushu-u.ac.jp">Akihiro Nagata</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>message_runtime</run_depend>
+
+  <export>
+  </export>
+</package>

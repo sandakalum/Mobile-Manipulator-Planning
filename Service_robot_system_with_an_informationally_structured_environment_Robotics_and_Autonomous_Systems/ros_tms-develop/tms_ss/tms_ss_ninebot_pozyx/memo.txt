@@ -1,0 +1,6 @@
+/tms_rc_bot/param robot_local_separate.yaml -> odom1_pose_rejection_threshold 大きい方がPozyxを信じる
+robot_local_common.yaml process_noise_covariance 
+
+costmap_common.yaml scanのtopic名をscanにするとlrfを使う
+
+local_planner.yaml goal_tolerance

@@ -1,0 +1,7 @@
+image: map_coi_f2.png
+resolution: 0.050000
+origin: [-26.000000, -56.400000, 0.000000]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.1
+

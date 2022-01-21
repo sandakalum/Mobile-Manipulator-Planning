@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package>
+  <name>tms_rc_turtlebot3</name>
+  <version>0.0.0</version>
+  <license>BSD</license>
+  <description>The tms_rc_turtlebot3 package</description>
+
+  <maintainer email="egashira@irvs.ait.kyushu-u.ac.jp">egashira</maintainer>
+
+  <url type="website">http://robotics.ait.kyushu-u.ac.jp/index-e.html</url>
+  <url type="git">https://github.com/irvs/ros_tms</url>
+
+  <author email="kiyoyama@irvs.ait.kyushu-u.ac.jp">kiyoyama</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>tms_msg_db</build_depend>
+  <build_depend>tms_msg_rc</build_depend>
+
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>tms_msg_db</run_depend>
+  <run_depend>tms_msg_rc</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>yocs-joyop</run_depend>
+  <run_depend>nav_msgs</run_depend>
+
+
+  <export>
+  </export>
+</package>

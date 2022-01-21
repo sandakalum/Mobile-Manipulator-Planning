@@ -1,0 +1,12 @@
+Katana Native Interface (KNI) - Brief Install Guide (Linux/*nix only)
+====================================================================
+
+1) Unpack the archive
+2) Change into the folder 'KatanaNativeInterface'
+3) Type 'make' -> This will build the library and all the demo-applications
+
+Please read the KNI manual (located in doc/neuronics-doc) and the KNI Quickstart Guide for more information.
+
+Neuronics AG
+<support@neuronics.ch>
+Last Update: 2009-01-30

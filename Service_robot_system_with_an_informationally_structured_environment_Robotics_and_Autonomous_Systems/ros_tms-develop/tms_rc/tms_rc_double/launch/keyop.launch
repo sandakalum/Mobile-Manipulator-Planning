@@ -1,0 +1,19 @@
+<!--
+  Raw keyop configuration for working with the default kobuki launcher (minimal.launch).
+ -->
+<launch>
+  <group ns="tms_rc_double">
+    <group ns="room928">
+      <node pkg="kobuki_keyop" type="keyop" name="keyop" output="screen">
+        <remap from="keyop/motor_power" to="mobile_base/commands/motor_power"/>
+        <remap from="keyop/cmd_vel" to="cmd_vel"/>
+        <param name="linear_vel_step"  value="0.05" type="double"/>
+        <!--<param name="linear_vel_max"   value="0.3"  type="double"/>-->
+        <param name="linear_vel_max"   value="0.6"  type="double"/>
+        <param name="angular_vel_step" value="0.1" type="double"/>
+        <param name="angular_vel_max"  value="0.8"  type="double"/>
+        <param name="wait_for_connection_" value="true" type="bool"/>
+      </node>
+      </group>
+  </group>
+</launch>

@@ -1,0 +1,13 @@
+<launch>
+<!-- group ns="pot11" -->
+<arg name="number" value="11" />
+    <node name="reflec_pot" type="lrf_reflectance" pkg="chairbot_selfdrive" output="screen" required="true">
+        <remap from="scan_in" to="scan" />
+        <param name="intensity_th" value="2000" />
+    </node>
+   <!--
+    <node name="human_tracker" type="human_tracker" pkg="tms_ss_tracking" args="$(arg number)" output="screen"/>
+    <node name="people$(arg number)" type="people" pkg="tms_ss_tracking" output="screen"/>
+   -->
+<!-- /group -->
+</launch>

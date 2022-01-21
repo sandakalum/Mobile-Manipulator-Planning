@@ -1,0 +1,12 @@
+<library path="lib/libtms_ur_gaze">
+  <class type="tms_ur_gaze_server::EvaluatorNodelet" base_class_type="nodelet::Nodelet">
+    <description>
+      evaluator
+    </description>
+  </class>
+  <class type="tms_ur_gaze_server::VoiceReceiverNodelet" base_class_type="nodelet::Nodelet">
+    <description>
+      voice receiver
+    </description>
+  </class>
+</library>

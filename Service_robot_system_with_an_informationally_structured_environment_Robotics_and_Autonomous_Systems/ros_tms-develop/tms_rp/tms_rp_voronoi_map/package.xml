@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package>
+  <name>tms_rp_voronoi_map</name>
+  <version>0.0.3</version>
+  <description>The tms_rp_voronoi_map package</description>
+
+  <maintainer email="kawamura@ait.kyushu-u.ac.jp">Akihiro Kawamura</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://irvs.github.io/ros_tms/</url>
+  <url type="repository">https://github.com/irvs/ros_tms</url>
+  <url type="bugtracker">https://github.com/irvs/ros_tms/issues</url>
+
+  <author email="passionvirus@gmail.com">Yoonseok Pyo</author>
+  <author email="nakashima@irvs.ait.kyushu-u.ac.jp">Kouhei Nakashima</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>roslib</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>tms_msg_db</build_depend>
+  <build_depend>tms_msg_rp</build_depend>
+  <build_depend>visualization_msgs</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>roslib</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>tms_msg_db</run_depend>
+  <run_depend>tms_msg_rp</run_depend>
+  <run_depend>visualization_msgs</run_depend>
+
+  <export>
+  </export>
+</package>

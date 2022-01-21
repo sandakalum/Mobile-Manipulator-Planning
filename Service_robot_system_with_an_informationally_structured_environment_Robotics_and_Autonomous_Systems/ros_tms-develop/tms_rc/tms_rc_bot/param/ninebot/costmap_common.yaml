@@ -1,0 +1,44 @@
+
+footprint: [[ 0.2,  0.4], [-0.2,  0.4], [-0.2, -0.4], [ 0.2, -0.4]]
+
+obstacle_layer:
+  enabled:               true
+  max_obstacle_height:   2.0
+  mark_threshold:        0
+  combination_method:    1 
+  track_unknown_space:   false    # ピクセルの状態をフリーと障害物の他に不明をしようするか
+  obstacle_range:        3        # この範囲内でのみマップへ障害物を挿入
+  raytrace_range:        80       # この範囲内でのみレイトレースでマップをクリアリング
+  origin_z:              0.0
+  z_resolution:          0.2      # 各ボクセルの高さ
+  z_voxels:              2        # ボクセルのレイヤー数
+  unknown_threshold:     15
+  publish_voxel_map:     false
+  observation_sources:   scan
+
+  scan:
+    data_type:           LaserScan
+    topic:               hogehoge # LRF: scan
+    marking:             true     # マップへの障害物挿入に利用
+    clearing:            true     # マップの障害物除去に利用
+    min_obstacle_height: 0.0      # これより高さの低い観測点は排除，デフォルトで0.0
+    max_obstacle_height: 2.0      # これより高さの高い観測点は排除，デフォルトで2.0
+    inf_is_valid:        true
+
+social_layer:
+  enabled:               true
+  cutoff:                30.0
+  amplitude:             1000
+  covariance:            0.15
+  factor:                10.0
+
+  keep_time:             0.75
+
+# inflation_layer:
+#   enabled:               true
+#   cost_scaling_factor:   10.0     # コスト関数の定数(default: 10)
+#   #inflation_radius:     0.9      # コストのグラデーションの最外部の半径
+
+static_layer:
+  enabled:               true
+  first_map_only:        true

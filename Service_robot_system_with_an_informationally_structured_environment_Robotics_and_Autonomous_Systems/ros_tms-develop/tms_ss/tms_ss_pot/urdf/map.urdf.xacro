@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- Environments of ROS-TMS -->
+<robot name="environments" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Import all Gazebo-customization elements, including Gazebo colors -->
+  <xacro:include filename="$(find rostms_description)/urdf/environments_gazebo.urdf.xacro"/>
+
+  <xacro:macro name="environments">
+
+    <!--  Environment -->
+    <link name="bsen_room_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://tms_ss_pot/model/map.dae"/>
+        </geometry>
+        <origin xyz="0 0 0.001" rpy="0 0 0"/>
+      </visual>
+      <collision>
+        <geometry>
+          <box size="15.0 7.0 0.001"/>
+        </geometry>
+        <origin xyz="7.5 3.5 -0.001" rpy="0 0 0"/>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0.001" rpy="0 0 0"/>
+        <mass value="100"/>
+        <inertia
+          ixx="1.0" ixy="0.0" ixz="0.0"
+          iyy="1.0" iyz="0.0"
+          izz="1.0"/>
+      </inertial>
+    </link>
+
+    <xacro:environments_sim/>
+
+  </xacro:macro>
+
+</robot>

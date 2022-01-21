@@ -1,0 +1,12 @@
+uint64 rostime
+uint32 id
+string filename
+float32 get_x
+float32 get_y
+float32 get_z
+float32 get_theta
+uint32 get_place
+sensor_msgs/PointCloud2 cloud
+---
+uint32 success
+string message

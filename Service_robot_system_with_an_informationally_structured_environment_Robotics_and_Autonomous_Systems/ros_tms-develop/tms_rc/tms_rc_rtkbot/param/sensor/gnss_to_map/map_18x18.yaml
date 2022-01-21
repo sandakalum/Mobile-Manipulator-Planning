@@ -1,0 +1,7 @@
+### Place : Library ###
+
+origin_lat: 33.595542802
+origin_lng: 130.2190078262
+angle_offset: 45  # deg
+scale_offset: 1
+sel_solutions: "all"

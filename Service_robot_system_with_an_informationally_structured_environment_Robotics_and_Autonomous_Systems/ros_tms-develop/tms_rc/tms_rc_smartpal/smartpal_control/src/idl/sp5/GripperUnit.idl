@@ -1,0 +1,19 @@
+/*
+	GripperUnit interface.
+	Copyright (C) 2014 Yaskawa Electric Corporation.
+*/
+
+#ifndef GRIPPERUNIT_IDL_
+#define GRIPPERUNIT_IDL_
+
+#include "GripperExtAxes.idl"
+
+interface GripperUnit : GripperExtAxes {
+
+	boolean move( in double pos, in double velocity, in double accel );
+	boolean getFeedback( out double fbPos );
+	boolean getCommand( out double cmdPos );
+
+};
+
+#endif

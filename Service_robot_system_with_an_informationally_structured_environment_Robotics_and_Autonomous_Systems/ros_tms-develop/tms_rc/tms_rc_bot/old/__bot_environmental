@@ -1,0 +1,115 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+import rospy
+import tf
+import math
+
+from people_msgs.msg        import People
+from nav_msgs.msg           import Odometry
+from visualization_msgs.msg import Marker
+
+class SensorPoleClass:
+  def __init__(self):
+
+    #環境側へrobotの位置を送信する際のマップの原点からの座標変換
+    send_base_x = rospy.get_param('~send_base_x', 0)
+    send_base_y = rospy.get_param('~send_base_y', 0)
+    send_base_a = rospy.get_param('~send_base_a', 0)
+
+    print_marker = rospy.get_param('~print_marker', True)
+    marker_name  = rospy.get_param('~marker_name', 'ninebot')
+
+    odom_topic_name   = rospy.get_param('~odom_topic_name',   '/ninebot_odom')
+    people_topic_name = rospy.get_param('~people_topic_name', '/people_ninebot_cropped')
+
+    measured_in_topic_name  = rospy.get_param('~measured_in_topic_name', '/ninebot_measured_pos')
+    measured_out_topic_name = rospy.get_param('~measured_out_topic_name', 'odometry/measured')
+
+    self.global_frame   = rospy.get_param('~global_frame_id', 'map')
+    self.base_frame     = rospy.get_param('~base_frame_id', 'base_footprint')
+    self.measured_frame = rospy.get_param('~measured_frame_id', 'base_pozyx')
+
+    self.people_pub = rospy.Publisher('/people', People, queue_size=10)
+    rospy.Subscriber(people_topic_name, People, self.callback_people, queue_size=10)
+
+    self.measured_pub = rospy.Publisher(measured_out_topic_name, Odometry, queue_size=10)
+    rospy.Subscriber(measured_in_topic_name, Odometry, self.callback_measured, queue_size=10)
+
+    odometry_pub = rospy.Publisher(odom_topic_name, Odometry, queue_size=10)
+    marker_pub   = rospy.Publisher('/' + marker_name + '_marker', Marker, queue_size=10)
+    
+    odom                    = Odometry()
+    odom.header.frame_id    = self.global_frame
+    odom.child_frame_id     = self.base_frame
+
+    marker                  = Marker()
+    marker.header.frame_id  = self.global_frame
+    marker.type             = 10 #mesh
+    marker.action           = 0  #add
+    marker.lifetime         = rospy.Duration(0.5)
+    
+    marker.scale.x          = 0.01
+    marker.scale.y          = 0.01
+    marker.scale.z          = 0.01
+    marker.color.r          = 140 / 255.0
+    marker.color.g          = 140 / 255.0
+    marker.color.b          = 140 / 255.0
+    marker.color.a          = 0.9
+    marker.mesh_resource    = 'package://tms_rc_bot/meshes/ninebot_v2.dae'
+    marker.mesh_use_embedded_materials = True
+
+    marker.scale.x          = 0.015
+    marker.scale.y          = 0.015
+    marker.scale.z          = 0.015
+    marker.color.r          = 180 / 255.0
+    marker.color.g          = 180 / 255.0
+    marker.color.b          = 180 / 255.0
+    marker.color.a          = 1.0
+    marker.mesh_resource    = 'package://tms_rc_bot/meshes/UM3E_original.stl'
+
+
+    rate        = rospy.Rate(10) # 10hz
+    listener    = tf.TransformListener()
+    while not rospy.is_shutdown():
+      try:
+        (point, quate) = listener.lookupTransform(self.global_frame, self.base_frame, rospy.Time(0))
+        point_x                      = point[0] - send_base_x
+        point_y                      = point[1] - send_base_y
+        odom.pose.pose.position.x    = point_y * math.sin(send_base_a) + point_x * math.cos(send_base_a)
+        odom.pose.pose.position.y    = point_y * math.cos(send_base_a) - point_x * math.sin(send_base_a) 
+        odom.pose.pose.orientation.x = quate[0]
+        odom.pose.pose.orientation.y = quate[1]
+        odom.pose.pose.orientation.z = quate[2]
+        odom.pose.pose.orientation.w = quate[3]
+        odometry_pub.publish(odom)
+
+        if print_marker == True:
+          marker.pose.position.x    = point[0]
+          marker.pose.position.y    = point[1]
+          marker.pose.position.z    = 0
+          marker.pose.orientation.x = quate[0]
+          marker.pose.orientation.y = quate[1]
+          marker.pose.orientation.z = quate[2]
+          marker.pose.orientation.w = quate[3]
+          marker_pub.publish(marker)
+      except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException): pass
+      rate.sleep()
+  
+  def callback_people(self, data):
+    #data.header.stamp    = rospy.Time.now()
+    #data.header.frame_id = self.global_frame
+    data.header.frame_id = 'base_pole'
+    self.people_pub.publish(data)
+
+  def callback_measured(self, data):
+    #data.header.stamp    = rospy.Time.now()
+    #data.header.frame_id = self.global_frame
+    data.header.frame_id = self.measured_frame
+    self.measured_pub.publish(data)
+
+if __name__ == '__main__':
+  rospy.init_node('bot_environmental', anonymous=True)
+  try:
+    SensorPoleClass()
+  except rospy.ROSInterruptException:
+    rospy.loginfo("bot_environmental node finished.")

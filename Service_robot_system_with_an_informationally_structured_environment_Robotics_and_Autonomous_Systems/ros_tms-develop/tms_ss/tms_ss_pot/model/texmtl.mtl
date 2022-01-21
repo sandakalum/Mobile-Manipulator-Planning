@@ -1,0 +1,33 @@
+# Created By Carrara 7.0 #
+
+# 地図 #
+
+# newmtl: マテリアルの定義
+newmtl map
+
+Ns: Shininess 1.0~128.0
+Ns 1
+
+# d:
+d 1
+
+# Ni:
+Ni 0.001
+
+# illum:
+# 0 to disable lighting,
+# 1 for ambient & diffuse only (specular color set to black),
+# 2 for full lighting.
+illum 2
+
+# Ka: 環境光(Ambient) 値は0.0~1.0のRGB  (1,1,1)は白
+Ka 1 1 1
+
+# Kd: 拡散光(Diffuse) 値は0.0~1.0のRGB
+Kd 1 1 1
+
+# Ks: 鏡面光(Specular) 値は0.0~1.0のRGB
+Ks 1 1 1
+
+# map_Kd: テクスチャ画像ファイル
+map_Kd map.png

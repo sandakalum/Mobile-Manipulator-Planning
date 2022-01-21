@@ -1,0 +1,75 @@
+<launch>
+
+  <arg name="urg1" default="true"/>
+  <arg name="urg2" default="true"/>
+  <arg name="urg3" default="true"/>
+  <arg name="urg4" default="true"/>
+
+  <group ns="urg1" if="$(arg urg1)">
+    <machine name="P2SEN-1" address="P2SEN-1" env-loader="/home/odroid/env.bash" user="odroid" password="odroid" timeout="30"/>
+
+    <node machine="P2SEN-1" pkg="urg_node" name="urg_node" type="urg_node">
+      <param name="ip_address" value="192.168.0.10"/>
+      <param name="angle_min" value="-3.1415926535"/>
+      <param name="angle_max" value="3.1415926535"/>
+      <remap from="/urg1/scan" to="/LaserTracker1"/>
+    </node>
+
+    <!-- <node machine="P2SEN-1" pkg="tms_ss_pot" type="change_nan" name="change_nan">
+      <remap from="/scan" to="/urg1/scan"/>
+      <remap from="/LaserTracker" to="/LaserTracker1"/>
+    </node> -->
+  </group>
+
+  <group ns="urg2" if="$(arg urg2)">
+    <machine name="P2SEN-2" address="P2SEN-2" env-loader="/home/odroid/env.bash" user="odroid" password="odroid" timeout="30"/>
+
+    <node machine="P2SEN-2" pkg="urg_node" name="urg_node" type="urg_node">
+      <param name="ip_address" value="192.168.0.10"/>
+      <param name="angle_min" value="-3.1415926535"/>
+      <param name="angle_max" value="3.1415926535"/>
+      <remap from="/urg2/scan" to="/LaserTracker2"/>
+    </node>
+
+    <!-- <node machine="P2SEN-2" pkg="tms_ss_pot" type="change_nan" name="change_nan">
+      <remap from="/scan" to="/urg2/scan"/>
+      <remap from="/LaserTracker" to="/LaserTracker2"/>
+    </node> -->
+  </group>
+
+  <group ns="urg3" if="$(arg urg3)">
+
+    <machine name="P2SEN-3" address="P2SEN-3" env-loader="/home/odroid/env.bash" user="odroid" password="odroid" timeout="30"/>
+
+    <node machine="P2SEN-3" pkg="urg_node" name="urg_node" type="urg_node">
+      <param name="ip_address" value="192.168.0.10"/>
+      <param name="angle_min" value="-3.1415926535"/>
+      <param name="angle_max" value="3.1415926535"/>
+      <remap from="/urg3/scan" to="/LaserTracker3"/>
+    </node>
+
+    <!-- <node machine="P2SEN-3" pkg="tms_ss_pot" type="change_nan" name="change_nan">
+      <remap from="/scan" to="/urg3/scan"/>
+      <remap from="/LaserTracker" to="/LaserTracker3"/>
+    </node> -->
+
+  </group>
+
+  <group ns="urg4" if="$(arg urg4)">
+
+    <machine name="P2SEN-4" address="P2SEN-4" env-loader="/home/odroid/env.bash" user="odroid" password="odroid" timeout="30"/>
+
+    <node machine="P2SEN-4" pkg="urg_node" name="urg_node" type="urg_node">
+      <param name="ip_address" value="192.168.0.10"/>
+      <param name="angle_min" value="-1.832595714595"/>
+      <param name="angle_max" value=" 1.832595714595"/>
+      <remap from="/urg4/scan" to="/LaserTracker4"/>
+    </node>
+
+    <!-- <node machine="P2SEN-4" pkg="tms_ss_pot" type="change_nan" name="change_nan">
+      <remap from="/scan" to="/urg4/scan"/>
+      <remap from="/LaserTracker" to="/LaserTracker4"/>
+    </node> -->
+
+  </group>    
+</launch>

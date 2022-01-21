@@ -1,0 +1,5 @@
+tms_msg_rp/rps_cnoid_wagon_motion_state[] in_motion_state
+---
+uint8 success
+string message
+tms_msg_rp/rps_cnoid_wagon_motion_state[] out_motion_state

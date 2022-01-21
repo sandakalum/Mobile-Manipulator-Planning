@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<robot name="environments_sim" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="environments_sim">
+  </xacro:macro>
+</robot>

@@ -1,0 +1,17 @@
+<launch>
+  <arg default="$(find tms_rc_double)/param/cmd_vel_mux.yaml" name="config_file"/>
+  <arg name="publish_tf" default="false"/>
+  <node args="standalone yocs_cmd_vel_mux/CmdVelMuxNodelet" name="cmd_vel_mux" pkg="nodelet" type="nodelet">
+    <param name="yaml_cfg_file" value="$(arg config_file)"/>
+    <remap from="/tms_rc_double/cmd_vel_mux/output/cmd_vel" to="cmd_vel"/>
+  </node>
+  <node name="driver" output="screen" pkg="tms_rc_double" type="double_control">
+    <param name="turn_Kp" value="0.5"/>
+    <param name="publish_tf" value="$(arg publish_tf)"/>
+    <param name="base_footprint_param" value="$(arg base_footprint)" />
+    <param name="base_link_param" value="$(arg base_link)" />
+    <param name="base_scan_param" value="$(arg base_scan)" />
+    <!--<param name="dist_par_pulse_l" value="0.5642723477760184"/>-->
+    <param name="wheel_dist" value="340"/>
+  </node>
+</launch>

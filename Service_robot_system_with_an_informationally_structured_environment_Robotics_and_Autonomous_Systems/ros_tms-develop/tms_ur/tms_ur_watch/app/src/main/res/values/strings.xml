@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">tms_ur_watch</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="heart_rate">♡999</string>
+</resources>

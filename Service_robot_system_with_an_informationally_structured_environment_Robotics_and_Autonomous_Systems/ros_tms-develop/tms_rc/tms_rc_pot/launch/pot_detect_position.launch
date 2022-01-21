@@ -1,0 +1,46 @@
+<launch>
+  <!-- pot startposition big sensor box coi 2_floor densed-->
+
+  <node  args="0.981 -0.465 0 -2.543 0 0 detect 1"  name="plot_out1"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="3.169 -3.493 0 -2.481 0 0 detect 2"  name="plot_out2"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="5.825 -7.147 0 -2.430 0 0 detect 3"  name="plot_out3"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="8.472 -9.895 0 -2.418 0 0 detect 4"  name="plot_out4"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="10.897 -12.596 0 -2.396 0 0 detect 5"  name="plot_out5"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="13.093 -15.725 0 -2.379 0 0 detect 6"  name="plot_out6"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="9.801 -17.046 0 2.430 0 0 detect 7"  name="plot_out7"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="6.818 -20.200 0 2.354 0 0 detect 8"  name="plot_out8"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="2.301 -21.059 0 -0.720 0 0 detect 9"  name="plot_out9"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="-0.722 -24.107 0 -0.738 0 0 detect 10" name="plot_out10"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="15.663 -18.498 0 -2.317 0 0 detect 11" name="plot_out11"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+
+
+  <!-- pot coi 1_floor densed-->
+  <!-- <node  args="-3.739 -24.927 0 1.695 0 0 detect 1"  name="plot_out1"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="-6.515 -21.648 0 0.057 0 0 detect 2"  name="plot_out2"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="-2.508 -21.467 0 1.580 0 0 detect 3"  name="plot_out3"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args=" 2.733 -23.670 0 -3.021  0 0 detect 4"  name="plot_out4"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="2.156 -19.360 0 -3.123 0 0 detect 5"  name="plot_out5"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="-2.745 -16.598 0 -0.041 0 0 detect 6"  name="plot_out6"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="2.568 -13.698 0 -3.123 0 0 detect 7"  name="plot_out7"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="-1.938 -10.037 0 -0.063 0 0 detect 8"  name="plot_out8"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="2.720 -6.646 0 3.140 0 0 detect 9"  name="plot_out9"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="5.311 -9.447 0 1.567 0 0 detect 10" name="plot_out10"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="-9.655 -17.605 0 -1.571 0 0 detect 11"  name="plot_out11"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/> -->
+
+  <!-- for test-->
+  <!-- <node  args="2.522 2.840 0 -0.916 0 0 detect 10"  name="plot_out10"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/> -->
+  <!-- <node  args=" 4.857 4.593 0 -0.920 0 0 detect 11"  name="plot_out11"   pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/> -->
+
+  <!-- human walking video -->
+  <!-- <node  args="17.154 -20.323 0 -2.338 0 0 detect 1"   name="plot_out1"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="23.221 -26.333 0 -2.244 0 0 detect 2"   name="plot_out2"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="24.246 -34.539 0  2.480 0 0 detect 3"   name="plot_out3"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="18.716 -41.025 0  0.958 0 0 detect 4"   name="plot_out4"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="10.954 -35.844 0  0.894 0 0 detect 5"   name="plot_out5"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="3.038  -31.142 0  0.954 0 0 detect 6"   name="plot_out6"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="-0.882 -24.383 0 -0.779 0 0 detect 7"   name="plot_out7"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="5.668  -18.245 0 -0.847 0 0 detect 8"   name="plot_out8"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="12.043 -13.997 0 -2.327 0 0 detect 9"   name="plot_out9"  pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="6.255  -7.732  0 -2.470 0 0 detect 10"  name="plot_out10" pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/>
+  <node  args="2.193  -2.296  0 -2.476 0 0 detect 11" name="plot_out11" pkg="tms_rc_pot"  type="portable_plotout.py" output="screen"/> -->
+</launch>

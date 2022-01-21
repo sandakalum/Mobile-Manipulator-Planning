@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">sp_teleop</string>
+
+    <string name="Stop">Stop</string>
+
+    <string name="Forward">Forward</string>
+
+    <string name="Backward">Backward</string>
+
+    <string name="Right">Right</string>
+
+    <string name="Left">Left</string>
+
+    <string name="LeftTurn">LeftTurn</string>
+
+    <string name="RightTurn">RightTurn</string>
+
+    <string name="Result">Result</string>
+
+</resources>

@@ -1,0 +1,15 @@
+uint32 robotid
+uint32 objectid
+---
+float32 robot_x
+float32 robot_y
+float32 robot_z
+float32 robot_th
+float32 wagon_x
+float32 wagon_y
+float32 wagon_z
+float32 wagon_th
+float32 object_x
+float32 object_y
+float32 object_z
+float32 object_th

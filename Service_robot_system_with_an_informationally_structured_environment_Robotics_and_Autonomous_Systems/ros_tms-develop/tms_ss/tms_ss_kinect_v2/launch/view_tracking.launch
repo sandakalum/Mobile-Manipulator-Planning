@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="rviz" pkg="rviz" type="rviz"
+    args="-d $(find rostms_description)/rviz_config/skeleton_watching.rviz" respawn="true"/>
+</launch>
+

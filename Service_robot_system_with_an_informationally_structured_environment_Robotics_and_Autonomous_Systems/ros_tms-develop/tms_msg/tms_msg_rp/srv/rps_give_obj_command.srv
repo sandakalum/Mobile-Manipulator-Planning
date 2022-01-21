@@ -1,0 +1,23 @@
+uint32 robot_id
+uint32 wagon_id
+uint32 person_id
+uint32 object_id
+tms_msg_rp/rps_position start_Robot_pos
+tms_msg_rp/rps_position start_Wagon_pos
+tms_msg_rp/rps_position give_obj_Obj_pos
+tms_msg_rp/rps_position grasp_wagon_Robot_pos
+tms_msg_rp/rps_position give_obj_Robot_pos
+tms_msg_rp/rps_position[] grasp_wagon_Robot_path
+tms_msg_rp/rps_position[] push_wagon_Robot_path
+tms_msg_rp/rps_position[] push_wagon_Wagon_path
+tms_msg_rp/rps_position[] grasp_obj_Robot_path
+tms_msg_rp/rps_position[] give_obj_Robot_path
+tms_msg_rp/rps_joint_angle[] grasp_wagon_Robot_joint_angle
+tms_msg_rp/rps_joint_angle[] push_wagon_Robot_joint_angle
+tms_msg_rp/rps_joint_angle[] release_wagon_Robot_joint_angle
+tms_msg_rp/rps_joint_angle[] grasp_obj_Robot_joint_angle
+tms_msg_rp/rps_joint_angle[] give_obj_Robot_joint_angle
+tms_msg_rp/rps_joint_angle[] return_init_pose_Robot_joint_angle
+---
+uint32 success
+string message

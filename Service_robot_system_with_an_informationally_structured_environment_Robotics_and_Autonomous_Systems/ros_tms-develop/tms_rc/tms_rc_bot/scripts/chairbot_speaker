@@ -1,0 +1,100 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+import rospy
+import threading
+
+from std_msgs.msg import Float64
+
+import Adafruit_GPIO as GPIO
+import Adafruit_GPIO.FT232H as FT232H
+
+ROS_RATE = 100
+
+GND_PIN  = 11
+OUT_PIN1 = 10
+OUT_PIN2 = 9
+OUT_PIN3 = 8
+
+class SpeakerClass:
+  def __init__(self):
+    rospy.on_shutdown(self.shutdown)
+
+    FT232H.use_FT232H()
+    ft232h = FT232H.FT232H()
+
+    ft232h.setup(GND_PIN,  GPIO.OUT)
+    ft232h.setup(OUT_PIN1, GPIO.OUT)
+    ft232h.setup(OUT_PIN2, GPIO.OUT)
+    ft232h.setup(OUT_PIN3, GPIO.OUT)
+
+    self.output = ft232h.output
+    self.output(GND_PIN,  GPIO.LOW)
+    self.output(OUT_PIN1, GPIO.LOW)
+    self.output(OUT_PIN2, GPIO.LOW)
+    self.output(OUT_PIN3, GPIO.LOW)
+
+    self.sound   = False
+    self.counter = 0
+    self.timer   = threading.Timer(0, self.flip)
+    self.mutex   = threading.Lock()
+
+    rospy.Subscriber('portable_sound', Float64, self.callback_sound, queue_size=10)
+
+    rate = rospy.Rate(ROS_RATE)
+    while not rospy.is_shutdown():
+      if self.sound == True:
+        self.output(OUT_PIN1, GPIO.HIGH)
+        self.output(OUT_PIN2, GPIO.HIGH)
+        self.output(OUT_PIN3, GPIO.HIGH)
+      else:
+        self.output(OUT_PIN1, GPIO.LOW)
+        self.output(OUT_PIN2, GPIO.LOW)
+        self.output(OUT_PIN3, GPIO.LOW)
+      # print 'sound = ' + str(self.sound)
+      rate.sleep()
+
+  def flip(self):
+    if(self.sound == True):
+      self.sound = False
+      
+      if self.counter > 1:
+        self.mutex.acquire()
+        self.counter -= 1
+        self.mutex.release()
+      else:
+        return
+
+      self.timer = threading.Timer(0.12, self.flip)
+      self.timer.start()     
+    else:
+      self.sound = True
+      self.timer = threading.Timer(0.05, self.flip)
+      self.timer.start()
+
+  def callback_sound(self, data):
+    self.sound = True
+
+    self.mutex.acquire()
+    self.counter = 3
+    self.mutex.release()
+
+    self.timer.cancel()
+    self.timer = threading.Timer(data.data, self.flip)
+    self.timer.start()
+
+  def shutdown(self):
+    try:
+      self.output(GND_PIN,  GPIO.LOW)
+      self.output(OUT_PIN1, GPIO.LOW)
+      self.output(OUT_PIN2, GPIO.LOW)
+      self.output(OUT_PIN3, GPIO.LOW)
+      self.timer.cancel()
+    except: pass
+
+if __name__ == '__main__':
+  rospy.init_node('chairbot_speaker', anonymous=True)
+  try:
+    SpeakerClass()
+    rospy.spin()
+  except rospy.ROSInterruptException:
+    rospy.loginfo("chairbot_speaker node finished.")

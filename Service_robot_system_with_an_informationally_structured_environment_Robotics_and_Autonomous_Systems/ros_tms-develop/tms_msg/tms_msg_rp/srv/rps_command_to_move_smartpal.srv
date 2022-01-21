@@ -1,0 +1,3 @@
+tms_msg_rp/rps_command_array move_path
+---
+uint32 success

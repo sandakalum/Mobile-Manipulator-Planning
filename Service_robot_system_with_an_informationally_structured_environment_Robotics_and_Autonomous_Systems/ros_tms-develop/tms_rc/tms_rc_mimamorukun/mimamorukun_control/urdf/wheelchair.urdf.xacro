@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<robot name="wheelchair" xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- <xacro:macro name="wheelchair"> -->
+<!-- wheelchair -->
+<link name="wheelchair_x_link"/>
+
+<joint name="wheelchair_x_joint" type="prismatic">
+  <parent link="world_link"/>
+  <child link="wheelchair_x_link"/>
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+  <limit effort="1000.0" lower="0." upper="15." velocity="5.0"/>
+</joint>
+
+<link name="wheelchair_y_link"/>
+
+<joint name="wheelchair_y_joint" type="prismatic">
+  <parent link="wheelchair_x_link"/>
+  <child link="wheelchair_y_link"/>
+  <origin xyz="0 0 0" rpy="0 0 1.57079633"/>
+  <limit effort="1000.0" lower="0." upper="8." velocity="5.0"/>
+</joint>
+
+<joint name="wheelchair_yaw_joint" type="continuous">
+  <parent link="wheelchair_y_link"/>
+  <child link="wheelchair_link"/>
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+  <axis xyz="0 0 1"/>
+</joint>
+
+<link name="wheelchair_link">
+  <visual>
+    <geometry>
+      <mesh filename="package://environmental_model/model/wheelchair.dae"/>
+    </geometry>
+    <origin xyz="0.0 0.0 0.56" rpy="0 0 0"/>
+  </visual>
+  <collision>
+    <geometry>
+      <box size="0.6 0.5 1.1"/>
+    </geometry>
+    <origin xyz="0.0 0.0 0.56" rpy="0 0 0"/>
+  </collision>
+</link>
+
+<!-- </xacro:macro> -->
+</robot>

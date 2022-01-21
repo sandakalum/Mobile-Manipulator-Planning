@@ -1,0 +1,9 @@
+# README for mykni
+# Neuronics AG
+# PKE 2008
+
+This demo is a sandbox for programmers who want to get familiar with KNI by having an environment that is ready to start coding under Linux and Windows Visual Studio.
+
+Linux: type 'make' in ../
+Windows: just open the .sln file
+

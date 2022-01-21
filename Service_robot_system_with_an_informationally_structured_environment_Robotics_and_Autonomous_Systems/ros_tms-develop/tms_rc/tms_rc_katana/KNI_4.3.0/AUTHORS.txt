@@ -1,0 +1,15 @@
+Neuronics AG
+KNI developers, authors
+=======================
+(* = active maintainer)
+
+Jonas Haller <jonas.haller@neuronics.ch>
+Tino Perucchi <tino.perucchi@neuronics.ch>
+*Philipp Keller <philipp.keller@neuronics.ch>
+
+
+Alumni:
+Hasan Karahan <hasan.karahan@neuronics.ch>
+Tiziano Mueller <tiziano.mueller@neuronics.ch>
+Roberto Gleiser <gleiser@neuronics.ch>
+Christoph Voser <christoph.voser@neuronics.ch>

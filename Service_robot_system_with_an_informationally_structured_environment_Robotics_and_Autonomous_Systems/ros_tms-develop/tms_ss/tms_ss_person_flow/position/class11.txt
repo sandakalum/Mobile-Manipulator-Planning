@@ -1,0 +1,6 @@
+mode:7,
+LRF_number:1,2,5,3,
+inival:35,115,0,0,34,33,70,72,
+start_time:2340.0,
+feature:8,
+

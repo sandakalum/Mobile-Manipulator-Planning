@@ -1,0 +1,7 @@
+int32[] id_in
+---
+int32 id_out
+string name
+float64 x
+float64 y
+float64 z

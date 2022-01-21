@@ -1,0 +1,38 @@
+apply plugin: 'com.android.application'
+apply plugin: 'eclipse'
+//apply plugin: 'ros-android'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '28.0.3'
+    defaultConfig {
+        applicationId "com.example.rts.tms_ur_watch"
+        minSdkVersion 26
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+//    packagingOptions {
+//        exclude "META-INF/LICENSE.txt"
+//        exclude "META-INF/NOTICE.txt"
+//    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation ('org.ros.android_core:android_10:[0.3,)') {
+        exclude group: 'junit'
+        exclude group: 'xml-apis'
+    }
+    implementation 'org.ros.rosjava_core:rosjava:[0.3,0.4)'
+    implementation 'org.ros.rosjava_messages:std_msgs:0.5.10'
+    implementation 'com.google.android.support:wearable:2.0.0-alpha3'
+    implementation 'com.google.android.gms:play-services-wearable:10.0.1'
+    compileOnly 'com.google.android.wearable:wearable:2.0.0-alpha3'
+}

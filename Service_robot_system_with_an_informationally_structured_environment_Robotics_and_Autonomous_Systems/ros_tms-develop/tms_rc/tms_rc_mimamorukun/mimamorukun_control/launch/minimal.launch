@@ -1,0 +1,5 @@
+<launch>
+  <group ns="mimamorukun">
+    <include file="$(find tms_rc_mimamorukun_control)/launch/includes/minimal.launch.xml"/>
+  </group>
+</launch>

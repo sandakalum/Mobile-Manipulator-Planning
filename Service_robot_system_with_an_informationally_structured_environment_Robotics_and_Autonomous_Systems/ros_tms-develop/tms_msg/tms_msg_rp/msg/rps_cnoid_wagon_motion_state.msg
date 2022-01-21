@@ -1,0 +1,9 @@
+uint8 robot_id
+tms_msg_rp/rps_position robot_pos
+tms_msg_rp/rps_joint_angle robot_joint_angle
+uint8 wagon_id
+tms_msg_rp/rps_position wagon_pos
+uint8 pushing_wagon_state
+uint8 object_id
+tms_msg_rp/rps_position object_pos
+uint8 grasping_object_state

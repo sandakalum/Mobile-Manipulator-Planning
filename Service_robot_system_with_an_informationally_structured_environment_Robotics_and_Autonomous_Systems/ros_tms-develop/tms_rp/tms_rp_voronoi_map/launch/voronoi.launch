@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="tms_rp_voronoi_map" type="tms_rp_voronoi_map"   name="tms_rp_voronoi_map" output="screen"/>
+  <node pkg="tms_rp_path_planning" type="tms_rp_path_planning"   name="tms_rp_path_planning" output="screen"/>
+</launch>

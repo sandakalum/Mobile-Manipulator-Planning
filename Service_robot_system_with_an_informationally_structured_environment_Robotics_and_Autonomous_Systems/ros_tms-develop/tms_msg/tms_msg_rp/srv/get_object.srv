@@ -1,0 +1,7 @@
+int32 uid
+int32 oid
+int32 pid
+int32 time
+---
+int32 result
+

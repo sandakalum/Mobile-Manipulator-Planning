@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Window"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtFtpIP"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/ftpIP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:text="@string/ftpIP"
+            android:textSize="30sp" />
+    </LinearLayout>
+    -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btnRenew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txtRenew"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txtSend"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/btnSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txtSetting"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    <!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtUser"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/userID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:text="@string/userID"
+            android:textSize="30sp" />
+    </LinearLayout>
+    -->
+    <!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtPlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtPlace"
+            android:textSize="30sp" />
+    -->
+
+
+    <!--
+             <EditText
+            android:id="@+id/placeID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:text="@string/placeID"
+            android:textSize="30sp" />
+    -->
+    <!--
+        <Spinner
+            android:id="@+id/spinnerPlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textSize="30sp" />
+    </LinearLayout>
+    -->
+    <!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/timeID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:gravity="right"
+            android:inputType="number"
+            android:text="@string/time"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/txtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="0.3"
+            android:text="@string/txtTime"
+            android:textSize="20sp" />
+    </LinearLayout>
+    -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80sp" >
+
+        <ImageButton
+            android:id="@+id/btnReturn"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:contentDescription="@string/descImage"
+            android:src="@drawable/return_icon3" />
+
+        <Button
+            android:id="@+id/btnCurrentObj"
+            android:layout_width="match_parent"
+            android:layout_height="80sp"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
+    <!--
+             <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtNext" />
+
+            <Button
+                android:id="@+id/btnPrev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtPrev" />
+        </LinearLayout>
+    -->
+
+
+    <!--
+    <ViewFlipper
+        android:id="@+id/flipper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        
+            <include
+                android:id="@+id/firstlayout"
+                layout="@layout/first" />
+
+            <include
+                android:id="@+id/secondlayout"
+                layout="@layout/second" />
+
+            <include
+                android:id="@+id/thirdlayout"
+                layout="@layout/third" />
+            
+            <include
+                android:id="@+id/fourthlayout"
+                layout="@layout/fourth" />
+       
+    </ViewFlipper>
+    -->
+
+
+    <!--
+         <Button
+        android:id="@+id/btnSend"
+        android:layout_width="match_parent"
+        android:layout_height="100dip"
+        android:text="@string/txtSend"
+        android:textSize="30sp" />
+    -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="50sp" >
+
+        <TextView
+            android:id="@+id/txtResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/Result"
+            android:textSize="20sp" />
+    </ScrollView>
+
+</LinearLayout>

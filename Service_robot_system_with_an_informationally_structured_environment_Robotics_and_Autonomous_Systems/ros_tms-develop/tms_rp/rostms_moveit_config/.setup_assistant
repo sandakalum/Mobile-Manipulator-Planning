@@ -1,0 +1,8 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: rostms_description
+    relative_path: urdf/all_components_with_moveit.urdf
+  SRDF:
+    relative_path: config/rostms.srdf
+  CONFIG:
+    generated_timestamp: 1442454010

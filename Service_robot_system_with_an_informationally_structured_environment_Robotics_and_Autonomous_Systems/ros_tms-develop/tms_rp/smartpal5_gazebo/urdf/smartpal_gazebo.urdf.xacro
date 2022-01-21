@@ -1,0 +1,728 @@
+<?xml version="1.0"?>
+<!-- All components of ROS-TMS project -->
+<robot name="smartpal" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Import common properties -->
+  <xacro:include filename="$(find rostms_description)/urdf/common_properties.urdf.xacro" />
+  <xacro:include filename="$(find smartpal5_description)/urdf/smartpal5_gazebo.urdf.xacro" />
+
+  <!-- Used for fixing all components to 'world' frame of RViz and Gazebo 'world' -->
+  <link name="world"/>
+
+  <joint name="world_smartpal5_joint" type="fixed">
+	  <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Base, Vehicle -->
+  <!-- <link name="smartpal5_link"/>
+
+  <joint name="smartpal5_x_joint" type="prismatic">
+    <parent link="smartpal5_link"/>
+    <child link="smartpal5_x_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-5." upper="5." velocity="0.5"/>
+  </joint>
+
+  <link name="smartpal5_x_link"/>
+
+  <joint name="smartpal5_y_joint" type="prismatic">
+    <parent link="smartpal5_x_link"/>
+    <child link="smartpal5_y_link"/>
+    <origin xyz="0 0 0" rpy="0 0 1.57075"/>
+    <limit effort="1000.0" lower="-5." upper="5." velocity="0.5"/>
+  </joint>
+
+  <link name="smartpal5_y_link"/>
+
+  <joint name="smartpal5_yaw_joint" type="continuous">
+    <parent link="smartpal5_y_link"/>
+  	<child link="base_footprint"/>
+  	<origin xyz="0 0 0" rpy="0 0 -1.57075"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="base_footprint"/>
+
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+  	<origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint> -->
+
+  <link name="base_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_body_vehicle.dae"/>
+  		</geometry>
+  		<origin xyz="0 0 0" rpy="0 0 0"/> <!-- Offset for wheels already included in the mesh definition -->
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_body_vehicle.dae"/>
+  		</geometry>
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 0.0375" rpy="0 0 0"/>
+  		<mass value="27"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <!-- Lumbar -->
+  <joint name="lumbar_lower_joint" type="fixed">
+    <parent link="base_link"/>
+  	<child link="lumbar_lower_link"/>
+  	<origin xyz="0 0 0.4365" rpy="-1.57075 0 0"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="-0.2" upper="0.00872664625997165" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="lumbar_lower_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_body_lumbar-J1.dae"/>
+  		</geometry>
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_body_lumbar-J1.dae"/>
+  		</geometry>
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+  		<mass value="6"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <joint name="lumbar_upper_joint" type="fixed">
+  	<parent link="lumbar_lower_link"/>
+  	<child link="lumbar_upper_link"/>
+  	<origin xyz="0 -0.21 0" rpy="0 0 0"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="-0.00872664625997165" upper="2.10312174865317" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="lumbar_upper_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_body_lumbar-J2.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_body_lumbar-J2.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0.11 0 0.25" rpy="0 0 0"/>
+  		<mass value="30"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <!-- RGB-D Camera -->
+  <joint name="head_camera_joint" type="fixed">
+  	<parent link="lumbar_upper_link"/>
+  	<child link="camera_link"/>
+  	<origin xyz="0.02 -0.7 0" rpy="1.57075 0 0"/>
+  </joint>
+
+  <link name="camera_link">
+    <visual>
+  		<geometry>
+  			<box size="0.03 0.15 0.05"/>
+  		</geometry>
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<box size="0.05 0.2 0.08"/>
+  		</geometry>
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
+  	</collision>
+  	<inertial>
+  	    <origin xyz="0 0 0" rpy="0 0 0"/>
+  		<mass value="0.5"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <!-- Left Arm -->
+  <joint name="l_arm_j1_joint" type="revolute">
+  	<parent link="lumbar_upper_link"/>
+  	<child link="l_arm_j1_link"/>
+  	<origin xyz="-0.025 -0.480 0.200" rpy="3.14159 0 0"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="-0.7679" upper="3.1066" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="l_arm_j1_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_leftArm_J1.dae"/>
+  		</geometry>
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_leftArm_J1.dae"/>
+  		</geometry>
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+  		<mass value="0.6"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <joint name="l_arm_j2_joint" type="revolute">
+  	<parent link="l_arm_j1_link"/>
+  	<child link="l_arm_j2_link"/>
+  	<origin xyz="0 0 0" rpy="1.57075 3.14159 1.57075"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="-0.2443" upper="1.9024" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="l_arm_j2_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_leftArm_J2.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_leftArm_J2.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+  		<mass value="0.6"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <joint name="l_arm_j3_joint" type="revolute">
+  	<parent link="l_arm_j2_link"/>
+  	<child link="l_arm_j3_link"/>
+  	<origin xyz="0 0 0" rpy="1.57075 1.57075 1.57075"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="-2.0769" upper="2.0769" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="l_arm_j3_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_leftArm_J3.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_leftArm_J3.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
+  		<mass value="1"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <joint name="l_arm_j4_joint" type="revolute">
+  	<parent link="l_arm_j3_link"/>
+  	<child link="l_arm_j4_link"/>
+  	<origin xyz="-0.02 0.0 0.25" rpy="-1.57075 0 3.14159"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="-0.0174" upper="2.2514" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="l_arm_j4_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_leftArm_J4.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_leftArm_J4.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 -0.3" rpy="0 0 0"/>
+  		<mass value="0.6"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <joint name="l_arm_j5_joint" type="revolute">
+  	<parent link="l_arm_j4_link"/>
+  	<child link="l_arm_j5_link"/>
+  	<origin xyz="-0.02 0.0 0.0" rpy="1.57075 0 0"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="-2.0769" upper="2.0769" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="l_arm_j5_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_leftArm_J5.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_leftArm_J5.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 0.1" rpy="0 0 0"/>
+  		<mass value="0.4"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <joint name="l_arm_j6_joint" type="revolute">
+  	<parent link="l_arm_j5_link"/>
+  	<child link="l_arm_j6_link"/>
+  	<origin xyz="0.0 0.0 0.28" rpy="-1.57075 1.57075 0"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="-0.2617" upper="0.7504" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="l_arm_j6_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_leftArm_J6.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_leftArm_J6.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="-0.1 0 0" rpy="0 0 0"/>
+  		<mass value="0.4"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <joint name="l_arm_j7_joint" type="revolute">
+  	<parent link="l_arm_j6_link"/>
+  	<child link="l_arm_j7_link"/>
+  	<origin xyz="0.0 0.0 0" rpy="1.57075 3.14159 0"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="0" upper="0.5" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="l_arm_j7_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_leftArm_J7.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_leftArm_J7.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+  		<mass value="0.4"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <!-- Left Gripper -->
+  <joint name="l_gripper_joint" type="fixed">
+  	<parent link="l_arm_j7_link"/>
+  	<child link="l_gripper_link"/>
+  	<origin xyz="0.056 0 0" rpy="3.14159 3.14159 1.57075"/>
+  	<axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="l_gripper_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_leftGripper_gripper.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_leftGripper_gripper.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+  		<mass value="0.6"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <joint name="l_end_effector_joint" type="fixed">
+    <origin xyz="0.01 0.11 0" rpy="0 0 0"/>
+    <parent link="l_gripper_link"/>
+    <child link="l_end_effector_link"/>
+  </joint>
+
+  <link name="l_end_effector_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="l_gripper_thumb_joint" type="revolute">
+  	<parent link="l_gripper_link"/>
+  	<child link="l_gripper_thumb_link"/>
+  	<origin xyz="0.027 0.042 0.0" rpy="0 0 0"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="-1.0122" upper="0.1396" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="l_gripper_thumb_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_leftGripper_g-thumb.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_leftGripper_g-thumb.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+  		<mass value="0.4"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <!-- Right Arm -->
+  <joint name="r_arm_j1_joint" type="revolute">
+  	<parent link="lumbar_upper_link"/>
+  	<child link="r_arm_j1_link"/>
+  	<origin xyz="-0.025 -0.480 -0.200" rpy="3.14159 0 0"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="-0.7679" upper="3.1066" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="r_arm_j1_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_rightArm_J1.dae"/>
+  		</geometry>
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_rightArm_J1.dae"/>
+  		</geometry>
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+  		<mass value="0.6"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <joint name="r_arm_j2_joint" type="revolute">
+  	<parent link="r_arm_j1_link"/>
+  	<child link="r_arm_j2_link"/>
+  	<origin xyz="0 0 0" rpy="-1.57075 0 -1.57075"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="-1.9024" upper="0.2443" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="r_arm_j2_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_rightArm_J2.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_rightArm_J2.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+  		<mass value="0.6"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <joint name="r_arm_j3_joint" type="revolute">
+  	<parent link="r_arm_j2_link"/>
+  	<child link="r_arm_j3_link"/>
+  	<origin xyz="0 0 0" rpy="1.57075 1.57075 1.57075"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="-2.0769" upper="2.0769" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="r_arm_j3_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_rightArm_J3.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_rightArm_J3.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
+  		<mass value="1"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <joint name="r_arm_j4_joint" type="revolute">
+  	<parent link="r_arm_j3_link"/>
+  	<child link="r_arm_j4_link"/>
+  	<origin xyz="-0.02 0.0 0.25" rpy="-1.57075 0 3.14159"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="-0.0174" upper="2.2514" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="r_arm_j4_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_rightArm_J4.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_rightArm_J4.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 -0.3" rpy="0 0 0"/>
+  		<mass value="0.6"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <joint name="r_arm_j5_joint" type="revolute">
+  	<parent link="r_arm_j4_link"/>
+  	<child link="r_arm_j5_link"/>
+  	<origin xyz="-0.02 0.0 0.0" rpy="1.57075 0 0"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="-2.0769" upper="2.0769" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="r_arm_j5_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_rightArm_J5.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_rightArm_J5.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 0.1" rpy="0 0 0"/>
+  		<mass value="0.4"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <joint name="r_arm_j6_joint" type="revolute">
+  	<parent link="r_arm_j5_link"/>
+  	<child link="r_arm_j6_link"/>
+  	<origin xyz="0.0 0.0 0.28" rpy="-1.57075 1.57075 0"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="-0.2617" upper="0.7504" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="r_arm_j6_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_rightArm_J6.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_rightArm_J6.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="-0.1 0 0" rpy="0 0 0"/>
+  		<mass value="0.4"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <joint name="r_arm_j7_joint" type="revolute">
+  	<parent link="r_arm_j6_link"/>
+  	<child link="r_arm_j7_link"/>
+  	<origin xyz="0.0 0.0 0" rpy="1.57075 3.14159 0"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="-1.0122" upper="1.0" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="r_arm_j7_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_rightArm_J7.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_rightArm_J7.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+  		<mass value="0.4"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <!-- Right Gripper -->
+  <joint name="r_gripper_joint" type="fixed">
+  	<parent link="r_arm_j7_link"/>
+  	<child link="r_gripper_link"/>
+  	<origin xyz="0.056 0 0" rpy="3.14159 3.14159 3.14159"/>
+  	<axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="r_gripper_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_rightGripper_gripper.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_rightGripper_gripper.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+  		<mass value="0.6"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+  <joint name="r_end_effector_joint" type="fixed">
+    <origin xyz="0.11 0.01 0" rpy="0 0 0"/>
+    <parent link="r_gripper_link"/>
+    <child link="r_end_effector_link"/>
+  </joint>
+
+  <link name="r_end_effector_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="r_gripper_thumb_joint" type="revolute">
+  	<parent link="r_gripper_link"/>
+  	<child link="r_gripper_thumb_link"/>
+  	<origin xyz="0.042 0.027 0.0" rpy="0 0 -1.57075"/>
+  	<axis xyz="0 0 1"/>
+  	<limit lower="-0.1396" upper="1.0122" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <link name="r_gripper_thumb_link">
+  	<visual>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/visual/Pal5_rightGripper_g-thumb.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  		<material name="grey"/>
+  	</visual>
+  	<collision>
+  		<geometry>
+  			<mesh filename="package://smartpal5_description/meshes/collision/Pal5_rightGripper_g-thumb.dae"/>
+  		</geometry>
+  		<origin rpy="0 0 0" xyz="0 0 0"/>
+  	</collision>
+  	<inertial>
+  		<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+  		<mass value="0.4"/>
+  		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  	</inertial>
+  </link>
+
+</robot>

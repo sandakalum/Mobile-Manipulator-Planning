@@ -1,0 +1,17 @@
+# This KNI-demo uses pthreads. Because MS Windows does not support
+# POSIX threads natively, this demo uses the pthreads-win32
+# library.
+
+
+pthreads-win32 is a POSIX threads library for Microsoft Windows
+
+Pthreads-win32 is covered by the GNU Lesser General Public License
+See pthreads.copying.txt and and pthreads.lgpl.txt for further information
+
+Following files belong to the pthreads-win32 library:
+- pthreadVC2.dll
+- pthreadVC2.lib
+- pthread.h
+- sched.h
+- pthread.copying.txt
+- pthread.lgpl.txt

@@ -1,0 +1,5 @@
+origin_lat: 33.5955650327
+origin_lng: 130.2188234402
+angle_offset: 0.6  # deg
+scale_offset: 1
+sel_solutions: "all"

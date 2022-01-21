@@ -1,0 +1,3 @@
+uint32 gripper  #1=open gripper 2=close gripper 3=close gripper for grasp(very slowly)
+---
+uint32 success

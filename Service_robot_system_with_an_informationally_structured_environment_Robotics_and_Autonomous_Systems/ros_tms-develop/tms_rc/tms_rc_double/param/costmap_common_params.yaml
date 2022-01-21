@@ -1,0 +1,22 @@
+# max_obstacle_height: 0.60  # assume something like an arm is mounted on top of the robot
+
+# Obstacle Cost Shaping (http://wiki.ros.org/costmap_2d/hydro/inflation)
+# footprint: [[-1.5,-1.5], [1.5,-1.5], [1.5,1.5], [-1.5,1.5]]  # if the robot is not circular
+footprint: [[-0.07,-0.07], [0.095,-0.07], [0.095,0.07], [-0.07,0.07]]  # if the robot is not circular
+#footprint: [[-0.12,-0.14], [0.12,-0.14], [0.12,0.14], [-0.12,0.14]]  # if the robot is not circular
+obstacle_range: 5.0
+raytrace_range: 3.0
+# robot_radius: 0.18
+inflation_radius: 1.75
+cost_scaling_factor: 2.58
+
+map_type: voxel
+origin_z: 0.0
+z_resolution: 0.2
+z_voxels: 2
+publish_voxel_map: false
+max_obstacle_height: 0.60
+
+observation_sources: scan bump
+scan: {data_type: LaserScan, topic: scan, marking: true, clearing: true, min_obstacle_height: 0.25, max_obstacle_height: 0.35}
+bump: {data_type: PointCloud2, topic: mobile_base/sensors/bumper_pointcloud, marking: true, clearing: false, min_obstacle_height: 0.0, max_obstacle_height: 0.15}

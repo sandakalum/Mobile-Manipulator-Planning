@@ -1,0 +1,10 @@
+image: map_center_zone2.png
+#image: map_center_zone.png
+resolution: 0.050000
+# origin: [-250.000000, -248.000000, 0.000000]
+origin: [-233.000000, -210.000000, 0.000000]
+# origin: [-500.000000, -500.000000, 0.000000]
+negate: 0
+occupied_thresh: 0.2
+free_thresh: 0.05
+

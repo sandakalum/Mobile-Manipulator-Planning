@@ -1,0 +1,32 @@
+/*
+	ExtAxes interface.
+	Copyright (C) 2014 Yaskawa Electric Corporation.
+*/
+
+#ifndef LUMBAEXTAXES_IDL_
+#define LUMBAEXTAXES_IDL_
+
+#include "Common.idl" // for Common Data
+
+interface LumbaExtAxes {
+	boolean powerOn();
+	boolean powerOff();
+	boolean servoOn();
+	boolean servoOff();
+	boolean isPowerOn();
+	boolean isServoOn();
+	boolean getState(out unsigned long statusId, out string message);
+	boolean pause();
+	boolean resume();
+	boolean stop();
+	boolean abort();
+	boolean isMoving();
+	boolean clearAlarms();
+	boolean getActiveAlarm(in unsigned long maximumNumber, out unsigned long numberOfAlarm, out AlarmSeq alarmArray);
+	unsigned long getNumberOfAxes();
+	boolean getSoftLimit(out unsigned long numberOfData, out LimitSeq limitArray);
+	boolean getVersion(out string versionMessage);
+
+};
+
+#endif

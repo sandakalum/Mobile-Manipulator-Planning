@@ -1,0 +1,6 @@
+# README for socketcontrol demo
+# Neuronics AG
+# 2007
+
+This demo uses TCP/IP sockets to connect to a Katana 1.2 or a Katana model in
+Webots. It implements most low level command the robot understands.
