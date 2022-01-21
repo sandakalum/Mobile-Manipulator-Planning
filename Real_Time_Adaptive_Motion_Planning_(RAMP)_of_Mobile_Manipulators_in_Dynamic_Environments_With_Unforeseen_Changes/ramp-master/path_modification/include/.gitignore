@@ -1,0 +1,3 @@
+#This is soley added so that the include directory will be added by git
+#Even though it is empty, ros Cmake files look for this directory and cannot build without it
+!.gitignore

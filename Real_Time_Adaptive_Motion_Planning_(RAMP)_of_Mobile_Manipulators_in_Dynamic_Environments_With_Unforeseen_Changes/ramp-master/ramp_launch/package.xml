@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <name>ramp_launch</name>
+  <version>0.0.0</version>
+  <description>The ramp_launch package</description>
+
+  <maintainer email="sterlingm@todo.todo">sterlingm</maintainer>
+
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <run_depend>ramp_planner</run_depend>
+  <run_depend>trajectory_generator</run_depend>
+  <run_depend>path_modification</run_depend>
+  <run_depend>evaluation</run_depend>
+
+</package>

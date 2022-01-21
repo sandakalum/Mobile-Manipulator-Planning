@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package>
+  <name>trajectory_visualisation</name>
+  <version>1.0.0</version>
+  <description>
+
+     Display a list of trajectory
+
+  </description>
+
+  <maintainer email="mcormier@coroware.com">Morgan Cormier</maintainer>
+  <license>BSD</license>
+  <url type="website">http://ros.org/wiki/trajectory_viewer</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>qt-ros</build_depend>
+  <build_depend>ramp_msgs</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>qt4</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>qt-ros</run_depend>
+  <run_depend>ramp_msgs</run_depend>
+  <run_depend>nav_msgs</run_depend>
+  <run_depend>qt4</run_depend>
+
+
+  
+</package>

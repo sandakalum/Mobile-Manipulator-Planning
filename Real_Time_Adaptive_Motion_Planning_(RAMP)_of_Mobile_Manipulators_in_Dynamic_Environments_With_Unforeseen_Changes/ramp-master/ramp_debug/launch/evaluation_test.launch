@@ -1,0 +1,11 @@
+<launch>
+
+
+<node name="trajectory_generator" pkg="trajectory_generator" type="trajectory_generator" /> 
+
+<node name="trajectory_evaluation" pkg="trajectory_evaluation" type="trajectory_evaluation" output="screen" /> 
+
+
+<node name="evaluation_test" pkg="ramp_debug" type="evaluation_test" output="screen" />
+
+</launch>

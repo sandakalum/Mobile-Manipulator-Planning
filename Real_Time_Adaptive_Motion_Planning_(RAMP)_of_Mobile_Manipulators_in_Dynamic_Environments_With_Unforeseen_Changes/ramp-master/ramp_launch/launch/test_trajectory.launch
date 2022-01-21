@@ -1,0 +1,16 @@
+<launch>
+
+
+<!-- Trajectory Generator -->
+<node name="trajectory_generator" pkg="trajectory_generator" type="trajectory_generator" output="screen" />
+
+<!-- Trajectory visualisation -->
+<node name="trajectory_visualisation" pkg="trajectory_visualisation" type="trajectory_visualisation" output="screen" />
+
+<!-- Publish Trajectory -->
+<node name="publish_trajectory_command" pkg="ramp_debug" type="publishTrajectoryCommand" output="screen" />
+
+
+<!-- On robot, run corobot_software_launch and ramp_control -->
+
+</launch>

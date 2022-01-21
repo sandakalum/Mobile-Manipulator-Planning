@@ -1,0 +1,58 @@
+<launch>
+
+<!--
+
+Change the topic name in config.yaml (in ramp_planner) to publish on correct cmd_vel
+Change orientation of robot for ramp_control
+Change obstacle tf in ramp_planner?
+Change robot locations in world file
+
+-->
+
+<!-- Parameters -->
+<include file="$(find ramp_launch)/launch/planner_parameters.launch" />
+
+<!-- Robot info parameters -->
+<rosparam file="$(find ramp_launch)/launch/config/robot_0.yaml" command="load" ns="robot_info/" />
+
+
+
+<!-- Trajectory Generator -->
+<node name="trajectory_generator" pkg="trajectory_generator" type="trajectory_generator" output="screen" />
+
+<!-- Path Modification -->
+<node name="path_modification" pkg="path_modification" type="path_modification" output="screen" />
+
+<!-- Trajectory Evaluation -->
+<node name="trajectory_evaluation" pkg="trajectory_evaluation" type="trajectory_evaluation" output="screen" />
+
+<!-- Planner -->
+<node name="ramp_planner" pkg="ramp_planner" type="ramp_planner" output="screen" /> 
+
+
+
+<!-- Simulation -->
+<node name="stageros" pkg="stage_ros" type="stageros" args="/home/sterlingm/ros_workspace/src/ramp/ramp_launch/launch/world/full_simulation.world" /> 
+<node name="ramp_control" pkg="ramp_control" type="ramp_control" output="screen" >
+  <remap from="odometry" to="odom" />
+  <!-- <remap from="cmd_vel" to="robot_0/cmd_vel" /> -->
+  <param name="simulation" type="bool" value="true" />
+  <param name="orientation" type="double" value="1.5708" />
+  <param name="check_imminent_coll" type="bool" value="true" />
+</node>
+
+
+<!-- Trajectory Visualization -->
+<node name="trajectory_visualisation" pkg="trajectory_visualisation" type="trajectory_visualisation" output="screen"/>
+
+
+
+<!-- Sensing nodes -->
+<node name="ramp_sensing" pkg="ramp_sensing" type="ramp_sensing" />
+
+
+<node name="obstacles" pkg="ramp_planner" type="obstacle_twist_all" />
+
+
+
+</launch>

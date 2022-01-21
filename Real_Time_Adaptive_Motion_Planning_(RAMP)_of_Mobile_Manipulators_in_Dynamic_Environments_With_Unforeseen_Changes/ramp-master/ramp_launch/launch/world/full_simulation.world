@@ -1,0 +1,93 @@
+#include "map.inc"
+
+# time to pause (in GUI mode) or quit (in headless mode (-g)) the simulation
+quit_time 3600 # 1 hour of simulated time
+
+paused 1
+
+resolution 0.02
+  
+interval_sim 25
+
+
+define corobot corobot_base
+(
+  block(
+    points 8
+    point[0] [-0.2 0.12]
+    point[1] [-0.2 -0.12]
+    point[2] [-0.12 -0.2555]
+    point[3] [0.12 -0.2555]
+    point[4] [0.2 -0.12]
+    point[5] [0.2 0.12]
+    point[6] [0.12 0.2555]
+    point[7] [-0.12 0.2555]  
+    z [0 0.222]
+  )
+  
+  size [1 1 0.5]
+)
+
+define corobot_base position 
+(
+  color "red"
+  velocity_bounds [-0.5 0.5 0 0 0 0 -180 180]
+  acceleration_bounds [1 1 0 0 0 0 -540 540]
+)
+
+
+# configure the GUI window
+window
+(
+  size [ 635.000 666.000 ] # in pixels
+  scale 36.995   # pixels per meter
+  center [ -0.040  -0.274 ]
+  rotate [ 0  0 ]
+  			
+  show_data 1              # 1=on 0=off
+
+)
+
+
+corobot
+(		  
+  name "r0"
+  color "blue"
+  pose [0 0 0 90]
+  size [0.18 0.18 0.5]
+)
+
+#corobot
+#(
+#  name "r1"
+#  color "red"
+#  pose [3.5 3.5 0 -135]
+#  size [0.18 0.18 0.5]
+#)
+
+#corobot
+#(
+#  name "r2"
+#  color "red"
+#  pose [2 0 0 135]
+#  size [0.18 0.18 0.5]
+#)
+
+#corobot
+#(
+#  name "r3"
+#  color "red"
+#  pose [2 0 0 135]
+#  size [0.18 0.18 0.5]
+#)
+
+
+  #pose [ 1.5 3.5 0 -90 ] 
+  #pose [0.344 0.196 0 0]
+  #pose [ 0 0 0 29.745 ] 
+  #pose [ 0 0 0 45 ] 
+  #pose [2.5 1 0 -45]
+  #pose [3.5 2 0 180]
+  #pose [3.5 0 0 112]
+
+#

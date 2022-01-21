@@ -1,0 +1,12 @@
+<launch>
+
+
+
+<arg name="kinect" value="0" />
+
+<group if="$(arg kinect)">	
+  <include file="$(find openni_launch)/launch/openni.launch"/>
+</group>
+
+</launch>
+

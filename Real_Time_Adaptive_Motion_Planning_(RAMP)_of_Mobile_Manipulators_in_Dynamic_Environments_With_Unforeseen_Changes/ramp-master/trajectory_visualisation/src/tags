@@ -1,0 +1,146 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AlignBottom	main.cpp	/^    splash->showMessage(QObject::tr("ROS GUI is launching...."),Qt::AlignBottom,Qt::black);$/;"	m	class:Qt	file:
+DirectoryOfThisScript	.ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f	access:public
+FlagsForFile	.ycm_extra_conf.py	/^def FlagsForFile( filename, **kwargs ):$/;"	f	access:public
+GetCompilationInfoForFile	.ycm_extra_conf.py	/^def GetCompilationInfoForFile( filename ):$/;"	f	access:public
+IsHeaderFile	.ycm_extra_conf.py	/^def IsHeaderFile( filename ):$/;"	f	access:public
+MainWindow	mainwindow.cpp	/^MainWindow::MainWindow(QWidget *parent) :$/;"	f	class:MainWindow	signature:(QWidget *parent)
+MainWindow::MainWindow	mainwindow.cpp	/^MainWindow::MainWindow(QWidget *parent) :$/;"	f	class:MainWindow	signature:(QWidget *parent)
+MainWindow::resizeEvent	mainwindow.cpp	/^void MainWindow::resizeEvent(QResizeEvent *){\/\/execute this function when the window size changes$/;"	f	class:MainWindow	signature:(QResizeEvent *)
+MainWindow::~MainWindow	mainwindow.cpp	/^MainWindow::~MainWindow()$/;"	f	class:MainWindow	signature:()
+MakeRelativePathsInFlagsAbsolute	.ycm_extra_conf.py	/^def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):$/;"	f	access:public
+Qt::AlignBottom	main.cpp	/^    splash->showMessage(QObject::tr("ROS GUI is launching...."),Qt::AlignBottom,Qt::black);$/;"	m	class:Qt	file:
+Qt::black	main.cpp	/^    splash->showMessage(QObject::tr("ROS GUI is launching...."),Qt::AlignBottom,Qt::black);$/;"	m	class:Qt	file:
+Ros	Ros.cpp	/^Ros::Ros(){$/;"	f	class:Ros	signature:()
+Ros::Ros	Ros.cpp	/^Ros::Ros(){$/;"	f	class:Ros	signature:()
+Ros::init	Ros.cpp	/^void Ros::init(int argc, char *argv[]){$/;"	f	class:Ros	signature:(int argc, char *argv[])
+Ros::populationCallback	Ros.cpp	/^void Ros::populationCallback(const ramp_msgs::Population& msg)$/;"	f	class:Ros	signature:(const ramp_msgs::Population& msg)
+Ros::run	Ros.cpp	/^void Ros::run(){$/;"	f	class:Ros	signature:()
+Ros::subscribe	Ros.cpp	/^void Ros::subscribe()$/;"	f	class:Ros	signature:()
+Ros::~Ros	Ros.cpp	/^Ros::~Ros(){$/;"	f	class:Ros	signature:()
+SOURCE_EXTENSIONS	.ycm_extra_conf.py	/^SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]$/;"	v
+TrajectoryView	TrajectoryView.cpp	/^TrajectoryView::TrajectoryView(QWidget *parent)$/;"	f	class:TrajectoryView	signature:(QWidget *parent)
+TrajectoryView::TrajectoryView	TrajectoryView.cpp	/^TrajectoryView::TrajectoryView(QWidget *parent)$/;"	f	class:TrajectoryView	signature:(QWidget *parent)
+TrajectoryView::drawPopulation	TrajectoryView.cpp	/^void TrajectoryView::drawPopulation() {$/;"	f	class:TrajectoryView	signature:()
+TrajectoryView::metersToPixels	TrajectoryView.cpp	/^int const TrajectoryView::metersToPixels(float value, bool isWidth)$/;"	f	class:TrajectoryView	signature:(float value, bool isWidth)
+TrajectoryView::population	TrajectoryView.cpp	/^void TrajectoryView::population(const ramp_msgs::Population& msg)$/;"	f	class:TrajectoryView	signature:(const ramp_msgs::Population& msg)
+TrajectoryView::size_changed	TrajectoryView.cpp	/^void TrajectoryView::size_changed()$/;"	f	class:TrajectoryView	signature:()
+Utility	utility.cpp	/^Utility::Utility() {$/;"	f	class:Utility	signature:()
+Utility::Utility	utility.cpp	/^Utility::Utility() {$/;"	f	class:Utility	signature:()
+Utility::displaceAngle	utility.cpp	/^const float Utility::displaceAngle(const float a1, float a2) const {$/;"	f	class:Utility	signature:(const float a1, float a2) const
+Utility::euclideanDistance	utility.cpp	/^const float Utility::euclideanDistance(const std::vector<float> a, const std::vector<float> b) const {$/;"	f	class:Utility	signature:(const std::vector<float> a, const std::vector<float> b) const
+Utility::findAngleFromAToB	utility.cpp	/^const float Utility::findAngleFromAToB(const std::vector<float> a, const std::vector<float> b) const {$/;"	f	class:Utility	signature:(const std::vector<float> a, const std::vector<float> b) const
+Utility::findDistanceBetweenAngles	utility.cpp	/^const float Utility::findDistanceBetweenAngles(const float a1, const float a2) const {$/;"	f	class:Utility	signature:(const float a1, const float a2) const
+Utility::getConfigurationFromPoint	utility.cpp	/^const ramp_msgs::Configuration Utility::getConfigurationFromPoint(const trajectory_msgs::JointTrajectoryPoint p) const {$/;"	f	class:Utility	signature:(const trajectory_msgs::JointTrajectoryPoint p) const
+Utility::getPath	utility.cpp	/^const ramp_msgs::Path Utility::getPath(const std::vector<ramp_msgs::KnotPoint> configs) const {$/;"	f	class:Utility	signature:(const std::vector<ramp_msgs::KnotPoint> configs) const
+Utility::toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::Configuration c) const {$/;"	f	class:Utility	signature:(const ramp_msgs::Configuration c) const
+Utility::toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::KnotPoint kp) const {$/;"	f	class:Utility	signature:(const ramp_msgs::KnotPoint kp) const
+Utility::toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::MotionState mp) const {$/;"	f	class:Utility	signature:(const ramp_msgs::MotionState mp) const
+Utility::toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::Path path) const {$/;"	f	class:Utility	signature:(const ramp_msgs::Path path) const
+Utility::toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::RampTrajectory traj) const {$/;"	f	class:Utility	signature:(const ramp_msgs::RampTrajectory traj) const
+Utility::~Utility	utility.cpp	/^Utility::~Utility() {}$/;"	f	class:Utility	signature:()
+a	main.cpp	/^    QApplication a(argc, argv);$/;"	p	file:	signature:(argc, argv)
+at	utility.cpp	/^      result<<", "<<p.accelerations.at(k);$/;"	p	file:	signature:(k)
+at	utility.cpp	/^      result<<", "<<p.positions.at(k);$/;"	p	file:	signature:(k)
+at	utility.cpp	/^      result<<", "<<p.velocities.at(k);$/;"	p	file:	signature:(k)
+at	utility.cpp	/^    result<<c.K.at(i)<<", ";$/;"	p	file:	signature:(i)
+at	utility.cpp	/^    result<<mp.accelerations.at(i)<<" ";$/;"	p	file:	signature:(i)
+at	utility.cpp	/^    result<<mp.jerks.at(i)<<" ";$/;"	p	file:	signature:(i)
+at	utility.cpp	/^    result<<mp.positions.at(i)<<" ";$/;"	p	file:	signature:(i)
+at	utility.cpp	/^    result<<mp.velocities.at(i)<<" ";$/;"	p	file:	signature:(i)
+at	utility.cpp	/^  result<<c.K.at(c.K.size()-1)<<")";$/;"	p	file:	signature:(c.K.size()-1)
+black	main.cpp	/^    splash->showMessage(QObject::tr("ROS GUI is launching...."),Qt::AlignBottom,Qt::black);$/;"	m	class:Qt	file:
+clear	TrajectoryView.cpp	/^  populations_.clear();$/;"	p	file:	signature:()
+compilation_database_folder	.ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
+cout	TrajectoryView.cpp	/^  std::cout<<"\\n\\nReceived Population!";$/;"	m	class:std	file:
+d_x	utility.cpp	/^  float d_x = b.at(0) - a.at(0);$/;"	l
+d_y	utility.cpp	/^  float d_y = b.at(1) - a.at(1);$/;"	l
+database	.ycm_extra_conf.py	/^  database = None$/;"	v
+database	.ycm_extra_conf.py	/^  database = ycm_core.CompilationDatabase( compilation_database_folder )$/;"	v
+difference	utility.cpp	/^  float difference = a1 - a2;$/;"	l
+displaceAngle	utility.cpp	/^const float Utility::displaceAngle(const float a1, float a2) const {$/;"	f	class:Utility	signature:(const float a1, float a2) const
+drawPopulation	TrajectoryView.cpp	/^void TrajectoryView::drawPopulation() {$/;"	f	class:TrajectoryView	signature:()
+euc_dist	utility.cpp	/^  float euc_dist = sqrt( pow(d_x,2) + pow(d_y,2) );$/;"	l
+euclideanDistance	utility.cpp	/^const float Utility::euclideanDistance(const std::vector<float> a, const std::vector<float> b) const {$/;"	f	class:Utility	signature:(const std::vector<float> a, const std::vector<float> b) const
+exec	main.cpp	/^    a.exec();$/;"	p	file:	signature:()
+findAngleFromAToB	utility.cpp	/^const float Utility::findAngleFromAToB(const std::vector<float> a, const std::vector<float> b) const {$/;"	f	class:Utility	signature:(const std::vector<float> a, const std::vector<float> b) const
+findDistanceBetweenAngles	utility.cpp	/^const float Utility::findDistanceBetweenAngles(const float a1, const float a2) const {$/;"	f	class:Utility	signature:(const float a1, const float a2) const
+flags	.ycm_extra_conf.py	/^flags = [$/;"	v
+getConfigurationFromPoint	utility.cpp	/^const ramp_msgs::Configuration Utility::getConfigurationFromPoint(const trajectory_msgs::JointTrajectoryPoint p) const {$/;"	f	class:Utility	signature:(const trajectory_msgs::JointTrajectoryPoint p) const
+getPath	utility.cpp	/^const ramp_msgs::Path Utility::getPath(const std::vector<ramp_msgs::KnotPoint> configs) const {$/;"	f	class:Utility	signature:(const std::vector<ramp_msgs::KnotPoint> configs) const
+height_	TrajectoryView.cpp	/^    std::cout<<"\\nheight: "<<height_<<"\\n";$/;"	l
+i	TrajectoryView.cpp	/^    int i = populations_.at(p).best_id;$/;"	l
+i	utility.cpp	/^    result<<"\\n   "<<i<<":";$/;"	l
+i	utility.cpp	/^    result<<"\\n\\n   Point "<<i<<":";$/;"	l
+index	utility.cpp	/^    unsigned int index = traj.i_knotPoints.at(i);$/;"	l
+init	Ros.cpp	/^    ros::init(argc, argv,"trajectory_view");$/;"	p	class:ros	file:	signature:(argc, argv,Ó)
+init	Ros.cpp	/^void Ros::init(int argc, char *argv[]){$/;"	f	class:Ros	signature:(int argc, char *argv[])
+loc_max	utility.cpp	/^  float loc_max = 3.5;$/;"	l
+loc_min	utility.cpp	/^  float loc_min = 0;$/;"	l
+main	main.cpp	/^int main(int argc, char *argv[])$/;"	f	signature:(int argc, char *argv[])
+metersToPixels	TrajectoryView.cpp	/^                                    metersToPixels(p.at(1), false),$/;"	p	file:	signature:(p.at(1), false)
+metersToPixels	TrajectoryView.cpp	/^                         metersToPixels(points.at(j).positions.at(1), false),$/;"	p	file:	signature:(points.at(j).positions.at(1), false)
+metersToPixels	TrajectoryView.cpp	/^                         metersToPixels(points.at(j+1).positions.at(0), true),$/;"	p	file:	signature:(points.at(j+1).positions.at(0), true)
+metersToPixels	TrajectoryView.cpp	/^                         metersToPixels(points.at(j+1).positions.at(1), false),$/;"	p	file:	signature:(points.at(j+1).positions.at(1), false)
+metersToPixels	TrajectoryView.cpp	/^          this->scene()->addLine(metersToPixels(points.at(j).positions.at(0), true),$/;"	p	file:	signature:(points.at(j).positions.at(0), true)
+metersToPixels	TrajectoryView.cpp	/^        this->scene()->addEllipse(metersToPixels(p.at(0), true),$/;"	p	file:	signature:(p.at(0), true)
+metersToPixels	TrajectoryView.cpp	/^int const TrajectoryView::metersToPixels(float value, bool isWidth)$/;"	f	class:TrajectoryView	signature:(float value, bool isWidth)
+n	Ros.cpp	/^    ros::NodeHandle n;$/;"	l
+p	TrajectoryView.cpp	/^        std::vector<float> p;$/;"	l
+p	utility.cpp	/^    trajectory_msgs::JointTrajectoryPoint p = traj.trajectory.points.at(i);$/;"	l
+p	utility.cpp	/^    trajectory_msgs::JointTrajectoryPoint p = traj.trajectory.points.at(index);$/;"	l
+pen	TrajectoryView.cpp	/^                         pen);$/;"	l
+pen	TrajectoryView.cpp	/^  QPen pen = QPen( QColor(0,0,0,150) ); $/;"	l
+points	TrajectoryView.cpp	/^      std::vector<trajectory_msgs::JointTrajectoryPoint> points = populations_.at(p).population.at(t).trajectory.points;$/;"	l
+population	Ros.cpp	/^    Q_EMIT population(msg);$/;"	p	file:	signature:(msg)
+population	TrajectoryView.cpp	/^void TrajectoryView::population(const ramp_msgs::Population& msg)$/;"	f	class:TrajectoryView	signature:(const ramp_msgs::Population& msg)
+populationCallback	Ros.cpp	/^void Ros::populationCallback(const ramp_msgs::Population& msg)$/;"	f	class:Ros	signature:(const ramp_msgs::Population& msg)
+push_back	TrajectoryView.cpp	/^        p.push_back(points.at(0).positions.at(0));$/;"	p	file:	signature:(points.at(0).positions.at(0))
+push_back	TrajectoryView.cpp	/^        p.push_back(points.at(0).positions.at(1));$/;"	p	file:	signature:(points.at(0).positions.at(1))
+push_back	TrajectoryView.cpp	/^  populations_.push_back(msg);$/;"	p	file:	signature:(msg)
+push_back	utility.cpp	/^    result.K.push_back(p.positions.at(i));$/;"	p	file:	signature:(p.positions.at(i))
+push_back	utility.cpp	/^    result.points.push_back(configs.at(i));$/;"	p	file:	signature:(configs.at(i))
+push_back	utility.cpp	/^  ranges_.push_back(r1); $/;"	p	file:	signature:(r1)
+push_back	utility.cpp	/^  ranges_.push_back(r2); $/;"	p	file:	signature:(r2)
+push_back	utility.cpp	/^  ranges_.push_back(r3); $/;"	p	file:	signature:(r3)
+r1	utility.cpp	/^  ramp_msgs::Range r1;$/;"	l
+r2	utility.cpp	/^  ramp_msgs::Range r2;$/;"	l
+r3	utility.cpp	/^  ramp_msgs::Range r3;$/;"	l
+radius	TrajectoryView.cpp	/^            int radius = metersToPixels(0.5, true);$/;"	l
+resizeEvent	mainwindow.cpp	/^void MainWindow::resizeEvent(QResizeEvent *){\/\/execute this function when the window size changes$/;"	f	class:MainWindow	signature:(QResizeEvent *)
+result	utility.cpp	/^  float result;$/;"	l
+result	utility.cpp	/^  ramp_msgs::Configuration result; $/;"	l
+result	utility.cpp	/^  ramp_msgs::Path result;$/;"	l
+result	utility.cpp	/^  std::ostringstream result;$/;"	l
+ros::init	Ros.cpp	/^    ros::init(argc, argv,"trajectory_view");$/;"	p	class:ros	file:	signature:(argc, argv,Ó)
+ros::spin	Ros.cpp	/^    ros::spin();$/;"	p	class:ros	file:	signature:()
+run	Ros.cpp	/^void Ros::run(){$/;"	f	class:Ros	signature:()
+scene	TrajectoryView.cpp	/^    QGraphicsScene *scene = new QGraphicsScene(this);$/;"	l
+setItemIndexMethod	TrajectoryView.cpp	/^    scene->setItemIndexMethod(QGraphicsScene::NoIndex);$/;"	p	file:	signature:(QGraphicsScene::NoIndex)
+setParent	mainwindow.cpp	/^    r.setParent(this);$/;"	p	file:	signature:(this)
+setupUi	mainwindow.cpp	/^    ui->setupUi(this);$/;"	p	file:	signature:(this)
+show	main.cpp	/^    splash->show();$/;"	p	file:	signature:()
+show	main.cpp	/^    w.show();$/;"	p	file:	signature:()
+size_changed	TrajectoryView.cpp	/^void TrajectoryView::size_changed()$/;"	f	class:TrajectoryView	signature:()
+size_changed	mainwindow.cpp	/^    trajView.size_changed();$/;"	p	file:	signature:()
+spin	Ros.cpp	/^    ros::spin();$/;"	p	class:ros	file:	signature:()
+splash	main.cpp	/^    QSplashScreen *splash = new QSplashScreen;$/;"	l
+std::cout	TrajectoryView.cpp	/^  std::cout<<"\\n\\nReceived Population!";$/;"	m	class:std	file:
+subscribe	Ros.cpp	/^void Ros::subscribe()$/;"	f	class:Ros	signature:()
+toString	utility.cpp	/^    result<<"\\n "<<i<<": "<<toString(path.points.at(i));$/;"	p	file:	signature:(path.points.at(i))
+toString	utility.cpp	/^  result<<"\\nConfiguration: "<<toString(kp.motionState);$/;"	p	file:	signature:(kp.motionState)
+toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::Configuration c) const {$/;"	f	class:Utility	signature:(const ramp_msgs::Configuration c) const
+toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::KnotPoint kp) const {$/;"	f	class:Utility	signature:(const ramp_msgs::KnotPoint kp) const
+toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::MotionState mp) const {$/;"	f	class:Utility	signature:(const ramp_msgs::MotionState mp) const
+toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::Path path) const {$/;"	f	class:Utility	signature:(const ramp_msgs::Path path) const
+toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::RampTrajectory traj) const {$/;"	f	class:Utility	signature:(const ramp_msgs::RampTrajectory traj) const
+w	main.cpp	/^    MainWindow w;$/;"	l
+width_	TrajectoryView.cpp	/^    std::cout<<"\\nwidth: "<<width_;$/;"	l
+~MainWindow	mainwindow.cpp	/^MainWindow::~MainWindow()$/;"	f	class:MainWindow	signature:()
+~Ros	Ros.cpp	/^Ros::~Ros(){$/;"	f	class:Ros	signature:()
+~Utility	utility.cpp	/^Utility::~Utility() {}$/;"	f	class:Utility	signature:()

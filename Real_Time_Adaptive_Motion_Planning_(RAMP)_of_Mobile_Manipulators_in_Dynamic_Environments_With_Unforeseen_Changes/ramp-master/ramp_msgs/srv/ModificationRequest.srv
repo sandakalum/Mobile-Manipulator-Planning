@@ -1,0 +1,8 @@
+Path[] paths
+string op
+float64 move_dist
+float64 move_dir
+
+---
+
+Path[]  mod_paths

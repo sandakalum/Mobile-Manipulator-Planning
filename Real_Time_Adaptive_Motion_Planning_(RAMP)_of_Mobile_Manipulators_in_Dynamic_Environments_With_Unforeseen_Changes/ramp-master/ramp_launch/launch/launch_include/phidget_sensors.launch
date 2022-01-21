@@ -1,0 +1,30 @@
+<launch>
+
+
+<!-- Define the machine -->
+
+<include file="$(find ramp_launch)/launch/corobots.machine" />
+
+
+<!-- Set arguments -->
+
+<arg name="phidgetInterfaceKit" value="1"/> 
+<arg name="irFront" value="1"/> <!-- Index of the analog input for the front infrared sensor(default = 1). -1 if this one is not present or the data doesn't have to be read -->
+
+
+
+<!-- Run nodes -->
+<group ns="robot_0">
+  <node pkg="corobot_phidget_ik" name="phidget_interface_kit" type="corobot_phidget" machine="robot_0">
+    <param name="irFront" type="int" value="$(arg irFront)"/>
+  </node>
+</group> 
+
+
+<group ns="robot_1">
+  <node pkg="corobot_phidget_ik" name="phidget_interface_kit" type="corobot_phidget" machine="robot_1">
+    <param name="irFront" type="int" value="$(arg irFront)"/>
+  </node>
+</group> 
+
+</launch>

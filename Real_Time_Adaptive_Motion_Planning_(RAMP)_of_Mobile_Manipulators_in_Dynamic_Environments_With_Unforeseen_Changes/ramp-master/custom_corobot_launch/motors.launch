@@ -1,0 +1,84 @@
+<launch>
+
+
+<!--***** ROBOT *****-->
+
+<!-- Note that it is assumed that if you don't have an explorer or a corobot 4 wheel drive you have a corobot 2 wheel drive -->
+<arg name="TwoWheelDrive" value="1"/> <!-- 1 if you have a 2wheel drive, with a caster -->
+<arg name="FourWheelDrive" value="0"/> <!-- 1 if you have a 4 Wheel Drive -->
+<arg name="base_width" value="0.238125"/> <!-- 1 The length between the left and right wheel, taken at about the middle of the wheels, in meters-->
+<arg name="ticks_meter" value="9435"/> <!-- The number of encoder ticks per meter. This depends on the wheels and the encoders you have. See the ROS_Users_Guide.pdf that CoroWare distributes for more information on how to find this value for your robot-->
+
+
+<!--***** Phidget Motor Controller *****-->
+
+<arg name="PhidgetMotorController" value="1"/> <!-- 1 if you have the Phidget Motor Controller, 0 if you don't -->
+<arg name="motors_inverted" value="0"/> <!-- 1 if you want to invert the motors, 0 if not. This is used only in the case where the robot can turn properly but the forward and backward movement are inverted (by testing in the corobot_teleop package for example). It also invert the encoders at the same time-->
+<arg name="encoders_inverted" value="0"/> <!-- 1 if you want to invert the encoders, 0 if not. This is used when the odometry give a negative x position when the robot moves forward-->
+<arg name="stop_when_obstacle" value="0"/> <!-- 1 if you want the robot to stop when it bumps into an obstacle. This feature uses only encoders and the motors current sensor-->
+
+
+<!--***** PID CONTROL *****-->
+
+<arg name="twistCommand" value="1"/> <!-- 1 if you want to enable commanding the robot with twist messages, 0 if you don't. You can change the PID parameters bellow -->
+
+
+
+  <group if="$(arg PhidgetMotorController)">
+    <node pkg="phidget_motor" name="phidget_motor" type="PhidgetMotor.py" args="">
+	    <param name="motors_inverted" type="bool" value="$(arg motors_inverted)"/>
+	    <param name="encoders_inverted" type="bool" value="$(arg encoders_inverted)"/>
+	    <param name="stop_when_obstacle" type="bool" value="$(arg stop_when_obstacle)"/>
+    </node>
+
+	<node pkg="corobot_state_tf" name="corobot_state_tf" type="corobot_state_tf">
+		<param name="ticks_meter" type="int" value="$(arg ticks_meter)"/>
+		<param name="base_width" type="double" value="$(arg base_width)"/>
+		<param name="TwoWheelDrive" type="bool" value="$(arg TwoWheelDrive)"/>
+		<param name="FourWheelDrive" type="bool" value="$(arg FourWheelDrive)"/>
+		<param name="publish_odom_tf" type="bool" value="1"/>
+	</node>
+  </group>
+
+
+
+
+	<group if="$(arg twistCommand)">
+		<rosparam param="ticks_meter">9435</rosparam>
+
+			<node pkg="differential-drive" type="pid_velocity.py" name="lpid_velocity">
+			    <remap from="wheel" to="lwheel"/>
+			    <remap from="motor_cmd" to="lmotor_cmd"/>
+			    <remap from="wheel_vtarget" to="lwheel_vtarget"/>
+			    <remap from="wheel_vel" to="lwheel_vel"/>
+			    <rosparam param="Kp">50</rosparam>
+			    <rosparam param="Ki">200</rosparam>
+			    <rosparam param="Kd">1</rosparam>
+			    <rosparam param="out_min">-100</rosparam>
+			    <rosparam param="out_max">100</rosparam>
+			    <rosparam param="rate">30</rosparam>
+			    <rosparam param="timeout_ticks">4</rosparam>
+			    <rosparam param="rolling_pts">8</rosparam>
+			</node>
+			<node pkg="differential-drive" type="pid_velocity.py" name="rpid_velocity">
+			    <remap from="wheel" to="rwheel"/>
+			    <remap from="motor_cmd" to="rmotor_cmd"/>
+			    <remap from="wheel_vtarget" to="rwheel_vtarget"/>
+			    <remap from="wheel_vel" to="rwheel_vel"/>
+			    <rosparam param="Kp">50</rosparam>
+			    <rosparam param="Ki">200</rosparam>
+			    <rosparam param="Kd">1</rosparam>
+			    <rosparam param="out_min">-100</rosparam>
+			    <rosparam param="out_max">100</rosparam>
+			    <rosparam param="rate">30</rosparam>
+			    <rosparam param="timeout_ticks">4</rosparam>
+			    <rosparam param="rolling_pts">8</rosparam>
+			</node>
+
+			<node pkg="differential-drive" type="twist_to_motors.py" name="twist_to_motors">
+			  <rosparam param="base_width">$(arg base_width)</rosparam>
+			</node>
+  </group>
+
+
+</launch>

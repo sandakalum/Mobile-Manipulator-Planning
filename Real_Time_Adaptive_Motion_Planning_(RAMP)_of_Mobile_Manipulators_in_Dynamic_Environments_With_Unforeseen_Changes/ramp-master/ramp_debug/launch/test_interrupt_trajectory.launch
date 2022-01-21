@@ -1,0 +1,18 @@
+<launch>
+
+
+<node name="trajectory_generator" pkg="trajectory_generator" type="trajectory_generator" /> 
+
+<node name="trajectory_visualisation" pkg="trajectory_visualisation" type="trajectory_visualisation" output="screen" /> 
+
+<!-- Simulation -->
+<node name="stageros" pkg="stage_ros" type="stageros" args="/home/sterlingm/ros_workspace/src/ramp/ramp_launch/launch/world/single_robot.world" /> 
+<node name="ramp_control" pkg="ramp_control" type="ramp_control" output="screen">
+  <remap from="odometry" to="odom" />
+  <param name="simulation" value="true" />
+</node>
+
+
+<node name="interrupt_trajectory" pkg="ramp_debug" type="interrupt_trajectory" output="screen" />
+
+</launch>

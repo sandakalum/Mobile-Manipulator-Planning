@@ -1,0 +1,48 @@
+
+<launch>
+
+<!--
+
+Change the topic name in config.yaml (in ramp_planner) to publish on correct cmd_vel
+Change orientation of robot for ramp_control
+Change robot locations in world file
+Change twist messages published to obstacle in main_obstacle_twist (ramp_planner)
+
+-->
+
+<!-- Parameters -->
+<include file="$(find ramp_launch)/launch/planner_parameters.launch" />
+
+
+<!-- Trajectory Generator -->
+<node name="trajectory_generator" pkg="trajectory_generator" type="trajectory_generator" />
+
+<!-- Trajectory Evaluation -->
+<node name="trajectory_evaluation" pkg="trajectory_evaluation" type="trajectory_evaluation" output="screen" />
+
+<!-- Trajectory Visualization -->
+<node name="trajectory_visualisation" pkg="trajectory_visualisation" type="trajectory_visualisation" />
+
+<!-- Publish Trajectory -->
+<node name="publish_trajectory_command" pkg="ramp_debug" type="publishTrajectoryCommand" output="screen" />
+
+
+
+<!-- Simulation -->
+<node name="stageros" pkg="stage_ros" type="stageros" args="/home/sterlingm/ros_workspace/src/ramp/ramp_launch/launch/world/test_trajectory_obstacle.world" /> 
+<node name="ramp_control" pkg="ramp_control" type="ramp_control" >
+  <remap from="odometry" to="robot_0/odom" />
+  <remap from="/cmd_vel" to="/robot_0/cmd_vel" />
+  <param name="simulation" value="true" />
+  <param name="check_imminent_coll" value="false" />
+  <param name="orientation" type="double" value="0.785" />
+</node>
+
+
+
+
+<node name="obstacles" pkg="ramp_planner" type="obstacle_twist_all" output="screen" />
+
+
+
+</launch>

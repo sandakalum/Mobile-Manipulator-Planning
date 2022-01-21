@@ -1,0 +1,405 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ACCELERATION_CONSTANT	mobile_robot.h	/^    static const int          ACCELERATION_CONSTANT = 50;$/;"	m	class:MobileRobot	access:public
+BASE_WIDTH	mobile_robot.cpp	/^const float BASE_WIDTH=0.2413;$/;"	v
+DirectoryOfThisScript	.ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f	access:public
+FlagsForFile	.ycm_extra_conf.py	/^def FlagsForFile( filename, **kwargs ):$/;"	f	access:public
+GetCompilationInfoForFile	.ycm_extra_conf.py	/^def GetCompilationInfoForFile( filename ):$/;"	f	access:public
+IsHeaderFile	.ycm_extra_conf.py	/^def IsHeaderFile( filename ):$/;"	f	access:public
+KEYCODE_D	keyboard_teleop.cpp	12;"	d	file:
+KEYCODE_L	keyboard_teleop.cpp	10;"	d	file:
+KEYCODE_Q	keyboard_teleop.cpp	13;"	d	file:
+KEYCODE_R	keyboard_teleop.cpp	9;"	d	file:
+KEYCODE_U	keyboard_teleop.cpp	11;"	d	file:
+MOBILE_ROBOT_H	mobile_robot.h	3;"	d
+MakeRelativePathsInFlagsAbsolute	.ycm_extra_conf.py	/^def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):$/;"	f	access:public
+MobileRobot	mobile_robot.cpp	/^MobileRobot::MobileRobot() : restart_(false), num_(0), num_prev_(0), num_traveled_(0), k_dof_(3), h_traj_req_(0) { $/;"	f	class:MobileRobot	signature:()
+MobileRobot	mobile_robot.h	/^    MobileRobot();$/;"	p	class:MobileRobot	access:public	signature:()
+MobileRobot	mobile_robot.h	/^class MobileRobot {$/;"	c
+MobileRobot::ACCELERATION_CONSTANT	mobile_robot.h	/^    static const int          ACCELERATION_CONSTANT = 50;$/;"	m	class:MobileRobot	access:public
+MobileRobot::MobileRobot	mobile_robot.cpp	/^MobileRobot::MobileRobot() : restart_(false), num_(0), num_prev_(0), num_traveled_(0), k_dof_(3), h_traj_req_(0) { $/;"	f	class:MobileRobot	signature:()
+MobileRobot::MobileRobot	mobile_robot.h	/^    MobileRobot();$/;"	p	class:MobileRobot	access:public	signature:()
+MobileRobot::TOPIC_STR_ODOMETRY	mobile_robot.cpp	/^const std::string MobileRobot::TOPIC_STR_ODOMETRY="odometry";$/;"	m	class:MobileRobot	file:
+MobileRobot::TOPIC_STR_ODOMETRY	mobile_robot.h	/^    static const std::string  TOPIC_STR_ODOMETRY;$/;"	m	class:MobileRobot	access:public
+MobileRobot::TOPIC_STR_PHIDGET_MOTOR	mobile_robot.cpp	/^const std::string MobileRobot::TOPIC_STR_PHIDGET_MOTOR="PhidgetMotor";$/;"	m	class:MobileRobot	file:
+MobileRobot::TOPIC_STR_PHIDGET_MOTOR	mobile_robot.h	/^    static const std::string  TOPIC_STR_PHIDGET_MOTOR;$/;"	m	class:MobileRobot	access:public
+MobileRobot::TOPIC_STR_TWIST	mobile_robot.cpp	/^const std::string MobileRobot::TOPIC_STR_TWIST="twist";$/;"	m	class:MobileRobot	file:
+MobileRobot::TOPIC_STR_TWIST	mobile_robot.h	/^    static const std::string  TOPIC_STR_TWIST;$/;"	m	class:MobileRobot	access:public
+MobileRobot::TOPIC_STR_UPDATE	mobile_robot.cpp	/^const std::string MobileRobot::TOPIC_STR_UPDATE="update";$/;"	m	class:MobileRobot	file:
+MobileRobot::TOPIC_STR_UPDATE	mobile_robot.h	/^    static const std::string  TOPIC_STR_UPDATE;$/;"	m	class:MobileRobot	access:public
+MobileRobot::calculateSpeedsAndTime	mobile_robot.cpp	/^void MobileRobot::calculateSpeedsAndTime () {$/;"	f	class:MobileRobot	signature:()
+MobileRobot::calculateSpeedsAndTime	mobile_robot.h	/^    void                        calculateSpeedsAndTime();$/;"	p	class:MobileRobot	access:private	signature:()
+MobileRobot::checkImminentCollision	mobile_robot.cpp	/^const bool MobileRobot::checkImminentCollision() const {$/;"	f	class:MobileRobot	signature:() const
+MobileRobot::checkImminentCollision	mobile_robot.h	/^    const bool                  checkImminentCollision() const;$/;"	p	class:MobileRobot	access:private	signature:() const
+MobileRobot::checkOrientation	mobile_robot.cpp	/^const bool MobileRobot::checkOrientation(const int i, const bool simulation) const {$/;"	f	class:MobileRobot	signature:(const int i, const bool simulation) const
+MobileRobot::checkOrientation	mobile_robot.h	/^    const bool                  checkOrientation(const int i, const bool simulation) const;$/;"	p	class:MobileRobot	access:private	signature:(const int i, const bool simulation) const
+MobileRobot::computeAcceleration	mobile_robot.cpp	/^const std::vector<float> MobileRobot::computeAcceleration() const {$/;"	f	class:MobileRobot	signature:() const
+MobileRobot::computeAcceleration	mobile_robot.h	/^    const std::vector<float>    computeAcceleration() const;$/;"	p	class:MobileRobot	access:private	signature:() const
+MobileRobot::controlCycle	mobile_robot.h	/^    void controlCycle(geometry_msgs::Twist twist, ros::Time end_time, ros::Rate r);$/;"	p	class:MobileRobot	access:public	signature:(geometry_msgs::Twist twist, ros::Time end_time, ros::Rate r)
+MobileRobot::drive	mobile_robot.cpp	/^void MobileRobot::drive(const corobot_msgs::MotorCommand msg) const {$/;"	f	class:MobileRobot	signature:(const corobot_msgs::MotorCommand msg) const
+MobileRobot::drive	mobile_robot.h	/^    void drive(corobot_msgs::MotorCommand msg) const;$/;"	p	class:MobileRobot	access:public	signature:(corobot_msgs::MotorCommand msg) const
+MobileRobot::driveStraight	mobile_robot.cpp	/^void MobileRobot::driveStraight(const unsigned int speed) const {$/;"	f	class:MobileRobot	signature:(const unsigned int speed) const
+MobileRobot::driveStraight	mobile_robot.h	/^    void driveStraight(const unsigned int speed) const;$/;"	p	class:MobileRobot	access:public	signature:(const unsigned int speed) const
+MobileRobot::end_times	mobile_robot.h	/^    std::vector<ros::Time>    end_times; $/;"	m	class:MobileRobot	access:private
+MobileRobot::getRotationTrajectory	mobile_robot.h	/^    const ramp_msgs::RampTrajectory getRotationTrajectory() const;$/;"	p	class:MobileRobot	access:private	signature:() const
+MobileRobot::h_traj_req_	mobile_robot.h	/^    TrajectoryRequestHandler* h_traj_req_;$/;"	m	class:MobileRobot	access:private
+MobileRobot::init	mobile_robot.cpp	/^void MobileRobot::init(ros::NodeHandle& h) {$/;"	f	class:MobileRobot	signature:(ros::NodeHandle& h)
+MobileRobot::init	mobile_robot.h	/^    void init(ros::NodeHandle& h);$/;"	p	class:MobileRobot	access:public	signature:(ros::NodeHandle& h)
+MobileRobot::initial_theta_	mobile_robot.h	/^    double                            initial_theta_;$/;"	m	class:MobileRobot	access:public
+MobileRobot::k_dof_	mobile_robot.h	/^    const unsigned int        k_dof_;$/;"	m	class:MobileRobot	access:private
+MobileRobot::motion_state_	mobile_robot.h	/^    ramp_msgs::MotionState            motion_state_; $/;"	m	class:MobileRobot	access:public
+MobileRobot::moveOnTrajectory	mobile_robot.cpp	/^void MobileRobot::moveOnTrajectory(bool simulation) {$/;"	f	class:MobileRobot	signature:(bool simulation)
+MobileRobot::moveOnTrajectory	mobile_robot.h	/^    void moveOnTrajectory(bool simulation);$/;"	p	class:MobileRobot	access:public	signature:(bool simulation)
+MobileRobot::moveOnTrajectoryRot	mobile_robot.h	/^    void moveOnTrajectoryRot(const ramp_msgs::RampTrajectory traj, bool simulation);$/;"	p	class:MobileRobot	access:public	signature:(const ramp_msgs::RampTrajectory traj, bool simulation)
+MobileRobot::num_	mobile_robot.h	/^    int                       num_;$/;"	m	class:MobileRobot	access:private
+MobileRobot::num_prev_	mobile_robot.h	/^    int                       num_prev_;$/;"	m	class:MobileRobot	access:private
+MobileRobot::num_traveled_	mobile_robot.h	/^    int                       num_traveled_;$/;"	m	class:MobileRobot	access:private
+MobileRobot::prev_motion_state_	mobile_robot.h	/^    ramp_msgs::MotionState    prev_motion_state_; $/;"	m	class:MobileRobot	access:private
+MobileRobot::prev_t_	mobile_robot.h	/^    ros::Time                 prev_t_;$/;"	m	class:MobileRobot	access:private
+MobileRobot::printVectors	mobile_robot.cpp	/^void MobileRobot::printVectors() const {$/;"	f	class:MobileRobot	signature:() const
+MobileRobot::printVectors	mobile_robot.h	/^    void                        printVectors() const;$/;"	p	class:MobileRobot	access:private	signature:() const
+MobileRobot::pub_cmd_vel_	mobile_robot.h	/^    ros::Publisher                    pub_cmd_vel_;$/;"	m	class:MobileRobot	access:public
+MobileRobot::pub_phidget_motor_	mobile_robot.h	/^    ros::Publisher                    pub_phidget_motor_;$/;"	m	class:MobileRobot	access:public
+MobileRobot::pub_twist_	mobile_robot.h	/^    ros::Publisher                    pub_twist_;$/;"	m	class:MobileRobot	access:public
+MobileRobot::pub_update_	mobile_robot.h	/^    ros::Publisher                    pub_update_;$/;"	m	class:MobileRobot	access:public
+MobileRobot::restart_	mobile_robot.h	/^    bool                      restart_;$/;"	m	class:MobileRobot	access:private
+MobileRobot::sendTwist	mobile_robot.cpp	/^void MobileRobot::sendTwist() const {$/;"	f	class:MobileRobot	signature:() const
+MobileRobot::sendTwist	mobile_robot.cpp	/^void MobileRobot::sendTwist(const geometry_msgs::Twist t) const {$/;"	f	class:MobileRobot	signature:(const geometry_msgs::Twist t) const
+MobileRobot::sendTwist	mobile_robot.h	/^    void                        sendTwist() const;$/;"	p	class:MobileRobot	access:private	signature:() const
+MobileRobot::sendTwist	mobile_robot.h	/^    void sendTwist(const geometry_msgs::Twist twist) const;$/;"	p	class:MobileRobot	access:public	signature:(const geometry_msgs::Twist twist) const
+MobileRobot::speeds_angular_	mobile_robot.h	/^    std::vector<double>       speeds_angular_;$/;"	m	class:MobileRobot	access:private
+MobileRobot::speeds_linear_	mobile_robot.h	/^    std::vector<double>       speeds_linear_;$/;"	m	class:MobileRobot	access:private
+MobileRobot::stop	mobile_robot.cpp	/^void MobileRobot::stop() const {$/;"	f	class:MobileRobot	signature:() const
+MobileRobot::stop	mobile_robot.h	/^    void stop() const;$/;"	p	class:MobileRobot	access:public	signature:() const
+MobileRobot::sub_odometry_	mobile_robot.h	/^    ros::Subscriber                   sub_odometry_;$/;"	m	class:MobileRobot	access:public
+MobileRobot::timer_	mobile_robot.h	/^    ros::Timer                        timer_;$/;"	m	class:MobileRobot	access:public
+MobileRobot::trajectory_	mobile_robot.h	/^    ramp_msgs::RampTrajectory             trajectory_;$/;"	m	class:MobileRobot	access:public
+MobileRobot::turn	mobile_robot.cpp	/^void MobileRobot::turn(const float speed, const float angle) const {$/;"	f	class:MobileRobot	signature:(const float speed, const float angle) const
+MobileRobot::turn	mobile_robot.cpp	/^void MobileRobot::turn(const unsigned int speed, const bool cwise) const {$/;"	f	class:MobileRobot	signature:(const unsigned int speed, const bool cwise) const
+MobileRobot::turn	mobile_robot.h	/^    void turn(const float speed, const float angle) const; $/;"	p	class:MobileRobot	access:public	signature:(const float speed, const float angle) const
+MobileRobot::turn	mobile_robot.h	/^    void turn(const unsigned int speed, const bool cwise) const;$/;"	p	class:MobileRobot	access:public	signature:(const unsigned int speed, const bool cwise) const
+MobileRobot::twist_	mobile_robot.h	/^    geometry_msgs::Twist      twist_;$/;"	m	class:MobileRobot	access:private
+MobileRobot::updatePublishTimer	mobile_robot.cpp	/^void MobileRobot::updatePublishTimer(const ros::TimerEvent&) {$/;"	f	class:MobileRobot	signature:(const ros::TimerEvent&)
+MobileRobot::updatePublishTimer	mobile_robot.h	/^    void updatePublishTimer(const ros::TimerEvent&);$/;"	p	class:MobileRobot	access:public	signature:(const ros::TimerEvent&)
+MobileRobot::updateState	mobile_robot.cpp	/^void MobileRobot::updateState(const nav_msgs::Odometry& msg) {$/;"	f	class:MobileRobot	signature:(const nav_msgs::Odometry& msg)
+MobileRobot::updateState	mobile_robot.h	/^    void updateState(const nav_msgs::Odometry& msg);$/;"	p	class:MobileRobot	access:public	signature:(const nav_msgs::Odometry& msg)
+MobileRobot::updateTrajectory	mobile_robot.cpp	/^void MobileRobot::updateTrajectory(const ramp_msgs::RampTrajectory msg) {$/;"	f	class:MobileRobot	signature:(const ramp_msgs::RampTrajectory msg)
+MobileRobot::updateTrajectory	mobile_robot.h	/^    void updateTrajectory(const ramp_msgs::RampTrajectory msg); $/;"	p	class:MobileRobot	access:public	signature:(const ramp_msgs::RampTrajectory msg)
+MobileRobot::utility_	mobile_robot.h	/^    Utility                   utility_;$/;"	m	class:MobileRobot	access:private
+MobileRobot::velocity_	mobile_robot.h	/^    geometry_msgs::Twist              velocity_;$/;"	m	class:MobileRobot	access:public
+MobileRobot::~MobileRobot	mobile_robot.cpp	/^MobileRobot::~MobileRobot() {$/;"	f	class:MobileRobot	signature:()
+MobileRobot::~MobileRobot	mobile_robot.h	/^    ~MobileRobot();$/;"	p	class:MobileRobot	access:public	signature:()
+PI	utility.h	13;"	d
+SOURCE_EXTENSIONS	.ycm_extra_conf.py	/^SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]$/;"	v
+TOPIC_STR_ODOMETRY	mobile_robot.cpp	/^const std::string MobileRobot::TOPIC_STR_ODOMETRY="odometry";$/;"	m	class:MobileRobot	file:
+TOPIC_STR_ODOMETRY	mobile_robot.h	/^    static const std::string  TOPIC_STR_ODOMETRY;$/;"	m	class:MobileRobot	access:public
+TOPIC_STR_PHIDGET_MOTOR	mobile_robot.cpp	/^const std::string MobileRobot::TOPIC_STR_PHIDGET_MOTOR="PhidgetMotor";$/;"	m	class:MobileRobot	file:
+TOPIC_STR_PHIDGET_MOTOR	mobile_robot.h	/^    static const std::string  TOPIC_STR_PHIDGET_MOTOR;$/;"	m	class:MobileRobot	access:public
+TOPIC_STR_TWIST	mobile_robot.cpp	/^const std::string MobileRobot::TOPIC_STR_TWIST="twist";$/;"	m	class:MobileRobot	file:
+TOPIC_STR_TWIST	mobile_robot.h	/^    static const std::string  TOPIC_STR_TWIST;$/;"	m	class:MobileRobot	access:public
+TOPIC_STR_UPDATE	mobile_robot.cpp	/^const std::string MobileRobot::TOPIC_STR_UPDATE="update";$/;"	m	class:MobileRobot	file:
+TOPIC_STR_UPDATE	mobile_robot.h	/^    static const std::string  TOPIC_STR_UPDATE;$/;"	m	class:MobileRobot	access:public
+TRAJECTORY_REQUEST_HANDLER_H	trajectory_request_handler.h	2;"	d
+TrajectoryRequestHandler	trajectory_request_handler.cpp	/^TrajectoryRequestHandler::TrajectoryRequestHandler(const ros::NodeHandle& h) : handle_(h) {$/;"	f	class:TrajectoryRequestHandler	signature:(const ros::NodeHandle& h)
+TrajectoryRequestHandler	trajectory_request_handler.h	/^    TrajectoryRequestHandler(const ros::NodeHandle& h);$/;"	p	class:TrajectoryRequestHandler	access:public	signature:(const ros::NodeHandle& h)
+TrajectoryRequestHandler	trajectory_request_handler.h	/^class TrajectoryRequestHandler {$/;"	c
+TrajectoryRequestHandler::TrajectoryRequestHandler	trajectory_request_handler.cpp	/^TrajectoryRequestHandler::TrajectoryRequestHandler(const ros::NodeHandle& h) : handle_(h) {$/;"	f	class:TrajectoryRequestHandler	signature:(const ros::NodeHandle& h)
+TrajectoryRequestHandler::TrajectoryRequestHandler	trajectory_request_handler.h	/^    TrajectoryRequestHandler(const ros::NodeHandle& h);$/;"	p	class:TrajectoryRequestHandler	access:public	signature:(const ros::NodeHandle& h)
+TrajectoryRequestHandler::client_	trajectory_request_handler.h	/^    ros::ServiceClient client_;$/;"	m	class:TrajectoryRequestHandler	access:private
+TrajectoryRequestHandler::handle_	trajectory_request_handler.h	/^    ros::NodeHandle  handle_; $/;"	m	class:TrajectoryRequestHandler	access:private
+TrajectoryRequestHandler::request	trajectory_request_handler.cpp	/^const bool TrajectoryRequestHandler::request(ramp_msgs::TrajectoryRequest& tr) {$/;"	f	class:TrajectoryRequestHandler	signature:(ramp_msgs::TrajectoryRequest& tr)
+TrajectoryRequestHandler::request	trajectory_request_handler.h	/^    const bool request(ramp_msgs::TrajectoryRequest& tr);$/;"	p	class:TrajectoryRequestHandler	access:public	signature:(ramp_msgs::TrajectoryRequest& tr)
+UTILITY_H	utility.h	2;"	d
+Utility	utility.cpp	/^Utility::Utility() {$/;"	f	class:Utility	signature:()
+Utility	utility.h	/^    Utility();$/;"	p	class:Utility	access:public	signature:()
+Utility	utility.h	/^class Utility {$/;"	c
+Utility::Utility	utility.cpp	/^Utility::Utility() {$/;"	f	class:Utility	signature:()
+Utility::Utility	utility.h	/^    Utility();$/;"	p	class:Utility	access:public	signature:()
+Utility::displaceAngle	utility.cpp	/^const double Utility::displaceAngle(const double a1, double a2) const {$/;"	f	class:Utility	signature:(const double a1, double a2) const
+Utility::displaceAngle	utility.h	/^    const double displaceAngle(const double a1, double a2) const;$/;"	p	class:Utility	access:public	signature:(const double a1, double a2) const
+Utility::findAngleFromAToB	utility.cpp	/^const double Utility::findAngleFromAToB(const std::vector<double> a, const std::vector<double> b) const {$/;"	f	class:Utility	signature:(const std::vector<double> a, const std::vector<double> b) const
+Utility::findAngleFromAToB	utility.cpp	/^const double Utility::findAngleFromAToB(const trajectory_msgs::JointTrajectoryPoint a, const trajectory_msgs::JointTrajectoryPoint b) const {$/;"	f	class:Utility	signature:(const trajectory_msgs::JointTrajectoryPoint a, const trajectory_msgs::JointTrajectoryPoint b) const
+Utility::findAngleFromAToB	utility.h	/^    const double findAngleFromAToB(const std::vector<double> a, const std::vector<double> b) const;$/;"	p	class:Utility	access:public	signature:(const std::vector<double> a, const std::vector<double> b) const
+Utility::findAngleFromAToB	utility.h	/^    const double findAngleFromAToB(const trajectory_msgs::JointTrajectoryPoint a, const trajectory_msgs::JointTrajectoryPoint b) const;$/;"	p	class:Utility	access:public	signature:(const trajectory_msgs::JointTrajectoryPoint a, const trajectory_msgs::JointTrajectoryPoint b) const
+Utility::findDistanceBetweenAngles	utility.cpp	/^const double Utility::findDistanceBetweenAngles(const double a1, const double a2) const {$/;"	f	class:Utility	signature:(const double a1, const double a2) const
+Utility::findDistanceBetweenAngles	utility.h	/^    const double findDistanceBetweenAngles(const double a1, const double a2) const;$/;"	p	class:Utility	access:public	signature:(const double a1, const double a2) const
+Utility::getEuclideanDist	utility.cpp	/^const double Utility::getEuclideanDist(const std::vector<double> a, const std::vector<double> b) const {$/;"	f	class:Utility	signature:(const std::vector<double> a, const std::vector<double> b) const
+Utility::getEuclideanDist	utility.h	/^    const double getEuclideanDist(const std::vector<double> a, std::vector<double> b) const;$/;"	p	class:Utility	access:public	signature:(const std::vector<double> a, std::vector<double> b) const
+Utility::planarDistance	utility.cpp	/^const double Utility::planarDistance(const std::vector<double> a, const std::vector<double> b) const {$/;"	f	class:Utility	signature:(const std::vector<double> a, const std::vector<double> b) const
+Utility::planarDistance	utility.h	/^    const double planarDistance(const std::vector<double> a, const std::vector<double> b) const;$/;"	p	class:Utility	access:public	signature:(const std::vector<double> a, const std::vector<double> b) const
+Utility::standardRanges	utility.h	/^    std::vector<ramp_msgs::Range> standardRanges;$/;"	m	class:Utility	access:public
+Utility::toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::KnotPoint kp) const {$/;"	f	class:Utility	signature:(const ramp_msgs::KnotPoint kp) const
+Utility::toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::MotionState mp) const {$/;"	f	class:Utility	signature:(const ramp_msgs::MotionState mp) const
+Utility::toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::Path path) const {$/;"	f	class:Utility	signature:(const ramp_msgs::Path path) const
+Utility::toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::RampTrajectory traj) const {$/;"	f	class:Utility	signature:(const ramp_msgs::RampTrajectory traj) const
+Utility::toString	utility.cpp	/^const std::string Utility::toString(const trajectory_msgs::JointTrajectoryPoint p) const {$/;"	f	class:Utility	signature:(const trajectory_msgs::JointTrajectoryPoint p) const
+Utility::toString	utility.h	/^    const std::string toString(const ramp_msgs::KnotPoint kp) const;$/;"	p	class:Utility	access:public	signature:(const ramp_msgs::KnotPoint kp) const
+Utility::toString	utility.h	/^    const std::string toString(const ramp_msgs::MotionState c) const;$/;"	p	class:Utility	access:public	signature:(const ramp_msgs::MotionState c) const
+Utility::toString	utility.h	/^    const std::string toString(const ramp_msgs::Path p) const;$/;"	p	class:Utility	access:public	signature:(const ramp_msgs::Path p) const
+Utility::toString	utility.h	/^    const std::string toString(const ramp_msgs::RampTrajectory traj) const;$/;"	p	class:Utility	access:public	signature:(const ramp_msgs::RampTrajectory traj) const
+Utility::toString	utility.h	/^    const std::string toString(const trajectory_msgs::JointTrajectoryPoint p) const;$/;"	p	class:Utility	access:public	signature:(const trajectory_msgs::JointTrajectoryPoint p) const
+Utility::~Utility	utility.h	/^    ~Utility() {}$/;"	f	class:Utility	access:public	signature:()
+a	mobile_robot.cpp	/^    float a = (motion_state_.velocities.at(i) - prev_motion_state_.velocities.at(i)) $/;"	l
+a	mobile_robot.cpp	/^  std::vector<float> a = computeAcceleration();$/;"	l
+actual_theta	mobile_robot.cpp	/^  float actual_theta = utility_.displaceAngle(initial_theta_, motion_state_.positions.at(2));$/;"	l
+at	mobile_robot.cpp	/^    std::cout<<end_times.at(i)<<", ";$/;"	p	file:	signature:(i)
+at	mobile_robot.cpp	/^    std::cout<<speeds_angular_.at(i)<<", ";$/;"	p	file:	signature:(i)
+at	mobile_robot.cpp	/^    std::cout<<speeds_linear_.at(i)<<", ";$/;"	p	file:	signature:(i)
+at	mobile_robot.cpp	/^  std::cout<<end_times.at(end_times.size()-1)<<"]";$/;"	p	file:	signature:(end_times.size()-1)
+at	mobile_robot.cpp	/^  std::cout<<speeds_angular_.at(speeds_angular_.size()-1)<<"]";$/;"	p	file:	signature:(speeds_angular_.size()-1)
+at	mobile_robot.cpp	/^  std::cout<<speeds_linear_.at(speeds_linear_.size()-1)<<"]";$/;"	p	file:	signature:(speeds_linear_.size()-1)
+at	utility.cpp	/^    result<<", "<<p.accelerations.at(k);$/;"	p	file:	signature:(k)
+at	utility.cpp	/^    result<<", "<<p.positions.at(k);$/;"	p	file:	signature:(k)
+at	utility.cpp	/^    result<<", "<<p.velocities.at(k);$/;"	p	file:	signature:(k)
+at	utility.cpp	/^    result<<mp.accelerations.at(i)<<" ";$/;"	p	file:	signature:(i)
+at	utility.cpp	/^    result<<mp.jerks.at(i)<<" ";$/;"	p	file:	signature:(i)
+at	utility.cpp	/^    result<<mp.positions.at(i)<<" ";$/;"	p	file:	signature:(i)
+at	utility.cpp	/^    result<<mp.velocities.at(i)<<" ";$/;"	p	file:	signature:(i)
+c	keyboard_teleop.cpp	/^  char c;$/;"	l
+c	utility.cpp	/^  std::vector<double> c;$/;"	l
+calculateSpeedsAndTime	mobile_robot.cpp	/^void MobileRobot::calculateSpeedsAndTime () {$/;"	f	class:MobileRobot	signature:()
+calculateSpeedsAndTime	mobile_robot.h	/^    void                        calculateSpeedsAndTime();$/;"	p	class:MobileRobot	access:private	signature:()
+checkImminentCollision	mobile_robot.cpp	/^const bool MobileRobot::checkImminentCollision() const {$/;"	f	class:MobileRobot	signature:() const
+checkImminentCollision	mobile_robot.h	/^    const bool                  checkImminentCollision() const;$/;"	p	class:MobileRobot	access:private	signature:() const
+checkOrientation	mobile_robot.cpp	/^const bool MobileRobot::checkOrientation(const int i, const bool simulation) const {$/;"	f	class:MobileRobot	signature:(const int i, const bool simulation) const
+checkOrientation	mobile_robot.h	/^    const bool                  checkOrientation(const int i, const bool simulation) const;$/;"	p	class:MobileRobot	access:private	signature:(const int i, const bool simulation) const
+clear	mobile_robot.cpp	/^  end_times.clear();$/;"	p	file:	signature:()
+clear	mobile_robot.cpp	/^  motion_state_.accelerations.clear();$/;"	p	file:	signature:()
+clear	mobile_robot.cpp	/^  motion_state_.positions.clear();$/;"	p	file:	signature:()
+clear	mobile_robot.cpp	/^  motion_state_.velocities.clear();$/;"	p	file:	signature:()
+clear	mobile_robot.cpp	/^  speeds_angular_.clear();$/;"	p	file:	signature:()
+clear	mobile_robot.cpp	/^  speeds_linear_.clear();$/;"	p	file:	signature:()
+client_	trajectory_request_handler.h	/^    ros::ServiceClient client_;$/;"	m	class:TrajectoryRequestHandler	access:private
+compilation_database_folder	.ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
+computeAcceleration	mobile_robot.cpp	/^const std::vector<float> MobileRobot::computeAcceleration() const {$/;"	f	class:MobileRobot	signature:() const
+computeAcceleration	mobile_robot.h	/^    const std::vector<float>    computeAcceleration() const;$/;"	p	class:MobileRobot	access:private	signature:() const
+controlCycle	mobile_robot.h	/^    void controlCycle(geometry_msgs::Twist twist, ros::Time end_time, ros::Rate r);$/;"	p	class:MobileRobot	access:public	signature:(geometry_msgs::Twist twist, ros::Time end_time, ros::Rate r)
+cooked	keyboard_teleop.cpp	/^struct termios cooked, raw;$/;"	v	typeref:struct:termios
+cout	keyboard_teleop.cpp	/^  std::cout<<"\\nExiting Normally\\n";$/;"	m	class:std	file:
+cout	main.cpp	/^  std::cout<<"\\nExiting Normally\\n";$/;"	m	class:std	file:
+cout	mobile_robot.cpp	/^  std::cout<<"\\nIn updateTrajectory!\\n";$/;"	m	class:std	file:
+cout	mobile_robot.cpp	/^  std::cout<<"\\nend_times: [";$/;"	m	class:std	file:
+cout	mobile_robot.cpp	/^  std::cout<<"\\nspeeds_angular_: [";$/;"	m	class:std	file:
+cout	mobile_robot.cpp	/^  std::cout<<"\\nspeeds_linear: [";$/;"	m	class:std	file:
+cout	wait_for_command.cpp	/^  std::cout<<"\\nExiting Normally\\n";$/;"	m	class:std	file:
+cout	wait_for_command.cpp	/^  std::cout<<"\\nGot trajectory message!\\n";$/;"	m	class:std	file:
+cout	wait_for_command.cpp	/^  std::cout<<"\\nGot twist message!\\n";$/;"	m	class:std	file:
+current	mobile_robot.cpp	/^    trajectory_msgs::JointTrajectoryPoint current = trajectory_.trajectory.points.at(i);$/;"	l
+d	utility.cpp	/^  std::vector<double> d;$/;"	l
+d_x	utility.cpp	/^  double d_x = b.at(0) - a.at(0);$/;"	l
+d_y	utility.cpp	/^  double d_y = b.at(1) - a.at(1);$/;"	l
+database	.ycm_extra_conf.py	/^  database = None$/;"	v
+database	.ycm_extra_conf.py	/^  database = ycm_core.CompilationDatabase( compilation_database_folder )$/;"	v
+diff	mobile_robot.cpp	/^  float diff = fabs(utility_.findDistanceBetweenAngles(actual_theta, t_or));$/;"	l
+difference	utility.cpp	/^  double difference = a2 - a1;$/;"	l
+displaceAngle	utility.cpp	/^const double Utility::displaceAngle(const double a1, double a2) const {$/;"	f	class:Utility	signature:(const double a1, double a2) const
+displaceAngle	utility.h	/^    const double displaceAngle(const double a1, double a2) const;$/;"	p	class:Utility	access:public	signature:(const double a1, double a2) const
+drive	mobile_robot.cpp	/^void MobileRobot::drive(const corobot_msgs::MotorCommand msg) const {$/;"	f	class:MobileRobot	signature:(const corobot_msgs::MotorCommand msg) const
+drive	mobile_robot.h	/^    void drive(corobot_msgs::MotorCommand msg) const;$/;"	p	class:MobileRobot	access:public	signature:(corobot_msgs::MotorCommand msg) const
+driveStraight	mobile_robot.cpp	/^void MobileRobot::driveStraight(const unsigned int speed) const {$/;"	f	class:MobileRobot	signature:(const unsigned int speed) const
+driveStraight	mobile_robot.h	/^    void driveStraight(const unsigned int speed) const;$/;"	p	class:MobileRobot	access:public	signature:(const unsigned int speed) const
+end	wait_for_command.cpp	/^  ros::Time end = ros::Time::now() + d;$/;"	l
+end_times	mobile_robot.h	/^    std::vector<ros::Time>    end_times; $/;"	m	class:MobileRobot	access:private
+erase	demo.cpp	/^  msg.i_knotPoints.erase(msg.i_knotPoints.begin()+3);$/;"	p	file:	signature:(msg.i_knotPoints.begin()+3)
+erase	demo.cpp	/^  msg.trajectory.points.erase(msg.trajectory.points.begin());$/;"	p	file:	signature:(msg.trajectory.points.begin())
+euc_dist	utility.cpp	/^  double euc_dist = sqrt( pow(d_x,2) + pow(d_y,2) );$/;"	l
+findAngleFromAToB	utility.cpp	/^const double Utility::findAngleFromAToB(const std::vector<double> a, const std::vector<double> b) const {$/;"	f	class:Utility	signature:(const std::vector<double> a, const std::vector<double> b) const
+findAngleFromAToB	utility.cpp	/^const double Utility::findAngleFromAToB(const trajectory_msgs::JointTrajectoryPoint a, const trajectory_msgs::JointTrajectoryPoint b) const {$/;"	f	class:Utility	signature:(const trajectory_msgs::JointTrajectoryPoint a, const trajectory_msgs::JointTrajectoryPoint b) const
+findAngleFromAToB	utility.h	/^    const double findAngleFromAToB(const std::vector<double> a, const std::vector<double> b) const;$/;"	p	class:Utility	access:public	signature:(const std::vector<double> a, const std::vector<double> b) const
+findAngleFromAToB	utility.h	/^    const double findAngleFromAToB(const trajectory_msgs::JointTrajectoryPoint a, const trajectory_msgs::JointTrajectoryPoint b) const;$/;"	p	class:Utility	access:public	signature:(const trajectory_msgs::JointTrajectoryPoint a, const trajectory_msgs::JointTrajectoryPoint b) const
+findDistanceBetweenAngles	utility.cpp	/^const double Utility::findDistanceBetweenAngles(const double a1, const double a2) const {$/;"	f	class:Utility	signature:(const double a1, const double a2) const
+findDistanceBetweenAngles	utility.h	/^    const double findDistanceBetweenAngles(const double a1, const double a2) const;$/;"	p	class:Utility	access:public	signature:(const double a1, const double a2) const
+flags	.ycm_extra_conf.py	/^flags = [$/;"	v
+g_time	mobile_robot.cpp	/^    ros::Time g_time = end_times.at(num_traveled_);$/;"	l
+getEuclideanDist	utility.cpp	/^const double Utility::getEuclideanDist(const std::vector<double> a, const std::vector<double> b) const {$/;"	f	class:Utility	signature:(const std::vector<double> a, const std::vector<double> b) const
+getEuclideanDist	utility.h	/^    const double getEuclideanDist(const std::vector<double> a, std::vector<double> b) const;$/;"	p	class:Utility	access:public	signature:(const std::vector<double> a, std::vector<double> b) const
+getRotationTrajectory	mobile_robot.h	/^    const ramp_msgs::RampTrajectory getRotationTrajectory() const;$/;"	p	class:MobileRobot	access:private	signature:() const
+getYaw	mobile_robot.cpp	/^  motion_state_.positions.push_back(tf::getYaw(msg.pose.pose.orientation));$/;"	p	file:	signature:(msg.pose.pose.orientation)
+h_traj_req_	mobile_robot.h	/^    TrajectoryRequestHandler* h_traj_req_;$/;"	m	class:MobileRobot	access:private
+handle	demo.cpp	/^  ros::NodeHandle handle;$/;"	l
+handle	keyboard_teleop.cpp	/^  ros::NodeHandle handle;$/;"	l
+handle	main.cpp	/^  ros::NodeHandle handle;  $/;"	l
+handle	wait_for_command.cpp	/^  ros::NodeHandle handle;$/;"	l
+handle_	trajectory_request_handler.h	/^    ros::NodeHandle  handle_; $/;"	m	class:TrajectoryRequestHandler	access:private
+i	utility.cpp	/^    result<<"\\n   "<<i<<":";$/;"	l
+i	utility.cpp	/^    result<<"\\n\\n   Point "<<i<<":";$/;"	l
+index	utility.cpp	/^    unsigned int index = traj.i_knotPoints.at(i);$/;"	l
+init	demo.cpp	/^  ros::init(argc, argv, "robotDemo");$/;"	p	class:ros	file:	signature:(argc, argv, Ó)
+init	keyboard_teleop.cpp	/^  ros::init(argc, argv, "keyboard_teleop");$/;"	p	class:ros	file:	signature:(argc, argv, Ó)
+init	main.cpp	/^  ramp_msgs::RampTrajectory init;$/;"	l
+init	main.cpp	/^  robot.init(handle);$/;"	p	file:	signature:(handle)
+init	main.cpp	/^  ros::init(argc, argv, "ramp_control");$/;"	p	class:ros	file:	signature:(argc, argv, Ó)
+init	mobile_robot.cpp	/^void MobileRobot::init(ros::NodeHandle& h) {$/;"	f	class:MobileRobot	signature:(ros::NodeHandle& h)
+init	mobile_robot.h	/^    void init(ros::NodeHandle& h);$/;"	p	class:MobileRobot	access:public	signature:(ros::NodeHandle& h)
+init	wait_for_command.cpp	/^  robot.init(handle);$/;"	p	file:	signature:(handle)
+init	wait_for_command.cpp	/^  ros::init(argc, argv, "waitForCommand");$/;"	p	class:ros	file:	signature:(argc, argv, Ó)
+init_advertisers_subscribers	main.cpp	/^void init_advertisers_subscribers(MobileRobot& robot, ros::NodeHandle& handle, bool simulation) {$/;"	f	signature:(MobileRobot& robot, ros::NodeHandle& handle, bool simulation)
+initial_theta_	mobile_robot.h	/^    double                            initial_theta_;$/;"	m	class:MobileRobot	access:public
+k_dof_	mobile_robot.h	/^    const unsigned int        k_dof_;$/;"	m	class:MobileRobot	access:private
+kfd	keyboard_teleop.cpp	/^int kfd = 0;$/;"	v
+kp	mobile_robot.cpp	/^  int kp;$/;"	l
+l_wheel	keyboard_teleop.cpp	/^int l_wheel = 0, r_wheel = 0;$/;"	v
+main	demo.cpp	/^int main(int argc, char** argv) {$/;"	f	signature:(int argc, char** argv)
+main	keyboard_teleop.cpp	/^int main(int argc, char** argv) {$/;"	f	signature:(int argc, char** argv)
+main	main.cpp	/^int main(int argc, char** argv) {$/;"	f	signature:(int argc, char** argv)
+main	wait_for_command.cpp	/^int main(int argc, char** argv) {$/;"	f	signature:(int argc, char** argv)
+motion_state_	mobile_robot.h	/^    ramp_msgs::MotionState            motion_state_; $/;"	m	class:MobileRobot	access:public
+motorCommand	keyboard_teleop.cpp	/^corobot_msgs::MotorCommand motorCommand;$/;"	v
+moveOnTrajectory	main.cpp	/^    robot.moveOnTrajectory(sim);$/;"	p	file:	signature:(sim)
+moveOnTrajectory	mobile_robot.cpp	/^void MobileRobot::moveOnTrajectory(bool simulation) {$/;"	f	class:MobileRobot	signature:(bool simulation)
+moveOnTrajectory	mobile_robot.h	/^    void moveOnTrajectory(bool simulation);$/;"	p	class:MobileRobot	access:public	signature:(bool simulation)
+moveOnTrajectory	wait_for_command.cpp	/^  robot.moveOnTrajectory(false);$/;"	p	file:	signature:(false)
+moveOnTrajectoryRot	mobile_robot.h	/^    void moveOnTrajectoryRot(const ramp_msgs::RampTrajectory traj, bool simulation);$/;"	p	class:MobileRobot	access:public	signature:(const ramp_msgs::RampTrajectory traj, bool simulation)
+msg	demo.cpp	/^  ramp_msgs::RampTrajectory msg;$/;"	l
+msg	mobile_robot.cpp	/^  corobot_msgs::MotorCommand msg;$/;"	l
+next	mobile_robot.cpp	/^    trajectory_msgs::JointTrajectoryPoint next    = trajectory_.trajectory.points.at(i+1);$/;"	l
+num	mobile_robot.cpp	/^  int num = trajectory_.trajectory.points.size(); $/;"	l
+num_	mobile_robot.h	/^    int                       num_;$/;"	m	class:MobileRobot	access:private
+num_prev_	mobile_robot.h	/^    int                       num_prev_;$/;"	m	class:MobileRobot	access:private
+num_traveled_	mobile_robot.h	/^    int                       num_traveled_;$/;"	m	class:MobileRobot	access:private
+p	utility.cpp	/^    trajectory_msgs::JointTrajectoryPoint p = traj.trajectory.points.at(i);$/;"	l
+p	utility.cpp	/^    trajectory_msgs::JointTrajectoryPoint p = traj.trajectory.points.at(index);$/;"	l
+planarDistance	utility.cpp	/^const double Utility::planarDistance(const std::vector<double> a, const std::vector<double> b) const {$/;"	f	class:Utility	signature:(const std::vector<double> a, const std::vector<double> b) const
+planarDistance	utility.h	/^    const double planarDistance(const std::vector<double> a, const std::vector<double> b) const;$/;"	p	class:Utility	access:public	signature:(const std::vector<double> a, const std::vector<double> b) const
+point	demo.cpp	/^  trajectory_msgs::JointTrajectoryPoint point;$/;"	l
+prev_motion_state_	mobile_robot.h	/^    ramp_msgs::MotionState    prev_motion_state_; $/;"	m	class:MobileRobot	access:private
+prev_t_	mobile_robot.h	/^    ros::Time                 prev_t_;$/;"	m	class:MobileRobot	access:private
+printVectors	mobile_robot.cpp	/^void MobileRobot::printVectors() const {$/;"	f	class:MobileRobot	signature:() const
+printVectors	mobile_robot.h	/^    void                        printVectors() const;$/;"	p	class:MobileRobot	access:private	signature:() const
+pub_cmd_vel_	mobile_robot.h	/^    ros::Publisher                    pub_cmd_vel_;$/;"	m	class:MobileRobot	access:public
+pub_motors	keyboard_teleop.cpp	/^  ros::Publisher pub_motors = handle.advertise<corobot_msgs::MotorCommand>("PhidgetMotor", 1000);$/;"	l
+pub_phidget_motor_	mobile_robot.h	/^    ros::Publisher                    pub_phidget_motor_;$/;"	m	class:MobileRobot	access:public
+pub_twist_	mobile_robot.h	/^    ros::Publisher                    pub_twist_;$/;"	m	class:MobileRobot	access:public
+pub_update	keyboard_teleop.cpp	/^  ros::Publisher pub_update = handle.advertise<corobot_msgs::MotorCommand>("update", 1000);$/;"	l
+pub_update_	mobile_robot.h	/^    ros::Publisher                    pub_update_;$/;"	m	class:MobileRobot	access:public
+publish	demo.cpp	/^  traj_pub.publish(msg);$/;"	p	file:	signature:(msg)
+publish	keyboard_teleop.cpp	/^    pub_motors.publish(motorCommand);$/;"	p	file:	signature:(motorCommand)
+publish	mobile_robot.cpp	/^      if(simulation) pub_cmd_vel_.publish(twist_);$/;"	p	file:	signature:(twist_)
+publish	mobile_robot.cpp	/^      pub_update_.publish(motion_state_);$/;"	p	file:	signature:(motion_state_)
+publish	mobile_robot.cpp	/^  pub_phidget_motor_.publish(msg);$/;"	p	file:	signature:(msg)
+publish	mobile_robot.cpp	/^  pub_twist_.publish(t); $/;"	p	file:	signature:(t)
+publish	mobile_robot.cpp	/^  pub_twist_.publish(twist_); $/;"	p	file:	signature:(twist_)
+publish	mobile_robot.cpp	/^ pub_twist_.publish(v);$/;"	p	file:	signature:(v)
+push_back	demo.cpp	/^  msg.trajectory.points.push_back(point);$/;"	p	file:	signature:(point)
+push_back	mobile_robot.cpp	/^    motion_state_.accelerations.push_back(a.at(i));$/;"	p	file:	signature:(a.at(i))
+push_back	mobile_robot.cpp	/^    result.push_back(a);$/;"	p	file:	signature:(a)
+push_back	mobile_robot.cpp	/^    speeds_angular_.push_back( current.velocities.at(2) );$/;"	p	file:	signature:( current.velocities.at(2) )
+push_back	mobile_robot.cpp	/^  motion_state_.positions.push_back(msg.pose.pose.position.x);$/;"	p	file:	signature:(msg.pose.pose.position.x)
+push_back	mobile_robot.cpp	/^  motion_state_.positions.push_back(msg.pose.pose.position.y);$/;"	p	file:	signature:(msg.pose.pose.position.y)
+push_back	mobile_robot.cpp	/^  motion_state_.velocities.push_back(msg.twist.twist.angular.z);$/;"	p	file:	signature:(msg.twist.twist.angular.z)
+push_back	mobile_robot.cpp	/^  motion_state_.velocities.push_back(msg.twist.twist.linear.x);$/;"	p	file:	signature:(msg.twist.twist.linear.x)
+push_back	mobile_robot.cpp	/^  motion_state_.velocities.push_back(msg.twist.twist.linear.y);$/;"	p	file:	signature:(msg.twist.twist.linear.y)
+push_back	utility.cpp	/^  c.push_back(a.positions.at(0));$/;"	p	file:	signature:(a.positions.at(0))
+push_back	utility.cpp	/^  c.push_back(a.positions.at(1));$/;"	p	file:	signature:(a.positions.at(1))
+push_back	utility.cpp	/^  d.push_back(b.positions.at(0));$/;"	p	file:	signature:(b.positions.at(0))
+push_back	utility.cpp	/^  d.push_back(b.positions.at(1));$/;"	p	file:	signature:(b.positions.at(1))
+push_back	utility.cpp	/^  standardRanges.push_back(range0);$/;"	p	file:	signature:(range0)
+push_back	utility.cpp	/^  standardRanges.push_back(range1);$/;"	p	file:	signature:(range1)
+push_back	utility.cpp	/^  standardRanges.push_back(range2);$/;"	p	file:	signature:(range2)
+r_wheel	keyboard_teleop.cpp	/^int l_wheel = 0, r_wheel = 0;$/;"	v
+range0	utility.cpp	/^  ramp_msgs::Range range0; $/;"	l
+range1	utility.cpp	/^  ramp_msgs::Range range1; $/;"	l
+range2	utility.cpp	/^  ramp_msgs::Range range2; $/;"	l
+raw	keyboard_teleop.cpp	/^struct termios cooked, raw;$/;"	v	typeref:struct:
+request	trajectory_request_handler.cpp	/^const bool TrajectoryRequestHandler::request(ramp_msgs::TrajectoryRequest& tr) {$/;"	f	class:TrajectoryRequestHandler	signature:(ramp_msgs::TrajectoryRequest& tr)
+request	trajectory_request_handler.h	/^    const bool request(ramp_msgs::TrajectoryRequest& tr);$/;"	p	class:TrajectoryRequestHandler	access:public	signature:(ramp_msgs::TrajectoryRequest& tr)
+restart_	mobile_robot.h	/^    bool                      restart_;$/;"	m	class:MobileRobot	access:private
+result	mobile_robot.cpp	/^  bool result;$/;"	l
+result	mobile_robot.cpp	/^  std::vector<float> result;$/;"	l
+result	utility.cpp	/^  double result;$/;"	l
+result	utility.cpp	/^  double result=0;$/;"	l
+result	utility.cpp	/^  std::ostringstream result;$/;"	l
+robot	main.cpp	/^MobileRobot robot;$/;"	v
+robot	wait_for_command.cpp	/^MobileRobot robot;$/;"	v
+ros::init	demo.cpp	/^  ros::init(argc, argv, "robotDemo");$/;"	p	class:ros	file:	signature:(argc, argv, Ó)
+ros::init	keyboard_teleop.cpp	/^  ros::init(argc, argv, "keyboard_teleop");$/;"	p	class:ros	file:	signature:(argc, argv, Ó)
+ros::init	main.cpp	/^  ros::init(argc, argv, "ramp_control");$/;"	p	class:ros	file:	signature:(argc, argv, Ó)
+ros::init	wait_for_command.cpp	/^  ros::init(argc, argv, "waitForCommand");$/;"	p	class:ros	file:	signature:(argc, argv, Ó)
+ros::spin	demo.cpp	/^  ros::spin();$/;"	p	class:ros	file:	signature:()
+ros::spin	wait_for_command.cpp	/^  ros::spin();$/;"	p	class:ros	file:	signature:()
+ros::spinOnce	demo.cpp	/^  ros::spinOnce();$/;"	p	class:ros	file:	signature:()
+ros::spinOnce	main.cpp	/^    ros::spinOnce();$/;"	p	class:ros	file:	signature:()
+ros::spinOnce	mobile_robot.cpp	/^      ros::spinOnce();$/;"	p	class:ros	file:	signature:()
+ros::spinOnce	mobile_robot.cpp	/^    ros::spinOnce();$/;"	p	class:ros	file:	signature:()
+sendTwist	mobile_robot.cpp	/^void MobileRobot::sendTwist() const {$/;"	f	class:MobileRobot	signature:() const
+sendTwist	mobile_robot.cpp	/^void MobileRobot::sendTwist(const geometry_msgs::Twist t) const {$/;"	f	class:MobileRobot	signature:(const geometry_msgs::Twist t) const
+sendTwist	mobile_robot.h	/^    void                        sendTwist() const;$/;"	p	class:MobileRobot	access:private	signature:() const
+sendTwist	mobile_robot.h	/^    void sendTwist(const geometry_msgs::Twist twist) const;$/;"	p	class:MobileRobot	access:public	signature:(const geometry_msgs::Twist twist) const
+sendTwist	wait_for_command.cpp	/^    robot.sendTwist(msg);$/;"	p	file:	signature:(msg)
+sim	main.cpp	/^  bool sim=false;$/;"	l
+sim	main.cpp	/^  std::cout<<"\\nsim: "<<sim<<"\\n";$/;"	l
+size	mobile_robot.cpp	/^  std::cout<<"\\nspeeds_angular size: "<<speeds_angular_.size();$/;"	p	file:	signature:()
+size	mobile_robot.cpp	/^  std::cout<<"\\nspeeds_linear size: "<<speeds_linear_.size();$/;"	p	file:	signature:()
+sleep	mobile_robot.cpp	/^      r.sleep();$/;"	p	file:	signature:()
+sleep	wait_for_command.cpp	/^    r.sleep();$/;"	p	file:	signature:()
+speeds_angular_	mobile_robot.h	/^    std::vector<double>       speeds_angular_;$/;"	m	class:MobileRobot	access:private
+speeds_linear_	mobile_robot.h	/^    std::vector<double>       speeds_linear_;$/;"	m	class:MobileRobot	access:private
+spin	demo.cpp	/^  ros::spin();$/;"	p	class:ros	file:	signature:()
+spin	wait_for_command.cpp	/^  ros::spin();$/;"	p	class:ros	file:	signature:()
+spinOnce	demo.cpp	/^  ros::spinOnce();$/;"	p	class:ros	file:	signature:()
+spinOnce	main.cpp	/^    ros::spinOnce();$/;"	p	class:ros	file:	signature:()
+spinOnce	mobile_robot.cpp	/^      ros::spinOnce();$/;"	p	class:ros	file:	signature:()
+spinOnce	mobile_robot.cpp	/^    ros::spinOnce();$/;"	p	class:ros	file:	signature:()
+standardRanges	utility.h	/^    std::vector<ramp_msgs::Range> standardRanges;$/;"	m	class:Utility	access:public
+start_time	mobile_robot.cpp	/^  ros::Time start_time = ros::Time::now();$/;"	l
+std::cout	keyboard_teleop.cpp	/^  std::cout<<"\\nExiting Normally\\n";$/;"	m	class:std	file:
+std::cout	main.cpp	/^  std::cout<<"\\nExiting Normally\\n";$/;"	m	class:std	file:
+std::cout	mobile_robot.cpp	/^  std::cout<<"\\nIn updateTrajectory!\\n";$/;"	m	class:std	file:
+std::cout	mobile_robot.cpp	/^  std::cout<<"\\nend_times: [";$/;"	m	class:std	file:
+std::cout	mobile_robot.cpp	/^  std::cout<<"\\nspeeds_angular_: [";$/;"	m	class:std	file:
+std::cout	mobile_robot.cpp	/^  std::cout<<"\\nspeeds_linear: [";$/;"	m	class:std	file:
+std::cout	wait_for_command.cpp	/^  std::cout<<"\\nExiting Normally\\n";$/;"	m	class:std	file:
+std::cout	wait_for_command.cpp	/^  std::cout<<"\\nGot trajectory message!\\n";$/;"	m	class:std	file:
+std::cout	wait_for_command.cpp	/^  std::cout<<"\\nGot twist message!\\n";$/;"	m	class:std	file:
+stop	mobile_robot.cpp	/^void MobileRobot::stop() const {$/;"	f	class:MobileRobot	signature:() const
+stop	mobile_robot.h	/^    void stop() const;$/;"	p	class:MobileRobot	access:public	signature:() const
+sub_odometry_	mobile_robot.h	/^    ros::Subscriber                   sub_odometry_;$/;"	m	class:MobileRobot	access:public
+sub_traj	main.cpp	/^  ros::Subscriber sub_traj = handle.subscribe("bestTrajec", 1000, trajCallback);$/;"	l
+sub_traj	wait_for_command.cpp	/^  ros::Subscriber sub_traj = handle.subscribe("bestTrajec", 1000, trajCallback);$/;"	l
+sub_twist	wait_for_command.cpp	/^  ros::Subscriber sub_twist = handle.subscribe("twist_single", 1000, twistCallback);$/;"	l
+t_or	mobile_robot.cpp	/^  float t_or = utility_.findAngleFromAToB(trajectory_.trajectory.points.at(i),$/;"	l
+temp	demo.cpp	/^  char temp;$/;"	l
+timeNeededToTurn	mobile_robot.cpp	/^const float timeNeededToTurn = 2.5; $/;"	v
+timer_	mobile_robot.h	/^    ros::Timer                        timer_;$/;"	m	class:MobileRobot	access:public
+toString	mobile_robot.cpp	/^  std::cout<<"\\nTrajectory: "<<utility_.toString(msg);$/;"	p	file:	signature:(msg)
+toString	utility.cpp	/^    result<<"\\n       "<<toString(p);$/;"	p	file:	signature:(p)
+toString	utility.cpp	/^    result<<"\\n "<<i<<": "<<toString(path.points.at(i));$/;"	p	file:	signature:(path.points.at(i))
+toString	utility.cpp	/^    result<<"\\n"<<toString(p);$/;"	p	file:	signature:(p)
+toString	utility.cpp	/^  result<<"\\nMotion State: "<<toString(kp.motionState);$/;"	p	file:	signature:(kp.motionState)
+toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::KnotPoint kp) const {$/;"	f	class:Utility	signature:(const ramp_msgs::KnotPoint kp) const
+toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::MotionState mp) const {$/;"	f	class:Utility	signature:(const ramp_msgs::MotionState mp) const
+toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::Path path) const {$/;"	f	class:Utility	signature:(const ramp_msgs::Path path) const
+toString	utility.cpp	/^const std::string Utility::toString(const ramp_msgs::RampTrajectory traj) const {$/;"	f	class:Utility	signature:(const ramp_msgs::RampTrajectory traj) const
+toString	utility.cpp	/^const std::string Utility::toString(const trajectory_msgs::JointTrajectoryPoint p) const {$/;"	f	class:Utility	signature:(const trajectory_msgs::JointTrajectoryPoint p) const
+toString	utility.h	/^    const std::string toString(const ramp_msgs::KnotPoint kp) const;$/;"	p	class:Utility	access:public	signature:(const ramp_msgs::KnotPoint kp) const
+toString	utility.h	/^    const std::string toString(const ramp_msgs::MotionState c) const;$/;"	p	class:Utility	access:public	signature:(const ramp_msgs::MotionState c) const
+toString	utility.h	/^    const std::string toString(const ramp_msgs::Path p) const;$/;"	p	class:Utility	access:public	signature:(const ramp_msgs::Path p) const
+toString	utility.h	/^    const std::string toString(const ramp_msgs::RampTrajectory traj) const;$/;"	p	class:Utility	access:public	signature:(const ramp_msgs::RampTrajectory traj) const
+toString	utility.h	/^    const std::string toString(const trajectory_msgs::JointTrajectoryPoint p) const;$/;"	p	class:Utility	access:public	signature:(const trajectory_msgs::JointTrajectoryPoint p) const
+trajCallback	main.cpp	/^void trajCallback(const ramp_msgs::RampTrajectory::ConstPtr& msg) {$/;"	f	signature:(const ramp_msgs::RampTrajectory::ConstPtr& msg)
+trajCallback	wait_for_command.cpp	/^void trajCallback(const ramp_msgs::RampTrajectory& msg) {$/;"	f	signature:(const ramp_msgs::RampTrajectory& msg)
+traj_pub	demo.cpp	/^  ros::Publisher traj_pub = handle.advertise<ramp_msgs::RampTrajectory>("bestTrajec", 100);$/;"	l
+trajectory_	mobile_robot.h	/^    ramp_msgs::RampTrajectory             trajectory_;$/;"	m	class:MobileRobot	access:public
+turn	mobile_robot.cpp	/^void MobileRobot::turn(const float speed, const float angle) const {$/;"	f	class:MobileRobot	signature:(const float speed, const float angle) const
+turn	mobile_robot.cpp	/^void MobileRobot::turn(const unsigned int speed, const bool cwise) const {$/;"	f	class:MobileRobot	signature:(const unsigned int speed, const bool cwise) const
+turn	mobile_robot.h	/^    void turn(const float speed, const float angle) const; $/;"	p	class:MobileRobot	access:public	signature:(const float speed, const float angle) const
+turn	mobile_robot.h	/^    void turn(const unsigned int speed, const bool cwise) const;$/;"	p	class:MobileRobot	access:public	signature:(const unsigned int speed, const bool cwise) const
+twistCallback	wait_for_command.cpp	/^void twistCallback(const geometry_msgs::Twist msg) {$/;"	f	signature:(const geometry_msgs::Twist msg)
+twist_	mobile_robot.h	/^    geometry_msgs::Twist      twist_;$/;"	m	class:MobileRobot	access:private
+updatePublishTimer	mobile_robot.cpp	/^void MobileRobot::updatePublishTimer(const ros::TimerEvent&) {$/;"	f	class:MobileRobot	signature:(const ros::TimerEvent&)
+updatePublishTimer	mobile_robot.h	/^    void updatePublishTimer(const ros::TimerEvent&);$/;"	p	class:MobileRobot	access:public	signature:(const ros::TimerEvent&)
+updateState	mobile_robot.cpp	/^void MobileRobot::updateState(const nav_msgs::Odometry& msg) {$/;"	f	class:MobileRobot	signature:(const nav_msgs::Odometry& msg)
+updateState	mobile_robot.h	/^    void updateState(const nav_msgs::Odometry& msg);$/;"	p	class:MobileRobot	access:public	signature:(const nav_msgs::Odometry& msg)
+updateTrajectory	mobile_robot.cpp	/^void MobileRobot::updateTrajectory(const ramp_msgs::RampTrajectory msg) {$/;"	f	class:MobileRobot	signature:(const ramp_msgs::RampTrajectory msg)
+updateTrajectory	mobile_robot.h	/^    void updateTrajectory(const ramp_msgs::RampTrajectory msg); $/;"	p	class:MobileRobot	access:public	signature:(const ramp_msgs::RampTrajectory msg)
+updateTrajectory	wait_for_command.cpp	/^  robot.updateTrajectory(msg);$/;"	p	file:	signature:(msg)
+utility_	mobile_robot.h	/^    Utility                   utility_;$/;"	m	class:MobileRobot	access:private
+v	mobile_robot.cpp	/^ geometry_msgs::Twist v;$/;"	l
+velocity_	mobile_robot.h	/^    geometry_msgs::Twist              velocity_;$/;"	m	class:MobileRobot	access:public
+~MobileRobot	mobile_robot.cpp	/^MobileRobot::~MobileRobot() {$/;"	f	class:MobileRobot	signature:()
+~MobileRobot	mobile_robot.h	/^    ~MobileRobot();$/;"	p	class:MobileRobot	access:public	signature:()
+~Utility	utility.h	/^    ~Utility() {}$/;"	f	class:Utility	access:public	signature:()

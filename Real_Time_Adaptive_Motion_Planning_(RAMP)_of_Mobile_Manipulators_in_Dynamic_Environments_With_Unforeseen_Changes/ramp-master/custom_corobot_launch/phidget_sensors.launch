@@ -1,0 +1,39 @@
+<launch>
+
+
+<!--***** Phidget Interface Kit *****-->
+
+<arg name="phidgetInterfaceKit" value="1"/> <!-- 1 if you have the Phidget Interface Kit, 0 if you don't -->
+<arg name="battery" value="0"/> <!-- Index of the analog input for the battery(default = 0). -1 if this one is not present or the data doesn't have to be read -->
+<arg name="irFront" value="1"/> <!-- Index of the analog input for the front infrared sensor(default = 1). -1 if this one is not present or the data doesn't have to be read -->
+<arg name="irBack" value="2"/> <!-- Index of the analog input for the rear infrared sensor(default = 2). if this one is not present or the data doesn't have to be read -->
+
+
+<!--***** Sonars *****--> 
+<!-- Need the Phidget Interface Kit connected -->
+
+<arg name="bwOutput" value="0"/> <!-- Index for the digital output used for the sonars. If no sonars are present, this value doesn't matter. -->
+<arg name="strobeOutput" value="1"/> <!-- Index for the digital output used for the sonars. If no sonars are present, this value doesn't matter. -->
+<arg name="lastSonarInput" value="-1"/> <!-- The last analog input index for the sonars. If no sonar are present, put this value to -1. If only one sonar is present, this value is the same as firstSonarInput -->
+<arg name="firstSonarInput" value="-1"/> <!-- The first analog input index for the sonars. If no sonar are present, put this value to -1. If only one sonar is present, this value is the same as lastSonarInput -->
+
+
+<!--***** IMU *****-->
+
+<arg name="imu" value="0"/> <!-- 1 if you have a Phidget Spatial IMU, 0 if you don't -->
+
+
+
+<group if="$(arg phidgetInterfaceKit)">
+  	<node pkg="corobot_phidget_ik" name="phidget_interface_kit" type="corobot_phidget">
+		<param name="bwOutput" type="int" value="$(arg bwOutput)"/>
+		<param name="strobeOutput" type="int" value="$(arg strobeOutput)"/>
+		<param name="lastSonarInput" type="int" value="$(arg lastSonarInput)"/>
+		<param name="firstSonarInput" type="int" value="$(arg firstSonarInput)"/>
+		<param name="battery" type="int" value="$(arg battery)"/>
+		<param name="irFront" type="int" value="$(arg irFront)"/>
+		<param name="irBack" type="int" value="$(arg irBack)"/> 
+		<param name="imu" type="bool" value="$(arg imu)"/>
+  	</node>
+  </group>
+</launch>

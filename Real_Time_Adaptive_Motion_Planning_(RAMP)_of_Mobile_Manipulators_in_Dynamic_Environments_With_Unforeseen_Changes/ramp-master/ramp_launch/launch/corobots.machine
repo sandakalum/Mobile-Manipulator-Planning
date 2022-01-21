@@ -1,0 +1,6 @@
+<launch>
+
+  <machine name="robot_0" address="192.168.1.107" env-loader="/opt/ros/indigo/env.sh" user="corobotclassic" /> 
+  <machine name="robot_1" address="192.168.1.104" env-loader="/opt/ros/indigo/env.sh" user="corobotclassic" />
+
+</launch>

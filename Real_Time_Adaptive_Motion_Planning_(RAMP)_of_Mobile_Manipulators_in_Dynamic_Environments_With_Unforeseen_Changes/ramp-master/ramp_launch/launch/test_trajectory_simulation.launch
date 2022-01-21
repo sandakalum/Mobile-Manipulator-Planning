@@ -1,0 +1,26 @@
+<launch>
+
+
+<!-- Trajectory Generator -->
+<node name="trajectory_generator" pkg="trajectory_generator" type="trajectory_generator" output="screen" />
+
+<!-- Trajectory Evaluation -->
+<node name="trajectory_evaluation" pkg="trajectory_evaluation" type="trajectory_evaluation" output="screen" />
+
+<!-- Trajectory visualisation -->
+<node name="trajectory_visualisation" pkg="trajectory_visualisation" type="trajectory_visualisation" output="screen" />
+
+<!-- Publish Trajectory -->
+<node name="publish_trajectory_command" pkg="ramp_debug" type="publishTrajectoryCommand" output="screen" />
+
+<!-- Simulation -->
+<node name="stageros" pkg="stage_ros" type="stageros" args="/home/sterlingm/ros_workspace/src/ramp/ramp_launch/launch/world/single_robot.world" />
+<node name="ramp_control" pkg="ramp_control" type="ramp_control" output="screen">
+  <remap from="odometry" to="odom" />
+  <!-- <remap from="/cmd_vel" to="/mobile_base/commands/velocity" /> -->
+  <param name="simulation" value="true" />
+  <param name="check_imminent_coll" value="false" />
+  <param name="orientation" type="double" value="0." />
+</node>
+
+</launch>

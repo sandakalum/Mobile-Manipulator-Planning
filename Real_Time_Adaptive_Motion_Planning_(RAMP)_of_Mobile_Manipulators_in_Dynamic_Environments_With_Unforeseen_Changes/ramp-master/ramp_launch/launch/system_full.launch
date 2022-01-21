@@ -1,0 +1,109 @@
+<launch>
+
+
+
+<arg name="robot_0_name" value="robot_0" />
+<arg name="robot_1_name" value="robot_1" />
+
+
+
+<!-- Define the machines -->
+
+<include file="$(find ramp_launch)/launch/corobots.machine" />
+
+
+
+<!-- Trajectory Generator -->
+<node name="trajectory_generator" pkg="trajectory_generator" type="trajectory_generator" /> 
+
+<!-- Path Modification -->
+<node name="path_modification" pkg="path_modification" type="path_modification" />
+
+
+<!-- Trajectory Visualization -->
+<node name="trajectory_visualisation" pkg="trajectory_visualisation" type="trajectory_visualisation" output="screen" /> 
+
+
+
+<!-- Planners -->
+
+
+<!-- We need 2 planners, one for the first robot and one for the second robot -->
+<group ns="$(arg robot_0_name)">
+  
+  <include file="$(find ramp_launch)/launch/planner_parameters.launch" />
+  <rosparam file="$(find ramp_launch)/launch/config/robot_0.yaml" command="load" ns="robot_info/" />
+  
+  <node name="ramp_planner" pkg="ramp_planner" type="ramp_planner" output="screen" />
+</group> 
+
+
+
+<group ns="$(arg robot_1_name)"> 
+
+  <include file="$(find ramp_launch)/launch/planner_parameters.launch" />
+  <rosparam file="$(find ramp_launch)/launch/config/robot_1.yaml" command="load" ns="robot_info/" />
+
+  <node name="ramp_planner" pkg="ramp_planner" type="ramp_planner" output="screen" /> 
+</group> 
+
+
+
+<!-- Sensing nodes -->
+
+<group ns="$(arg robot_0_name)"> 
+  <node name="ramp_sensing" pkg="ramp_sensing" type="ramp_sensing" output="screen"> 
+    <param name="other_robot_odom" type="str" value="/$(arg robot_1_name)/odometry" />  
+  </node> 
+</group> 
+
+<group ns="$(arg robot_1_name)"> 
+   <node name="ramp_sensing" pkg="ramp_sensing" type="ramp_sensing" output="screen">  
+     <param name="other_robot_odom" type="str" value="/$(arg robot_0_name)/odometry" /> 
+   </node> 
+</group> 
+
+
+
+<!-- Evaluation -->
+
+<group ns="$(arg robot_0_name)">
+  <node name="trajectory_evaluation" pkg="trajectory_evaluation" type="trajectory_evaluation" output="screen">
+    <param name="robot_id" type="int" value="0" />
+  </node>
+</group> 
+
+<group ns="$(arg robot_1_name)">
+  <node name="trajectory_evaluation" pkg="trajectory_evaluation" type="trajectory_evaluation" output="screen"> 
+    <param name="robot_id" type="int" value="1" />
+  </node>
+</group> 
+
+
+
+
+
+
+<!-- Start the robot nodes -->
+
+<group ns="$(arg robot_0_name)" >
+  <node name="ramp_control" pkg="ramp_control" type="ramp_control" machine="robot_0" /> 
+    <param name="orientation" type="double" value="3.14159" />
+</group> 
+
+
+<group ns="$(arg robot_1_name)"> 
+  <node name="ramp_control" pkg="ramp_control" type="ramp_control" machine="robot_1" /> 
+    <param name="orientation" type="double" value="0" />
+</group> 
+
+
+
+<!-- Launch the other files to start remote nodes -->
+<include file="$(find ramp_launch)/launch/full_one_ob/general.launch" />
+<include file="$(find ramp_launch)/launch/full_one_ob/phidget_sensors.launch" /> 
+<include file="$(find ramp_launch)/launch/full_one_ob/motors.launch" />
+
+
+
+</launch>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<package>
+  <name>ramp</name>
+  <version>0.0.0</version>
+  <description>The ramp package</description>
+
+  <!-- One maintainer tag required, multiple allowed, one person per tag --> 
+  <!-- Example:  -->
+  <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
+  <maintainer email="sterlingm@todo.todo">sterlingm</maintainer>
+
+
+  <!-- One license tag required, multiple allowed, one license per tag -->
+  <!-- Commonly used license strings: -->
+  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <license>TODO</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>ramp_msgs</run_depend>
+  <run_depend>ramp_planner</run_depend>
+  <run_depend>ramp_control</run_depend>
+  <run_depend>ramp_launch</run_depend>
+  <run_depend>ramp_sensing</run_depend>
+  <run_depend>trajectory_evaluation</run_depend>
+  <run_depend>trajectory_generator</run_depend>
+  <run_depend>trajectory_visualization</run_depend>
+  <run_depend>ramp_debug</run_depend>
+  <run_depend>path_modification</run_depend>
+  
+
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- You can specify that this package is a metapackage here: -->
+    <metapackage/> 
+
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

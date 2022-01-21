@@ -1,0 +1,48 @@
+pub_rate: 1.0 # Optional
+base_path: '' # Optional, prepended to all diagnostic output
+analyzers:
+   Phidget:
+    type: diagnostic_aggregator/AnalyzerGroup
+    path: Phidget
+    analyzers:
+      InterfaceKit:
+        type: diagnostic_aggregator/CorobotAnalyzer
+        path: InterfaceKit
+        contains: Interface Kit
+        remove_prefix: phidget_interface_kit
+      Spatial:
+        type: diagnostic_aggregator/CorobotAnalyzer
+        path: Spatial 
+        contains: Spatial
+        remove_prefix: phidget_interface_kit
+      Servos:
+        type: diagnostic_aggregator/CorobotAnalyzer
+        path: Servos
+        contains: Servo
+        remove_prefix: phidget_interface_kit
+   Webcam:
+    type: diagnostic_aggregator/AnalyzerGroup
+    path: Webcam
+    analyzers:
+      Webcam:
+        type: diagnostic_aggregator/CorobotAnalyzer
+        path: FrontCamera
+        find_and_remove_prefix: PTZ
+      PanTilt:
+        type: diagnostic_aggregator/CorobotAnalyzer
+        path: corobot_pantilt
+        find_and_remove_prefix: PTZ
+   GPS:
+    type: diagnostic_aggregator/CorobotAnalyzer
+    path: GPS
+    find_and_remove_prefix: corobot_gps
+   Hokuyo:
+    type: diagnostic_aggregator/CorobotAnalyzer
+    path: Hokuyo
+    find_and_remove_prefix: hokuyo
+   SSC32:
+    type: diagnostic_aggregator/CorobotAnalyzer
+    path: SSC32
+    find_and_remove_prefix: ssc32control
+
+

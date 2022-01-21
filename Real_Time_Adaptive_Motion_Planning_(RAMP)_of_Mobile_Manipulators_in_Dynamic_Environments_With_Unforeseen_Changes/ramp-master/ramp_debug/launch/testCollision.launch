@@ -1,0 +1,15 @@
+<launch>
+
+<node name="trajectory_visualisation" pkg="trajectory_visualisation" type="trajectory_visualisation" output="screen" /> 
+
+<node name="trajectory_generator" pkg="trajectory_generator" type="trajectory_generator" output="screen" /> 
+<node name="trajectory_evaluation" pkg="trajectory_evaluation" type="trajectory_evaluation" output="screen" /> 
+
+<node name="test_collision" pkg="ramp_debug" type="testCollision" output="screen" />
+
+
+<node name="stageros" pkg="stage_ros" type="stageros" args="/home/sterlingm/ros_workspace/src/ramp/ramp_launch/launch/world/single_robot.world" />
+
+<node name="keyboard_teleop" pkg="ramp_control" type="keyboard_teleop" output="screen" />
+
+</launch>

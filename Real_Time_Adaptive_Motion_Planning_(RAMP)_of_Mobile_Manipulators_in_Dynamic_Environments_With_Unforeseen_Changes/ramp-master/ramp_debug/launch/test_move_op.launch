@@ -1,0 +1,13 @@
+<launch>
+
+<node name="trajectory_generator" pkg="trajectory_generator" type="trajectory_generator" output="screen" /> 
+
+<node name="trajectory_evaluation" pkg="trajectory_evaluation" type="trajectory_evaluation" output="screen" />
+
+<node name="path_modification" pkg="path_modification" type="path_modification" output="screen" />
+
+<node name="trajectory_visualisation" pkg="trajectory_visualisation" type="trajectory_visualisation" output="screen" /> 
+
+<node name="test_move_op" pkg="ramp_debug" type="test_move_op" output="screen"/>
+
+</launch>

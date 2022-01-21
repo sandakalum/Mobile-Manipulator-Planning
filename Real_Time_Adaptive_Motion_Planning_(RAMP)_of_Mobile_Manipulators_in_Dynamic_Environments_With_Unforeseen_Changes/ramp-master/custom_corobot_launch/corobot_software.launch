@@ -1,0 +1,13 @@
+<launch>
+
+
+<!-- Include launch files which the user can modify to set some parameters necessary to run those nodes properly, as well as choosing to run or not some nodes -->
+
+<include file="$(find corobot_launch)/launch/launch_include/general.launch" />
+<include file="$(find corobot_launch)/launch/launch_include/phidget_sensors.launch" />
+<include file="$(find corobot_launch)/launch/launch_include/motors.launch" />
+<!-- <include file="$(find corobot_launch)/launch/launch_include/arm.launch" /> -->
+<!-- <include file="$(find corobot_launch)/launch/launch_include/camera.launch" /> -->
+
+</launch>
+

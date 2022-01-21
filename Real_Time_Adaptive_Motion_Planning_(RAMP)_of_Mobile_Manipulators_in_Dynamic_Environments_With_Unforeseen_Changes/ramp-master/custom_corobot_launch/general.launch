@@ -1,0 +1,98 @@
+<launch>
+
+
+<!--***** GUI *****-->
+
+<arg name="gui" value="0"/> <!-- 1 if you want to start the GUI (corobot_teleop), 0 if you don't -->
+<arg name="cameraFront_jpeg_compression" value="1"/> <!-- 1 if you want to enable to jpeg compression for the image visualizer in the corobot_teleop GUI, 0 to unable it. This should be the same as in the camera.launch file-->
+<arg name="cameraRear_jpeg_compression" value="1"/> <!-- 1 if you want to enable to jpeg compression for the image visualizer in the corobot_teleop GUI, 0 to unable it. This should be the same as in the camera.launch file -->
+
+<!--***** LCD Diagnostic *****-->
+<!-- Only useful if your robot has an LCD display -->
+<arg name="LCD" value="0"/> <!-- 1 if you have an LCD display, 0 if not -->
+
+<!--***** Kinect *****-->
+
+<arg name="kinect" value="0" />
+
+
+
+<!--***** Hokuyo *****-->
+
+<arg name="hokuyo" value="0"/>  <!-- 1 if you have one Hokuyo laser range finder, 0 if you don't -->
+<arg name="hokuyo_skip" value="4"/> <!-- The number of scans to skip between each measured scan. This controls the update rate. For a UTM-30LX, the hokuyo will scan at 40Hz, so setting "skip" to 1 makes it publish at 20Hz. -->
+
+
+
+<!--***** GPS *****-->
+
+<arg name="gps" value="0" />
+
+
+
+<!--***** Joystick *****-->
+
+<arg name="joystick" value="0"/> <!-- 1 if you have one joystick, 0 if you don't -->
+<arg name="joystick_port" value="/dev/input/js0"/> <!-- Port of the joystick -->
+
+
+
+<!--***** Hector SLAM *****--> <!-- This needs to have the Hokuyo activated, the stack hector_slam downloaded and of course having a Laser Range Finder -->
+
+<arg name="slam_robot" value="0" /> <!-- Start the slam algorithm  -->
+<arg name="slam_GUI" value="0" /> <!-- display the slam map in corobot_teleop and also start rviz-->
+
+
+
+
+
+  <group if="$(arg joystick)">
+	  <node pkg="joy" name="joy" type="joy_node">
+		<param name="dev" value="$(arg joystick_port)"/>
+	  </node>
+
+	  <node pkg="corobot_joystick" name="joystick_control" type="joystick_control"/>
+  </group>
+
+  <group if="$(arg hokuyo)">
+  	<node pkg="hokuyo_node" name="hokuyo" type="hokuyo_node" >
+		<param name="skip" type="int" value="$(arg hokuyo_skip)"/>
+ 	 </node>
+  </group>
+
+  <group if="$(arg gps)">
+  	<node pkg="corobot_gps" name="corobot_gps" type="corobot_gps">
+		<param name="use_gps_time" type="bool" value="false"/>
+ 	</node>
+  </group>
+
+  <group if="$(arg kinect)">	
+        <include file="$(find openni_launch)/launch/openni.launch"/>
+  </group>
+
+  <group if="$(arg gui)">
+	  <node pkg="corobot_teleop" name="GUI" type="corobot_teleop">
+		<param name="cameraRear_jpeg_compression" type="bool" value="$(arg cameraRear_jpeg_compression)" />
+		<param name="cameraFront_jpeg_compression" type="bool" value="$(arg cameraFront_jpeg_compression)" />
+	  </node>
+  </group>
+
+  <group if="$(arg slam_robot)">
+	<include file="$(find corobot_state_tf)/launch/hectorSlam_robot.launch" />
+  </group>
+
+  <group if="$(arg slam_GUI)">
+	  <include file="$(find corobot_state_tf)/launch/hectorSlam_ocu.launch" />
+  </group>
+
+  <node pkg="diagnostic_aggregator" type="aggregator_node"
+        name="diagnostic_aggregator" output="screen">
+    <rosparam command="load" 
+              file="$(find corobot_diagnostics)/config/corobot_analyzer.yaml" />
+  </node>
+  
+  <group if="$(arg LCD)">
+	  <node pkg="corobot_diagnostics" name="diagnosticLCD" type="corobot_diagnostics" output="screen"/>
+  </group>
+</launch>
+

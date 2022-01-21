@@ -1,0 +1,2 @@
+RampTrajectory trajectory
+bool error

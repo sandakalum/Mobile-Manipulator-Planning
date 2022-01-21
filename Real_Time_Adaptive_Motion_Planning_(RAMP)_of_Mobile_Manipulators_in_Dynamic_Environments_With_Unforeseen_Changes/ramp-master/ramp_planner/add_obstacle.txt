@@ -1,0 +1,10 @@
+To add an obstacle:
+- add obstacle to simulation.world or start robot
+- add topic name of its odometry to config.yaml
+- add topic name of its cmd_vel to config.yaml
+- change number of obstacles parameter in config.yaml
+- add its tf to obstacle_tf.txt
+
+To change obstacle's initial configuration:
+- Change in simulation.world
+- Change in obstacle_tf.txt

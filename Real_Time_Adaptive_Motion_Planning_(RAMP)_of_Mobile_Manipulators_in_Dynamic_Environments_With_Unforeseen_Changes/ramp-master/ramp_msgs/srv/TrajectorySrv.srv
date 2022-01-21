@@ -1,0 +1,8 @@
+TrajectoryRequest[] reqs
+
+---
+
+RampTrajectory trajectory
+bool error
+
+TrajectoryResponse[] resps

@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/" >
+        <file>arm.png</file>
+	<file>camera.png</file>
+        <file>gripper.jpg</file>
+	<file>help_button.gif</file>
+        <file>Joystick.png</file>
+	<file>keyboard.png</file>
+        <file>map.png</file>
+	<file>mouse.jpg</file>
+        <file>splash.jpg</file>
+	<file>wrist.jpg</file>
+	<file>IMU.gif</file>
+    </qresource>
+</RCC>
