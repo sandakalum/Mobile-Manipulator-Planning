@@ -1,4 +1,7 @@
 # Mobile manipulator motion planning
+
+Review paper - [Motion Planning for Mobile Manipulators—A Systematic Review](https://doi.org/10.3390/machines10020097)
+
 ### Source code for mobile manipulator planning algorithms
 
 - This repository containes source codes for the following publications.
